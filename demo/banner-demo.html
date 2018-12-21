@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <style>
+  html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    padding: 0 5%;
+    height: 100%;
+    font-family: "Microsoft YaHei",Arial,Helvetica,sans-serif,"SimSun";
+    min-width: 500px;
+    width: 100%;
+    overflow: auto;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  #container {
+    padding: 0;
+    padding-bottom: 100px;
+    margin: 0 auto;
+    max-width: 1400px;
+    min-height: 100%;
+  }
+
+  #container-inside {
+    padding-bottom: 50px;
+  }
+
+  .div_banner {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+  }
+
+  .btn_shift {
+    width: 40px;
+    height: 80px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: inline-block;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 35px;
+    visibility: hidden;
+    background-color: #111;
+    opacity: 0.7;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    cursor: pointer;
+    z-index: 8999;
+  }
+
+  .btn_shift:hover {
+    background-color: #efefef;
+    opacity: 0.7;
+  }
+
+  .img_banner {
+    width: 100%;
+    height: 100%;
+    max-height: 600px;
+    flex: 1;
+    margin-left: -40px;
+    margin-right: -40px;
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 1200px) {
+    body {
+      padding: 0;
+    }
+  }
+  </style>
+  <title id="title">Banner-Demo</title>
+</head>
+<body>
+  <div id="container">
+    <p>鼠标悬停banner上时显示按钮</p>
+    <p>点击banner跳转页面</p>
+    <p>鼠标悬停按钮上时按钮变色</p>
+    <p>点击按钮切换图片</p>
+    <p>整个banner已实现响应式缩放</p>
+    <!-- banner -->
+    <div class="div_banner" onmouseover="bannerOver()" onmouseout="bannerOut()">
+      <button class="btn_shift" name="btn_shift" onclick="clickPrev()">&lt;</button>
+      <img class="img_banner" id="banner" src="res/image/home/banner_internship.jpeg" width="1000" height="600" />
+      <button class="btn_shift" name="btn_shift" onclick="clickNext()">&gt;</button>
+    </div>
+  </div>
+  <script type="text/javascript">
+  /********** 常量 **********/
+
+  /**
+  * banner切换时间间隔
+  */
+  var timeout = 5000;
+
+  /**
+  * banner下标
+  */
+  var bannerIndex = 1000;
+
+  /**
+  * banner定时器
+  */
+  var bannerInterval;
+
+  /**
+  * banner内容json
+  */
+  var bannerJson = [{
+    "imgUrl": "https://github.com/frogfans/Banner-Demo/blob/master/banner_internship.jpeg?raw=true",
+    "desUrl": "https://frogfans.github.io/blog.html?blogId=18"
+  },
+  {
+    "imgUrl": "https://github.com/frogfans/Banner-Demo/blob/master/banner_recruit.jpg?raw=true",
+    "desUrl": "https://frogfans.github.io/blog.html?blogId=18"
+  }];
+
+  /********** 函数 **********/
+
+  /**
+  * banner单次执行内容
+  */
+  function interval() {
+    if(bannerIndex > 1000) bannerIndex -= 1000;
+    if(bannerIndex < 0) bannerIndex += 1000;
+    var banner = document.getElementById("banner");
+    banner.src = bannerJson[bannerIndex % bannerJson.length].imgUrl;
+    banner.setAttribute("desUrl", bannerJson[bannerIndex % bannerJson.length].desUrl)
+    banner.onclick = function(){
+      window.open(this.getAttribute("desUrl"));
+    }
+
+    bannerIndex++;
+  }
+
+  /**
+  * banner启动
+  */
+  function startBanner() {
+    interval();
+    bannerInterval = setInterval('interval()', timeout);
+  }
+
+  /**
+  * 鼠标悬停banner
+  */
+  function bannerOver() {
+    var btn = document.getElementsByName('btn_shift');
+    for (var i = 0; i < btn.length; i++) {
+      btn[i].style = 'visibility:visible;';
+    }
+  }
+
+  /**
+  * 鼠标移出banner
+  */
+  function bannerOut() {
+    var btn = document.getElementsByName('btn_shift');
+    for (var i = 0; i < btn.length; i++) {
+      btn[i].style = 'visibility:hidden;';
+    }
+  }
+
+  /**
+  * 点击上一项
+  */
+  function clickPrev() {
+    clearInterval(bannerInterval);
+    bannerIndex-=2;
+    startBanner();
+  }
+
+  /**
+  * 点击下一项
+  */
+  function clickNext() {
+    clearInterval(bannerInterval);
+    startBanner();
+  }
+
+  startBanner();
+</script>
+</body>
+</html>

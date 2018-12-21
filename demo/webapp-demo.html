@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  html,body {
+    width: 100%;
+    height: 100%;
+  }
+
+  ul {
+    list-style-type: square;
+  }
+
+  table {
+    font-size: 15px;
+  }
+
+  th {
+    width: 33%;
+  }
+
+  iframe {
+    width: 90%;
+    height: 300px;
+  }
+
+  #div1,#div2,#div4 {
+    width: 20%;
+    float: left;
+  }
+
+  #div3 {
+    width: 40%;
+    float: left;
+  }
+
+  #img1 {
+    width: 90%;
+    height: 90%;
+  }
+
+  #img2 {
+    border: 5px;
+    padding: 5px;
+  }
+
+  #td1 {
+    text-align: center;
+  }
+
+  #div5 {
+    width: 80%;
+    padding-top: 50px;
+    font-size: 25px;
+    font-family: "Lucida Console","Courier New","Arial";
+    text-shadow: 5px 5px 5px #ff0000;
+    box-shadow: 10px 10px 5px #888888;
+    background-color: #eeee88;
+    text-align: center;
+  }
+
+  </style>
+  <meta charset="utf-8" />
+  <title>真正的粉丝</title>
+</head>
+<body onload="move()">
+  <script src="https://raw.githubusercontent.com/frogfans/WebApp-Demo/master/demo.js"></script>
+  <div id="div1">
+    <h1>一级标题</h1>
+    <h2>二级标题</h2>
+    <h3>三级标题</h3>
+    <h4>四级标题</h4>
+    <h5>五级标题</h5>
+    <h6>六级标题</h6>
+    <p>段落</p>
+    <br />换行
+    <hr id="tips" />水平线
+    <br />
+    <!-- 注释 -->
+    <b>粗体</b>
+    <br />
+    <code>计算机代码</code>
+    <br />
+    <em>强调</em>
+    <br />
+    <i>斜体</i>
+    <br />
+    <kbd>键盘输入</kbd>
+    <br />
+    <pre>预格式化文本   三个空格</pre>
+    <br />
+    <small>小文本</small>
+    <br />
+    <strong>重要文本</strong>
+    <br />
+  </div>
+  <div id="div2">
+    缩写
+    <abbr title="World Health Organization">WHO</abbr>
+    <br />
+    <bdo dir="rtl">从右到左显示</bdo>
+    <br />
+    <del>
+      这个已删除
+    </del>
+    <br />
+    <ins>
+      这个新插入
+    </ins>
+    <br />
+    <sup>这是上标</sup>
+    <sub>这是下标</sub>
+    <br />
+    <blockquote cite="https://frogfans.github.io/">
+      too young too simple, sometimes naive.
+    </blockquote>引用自
+    <cite>frogfans</cite>
+    <br /> 点我发现新大陆:
+    <a href="http://frogfans.github.io/" target="_blank">frogfans</a>
+    <br /> 点击图片跳转:
+    <br />
+    <a href="http://frogfans.github.io/"><img id="img1" src="https://github.com/frogfans/WebApp-Demo/blob/master/res/logo.png?raw=true" alt="图片违规不予显示。" /></a>
+    <br />
+    <a href="#tips">跳到水平线</a>
+    <ul>
+      <li>真正的粉丝</li>
+      <li>即使我不说</li>
+      <li>也知道是谁</li>
+    </ul>
+    <ol>
+      <li>too young too simple</li>
+      <li>sometimes naive</li>
+      <li>excited</li>
+    </ol>
+  </div>
+  <div id="div3">
+    <table border="2">
+      <caption>
+        人生经验
+      </caption>
+      <thead>
+        <tr>
+          <th>视察二院</th>
+          <th>谈笑风生</th>
+          <th>怒叱记者</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>另请高明吧</td>
+          <td>time flies very fast</td>
+          <td>无可奉告</td>
+        </tr>
+        <tr>
+          <td>历史的行程</td>
+          <td>very frankly speaking</td>
+          <td>闷声大发财</td>
+        </tr>
+        <tr>
+          <td>微小的工作</td>
+          <td>big mistake!</td>
+          <td>提高自己的知识水平</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>天若有情天亦老</td>
+          <td>我为长者续一秒</td>
+          <td id="td1"><input type="button" value="  +1s  " onclick="donateLife()" /></td>
+        </tr>
+      </tfoot>
+    </table>
+    <br />
+    <iframe src="https://frogfans.github.io">Turn to my home page</iframe>
+    <br />
+    <form>
+      <p>你现在的心情是：</p>
+      <input type="radio" name="emotion" value="regius" />钦定
+      <br />
+      <input type="radio" name="emotion" value="angry" />angry
+      <br />
+      <input type="radio" name="emotion" value="excited" />excited
+      <br />
+      <input type="button" onclick="selectEmotion()" value="Choose" />
+    </form>
+    <br />
+  </div>
+  <div id="div4">
+    <p>一人续一秒，我蛤永不倒：</p>
+    <img id="img2" src="https://github.com/frogfans/WebApp-Demo/blob/master/res/frog.jpeg?raw=true" alt="图片违规不予显示。" onclick="donateLife()" />
+    <div id="div5">
+      <strong>Got Life:</strong>
+      <b id="life">0</b>
+      <br />
+      <p id="p2">+1s</p>
+      <progress value="0" max="100" id="pgs"> </progress>
+      <p><strong>Warnning: </strong>You have no more life!</p>
+    </div>
+    <br />
+    <br />End
+    <br />
+    <br />
+  </div>
+  <script>
+  var life = 0;
+  var emotions = document.getElementsByName("emotion");
+  var count = 0;
+
+  function donateLife() {
+    alert("Your life: -1s\nElder's life: +1s\nThank you!");
+    document.getElementById("life").innerHTML = ++life;
+  }
+
+  function selectEmotion() {
+    for (i = 0; i < emotions.length; i++) {
+      if (emotions[i].checked) {
+        var output;
+        if (i == 0) {
+          output = "给人一种钦定的感觉";
+        } else if (i == 1) {
+          output = "I'm angry!";
+        } else if (i == 2) {
+          output = "水可载舟，亦可赛艇";
+        }
+        alert(output);
+        break;
+      }
+    }
+  }
+
+  function move() {
+    document.getElementById("pgs").value = count++;
+    if (count != 101) {
+      setTimeout("move()", 100);
+      if (count % 10 < 5) {
+        document.getElementById("p2").innerHTML = "+1s";
+      } else {
+        document.getElementById("p2").innerHTML = "&nbsp;";
+      }
+    } else {
+      document.getElementById("p2").innerHTML = "Life +1 successful!";
+      donateLife();
+    }
+  }
+  </script>
+</body>
+</html>

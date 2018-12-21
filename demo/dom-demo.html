@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <style>
+  html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    padding: 0 5%;
+    height: 100%;
+    font-family: "Microsoft YaHei",Arial,Helvetica,sans-serif,"SimSun";
+    min-width: 500px;
+    width: 100%;
+    overflow: auto;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  #container {
+    padding: 0;
+    padding-bottom: 100px;
+    margin: 0 auto;
+    max-width: 1600px;
+    min-height: 100%;
+  }
+
+  #container-inside {
+    padding-bottom: 50px;
+  }
+
+  .div_content {
+    height: auto;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin: 50px 0 0 0;
+    background: #fefefe;
+  }
+
+  .div_parent {
+    flex: none;
+    overflow: auto;
+    transition: all 0.3s ease-in-out 0.2s;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+  }
+
+  /**********************/
+  #leftnav {
+    list-style-type: none;
+    height: 1000px;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f6f6f6;
+    position: absolute;
+  }
+
+  #leftnav li {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .img_logo {
+    height: 50px;
+    width: 50px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .img_tag {
+    padding-left: 10px;
+  }
+
+  #leftnav li a {
+    height: 50px;
+    margin: 0;
+    padding: auto 0;
+    color: #000;
+    align-items: center;
+    display: flex;
+    display: -webkit-flex;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+  }
+
+  #leftnav li a:not(.switch) {
+    width: 100%;
+    background-color: white;
+  }
+
+  #leftnav li a.active {
+    background-color: #111;
+    color: white;
+  }
+
+  #leftnav li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+
+  .switch {
+    width: 200px;
+    font-size: 40px;
+    text-align: center;
+    justify-content: center;
+    background-color: #cdcdcd;
+  }
+
+  /**********************/
+  #rightcontent {
+    height: 1000px;
+    margin-left: 200px;
+    padding: 20px 40px;
+    background-color: #ebebeb;
+  }
+
+  /******************/
+  .blog_item {
+    min-height: 120px;
+    padding: 10px 20px;
+    margin: 20px;
+    background-color: #F8F8F8;
+  }
+
+  .item_parent {
+    width: auto;
+    height: auto;
+    margin: 5px;
+    padding: 5px;
+    display: block;
+    color: black;
+    word-wrap: break-word;
+  }
+
+  .b_title {
+    font-size: 18px;
+  }
+
+  .em_catalog {
+    font-size: 15px;
+    margin-right: 15px;
+    float: left;
+    background-color: #FF7F50;
+  }
+
+  .div_keyword {
+    font-size: 15px;
+    float: left;
+    background-color: #98F5FF;
+  }
+
+  .div_digest {
+    font-size: 15px;
+    clear: both;
+  }
+
+  .div_date {
+    font-size: 15px;
+    color: blue;
+  }
+
+  /*********************/
+  .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  </style>
+  <title id="title">DOM-Demo</title>
+</head>
+<body>
+  <div id="container">
+    <div class="div_content">
+      <ul id="leftnav" class="div_parent" name="leftnav">
+        <li> <a class="switch" href="#switch" id="switch" onclick="switchBtn()">-</a> </li>
+      </ul>
+      <div id="rightcontent" class="div_parent">
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <script type="text/javascript">
+  var android = 0;
+  var html = 0;
+  var java = 0;
+  var nwjs = 0;
+  var openlayers3 = 0;
+  var ubuntu = 0;
+  var thinking = 0;
+  var total = 0;
+  var switchStatus = true;
+
+  var catalogJson = [{
+    "catalog": "Total",
+    "href": "#Total",
+    "src": "https://github.com/frogfans/DOM-Demo/blob/master/image/total.jpg?raw=true"
+  },
+  {
+    "catalog": "Android",
+    "href": "#Android",
+    "src": "https://github.com/frogfans/DOM-Demo/blob/master/image/android.jpg?raw=true"
+  },
+  {
+    "catalog": "HTML",
+    "href": "#HTML",
+    "src": "https://github.com/frogfans/DOM-Demo/blob/master/image/html.jpg?raw=true"
+  },
+  {
+    "catalog": "Java",
+    "href": "#Java",
+    "src": "https://github.com/frogfans/DOM-Demo/blob/master/image/java.jpg?raw=true"
+  },
+  {
+    "catalog": "NW.js",
+    "href": "#NW.js",
+    "src": "https://github.com/frogfans/DOM-Demo/blob/master/image/nwjs.jpg?raw=true"
+  },
+  {
+    "catalog": "Openlayers3",
+    "href": "#Openlayers3",
+    "src": "https://github.com/frogfans/DOM-Demo/blob/master/image/openlayers3.jpg?raw=true"
+  },
+  {
+    "catalog": "Ubuntu",
+    "href": "#Ubuntu",
+    "src": "https://github.com/frogfans/DOM-Demo/blob/master/image/ubuntu.jpg?raw=true"
+  },
+  {
+    "catalog": "Thinking",
+    "href": "#Thinking",
+    "src": "https://github.com/frogfans/DOM-Demo/blob/master/image/thinking.jpg?raw=true"
+  }];
+
+  var blogJson = [{
+    "title": "Android面试知识点整理",
+    "catalog": "Android",
+    "keywords": [{
+      "keyword": "面试总结"
+    }],
+    "digest": "本来应该在秋招结束时就将整理出来的知识点发布博客的，结果忘了。好在现在不算晚，给春招的同学一点参考。",
+    "date": "2018年02月07日",
+    "href": ""
+  },
+  {
+    "title": "HTML中保留转义字符的方法",
+    "catalog": "HTML",
+    "keywords": [{
+      "keyword": "转义字符"
+    },
+    {
+      "keyword": "solution"
+    }],
+    "digest": "HTML中形如 &nbps;(空格) 、 &lt;(<符号) 、 &gt;(>符号) 等都会被转义成对应的值，那么要想保留转义字符本身，比如在贴代码或者教学中，只有破坏转义字符本身的结构，即：将 & 符号再次转义。",
+    "date": "2018年02月07日",
+    "href": ""
+  },
+  {
+    "title": "HTML的<pre>标签中嵌套HTML标签时被解析的解决方案",
+    "catalog": "HTML",
+    "keywords": [{
+      "keyword": "转义字符"
+    },
+    {
+      "keyword": "solution"
+    }],
+    "digest": "<pre>标签中保留空格和换行，常用来展示代码片段，但如果直接嵌套HTML标签，会被浏览器解析，所以需要使用转义字符将代码片段转换为不被解析的文本。",
+    "date": "2018年02月07日",
+    "href": ""
+  },
+  {
+    "title": "Ubuntu下使用Thunderbird收发QQ邮箱",
+    "catalog": "Ubuntu",
+    "keywords": [{
+      "keyword": "thunderbird"
+    },
+    {
+      "keyword": "email"
+    }],
+    "digest": "Ubuntu下使用Thunderbird收发QQ邮箱。",
+    "date": "2018年01月29日",
+    "href": ""
+  },
+  {
+    "title": "Ubuntu设置系统环境变量",
+    "catalog": "Ubuntu",
+    "keywords": [{
+      "keyword": "环境变量"
+    }],
+    "digest": "以设置java环境变量为例。",
+    "date": "2018年01月18日",
+    "href": ""
+  },
+  {
+    "title": "Ubuntu更新软件时报\"http://cn.archive.ubuntu.com/ubuntu\"相关错误的解决方案",
+    "catalog": "Ubuntu",
+    "keywords": [{
+      "keyword": "solution"
+    }],
+    "digest": "Ubuntu更新软件时报\"http://cn.archive.ubuntu.com/ubuntu\"相关错误的解决方案。",
+    "date": "2018年01月18日",
+    "href": ""
+  },
+  {
+    "title": "Ubuntu环境下使用NW.js对web应用封装",
+    "catalog": "NW.js",
+    "keywords": [{
+      "keyword": "ubuntu"
+    },
+    {
+      "keyword": "hybrid app"
+    }],
+    "digest": "相对于偏向应用的windows系统，Linux系统更偏向于开发，因此对于依赖Windows应用的人来说，缺了很多常用软件会很不习惯，本文的目的便是通过两个Demo来引出后面的教程——通过NW.js来封装你想要的Web应用。以Ubuntu 16.04为例（14.04可能无法兼容部分依赖）。",
+    "date": "2018年01月17日",
+    "href": ""
+  }];
+
+  function initBlog(type) {
+    var rightcontent = document.getElementById('rightcontent');
+
+    for (var i = 0; i < blogJson.length; i++) {
+      calcBlogNum(blogJson[i].catalog);
+
+      if (type == 'Total') {} else if (type != blogJson[i].catalog) {
+        continue;
+      }
+      var a = document.createElement('a');
+      a.setAttribute('href', blogJson[i].href);
+
+      var blog_item = document.createElement('div');
+      blog_item.setAttribute('class', 'blog_item');
+
+      var b_title = document.createElement('b');
+      b_title.setAttribute('class', 'item_parent b_title');
+
+      var title = document.createTextNode(blogJson[i].title);
+      b_title.appendChild(title);
+
+      var div_temp = document.createElement('div');
+
+      var em_catalog = document.createElement('em');
+      em_catalog.setAttribute('class', 'item_parent em_catalog');
+
+      var catalog = document.createTextNode(blogJson[i].catalog);
+      em_catalog.appendChild(catalog);
+      div_temp.appendChild(em_catalog);
+
+      var keywordJson = blogJson[i].keywords;
+
+      for (var j = 0; j < keywordJson.length; j++) {
+        var div_keyword = document.createElement('div');
+        div_keyword.setAttribute('class', 'item_parent div_keyword');
+        var keyword = document.createTextNode(keywordJson[j].keyword);
+        div_keyword.appendChild(keyword);
+        div_temp.appendChild(div_keyword);
+      }
+
+      var div_digest = document.createElement('div');
+      div_digest.setAttribute('class', 'item_parent div_digest');
+      var digest = document.createTextNode(blogJson[i].digest);
+      div_digest.appendChild(digest);
+
+      var div_date = document.createElement('div');
+      div_date.setAttribute('class', 'item_parent div_date');
+      var date = document.createTextNode(blogJson[i].date);
+      div_date.appendChild(date);
+
+      blog_item.appendChild(b_title);
+      blog_item.appendChild(div_temp);
+      blog_item.appendChild(div_digest);
+      blog_item.appendChild(div_date);
+      a.appendChild(blog_item);
+      rightcontent.appendChild(a);
+    }
+  }
+
+  function initCatalog(type) {
+    var leftnav = document.getElementById('leftnav');
+
+    for (var i = 0; i < catalogJson.length; i++) {
+      var li = document.createElement('li');
+
+      var a = document.createElement('a');
+      a.setAttribute('href', catalogJson[i].href);
+
+      var img = document.createElement('img');
+      img.setAttribute('class', 'img_logo');
+      img.setAttribute('src', catalogJson[i].src);
+
+      var b = document.createElement('b');
+      b.setAttribute('class', 'img_tag');
+
+      var text = catalogJson[i].catalog + ' (' + getBlogNum(catalogJson[i].catalog) + ')';
+      var tag = document.createTextNode(text);
+
+      b.appendChild(tag);
+      a.appendChild(img);
+      a.appendChild(b);
+      li.appendChild(a);
+      leftnav.appendChild(li);
+    }
+  }
+
+  function calcAllBlogNum() {
+    for (var i = 0; i < blogJson.length; i++) {
+      calcBlogNum(blogJson[i].catalog);
+    }
+  }
+
+  function calcBlogNum(type) {
+    switch (type) {
+      case 'Android':
+      android++;
+      break;
+      case 'HTML':
+      html++;
+      break;
+      case 'Java':
+      java++;
+      break;
+      case 'NW.js':
+      nwjs++;
+      break;
+      case 'Openlayers3':
+      openlayers3++;
+      break;
+      case 'Ubuntu':
+      ubuntu++;
+      break;
+      case 'Thinking':
+      thinking++;
+      break;
+      default:
+      break;
+    }
+    total++;
+  }
+
+  function getBlogNum(type) {
+    switch (type) {
+      case 'Total':
+      return total;
+      case 'Android':
+      return android;
+      case 'HTML':
+      return html;
+      case 'Java':
+      return java;
+      case 'NW.js':
+      return nwjs;
+      case 'Openlayers3':
+      return openlayers3;
+      case 'Ubuntu':
+      return ubuntu;
+      case 'Thinking':
+      return thinking;
+      default:
+      return 0;
+    }
+  }
+
+  function switchBtn() {
+    if (switchStatus) {
+      switchOff();
+      switchStatus = false;
+    } else {
+      switchOn();
+      switchStatus = true;
+    }
+  }
+
+  function switchOff() {
+    document.getElementById('leftnav').style = "width: 50px;";
+    document.getElementById('rightcontent').style = "margin-left: 50px;";
+    document.getElementById('switch').innerHTML = "+";
+  }
+
+  function switchOn() {
+    document.getElementById('leftnav').style = "width: 200px;";
+    document.getElementById('rightcontent').style = "margin-left: 200px;";
+    document.getElementById('switch').innerHTML = "-";
+  }
+
+  initBlog('Total');
+  initCatalog('Total');
+  </script>
+</body>
+</html>
