@@ -17,27 +17,32 @@ export default new Router({
       component: home
     },
     {
-      path: '/',
+      path: '/home',
+      name: 'home',
+      component: home
+    },
+    {
+      path: '/about',
       name: 'about',
       component: about
     },
     {
-      path: '/',
+      path: '/biography',
       name: 'biography',
       component: biography
     },
     {
-      path: '/',
+      path: '/blog',
       name: 'blog',
       component: blog
     },
     {
-      path: '/',
+      path: '/favorite',
       name: 'favorite',
       component: favorite
     },
     {
-      path: '/',
+      path: '/friendlink',
       name: 'friendlink',
       component: friendlink
     }

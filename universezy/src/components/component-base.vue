@@ -11,30 +11,10 @@
           </Card>
         </Row>
         <Row>
-          <Menu theme="dark" width="auto" :class="menuitemClasses" active-name="active">
-            <MenuItem name="home">
-            <Icon type="md-home"></Icon>
-            <span class="span_nav">主页</span>
-            </MenuItem>
-            <MenuItem name="biography">
-            <Icon type="md-person"></Icon>
-            <span class="span_nav">简介</span>
-            </MenuItem>
-            <MenuItem name="blog">
-            <Icon type="md-document"></Icon>
-            <span class="span_nav">博客</span>
-            </MenuItem>
-            <MenuItem name="favorite">
-            <Icon type="md-bookmark"></Icon>
-            <span class="span_nav">收藏</span>
-            </MenuItem>
-            <MenuItem name="friendlink">
-            <Icon type="md-link"></Icon>
-            <span class="span_nav">友链</span>
-            </MenuItem>
-            <MenuItem name="about">
-            <Icon type="md-information-circle"></Icon>
-            <span class="span_nav">关于</span>
+          <Menu theme="dark" width="auto" :class="menuitemClasses" :active-name="activeItem" @on-select="clickNav">
+            <MenuItem v-for="item in navList" :key="item.name" :name="item.name">
+              <Icon :type="item.icon"></Icon>
+              <span class="span_nav">{{item.desc}}</span>
             </MenuItem>
           </Menu>
         </Row>
@@ -87,8 +67,44 @@ export default {
   ],
   data () {
     return {
-      isCollapsed: false
+      activeItem: 'home',
+      isCollapsed: false,
+      navList: [
+        {
+          name: 'home',
+          icon: 'md-home',
+          desc: '主页'
+        },
+        {
+          name: 'biography',
+          icon: 'md-person',
+          desc: '简介'
+        },
+        {
+          name: 'blog',
+          icon: 'md-document',
+          desc: '博客'
+        },
+        {
+          name: 'favorite',
+          icon: 'md-bookmark',
+          desc: '收藏'
+        },
+        {
+          name: 'friendlink',
+          icon: 'md-link',
+          desc: '友链'
+        },
+        {
+          name: 'about',
+          icon: 'md-information-circle',
+          desc: '关于'
+        }
+      ]
     }
+  },
+  created () {
+    this.activeItem = this.active
   },
   computed: {
     imgClass: function () {
@@ -99,6 +115,30 @@ export default {
         'menu-item',
         this.isCollapsed ? 'collapsed-menu' : ''
       ]
+    }
+  },
+  methods: {
+    clickNav: function (activeItem) {
+      switch (activeItem) {
+        case 'biography':
+          this.$router.push('/biography')
+          break
+        case 'blog':
+          this.$router.push('/blog')
+          break
+        case 'favorite':
+          this.$router.push('/favorite')
+          break
+        case 'friendlink':
+          this.$router.push('/friendlink')
+          break
+        case 'about':
+          this.$router.push('/about')
+          break
+        case 'home':
+        default:
+          this.$router.push('/home')
+      }
     }
   }
 }
