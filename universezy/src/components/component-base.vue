@@ -13,28 +13,20 @@
         <Row>
           <Menu theme="dark" width="auto" :class="menuitemClasses" :active-name="activeItem" @on-select="clickNav">
             <MenuItem v-for="item in navList" :key="item.name" :name="item.name">
-              <Icon :type="item.icon"></Icon>
-              <span class="span_nav">{{item.desc}}</span>
+            <Icon :type="item.icon"></Icon>
+            <span class="span_nav">{{item.desc}}</span>
             </MenuItem>
           </Menu>
         </Row>
         <Divider />
         <Row class="row_nav">
-          <a href="https://github.com/universezy" target="_blank">
-            <span class="span_nav">
-              <Icon type="logo-github" size="20"></Icon>
-            </span>
-          </a>
-          <a href="https://blog.csdn.net/zy13608089849" target="_blank">
-            <span class="span_nav">
-              <Icon type="ios-link" size="20"></Icon>
-            </span>
-          </a>
-          <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=VWRnZGZtZGFnZmcVJCR7Njo4" target="_blank">
-            <span class="span_nav">
-              <Icon type="md-mail" size="20"></Icon>
-            </span>
-          </a>
+          <Tooltip placement="top" v-for="item in navOthers" :key="item.desc" :content="item.desc">
+            <a :href="item.link" target="_blank">
+              <span class="span_nav">
+                <Icon :type="item.icon" size="20"></Icon>
+              </span>
+            </a>
+          </Tooltip>
         </Row>
         <Divider />
         <Row class="row_nav" v-show="!isCollapsed">
@@ -50,7 +42,7 @@
       </Sider>
       <Layout>
         <!-- <Header :style="{background: '#fff', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)'}"></Header> -->
-        <Content :style="{padding: '0 16px 16px'}">
+        <Content :style="{padding: '10px 10px 0 10px'}">
           <slot></slot>
         </Content>
       </Layout>
@@ -99,6 +91,23 @@ export default {
           name: 'about',
           icon: 'md-information-circle',
           desc: '关于'
+        }
+      ],
+      navOthers: [
+        {
+          desc: 'Github',
+          link: 'https://github.com/universezy',
+          icon: 'logo-github'
+        },
+        {
+          desc: 'CSDN',
+          link: 'https://blog.csdn.net/zy13608089849',
+          icon: 'ios-link'
+        },
+        {
+          desc: 'Email',
+          link: 'http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=VWRnZGZtZGFnZmcVJCR7Njo4',
+          icon: 'md-mail'
         }
       ]
     }
