@@ -1,22 +1,18 @@
 <template>
   <div id="app">
-    <img id="icon" src="./../static/logo.png">
     <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App',
-  created () {
-    document.body.parentNode.style.overflow = 'hidden'
-  }
+  name: 'App'
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -36,14 +32,8 @@ body {
   height: 100%;
   min-width: 600px;
   min-height: 800px;
-  padding: 0;
+  padding: 0 20px 0 20px;
   margin: 0;
-  overflow: auto;
-}
-
-#icon {
-  widows: 200px;
-  height: 200px;
-  border-radius: 100px;
+  background: #f8f8f9;
 }
 </style>
