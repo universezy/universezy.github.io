@@ -1,8 +1,8 @@
 <template>
   <div class="layout">
-    <Layout style="min-height:100vh;">
-      <Sider collapsible :collapsed-width="78" v-model="isCollapsed">
-        <Row>
+    <Layout class="layout_base">
+      <Sider class="sider_base" collapsible :collapsed-width="78" v-model="isCollapsed">
+        <Row class="row_avator">
           <Card style="width:auto">
             <div style="text-align:center">
               <img :class="imgClass" src="../../static/logo.png">
@@ -105,6 +105,12 @@ export default {
   },
   created () {
     this.activeItem = this.active
+    this.isCollapsed = this.$store.state.GlobalState.isCollapsed
+  },
+  watch: {
+    isCollapsed: function () {
+      this.$store.dispatch('changeState', this.isCollapsed)
+    }
   },
   computed: {
     imgClass: function () {
@@ -153,9 +159,21 @@ export default {
   overflow: hidden;
 }
 
+.layout_base{
+  min-height: 100vh;
+}
+
 .layout-con {
   height: 100%;
   width: 100%;
+}
+
+.sider_base{
+  padding-bottom: 20px;
+}
+
+.row_avator{
+  background: #f5f7f9;
 }
 
 .menu-item span {
