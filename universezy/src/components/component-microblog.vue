@@ -40,7 +40,7 @@ export default {
   },
   computed: {
     imgSrc: function () {
-      return '../../static/category/' + this.blog.category + '.png'
+      return './static/category/' + this.blog.category + '.png'
     }
   },
   methods: {
