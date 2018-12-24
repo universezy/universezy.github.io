@@ -88,6 +88,7 @@ export default {
 
 <style scoped>
 .alert_notice {
+  margin: 5px 10px;
   text-align: left;
 }
 
