@@ -5,7 +5,7 @@
         <Row class="row_avator">
           <Card style="width:auto">
             <div style="text-align:center">
-              <img :class="imgClass" src="../../static/logo.png">
+              <img :class="imgClass" src="../assets/logo.png">
               <h3>曾宇</h3>
             </div>
           </Card>

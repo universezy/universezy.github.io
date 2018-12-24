@@ -1,21 +1,28 @@
 <template>
-  <comBase :active="active">测试slot功能:{{active}}</comBase>
+  <comBase :active="active">
+    <comFriendlink v-for="item in friendLinks" :key="item.link" :friendlink="item"></comFriendlink>
+  </comBase>
 </template>
 
 <script>
 import comBase from './component-base.vue'
+import comFriendlink from './component-friendlink.vue'
+import mFriendlinks from '../data/friendlinks'
 
 export default {
   name: 'friendlink',
   components: {
-    comBase
+    comBase,
+    comFriendlink
   },
   data () {
     return {
-      active: 'friendlink'
+      active: 'friendlink',
+      friendLinks: null
     }
   },
-  methods: {
+  created () {
+    this.friendLinks = mFriendlinks.friendLinks
   }
 }
 </script>

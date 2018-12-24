@@ -3,6 +3,7 @@
     <Card>
       <div class="div_favorite">
         <img class="img_favorite" :src="imgSrc">
+        <Divider/>
         <p class="p_favorite"><b>{{book.name}}</b></p>
       </div>
     </Card>
@@ -33,8 +34,6 @@ export default {
     imgSrc: function () {
       return './static/favorite/' + this.book.src
     }
-  },
-  methods: {
   }
 }
 </script>
@@ -50,7 +49,6 @@ export default {
 }
 
 .p_favorite{
-  margin-top: 5px;
   color: #515a6e;
   font-size: 18px;
 }

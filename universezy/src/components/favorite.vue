@@ -23,8 +23,6 @@ export default {
   },
   created () {
     this.favoriteBooks = mFavorites.favoriteBooks
-  },
-  methods: {
   }
 }
 </script>
