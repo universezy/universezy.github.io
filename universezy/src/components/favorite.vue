@@ -1,19 +1,28 @@
 <template>
-  <comBase :active="active">测试slot功能:{{active}}</comBase>
+  <comBase :active="active">
+    <comFavorite class="com_favorite" v-for="item in favoriteBooks" :key="item.src" :favoriteBook="item"></comFavorite>
+  </comBase>
 </template>
 
 <script>
 import comBase from './component-base.vue'
+import comFavorite from './component-favorite.vue'
+import mFavorites from '../data/favorites'
 
 export default {
   name: 'favorite',
   components: {
-    comBase
+    comBase,
+    comFavorite
   },
   data () {
     return {
-      active: 'favorite'
+      active: 'favorite',
+      favoriteBooks: null
     }
+  },
+  created () {
+    this.favoriteBooks = mFavorites.favoriteBooks
   },
   methods: {
   }
@@ -21,4 +30,8 @@ export default {
 </script>
 
 <style scoped>
+.com_favorite{
+  float: left;
+  margin: 10px;
+}
 </style>

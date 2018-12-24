@@ -87,11 +87,11 @@ export default {
 </script>
 
 <style scoped>
-.alert_notice{
+.alert_notice {
   text-align: left;
 }
 
-.com_microblog{
+.com_microblog {
   float: left;
   margin: 10px;
 }

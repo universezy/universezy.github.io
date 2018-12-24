@@ -21,7 +21,7 @@ export default {
 
 html {
   height: 100%;
-  min-width: 600px;
+  min-width: 800px;
   min-height: 800px;
   padding: 0;
   margin: 0;
@@ -30,7 +30,7 @@ html {
 body {
   width: 100%;
   height: 100%;
-  min-width: 600px;
+  min-width: 800px;
   min-height: 800px;
   padding: 0 20px 0 20px;
   margin: 0;
