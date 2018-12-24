@@ -13,8 +13,8 @@
         <Row>
           <Menu theme="dark" width="auto" :class="menuitemClasses" :active-name="activeItem" @on-select="clickNav">
             <MenuItem v-for="item in navList" :key="item.name" :name="item.name">
-            <Icon :type="item.icon"></Icon>
-            <span class="span_nav">{{item.desc}}</span>
+              <Icon :type="item.icon"></Icon>
+              <span class="span_nav">{{item.desc}}</span>
             </MenuItem>
           </Menu>
         </Row>
@@ -118,7 +118,7 @@ export default {
   },
   watch: {
     isCollapsed: function () {
-      this.$store.dispatch('changeState', this.isCollapsed)
+      this.$store.dispatch('changeSider', this.isCollapsed)
     }
   },
   computed: {

@@ -1,18 +1,17 @@
 <template>
   <Card class="card_microblog">
     <div class="div_title" slot="title">
-      <img class="img_category" src="../../static/logo.png" />
-      <span class="span_category">测试标题</span>
+      <img class="img_category" :src="imgSrc" @click="clickImgCategory"/>
+      <span class="span_title" @click="clickTitle"><b>{{blog.title}}</b></span>
     </div>
     <Row class="row_microblog">
-      <Tag color="primary">tag1</Tag>
-      <Tag color="primary">tag2</Tag>
+      <Tag class="tag" color="primary" v-for="item in blog.tags" :key="item.tag"><span @click="clickTag(item.tag)">{{item.tag}}</span></Tag>
     </Row>
-    <Row class="row_microblog">
-      <span>测试内容</span>
+    <Row class="row_microblog row_abstract">
+      <span>{{blog.abstract}}</span>
     </Row>
-    <Row>
-      <Time :time="time_microblog" type="date" />
+    <Row class="row_time">
+      <Time :time="blog.timestamp" type="date" />
     </Row>
   </Card>
 </template>
@@ -20,19 +19,52 @@
 <script>
 export default {
   name: 'component-microblog',
+  props: [
+    'microblog'
+  ],
   data () {
     return {
-      time_microblog: (new Date()).getTime()
+      blog: {
+        category: 'null',
+        title: 'null',
+        tags: [],
+        abstract: 'null',
+        timestamp: 1545613813626
+      }
+    }
+  },
+  created () {
+    if (this.microblog !== null && this.microblog.category !== null) {
+      this.blog = this.microblog
+    }
+  },
+  computed: {
+    imgSrc: function () {
+      return '../../static/category/' + this.blog.category + '.png'
     }
   },
   methods: {
+    clickImgCategory: function () {
+      console.log('clickImgCategory: ' + this.blog.category)
+      // TODO
+    },
+    clickTitle: function () {
+      console.log('clickTitle: ' + this.blog.title)
+      // TODO
+    },
+    clickTag: function (tag) {
+      console.log('clickTag: ' + tag)
+      // TODO
+    }
   }
 }
 </script>
 
 <style scoped>
 .card_microblog {
-  width: 300px;
+  max-width: 400px;
+  min-width: 300px;
+  height: auto;
   text-align: left;
 }
 
@@ -44,15 +76,29 @@ export default {
 }
 
 .img_category {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
 }
 
-.span_category {
+.span_title {
   margin-left: 15px;
+  cursor: pointer;
 }
 
 .row_microblog{
   margin-bottom: 10px;
+}
+
+.tag {
+  cursor: pointer;
+}
+
+.row_abstract{
+  min-height: 64px;
+}
+
+.row_time{
+  text-align: right;
 }
 </style>
