@@ -5,5 +5,5 @@ export const baseUrl = {
 }
 
 export const bioUrl = {
-  getUrl: () => prefix + 'bio/bio.md'
+  getUrl: () => (prefix + 'bio/bio.md')
 }
