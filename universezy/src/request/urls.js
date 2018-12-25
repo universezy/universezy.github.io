@@ -1,7 +1,9 @@
+const prefix = 'universezy/universezy.github.io/master/universezy/dist/static/'
+
 export const baseUrl = {
-  getUrl: () => 'https://raw.githubusercontent.com/universezy/universezy.github.io/master/universezy/dist/static/'
+  getUrl: () => 'https://raw.githubusercontent.com/'
 }
 
 export const bioUrl = {
-  getUrl: () => '/bio/bio.md'
+  getUrl: () => prefix + 'bio/bio.md'
 }
