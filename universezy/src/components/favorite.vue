@@ -1,6 +1,8 @@
 <template>
   <comBase :active="active">
-    <comFavorite class="com_favorite" v-for="item in favoriteBooks" :key="item.src" :favoriteBook="item"></comFavorite>
+    <div class="div_favorite">
+      <comFavorite class="com_favorite" v-for="item in favoriteBooks" :key="item.src" :favoriteBook="item"></comFavorite>
+    </div>
   </comBase>
 </template>
 
@@ -31,5 +33,9 @@ export default {
 .com_favorite{
   float: left;
   margin: 10px;
+}
+
+.div_favorite{
+  padding: 10px 50px;
 }
 </style>

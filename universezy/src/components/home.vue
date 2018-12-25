@@ -1,16 +1,27 @@
 <template>
   <comBase :active="active">
-    <Alert v-show="noticeShow" class="alert_notice" show-icon banner closable @on-close="closeNotice">
-      <span class="span_notice_title">{{noticeTitle}}</span>
-      <template slot="desc">{{noticeDesc}}</template>
-    </Alert>
-    <comMicroBlog class="com_microblog" v-for="item in testMicroblogs" :key="item.timestamp" :microblog="item"></comMicroBlog>
+    <div class="div_home">
+      <Alert v-show="notice.show" class="alert_notice" show-icon banner closable @on-close="closeNotice">
+        <span class="span_notice_title">{{notice.title}}</span>
+        <template slot="desc">{{notice.desc}}</template>
+      </Alert>
+      <Carousel class="carousel_home" v-model="setting.value" :autoplay="setting.autoplay" :autoplay-speed="setting.autoplaySpeed"
+        :loop="setting.loop" :dots="setting.dots" :radius-dot="setting.radiusDot" :trigger="setting.trigger" :arrow="setting.arrow">
+        <CarouselItem v-for="banner in banners" :key="banner.src">
+          <div class="carousel_content">
+            <a :href="banner.link"><img class="img_banner" :src="banner.src" :title="banner.title" /></a>
+          </div>
+        </CarouselItem>
+      </Carousel>
+      <comMicroBlog class="com_microblog" v-for="item in testMicroblogs" :key="item.timestamp" :microblog="item"></comMicroBlog>
+    </div>
   </comBase>
 </template>
 
 <script>
 import comBase from './component-base.vue'
 import comMicroBlog from './component-microblog.vue'
+import mBanners from '../data/banners'
 
 export default {
   name: 'home',
@@ -21,9 +32,22 @@ export default {
   data () {
     return {
       active: 'home',
-      noticeShow: true,
-      noticeTitle: '网站升级中',
-      noticeDesc: 'github账号名变更，旧版github.io已不可使用，新版采用Vue.js重新设计，敬请期待！',
+      notice: {
+        show: true,
+        title: '网站升级中',
+        desc: 'github账号名变更，旧版github.io已不可使用，新版采用Vue.js重新设计，敬请期待！'
+      },
+      setting: {
+        value: 0,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        loop: true,
+        dots: 'inside',
+        radiusDot: false,
+        trigger: 'click',
+        arrow: 'hover'
+      },
+      banners: null,
       testMicroblogs: [
         {
           category: 'Java',
@@ -76,7 +100,8 @@ export default {
     }
   },
   created () {
-    this.noticeShow = this.$store.state.GlobalState.noticeShow
+    this.notice.show = this.$store.state.GlobalState.noticeShow
+    this.banners = mBanners.bannerImgs
   },
   methods: {
     closeNotice: function () {
@@ -87,9 +112,39 @@ export default {
 </script>
 
 <style scoped>
+.div_home{
+  padding: 0 50px;
+}
+
 .alert_notice {
   margin: 5px 10px;
   text-align: left;
+}
+
+.carousel_home {
+  margin: 20px 10px;
+  width: auto;
+  height: auto;
+}
+
+.carousel_content {
+  height: 300px;
+  line-height: 300px;
+  position: relative;
+  font-size: 20px;
+  background: #e8eaec;
+}
+
+.img_banner {
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .com_microblog {
