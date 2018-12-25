@@ -42,7 +42,7 @@
       </Sider>
       <Layout>
         <!-- <Header :style="{background: '#fff', boxShadow: '0 2px 3px 2px rgba(0,0,0,.1)'}"></Header> -->
-        <Content :style="{padding: '10px 10px 0 10px'}">
+        <Content class="content_base">
           <slot></slot>
         </Content>
       </Layout>
@@ -238,5 +238,9 @@ export default {
 
 .span_nav {
   color: white;
+}
+
+.content_base{
+  padding: 10px;
 }
 </style>
