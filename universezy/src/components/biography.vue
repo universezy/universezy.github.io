@@ -14,7 +14,7 @@
 <script>
 import comBase from './component-base.vue'
 import markdownApi from '../request/markdownApi'
-import {baseUrl} from '../request/urls'
+import {bioUrl} from '../request/urls'
 
 export default {
   name: 'biography',
@@ -46,7 +46,7 @@ export default {
     load: function () {
       let _this = this
       try {
-        markdownApi.request(baseUrl.getUrl()).then(function (response) {
+        markdownApi.request(bioUrl.getUrl()).then(function (response) {
           console.log('status=' + response.status)
           if (response.status === 200) {
             _this.bio = response.data

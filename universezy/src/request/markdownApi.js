@@ -1,14 +1,10 @@
-import {
-  baseUrl
-} from './urls'
 import axios from 'axios'
 
 export default {
-  request (filePath) {
+  request (url) {
     return axios({
       method: 'get',
-      baseURL: baseUrl.getUrl(),
-      url: filePath,
+      url: url,
       timeout: 5000,
       withCredentials: false
     })
