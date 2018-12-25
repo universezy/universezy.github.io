@@ -8,7 +8,7 @@
           <Divider />
           <span class="span_about">前端框架选用Vue.js，因为三大主流框架我只会这个。UI库选用的iView，整体效果看上去还不错吧（如果对比了我第一版和第二版就知道这第三版简直太棒了！前两版越早越丑）。Markdown库选用的mavon-editor，感谢作者的劳动付出！</span>
           <Divider />
-          <span class="span_about">这个版本最大的难度在于博客文章的处理吧，打算试下用node.js读取Markdown文件从而实现动态加载博客，这样的话今后维护起来就轻松多了。然后就是评论功能，由于没有后端支持，想了下干脆和仓库的Issues关联起来，nice！至于最终能达成什么样的效果，心里也没底，大致思路是这样，试试看。</span>
+          <span class="span_about">这个版本最大的难度在于博客文章的处理吧，打算试下网络请求读取仓库里的Markdown文件从而实现动态加载博客，这样的话今后维护起来就轻松多了。然后就是评论功能，由于没有后端支持，想了下干脆和仓库的Issues关联起来，nice！至于最终能达成什么样的效果，心里也没底，大致思路是这样，试试看。</span>
           <Divider />
           <span class="span_about">如果有读者对这个项目感兴趣，欢迎通过左侧导航栏的联系方式或这个仓库的Issues给我留言。如果觉得不错，点个Star，非常感谢！</span>
           <Divider />
@@ -41,7 +41,7 @@ export default {
   width: 100%;
   height: 100%;
   margin: auto;
-  padding: 0 180px;
+  padding: 0 120px;
   display: flex;
   display: -webkit-flex;
   align-items: center;
