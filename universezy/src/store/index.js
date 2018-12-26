@@ -5,6 +5,7 @@ import * as mutations from './mutations'
 import * as getters from './getters'
 import createLogger from 'vuex/dist/logger'
 import GlobalState from './modules/GlobalState'
+import GlobalData from './modules/GlobalData'
 
 Vue.use(Vuex)
 
@@ -15,7 +16,8 @@ export default new Vuex.Store({
   mutations,
   getters,
   modules: {
-    GlobalState
+    GlobalState,
+    GlobalData
   },
   strict: debug,
   plugins: debug ? [createLogger()] : []

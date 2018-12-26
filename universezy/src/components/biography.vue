@@ -28,7 +28,7 @@ export default {
         subfield: false, // 单双栏模式
         defaultOpen: 'preview', // 默认展示
         toolbarsFlag: true, // 工具栏是否显示
-        navigation: true, // 导航目录
+        navigation: false, // 导航目录
         toolbars: {
           fullscreen: true, // 全屏编辑
           readmodel: true, // 沉浸式阅读
@@ -36,7 +36,8 @@ export default {
           navigation: true // 导航目录
         }
       },
-      bio: 'Hello world!'
+      bio: '内容加载中。。。',
+      bioError: '请求资源失败。'
     }
   },
   created () {
@@ -44,16 +45,25 @@ export default {
   },
   methods: {
     load: function () {
-      let _this = this
-      try {
-        markdownApi.request(bioUrl.getUrl()).then(function (response) {
-          console.log('status=' + response.status)
-          if (response.status === 200) {
-            _this.bio = response.data
-          }
-        })
-      } catch (error) {
-        console.log('error=' + error)
+      let temp = this.$store.state.GlobalData.bio
+      if (temp !== null) {
+        this.bio = temp
+      } else {
+        try {
+          let _this = this
+          markdownApi.request(bioUrl.getUrl()).then(function (response) {
+            if (response.status === 200) {
+              _this.bio = response.data
+              this.$store.dispatch('saveBio', response.data)
+            } else {
+              console.log('request status: ' + response.status)
+              _this.bio = _this.bioError
+            }
+          })
+        } catch (error) {
+          console.log('request error: ' + error)
+          this.bio = this.bioError
+        }
       }
     }
   }
@@ -62,6 +72,6 @@ export default {
 
 <style scoped>
 .div_bio{
-  padding: 20px;
+  padding: 10px;
 }
 </style>
