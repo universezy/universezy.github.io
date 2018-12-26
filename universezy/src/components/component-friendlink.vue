@@ -1,6 +1,6 @@
 <template>
   <Card class="card_friendlink">
-    <span class="span_title" slot="title">
+    <span class="span_friendlink" slot="title">
       <img class="img_avator" :src="friend.src" />
       <span class="span_name">{{friend.name}}</span>
     </span>
@@ -45,7 +45,7 @@ export default {
   padding: 5px;
 }
 
-.span_title{
+.span_friendlink{
   display: flex;
   display: -webkit-flex;
   align-items: center;

@@ -102,6 +102,8 @@ html {
   justify-content: center;
   font-family: "League-Gothic", Courier;
   text-transform: uppercase;
+  word-break: keep-all;
+  overflow: hidden;
   font-size: 50px;
   font-weight: bold;
   text-align: center;

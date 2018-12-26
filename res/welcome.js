@@ -1,3 +1,14 @@
-window.onload = function () {
-  setTimeout('window.location.href="universezy/dist/index.html"', 3000);
+var timeoutId = 0;
+
+redirect = () => {
+  window.location.href="universezy/dist/index.html";
+}
+
+window.onload = () => {
+  timeoutId = setTimeout(redirect, 3000);
+}
+
+window.onclick = () => {
+  clearTimeout(timeoutId);
+  redirect()
 }

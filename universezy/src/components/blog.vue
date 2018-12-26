@@ -8,7 +8,9 @@
           </div>
         </TabPane>
         <TabPane name="column" label="专栏" icon="md-list-box">
-          专栏
+          <div class="div_column" v-for="item in columnImgs" :key="item.name" @click="clickColumn(item.name)">
+            <comColumn :blogColumn="item"></comColumn>
+          </div>
         </TabPane>
       </Tabs>
     </div>
@@ -51,12 +53,12 @@ export default {
 
 <style scoped>
 .div_blog{
-  margin: 30px;
+  margin: 20px 30px;
 }
 
 .div_category{
-  display: inline;
   float: left;
+  display: inline;
   margin: 20px;
   cursor: pointer;
 }
