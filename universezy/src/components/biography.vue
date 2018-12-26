@@ -1,6 +1,6 @@
 <template>
   <comBase :active="active">
-    <div class="div_bio">
+    <div class="div_biography">
       <mavon-editor v-model="bio"
       :subfield="settings.subfield"
       :defaultOpen="settings.defaultOpen"
@@ -71,7 +71,7 @@ export default {
 </script>
 
 <style scoped>
-.div_bio{
+.div_biography{
   padding: 10px;
 }
 </style>

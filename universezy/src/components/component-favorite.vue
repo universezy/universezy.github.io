@@ -19,8 +19,8 @@ export default {
   data () {
     return {
       book: {
-        src: 'null',
-        link: '',
+        src: '#',
+        link: '#',
         name: 'null'
       }
     }

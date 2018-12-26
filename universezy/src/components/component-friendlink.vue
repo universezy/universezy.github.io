@@ -24,9 +24,9 @@ export default {
       friend: {
         link: '#',
         target: '',
-        src: '',
-        name: '',
-        desc: ''
+        src: '#',
+        name: 'null',
+        desc: 'null'
       }
     }
   },

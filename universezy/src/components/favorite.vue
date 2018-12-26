@@ -30,12 +30,12 @@ export default {
 </script>
 
 <style scoped>
+.div_favorite{
+  padding: 10px 50px;
+}
+
 .com_favorite{
   float: left;
   margin: 10px;
-}
-
-.div_favorite{
-  padding: 10px 50px;
 }
 </style>
