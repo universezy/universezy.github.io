@@ -13,8 +13,8 @@
 
 <script>
 import comBase from './component-base.vue'
-import markdownApi from '../request/markdownApi'
-import {bioUrl} from '../request/urls'
+import markdownApi from '../api/markdownApi'
+import {bioApi} from '../api/urls'
 
 export default {
   name: 'biography',
@@ -51,12 +51,12 @@ export default {
       } else {
         try {
           let _this = this
-          markdownApi.request(bioUrl.getUrl()).then(function (response) {
+          markdownApi.fetch(bioApi.getUrl()).then(function (response) {
             if (response.status === 200) {
               _this.bio = response.data
-              this.$store.dispatch('saveBio', response.data)
+              _this.$store.dispatch('saveBio', response.data)
             } else {
-              console.log('request status: ' + response.status)
+              console.log('response status: ' + response.status)
               _this.bio = _this.bioError
             }
           })

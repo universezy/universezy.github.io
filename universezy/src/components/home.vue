@@ -100,7 +100,7 @@ export default {
     }
   },
   created () {
-    this.notice.show = this.$store.state.GlobalState.noticeShow
+    this.notice.show = this.$store.state.GlobalState.isNoticeShow
     this.banners = mBanners.bannerImgs
   },
   methods: {

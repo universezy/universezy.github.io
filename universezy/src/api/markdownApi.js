@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export default {
-  request (url) {
+  fetch (url) {
     return axios({
       method: 'get',
       url: url,

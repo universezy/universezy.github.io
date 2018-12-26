@@ -5,14 +5,14 @@ const state = {
 }
 
 const mutations = {
-  [types.DATA_BIO] (state, bio) {
+  [types.SAVE_BIO] (state, bio) {
     state.bio = bio
   }
 }
 
 const actions = {
   saveBio ({commit}, bio) {
-    commit(types.DATA_BIO, bio)
+    commit(types.SAVE_BIO, bio)
   }
 }
 
