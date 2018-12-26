@@ -1,7 +1,11 @@
 <template>
   <div class="layout">
     <Layout class="layout_base">
-      <Sider class="sider_base" collapsible :collapsed-width="78" v-model="isCollapsed">
+      <Sider
+        class="sider_base"
+        collapsible
+        :collapsed-width="78"
+        v-model="isCollapsed">
         <Row class="row_avator">
           <Card style="width:auto">
             <div style="text-align:center">
@@ -11,7 +15,12 @@
           </Card>
         </Row>
         <Row>
-          <Menu theme="dark" width="auto" :class="menuitemClasses" :active-name="activeItem" @on-select="clickNav">
+          <Menu
+            theme="dark"
+            width="auto"
+            :class="menuitemClasses"
+            :active-name="activeItem"
+            @on-select="clickNav">
             <MenuItem v-for="item in navList" :key="item.name" :name="item.name">
               <Icon :type="item.icon"></Icon>
               <span class="span_nav">{{item.desc}}</span>

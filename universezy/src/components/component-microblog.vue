@@ -1,11 +1,13 @@
 <template>
-  <Card class="card_microblog">
+  <Card>
     <div class="div_title" slot="title">
       <img class="img_category" :src="imgSrc" @click="clickImgCategory"/>
       <span class="span_title" @click="clickTitle"><b>{{blog.title}}</b></span>
     </div>
     <Row class="row_microblog">
-      <Tag class="tag" color="primary" v-for="item in blog.tags" :key="item.tag"><span @click="clickTag(item.tag)">{{item.tag}}</span></Tag>
+      <Tag class="tag" color="primary" v-for="item in blog.tags" :key="item.tag">
+        <span @click="clickTag(item.tag)">{{item.tag}}</span>
+      </Tag>
     </Row>
     <Row class="row_microblog row_abstract">
       <span>{{blog.abstract}}</span>
@@ -61,13 +63,6 @@ export default {
 </script>
 
 <style scoped>
-.card_microblog {
-  max-width: 400px;
-  min-width: 300px;
-  height: auto;
-  text-align: left;
-}
-
 .div_title {
   height: auto;
   display: flex;

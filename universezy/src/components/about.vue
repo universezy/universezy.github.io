@@ -41,7 +41,7 @@ export default {
   width: 100%;
   height: 100%;
   margin: auto;
-  padding: 0 120px;
+  padding: 20px 100px;
   display: flex;
   display: -webkit-flex;
   align-items: center;

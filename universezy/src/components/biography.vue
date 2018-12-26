@@ -1,12 +1,13 @@
 <template>
   <comBase :active="active">
     <div class="div_biography">
-      <mavon-editor v-model="bio"
-      :subfield="settings.subfield"
-      :defaultOpen="settings.defaultOpen"
-      :toolbarsFlag="settings.toolbarsFlag"
-      :navigation="settings.navigation"
-      :toolbars="settings.toolbars"/>
+      <mavon-editor
+        v-model="bio"
+        :subfield="settings.subfield"
+        :defaultOpen="settings.defaultOpen"
+        :toolbarsFlag="settings.toolbarsFlag"
+        :navigation="settings.navigation"
+        :toolbars="settings.toolbars"/>
     </div>
   </comBase>
 </template>
