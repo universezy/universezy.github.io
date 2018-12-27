@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="div_microblog" v-for="item in microBlogs" :key="item.timestamp">
-      <comMicroBlog :microblog="item"></comMicroBlog>
+    <div class="div_microblog" v-for="item in microBlogs" :key="item.id">
+      <comMicroBlog :microblog="item" wide :showIcon="propShowIcon"></comMicroBlog>
     </div>
     <Page
       class-name="page_microblog"
@@ -22,9 +22,16 @@ export default {
   components: {
     comMicroBlog
   },
+  props: {
+    showIcon: {
+      type: Boolean,
+      default: false
+    }
+  },
   data () {
     return {
       microBlogs: [],
+      propShowIcon: this.showIcon,
       pageSize: 10
     }
   },
@@ -43,11 +50,11 @@ export default {
 
 <style scoped>
 .div_microblog {
-  margin: 10px;
+  margin: 20px;
   text-align: left;
 }
 
 .page_microblog{
-  margin-top: 100px;
+  margin-top: 60px;
 }
 </style>

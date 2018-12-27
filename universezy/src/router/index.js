@@ -4,6 +4,8 @@ import home from '@/components/home'
 import about from '@/components/about'
 import biography from '@/components/biography'
 import blog from '@/components/blog'
+import category from '@/components/category'
+import column from '@/components/column'
 import favorite from '@/components/favorite'
 import friendlink from '@/components/friendlink'
 
@@ -13,7 +15,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: '',
       component: home
     },
     {
@@ -35,6 +37,16 @@ export default new Router({
       path: '/blog',
       name: 'blog',
       component: blog
+    },
+    {
+      path: '/blog/category',
+      name: 'category',
+      component: category
+    },
+    {
+      path: '/blog/column',
+      name: 'column',
+      component: column
     },
     {
       path: '/favorite',

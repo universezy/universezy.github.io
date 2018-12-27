@@ -1,5 +1,5 @@
 <template>
-  <Card class="card_column">
+  <Card :class="cardClasses">
     <span class="span_column" slot="title">
       <img class="img_column" :src="propColumn.src" />
       <h3 class="span_title">{{propColumn.title}}</h3>
@@ -15,6 +15,9 @@ export default {
   name: 'component-column',
   props: {
     column: {
+      validator: function (value) {
+        return value !== null
+      },
       type: Object,
       default: function () {
         return {
@@ -25,24 +28,38 @@ export default {
           articles: []
         }
       }
+    },
+    wide: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
     return {
       propColumn: this.column
     }
+  },
+  computed: {
+    cardClasses: function () {
+      return [
+        'card_column', this.wide ? '' : 'card_column_small'
+      ]
+    }
   }
 }
 </script>
 
 <style scoped>
-.card_column{
-  max-width: 600px;
+.card_column {
   margin: 10px auto 25px auto;
   padding: 0 5px;
 }
 
-.span_column{
+.card_column_small {
+  max-width: 600px;
+}
+
+.span_column {
   display: flex;
   display: -webkit-flex;
   align-items: center;
@@ -58,7 +75,7 @@ export default {
   margin-left: 25px;
 }
 
-.div_desc{
+.div_desc {
   width: 100%;
   text-align: start;
 }

@@ -3,7 +3,7 @@
     <div class="div_blog">
       <Tabs type="card" :value="tabValue">
         <TabPane name="overview" label="总览" icon="md-list-box">
-          <comOverview></comOverview>
+          <comOverview showIcon></comOverview>
         </TabPane>
         <TabPane name="category" label="类别" icon="md-pricetags">
           <div class="div_category" v-for="item in categories" :key="item.name" @click="clickCategory(item.name)">
@@ -38,7 +38,7 @@ export default {
   },
   data () {
     return {
-      tabValue: 'overview',
+      tabs: ['overview', 'category', 'column'],
       categories: [],
       columns: []
     }
@@ -51,12 +51,22 @@ export default {
       this.columns = mColumns.columns
     }
   },
+  computed: {
+    tabValue: function () {
+      let tab = this.$route.query.tab
+      if (tab !== null && this.tabs.indexOf(tab) !== -1) {
+        return tab
+      } else {
+        return this.tabs[0]
+      }
+    }
+  },
   methods: {
     clickCategory: function (name) {
-      console.log('category: ' + name)
+      this.$router.push('/blog/category?category=' + name)
     },
     clickColumn: function (name) {
-      console.log('column: ' + name)
+      this.$router.push('blog/column?column=' + name)
     }
   }
 }

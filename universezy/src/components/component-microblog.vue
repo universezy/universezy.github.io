@@ -1,7 +1,7 @@
 <template>
   <Card>
     <div class="div_title" slot="title">
-      <img class="img_category" :src="imgSrc" @click="clickCategory"/>
+      <img v-if="propShowIcon" class="img_category" :src="imgSrc" @click="clickCategory"/>
       <span class="span_title" @click="clickTitle"><b>{{propMicroblog.title}}</b></span>
     </div>
     <Row class="row_microblog">
@@ -9,7 +9,7 @@
         <span @click="clickTag(item.tag)">{{item.tag}}</span>
       </Tag>
     </Row>
-    <Row class="row_microblog row_abstract">
+    <Row :class="abstractClassed">
       <span>{{propMicroblog.abstract}}</span>
     </Row>
     <Row class="row_time">
@@ -33,16 +33,31 @@ export default {
           timestamp: 1545613813626
         }
       }
+    },
+    wide: {
+      type: Boolean,
+      default: false
+    },
+    showIcon: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
     return {
-      propMicroblog: this.microblog
+      propMicroblog: this.microblog,
+      propShowIcon: this.showIcon
     }
   },
   computed: {
     imgSrc: function () {
       return './static/category/' + this.propMicroblog.category + '.png'
+    },
+    abstractClassed: function () {
+      return [
+        'row_microblog',
+        this.wide ? '' : 'row_abstract'
+      ]
     }
   },
   methods: {
@@ -73,11 +88,11 @@ export default {
 .img_category {
   width: 35px;
   height: 35px;
+  margin-right: 15px;
   cursor: pointer;
 }
 
 .span_title {
-  margin-left: 15px;
   cursor: pointer;
 }
 

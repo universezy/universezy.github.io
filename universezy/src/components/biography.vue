@@ -17,8 +17,6 @@ import comBase from './component-base.vue'
 import markdownApi from '../api/markdownApi'
 import {bioApi} from '../api/urls'
 
-const bioError = '请求资源失败。'
-
 export default {
   name: 'biography',
   components: {
@@ -38,7 +36,7 @@ export default {
           navigation: true // 导航目录
         }
       },
-      bio: '内容加载中。。。'
+      bio: '加载中......'
     }
   },
   created () {
@@ -56,22 +54,26 @@ export default {
               _this.bio = response.data
               _this.$store.dispatch('saveBio', response.data)
             } else {
+              this.loadFailed()
               console.log('response status: ' + response.status)
-              _this.bio = bioError
             }
           })
         } catch (error) {
+          this.loadFailed()
           console.log('request error: ' + error)
-          this.bio = bioError
         }
       }
+    },
+    loadFailed: function () {
+      this.$Message.error('请求服务器失败，请稍后再试。')
     }
   }
 }
 </script>
 
 <style scoped>
-.div_biography{
+.div_biography {
   padding: 10px;
+  position: relative;
 }
 </style>

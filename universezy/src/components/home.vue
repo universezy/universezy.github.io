@@ -29,8 +29,9 @@
           </div>
         </CarouselItem>
       </Carousel>
-      <div class="div_microblog" v-for="item in testMicroblogs" :key="item.timestamp">
-        <comMicroBlog :microblog="item"></comMicroBlog>
+      <Divider orientation="left">最近更新</Divider>
+      <div class="div_microblog" v-for="item in testMicroblogs" :key="item.id">
+        <comMicroBlog :microblog="item" showIcon></comMicroBlog>
       </div>
     </div>
   </comBase>
@@ -57,7 +58,7 @@ export default {
       settings: {
         value: 0,
         autoplay: true,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 4000,
         loop: true,
         dots: 'inside',
         radiusDot: false,
@@ -103,7 +104,7 @@ export default {
 }
 
 .carousel_home {
-  margin: 20px 10px;
+  margin: 20px 10px 60px 10px;
   width: auto;
   height: auto;
 }
