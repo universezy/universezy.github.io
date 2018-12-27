@@ -1,7 +1,7 @@
 <template>
-  <comBase :active="active">
+  <comBase active="favorite">
     <div class="div_favorite">
-      <comFavorite class="com_favorite" v-for="item in favoriteBooks" :key="item.src" :favoriteBook="item"></comFavorite>
+      <comFavorite class="com_favorite" v-for="item in favorites" :key="item.src" :favorite="item"></comFavorite>
     </div>
   </comBase>
 </template>
@@ -19,12 +19,13 @@ export default {
   },
   data () {
     return {
-      active: 'favorite',
-      favoriteBooks: null
+      favorites: []
     }
   },
   created () {
-    this.favoriteBooks = mFavorites.favoriteBooks
+    if (mFavorites.favorites !== null && mFavorites.favorites.length > 0) {
+      this.favorites = mFavorites.favorites
+    }
   }
 }
 </script>

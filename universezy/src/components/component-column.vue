@@ -1,11 +1,11 @@
 <template>
   <Card class="card_column">
     <span class="span_column" slot="title">
-      <img class="img_column" :src="column.src" />
-      <h3 class="span_title">{{column.title}}</h3>
+      <img class="img_column" :src="propColumn.src" />
+      <h3 class="span_title">{{propColumn.title}}</h3>
     </span>
     <div class="div_desc">
-      <span class="span_desc">{{column.desc}}</span>
+      <span class="span_desc">{{propColumn.desc}}</span>
     </div>
   </Card>
 </template>
@@ -13,23 +13,23 @@
 <script>
 export default {
   name: 'component-column',
-  props: [
-    'blogColumn'
-  ],
-  data () {
-    return {
-      column: {
-        src: '#',
-        name: 'null',
-        title: 'null',
-        desc: 'null',
-        articles: []
+  props: {
+    column: {
+      type: Object,
+      default: function () {
+        return {
+          src: '#',
+          name: 'null',
+          title: 'null',
+          desc: 'null',
+          articles: []
+        }
       }
     }
   },
-  created () {
-    if (this.blogColumn !== null && this.blogColumn.category !== null) {
-      this.column = this.blogColumn
+  data () {
+    return {
+      propColumn: this.column
     }
   }
 }

@@ -19,7 +19,7 @@
             theme="dark"
             width="auto"
             :class="menuitemClasses"
-            :active-name="activeItem"
+            :active-name="propActive"
             @on-select="clickNav">
             <MenuItem v-for="item in navList" :key="item.name" :name="item.name">
               <Icon :type="item.icon"></Icon>
@@ -62,13 +62,19 @@
 <script>
 export default {
   name: 'component-base',
-  props: [
-    'active'
-  ],
+  props: {
+    active: {
+      validator: function (value) {
+        return ['home', 'biography', 'blog', 'favorite', 'friendlink', 'about'].indexOf(value) !== -1
+      },
+      type: String,
+      default: 'home'
+    }
+  },
   data () {
     return {
-      activeItem: 'home',
-      isCollapsed: false,
+      propActive: this.active,
+      isCollapsed: this.$store.state.GlobalState.isCollapsed,
       navList: [
         {
           name: 'home',
@@ -120,10 +126,6 @@ export default {
       ]
     }
   },
-  created () {
-    this.activeItem = this.active
-    this.isCollapsed = this.$store.state.GlobalState.isCollapsed
-  },
   watch: {
     isCollapsed: function () {
       this.$store.dispatch('changeSider', this.isCollapsed)
@@ -141,8 +143,8 @@ export default {
     }
   },
   methods: {
-    clickNav: function (activeItem) {
-      switch (activeItem) {
+    clickNav: function (propActive) {
+      switch (propActive) {
         case 'biography':
           this.$router.push('/biography')
           break

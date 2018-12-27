@@ -1,4 +1,4 @@
-const bannerImgs = [
+const banners = [
   {
     src: 'static/banner/internship.jpeg',
     link: '#',
@@ -22,5 +22,5 @@ const bannerImgs = [
 ]
 
 export default {
-  bannerImgs
+  banners
 }

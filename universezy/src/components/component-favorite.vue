@@ -1,10 +1,10 @@
 <template>
-  <a :href="book.link" target="_blank">
+  <a :href="propFavorite.link" target="_blank">
     <Card>
       <div class="div_favorite">
         <img class="img_favorite" :src="imgSrc">
         <Divider/>
-        <p class="p_favorite"><b>{{book.name}}</b></p>
+        <p class="p_favorite"><b>{{propFavorite.name}}</b></p>
       </div>
     </Card>
   </a>
@@ -13,26 +13,26 @@
 <script>
 export default {
   name: 'component-favorite',
-  props: [
-    'favoriteBook'
-  ],
-  data () {
-    return {
-      book: {
-        src: '#',
-        link: '#',
-        name: 'null'
+  props: {
+    favorite: {
+      type: Object,
+      default: function () {
+        return {
+          src: '#',
+          link: '#',
+          name: 'null'
+        }
       }
     }
   },
-  created () {
-    if (this.favoriteBook !== null && this.favoriteBook.src !== null) {
-      this.book = this.favoriteBook
+  data () {
+    return {
+      propFavorite: this.favorite
     }
   },
   computed: {
     imgSrc: function () {
-      return './static/favorite/' + this.book.src
+      return './static/favorite/' + this.propFavorite.src
     }
   }
 }

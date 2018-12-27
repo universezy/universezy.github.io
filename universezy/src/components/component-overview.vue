@@ -5,7 +5,7 @@
     </div>
     <Page
       class-name="page_microblog"
-      :total="blogCount"
+      :total="microBlogs.length"
       :page-size="pageSize"
       show-total
       show-elevator
@@ -24,16 +24,13 @@ export default {
   },
   data () {
     return {
-      microBlogs: null,
+      microBlogs: [],
       pageSize: 10
     }
   },
   created () {
-    this.microBlogs = mBlogs.blogInfos
-  },
-  computed: {
-    blogCount: function () {
-      return this.microBlogs === null ? 0 : this.microBlogs.length
+    if (mBlogs.blogs !== null && mBlogs.blogs.length > 0) {
+      this.microBlogs = mBlogs.blogs
     }
   },
   methods: {

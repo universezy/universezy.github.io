@@ -1,5 +1,5 @@
 <template>
-  <comBase :active="active">
+  <comBase active="about">
     <div class="div_about">
       <div class="div_inner">
         <Card :bordered="false">
@@ -27,11 +27,6 @@ export default {
   name: 'about',
   components: {
     comBase
-  },
-  data () {
-    return {
-      active: 'about'
-    }
   }
 }
 </script>

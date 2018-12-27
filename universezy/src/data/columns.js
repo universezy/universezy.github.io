@@ -1,4 +1,4 @@
-const columnImgs = [
+const columns = [
   {
     src: 'static/category/Android.png',
     name: 'Android',
@@ -68,5 +68,5 @@ const columnImgs = [
 ]
 
 export default {
-  columnImgs
+  columns
 }

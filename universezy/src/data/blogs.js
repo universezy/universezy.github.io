@@ -1,6 +1,7 @@
-const blogInfos = [
+const blogs = [
   {
     id: 0,
+    link: '#',
     category: 'Java',
     title: '这是一个测试标题',
     tags: [
@@ -12,6 +13,7 @@ const blogInfos = [
   },
   {
     id: 1,
+    link: '#',
     category: 'Android',
     title: '这是一个测试标题',
     tags: [
@@ -22,6 +24,7 @@ const blogInfos = [
   },
   {
     id: 2,
+    link: '#',
     category: 'Git',
     title: '这是一个测试标题',
     tags: [
@@ -32,6 +35,7 @@ const blogInfos = [
   },
   {
     id: 3,
+    link: '#',
     category: 'Vue.js',
     title: '这是一个测试标题',
     tags: [
@@ -43,5 +47,5 @@ const blogInfos = [
 ]
 
 export default {
-  blogInfos
+  blogs
 }

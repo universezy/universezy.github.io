@@ -1,14 +1,14 @@
 <template>
   <Card class="card_friendlink">
     <span class="span_friendlink" slot="title">
-      <img class="img_avator" :src="friend.src" />
-      <span class="span_name">{{friend.name}}</span>
+      <img class="img_avator" :src="propFriendlink.src" />
+      <span class="span_name">{{propFriendlink.name}}</span>
     </span>
-    <a :href="friend.link" :target="friend.target" slot="extra">
+    <a :href="propFriendlink.link" :target="aTraget" slot="extra">
       <Icon type="md-open" size=24></Icon>
     </a>
     <div class="div_desc">
-      <span class="span_desc">{{friend.desc}}</span>
+      <span class="span_desc">{{propFriendlink.desc}}</span>
     </div>
   </Card>
 </template>
@@ -16,23 +16,27 @@
 <script>
 export default {
   name: 'component-friendlink',
-  props: [
-    'friendlink'
-  ],
-  data () {
-    return {
-      friend: {
-        link: '#',
-        target: '',
-        src: '#',
-        name: 'null',
-        desc: 'null'
+  props: {
+    friendlink: {
+      type: Object,
+      default: function () {
+        return {
+          link: '#',
+          src: '#',
+          name: 'null',
+          desc: 'null'
+        }
       }
     }
   },
-  created () {
-    if (this.friendlink !== null && this.friendlink.link !== null) {
-      this.friend = this.friendlink
+  data () {
+    return {
+      propFriendlink: this.friendlink
+    }
+  },
+  computed: {
+    aTraget: function () {
+      return this.propFriendlink.link === '#' ? '' : '_blank'
     }
   }
 }

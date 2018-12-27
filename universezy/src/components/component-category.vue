@@ -1,8 +1,8 @@
 <template>
   <Card class="card_category">
     <div class="div_category">
-      <img class="img_category" :src="category.src">
-      <h3>{{category.name}}</h3>
+      <img class="img_category" :src="propCategory.src">
+      <h3>{{propCategory.name}}</h3>
     </div>
   </Card>
 </template>
@@ -10,20 +10,20 @@
 <script>
 export default {
   name: 'component-category',
-  props: [
-    'blogCategory'
-  ],
-  data () {
-    return {
-      category: {
-        src: '',
-        name: 'null'
+  props: {
+    category: {
+      type: Object,
+      default: function () {
+        return {
+          src: '',
+          name: 'null'
+        }
       }
     }
   },
-  created () {
-    if (this.blogCategory !== null && this.blogCategory.src !== null) {
-      this.category = this.blogCategory
+  data () {
+    return {
+      propCategory: this.category
     }
   }
 }

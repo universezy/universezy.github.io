@@ -1,18 +1,18 @@
 <template>
-  <comBase :active="active">
+  <comBase active="blog">
     <div class="div_blog">
       <Tabs type="card" :value="tabValue">
         <TabPane name="overview" label="总览" icon="md-list-box">
           <comOverview></comOverview>
         </TabPane>
         <TabPane name="category" label="类别" icon="md-pricetags">
-          <div class="div_category" v-for="item in categoryImgs" :key="item.name" @click="clickCategory(item.name)">
-            <comCategory :blogCategory="item"></comCategory>
+          <div class="div_category" v-for="item in categories" :key="item.name" @click="clickCategory(item.name)">
+            <comCategory :category="item"></comCategory>
           </div>
         </TabPane>
         <TabPane name="column" label="专栏" icon="md-star">
-          <div class="div_column" v-for="item in columnImgs" :key="item.name" @click="clickColumn(item.name)">
-            <comColumn :blogColumn="item"></comColumn>
+          <div class="div_column" v-for="item in columns" :key="item.name" @click="clickColumn(item.name)">
+            <comColumn :column="item"></comColumn>
           </div>
         </TabPane>
       </Tabs>
@@ -38,15 +38,18 @@ export default {
   },
   data () {
     return {
-      active: 'blog',
       tabValue: 'overview',
-      categoryImgs: null,
-      columnImgs: null
+      categories: [],
+      columns: []
     }
   },
   created () {
-    this.categoryImgs = mCategories.categoryImgs
-    this.columnImgs = mColumns.columnImgs
+    if (mCategories.categories !== null && mCategories.categories.length > 0) {
+      this.categories = mCategories.categories
+    }
+    if (mColumns.columns !== null && mColumns.columns.length > 0) {
+      this.columns = mColumns.columns
+    }
   },
   methods: {
     clickCategory: function (name) {

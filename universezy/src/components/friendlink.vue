@@ -1,6 +1,6 @@
 <template>
-  <comBase :active="active">
-    <comFriendlink v-for="item in friendLinks" :key="item.link" :friendlink="item"></comFriendlink>
+  <comBase active="friendlink">
+    <comFriendlink v-for="item in friendlinks" :key="item.link" :friendlink="item"></comFriendlink>
   </comBase>
 </template>
 
@@ -17,12 +17,13 @@ export default {
   },
   data () {
     return {
-      active: 'friendlink',
-      friendLinks: null
+      friendlinks: []
     }
   },
   created () {
-    this.friendLinks = mFriendlinks.friendLinks
+    if (mFriendlinks.friendlinks !== null && mFriendlinks.friendlinks.length > 0) {
+      this.friendlinks = mFriendlinks.friendlinks
+    }
   }
 }
 </script>

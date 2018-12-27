@@ -1,8 +1,8 @@
 <template>
-  <comBase :active="active">
+  <comBase active="home">
     <div class="div_home">
       <Alert
-        v-show="notice.show"
+        v-if="mountNotice"
         class="alert_notice"
         show-icon
         banner
@@ -21,10 +21,10 @@
         :radius-dot="settings.radiusDot"
         :trigger="settings.trigger"
         :arrow="settings.arrow">
-        <CarouselItem v-for="banner in banners" :key="banner.src">
+        <CarouselItem v-for="item in banners" :key="item.src">
           <div class="carousel_content">
-            <a :href="banner.link">
-              <img class="img_banner" :src="banner.src" :title="banner.title" />
+            <a :href="item.link">
+              <img class="img_banner" :src="item.src" :title="item.title" />
             </a>
           </div>
         </CarouselItem>
@@ -39,6 +39,7 @@
 <script>
 import comBase from './component-base.vue'
 import comMicroBlog from './component-microblog.vue'
+import mNotice from '../data/notice'
 import mBanners from '../data/banners'
 import mBlogs from '../data/blogs'
 
@@ -50,11 +51,8 @@ export default {
   },
   data () {
     return {
-      active: 'home',
       notice: {
-        show: true,
-        title: '网站升级中',
-        desc: 'github账号名变更，旧版github.io已不可使用，新版采用Vue.js重新设计，敬请期待！'
+        display: false
       },
       settings: {
         value: 0,
@@ -66,14 +64,25 @@ export default {
         trigger: 'click',
         arrow: 'hover'
       },
-      banners: null,
-      testMicroblogs: null
+      banners: [],
+      testMicroblogs: []
     }
   },
   created () {
-    this.notice.show = this.$store.state.GlobalState.isNoticeShow
-    this.banners = mBanners.bannerImgs
-    this.testMicroblogs = mBlogs.blogInfos
+    if (mNotice.notice !== null) {
+      this.notice = mNotice.notice
+    }
+    if (mBanners.banners !== null && mBanners.banners.length > 0) {
+      this.banners = mBanners.banners
+    }
+    if (mBlogs.blogs !== null && mBlogs.blogs.length > 0) {
+      this.testMicroblogs = mBlogs.blogs
+    }
+  },
+  computed: {
+    mountNotice: function () {
+      return this.notice.dispatch && this.$store.state.GlobalState.isNoticeShow
+    }
   },
   methods: {
     closeNotice: function () {

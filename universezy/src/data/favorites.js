@@ -1,4 +1,4 @@
-const favoriteBooks = [
+const favorites = [
   {
     src: 'the_clean_coder.jpg',
     link: 'http://vdisk.weibo.com/s/zrPOK0IqWgbk1',
@@ -27,5 +27,5 @@ const favoriteBooks = [
 ]
 
 export default {
-  favoriteBooks
+  favorites
 }

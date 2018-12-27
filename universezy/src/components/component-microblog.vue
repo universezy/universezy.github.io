@@ -1,19 +1,19 @@
 <template>
   <Card>
     <div class="div_title" slot="title">
-      <img class="img_category" :src="imgSrc" @click="clickImgCategory"/>
-      <span class="span_title" @click="clickTitle"><b>{{blog.title}}</b></span>
+      <img class="img_category" :src="imgSrc" @click="clickCategory"/>
+      <span class="span_title" @click="clickTitle"><b>{{propMicroblog.title}}</b></span>
     </div>
     <Row class="row_microblog">
-      <Tag class="tag" color="primary" v-for="item in blog.tags" :key="item.tag">
+      <Tag class="tag" color="primary" v-for="item in propMicroblog.tags" :key="item.tag">
         <span @click="clickTag(item.tag)">{{item.tag}}</span>
       </Tag>
     </Row>
     <Row class="row_microblog row_abstract">
-      <span>{{blog.abstract}}</span>
+      <span>{{propMicroblog.abstract}}</span>
     </Row>
     <Row class="row_time">
-      <Time :time="blog.timestamp" type="date" />
+      <Time :time="propMicroblog.timestamp" type="date" />
     </Row>
   </Card>
 </template>
@@ -21,37 +21,37 @@
 <script>
 export default {
   name: 'component-microblog',
-  props: [
-    'microblog'
-  ],
-  data () {
-    return {
-      blog: {
-        category: 'null',
-        title: 'null',
-        tags: [],
-        abstract: 'null',
-        timestamp: 1545613813626
+  props: {
+    microblog: {
+      type: Object,
+      default: function () {
+        return {
+          category: 'null',
+          title: 'null',
+          tags: [],
+          abstract: 'null',
+          timestamp: 1545613813626
+        }
       }
     }
   },
-  created () {
-    if (this.microblog !== null && this.microblog.category !== null) {
-      this.blog = this.microblog
+  data () {
+    return {
+      propMicroblog: this.microblog
     }
   },
   computed: {
     imgSrc: function () {
-      return './static/category/' + this.blog.category + '.png'
+      return './static/category/' + this.propMicroblog.category + '.png'
     }
   },
   methods: {
-    clickImgCategory: function () {
-      console.log('clickImgCategory: ' + this.blog.category)
+    clickCategory: function () {
+      console.log('clickCategory: ' + this.propMicroblog.category)
       // TODO
     },
     clickTitle: function () {
-      console.log('clickTitle: ' + this.blog.title)
+      console.log('clickTitle: ' + this.propMicroblog.title)
       // TODO
     },
     clickTag: function (tag) {

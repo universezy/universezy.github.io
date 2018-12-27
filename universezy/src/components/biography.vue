@@ -1,5 +1,5 @@
 <template>
-  <comBase :active="active">
+  <comBase active="biography">
     <div class="div_biography">
       <mavon-editor
         v-model="bio"
@@ -17,6 +17,8 @@ import comBase from './component-base.vue'
 import markdownApi from '../api/markdownApi'
 import {bioApi} from '../api/urls'
 
+const bioError = '请求资源失败。'
+
 export default {
   name: 'biography',
   components: {
@@ -24,7 +26,6 @@ export default {
   },
   data () {
     return {
-      active: 'biography',
       settings: {
         subfield: false, // 单双栏模式
         defaultOpen: 'preview', // 默认展示
@@ -37,8 +38,7 @@ export default {
           navigation: true // 导航目录
         }
       },
-      bio: '内容加载中。。。',
-      bioError: '请求资源失败。'
+      bio: '内容加载中。。。'
     }
   },
   created () {
@@ -46,9 +46,8 @@ export default {
   },
   methods: {
     load: function () {
-      let temp = this.$store.state.GlobalData.bio
-      if (temp !== null) {
-        this.bio = temp
+      if (this.$store.state.GlobalData.bio !== null) {
+        this.bio = this.$store.state.GlobalData.bio
       } else {
         try {
           let _this = this
@@ -58,12 +57,12 @@ export default {
               _this.$store.dispatch('saveBio', response.data)
             } else {
               console.log('response status: ' + response.status)
-              _this.bio = _this.bioError
+              _this.bio = bioError
             }
           })
         } catch (error) {
           console.log('request error: ' + error)
-          this.bio = this.bioError
+          this.bio = bioError
         }
       }
     }

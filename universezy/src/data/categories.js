@@ -1,4 +1,4 @@
-const categoryImgs = [
+const categories = [
   {
     src: 'static/category/Android.png',
     name: 'Android'
@@ -66,5 +66,5 @@ const categoryImgs = [
 ]
 
 export default {
-  categoryImgs
+  categories
 }
