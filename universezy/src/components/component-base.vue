@@ -84,7 +84,7 @@ export default {
         {
           name: 'biography',
           icon: 'md-person',
-          desc: '简介'
+          desc: '简历'
         },
         {
           name: 'blog',
