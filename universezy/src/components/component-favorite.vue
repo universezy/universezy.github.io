@@ -22,6 +22,9 @@ export default {
           link: '#',
           name: 'null'
         }
+      },
+      validator: function (value) {
+        return value !== null
       }
     }
   },

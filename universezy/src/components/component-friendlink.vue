@@ -26,6 +26,9 @@ export default {
           name: 'null',
           desc: 'null'
         }
+      },
+      validator: function (value) {
+        return value !== null
       }
     }
   },

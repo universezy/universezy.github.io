@@ -18,6 +18,9 @@ export default {
           src: '',
           name: 'null'
         }
+      },
+      validator: function (value) {
+        return value !== null
       }
     }
   },

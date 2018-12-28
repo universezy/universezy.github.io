@@ -15,9 +15,6 @@ export default {
   name: 'component-column',
   props: {
     column: {
-      validator: function (value) {
-        return value !== null
-      },
       type: Object,
       default: function () {
         return {
@@ -27,6 +24,9 @@ export default {
           desc: 'null',
           articles: []
         }
+      },
+      validator: function (value) {
+        return value !== null
       }
     },
     wide: {

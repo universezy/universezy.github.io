@@ -16,7 +16,7 @@
           <comColumn :column="dataColumn" wide></comColumn>
         </div>
       </Affix>
-      <comOverview></comOverview>
+      <comOverview :filter="filter" v-bind:keyword="keyword"></comOverview>
     </div>
   </comBase>
 </template>
@@ -36,7 +36,13 @@ export default {
   },
   data () {
     return {
-      dataColumn: null
+      dataColumn: null,
+      propColumn: this.$route.query.column,
+      filter: {
+        type: 'column',
+        value: this.$route.query.column
+      },
+      keyword: ''
     }
   },
   created () {
@@ -44,7 +50,7 @@ export default {
   },
   methods: {
     loadResource: function () {
-      let paramColumn = this.$route.query.column
+      let paramColumn = this.propColumn
       if (paramColumn === null) return
       if (mColumns.columns !== null && mColumns.columns.length > 0) {
         for (var i = 0; i <= mColumns.columns.length; i++) {
@@ -56,7 +62,7 @@ export default {
       }
     },
     search: function (value) {
-      console.log('search: ' + value)
+      this.keyword = value
     }
   }
 }

@@ -19,7 +19,7 @@
           </div>
         </div>
       </Affix>
-      <comOverview></comOverview>
+      <comOverview :filter="filter" v-bind:keyword="keyword"></comOverview>
     </div>
   </comBase>
 </template>
@@ -39,7 +39,12 @@ export default {
     return {
       showImg: false,
       imgSrc: '',
-      propCategory: this.$route.query.category
+      propCategory: this.$route.query.category,
+      filter: {
+        type: 'category',
+        value: this.$route.query.category
+      },
+      keyword: ''
     }
   },
   created () {
@@ -58,7 +63,7 @@ export default {
       }
     },
     search: function (value) {
-      console.log('search: ' + value)
+      this.keyword = value
     }
   }
 }

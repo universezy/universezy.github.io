@@ -3,7 +3,7 @@
     <div class="div_blog">
       <Tabs v-model="tabValue">
         <TabPane name="overview" label="总览" icon="md-list-box">
-          <comOverview showIcon></comOverview>
+          <comOverview showIcon v-bind:keyword="keyword"></comOverview>
         </TabPane>
         <TabPane name="category" label="类别" icon="md-pricetags">
           <div class="div_category" v-for="item in categories" :key="item.name" @click="clickCategory(item.name)">
@@ -42,6 +42,7 @@ export default {
       tabs: ['overview', 'category', 'column'],
       tabValue: '',
       showSearchView: true,
+      keyword: '',
       categories: [],
       columns: []
     }
@@ -69,7 +70,7 @@ export default {
       this.$router.push('blog/column?column=' + name)
     },
     search: function (value) {
-      console.log('search: ' + value)
+      this.keyword = value
     }
   }
 }

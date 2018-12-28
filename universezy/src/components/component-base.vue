@@ -60,15 +60,17 @@
 </template>
 
 <script>
+const NavItems = ['home', 'biography', 'blog', 'favorite', 'friendlink', 'about']
+
 export default {
   name: 'component-base',
   props: {
     active: {
-      validator: function (value) {
-        return ['home', 'biography', 'blog', 'favorite', 'friendlink', 'about'].indexOf(value) !== -1
-      },
       type: String,
-      default: 'home'
+      default: NavItems[0],
+      validator: function (value) {
+        return NavItems.indexOf(value) !== -1
+      }
     }
   },
   data () {

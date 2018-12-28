@@ -32,6 +32,9 @@ export default {
           abstract: 'null',
           timestamp: 1545613813626
         }
+      },
+      validator: function (value) {
+        return value !== null
       }
     },
     wide: {
