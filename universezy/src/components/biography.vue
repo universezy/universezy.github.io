@@ -14,8 +14,8 @@
 
 <script>
 import comBase from './component-base.vue'
-import markdownApi from '../api/markdownApi'
-import {bioApi} from '../api/urls'
+import requestApi from '../api/requestApi'
+import {markdownApi} from '../api/urls'
 
 export default {
   name: 'biography',
@@ -36,7 +36,7 @@ export default {
           navigation: true // 导航目录
         }
       },
-      bio: '加载中......'
+      bio: '请求资源中......'
     }
   },
   created () {
@@ -49,22 +49,22 @@ export default {
       } else {
         try {
           let _this = this
-          markdownApi.fetch(bioApi.getUrl()).then(function (response) {
+          requestApi.fetch(markdownApi.getBioUrl()).then(function (response) {
             if (response.status === 200) {
               _this.bio = response.data
               _this.$store.dispatch('saveBio', response.data)
             } else {
-              this.loadFailed()
+              _this.requestFailed()
               console.log('response status: ' + response.status)
             }
           })
         } catch (error) {
-          this.loadFailed()
+          this.requestFailed()
           console.log('request error: ' + error)
         }
       }
     },
-    loadFailed: function () {
+    requestFailed: function () {
       this.$Message.error('请求服务器失败，请稍后再试。')
     }
   }
@@ -74,6 +74,5 @@ export default {
 <style scoped>
 .div_biography {
   padding: 10px;
-  position: relative;
 }
 </style>

@@ -6,6 +6,7 @@ import biography from '@/components/biography'
 import blog from '@/components/blog'
 import category from '@/components/category'
 import column from '@/components/column'
+import display from '@/components/display'
 import favorite from '@/components/favorite'
 import friendlink from '@/components/friendlink'
 
@@ -47,6 +48,11 @@ export default new Router({
       path: '/blog/column',
       name: 'column',
       component: column
+    },
+    {
+      path: '/blog/display',
+      name: 'display',
+      component: display
     },
     {
       path: '/favorite',

@@ -5,7 +5,7 @@ export default {
     return axios({
       method: 'get',
       url: url,
-      timeout: 5000,
+      timeout: 10000,
       withCredentials: false
     })
   }

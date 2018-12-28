@@ -26,6 +26,7 @@ export default {
       type: Object,
       default: function () {
         return {
+          id: 0,
           category: 'null',
           title: 'null',
           tags: [],
@@ -65,12 +66,10 @@ export default {
   },
   methods: {
     clickCategory: function () {
-      console.log('clickCategory: ' + this.propMicroblog.category)
-      // TODO
+      this.$router.push('/blog/category?category=' + this.propMicroblog.category)
     },
     clickTitle: function () {
-      console.log('clickTitle: ' + this.propMicroblog.title)
-      // TODO
+      this.$router.push('/blog/display?id=' + this.propMicroblog.id)
     },
     clickTag: function (tag) {
       console.log('clickTag: ' + tag)

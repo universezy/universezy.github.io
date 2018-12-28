@@ -1,7 +1,6 @@
 const blogs = [
   {
     id: 0,
-    link: '#',
     category: 'Java',
     title: '这是一个测试标题',
     tags: [
@@ -13,7 +12,6 @@ const blogs = [
   },
   {
     id: 1,
-    link: '#',
     category: 'Android',
     title: '这是一个测试标题',
     tags: [
@@ -24,7 +22,6 @@ const blogs = [
   },
   {
     id: 2,
-    link: '#',
     category: 'Git',
     title: '这是一个测试标题',
     tags: [
@@ -35,7 +32,6 @@ const blogs = [
   },
   {
     id: 3,
-    link: '#',
     category: 'Vue.js',
     title: '这是一个测试标题',
     tags: [
@@ -43,6 +39,16 @@ const blogs = [
     ],
     abstract: 'Vue 实现了一套内容分发的 API，这套 API 基于当前的 Web Components 规范草案，将 <slot> 元素作为承载分发内容的出口。',
     timestamp: 1545629734835
+  },
+  {
+    id: 'test',
+    category: 'JavaScript',
+    title: '这是一个测试标题',
+    tags: [
+      {tag: '测试'}
+    ],
+    abstract: '测试Markdown文件',
+    timestamp: 1546013457032
   }
 ]
 

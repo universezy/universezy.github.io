@@ -144,6 +144,10 @@ export default {
       ]
     }
   },
+  created () {
+    document.body.scrollTop = 0
+    document.documentElement.scrollTop = 0
+  },
   methods: {
     clickNav: function (propActive) {
       switch (propActive) {
@@ -151,7 +155,7 @@ export default {
           this.$router.push('/biography')
           break
         case 'blog':
-          this.$router.push('/blog')
+          this.$router.push('/blog?tab=overview')
           break
         case 'favorite':
           this.$router.push('/favorite')
