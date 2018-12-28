@@ -1,6 +1,8 @@
 <template>
   <comBase active="friendlink">
-    <comFriendlink v-for="item in friendlinks" :key="item.link" :friendlink="item"></comFriendlink>
+    <div class="div_friendlink" v-for="item in friendlinks" :key="item.link">
+      <comFriendlink :friendlink="item"></comFriendlink>
+    </div>
   </comBase>
 </template>
 
@@ -29,4 +31,7 @@ export default {
 </script>
 
 <style scoped>
+.div_friendlink {
+  margin: 15px auto;
+}
 </style>

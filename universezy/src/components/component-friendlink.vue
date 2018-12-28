@@ -45,8 +45,8 @@ export default {
 <style scoped>
 .card_friendlink{
   max-width: 600px;
-  margin: 10px auto 25px auto;
-  padding: 5px;
+  margin: auto;
+  padding: 5px 10px;
 }
 
 .span_friendlink{
@@ -56,8 +56,8 @@ export default {
 }
 
 .img_avator {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   display: flex;
 }
 

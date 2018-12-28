@@ -1,16 +1,21 @@
 <template>
   <comBase active="blog">
     <div class="div_column">
-      <Breadcrumb class="breadcrumb_column">
-        <BreadcrumbItem :to="'/blog?tab=column'">
-          <Icon type="md-star"></Icon> 专栏
-        </BreadcrumbItem>
-        <BreadcrumbItem>
-          {{propColumn}}
-        </BreadcrumbItem>
-      </Breadcrumb>
-        <comColumn :column="column" wide></comColumn>
-        <Divider/>
+      <Affix :offset-top="0">
+        <div class="div_affix">
+          <div class="div_breadcrumb">
+            <Breadcrumb class="breadcrumb_column">
+              <BreadcrumbItem :to="'/blog?tab=column'">
+                <Icon type="md-folder"></Icon> 专栏
+              </BreadcrumbItem>
+            </Breadcrumb>
+            <div class="div_search">
+              <Input search enter-button slot="extra" @on-search="search"/>
+            </div>
+          </div>
+          <comColumn :column="dataColumn" wide></comColumn>
+        </div>
+      </Affix>
       <comOverview></comOverview>
     </div>
   </comBase>
@@ -31,32 +36,60 @@ export default {
   },
   data () {
     return {
-      propColumn: this.$route.query.column
+      dataColumn: null
     }
   },
-  computed: {
-    column: function () {
+  created () {
+    this.loadResource()
+  },
+  methods: {
+    loadResource: function () {
+      let paramColumn = this.$route.query.column
+      if (paramColumn === null) return
       if (mColumns.columns !== null && mColumns.columns.length > 0) {
         for (var i = 0; i <= mColumns.columns.length; i++) {
-          if (mColumns.columns[i].name === this.propColumn) {
-            return mColumns.columns[i]
+          if (mColumns.columns[i].name === paramColumn) {
+            this.dataColumn = mColumns.columns[i]
+            break
           }
         }
       }
-      return null
+    },
+    search: function (value) {
+      console.log('search: ' + value)
     }
-  },
-  methods: {
   }
 }
 </script>
 
 <style scoped>
-.div_column{
+.div_column {
   margin: 20px 30px;
 }
 
-.breadcrumb_column{
+.div_affix {
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  border: 5px solid #dcdee2;
+  border-radius: 5px;
+  background: #ffffff;
+}
+
+.div_breadcrumb {
+  margin-bottom: 20px;
   text-align: start;
+}
+
+.breadcrumb_column {
+  display: inline;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.div_search {
+  margin-left: auto;
+  margin-right: 0;
+  float: right;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <comBase active="blog">
     <div class="div_blog">
-      <Tabs type="card" :value="tabValue">
+      <Tabs v-model="tabValue">
         <TabPane name="overview" label="总览" icon="md-list-box">
           <comOverview showIcon></comOverview>
         </TabPane>
@@ -10,11 +10,12 @@
             <comCategory :category="item"></comCategory>
           </div>
         </TabPane>
-        <TabPane name="column" label="专栏" icon="md-star">
+        <TabPane name="column" label="专栏" icon="md-folder">
           <div class="div_column" v-for="item in columns" :key="item.name" @click="clickColumn(item.name)">
             <comColumn :column="item"></comColumn>
           </div>
         </TabPane>
+        <Input search enter-button slot="extra" @on-search="search" v-show="showSearchView"/>
       </Tabs>
     </div>
   </comBase>
@@ -39,6 +40,8 @@ export default {
   data () {
     return {
       tabs: ['overview', 'category', 'column'],
+      tabValue: '',
+      showSearchView: true,
       categories: [],
       columns: []
     }
@@ -50,15 +53,12 @@ export default {
     if (mColumns.columns !== null && mColumns.columns.length > 0) {
       this.columns = mColumns.columns
     }
+    let tab = this.$route.query.tab
+    this.tabValue = tab !== null && this.tabs.indexOf(tab) !== -1 ? tab : this.tabs[0]
   },
-  computed: {
+  watch: {
     tabValue: function () {
-      let tab = this.$route.query.tab
-      if (tab !== null && this.tabs.indexOf(tab) !== -1) {
-        return tab
-      } else {
-        return this.tabs[0]
-      }
+      this.showSearchView = this.tabValue === this.tabs[0]
     }
   },
   methods: {
@@ -67,6 +67,9 @@ export default {
     },
     clickColumn: function (name) {
       this.$router.push('blog/column?column=' + name)
+    },
+    search: function (value) {
+      console.log('search: ' + value)
     }
   }
 }
@@ -85,6 +88,8 @@ export default {
 }
 
 .div_column {
+  margin: 20px auto;
+  text-align: center;
   cursor: pointer;
 }
 </style>

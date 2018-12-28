@@ -1,14 +1,24 @@
 <template>
   <comBase active="blog">
     <div class="div_category">
-      <Breadcrumb class="breadcrumb_category">
-        <BreadcrumbItem :to="'/blog?tab=category'">
-          <Icon type="md-pricetags"></Icon> 类别
-        </BreadcrumbItem>
-        <BreadcrumbItem>
-          {{propCategory}}
-        </BreadcrumbItem>
-      </Breadcrumb>
+      <Affix :offset-top="0">
+        <div class="div_affix">
+          <Breadcrumb class="breadcrumb_category">
+            <BreadcrumbItem :to="'/blog?tab=category'">
+              <Icon type="md-pricetags"></Icon> 类别
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <div class="div_info">
+                <img v-if="showImg" class="img_category" :src="imgSrc" />
+                <span>{{propCategory}}</span>
+              </div>
+            </BreadcrumbItem>
+          </Breadcrumb>
+          <div class="div_search">
+            <Input search enter-button slot="extra" @on-search="search"/>
+          </div>
+        </div>
+      </Affix>
       <comOverview></comOverview>
     </div>
   </comBase>
@@ -17,6 +27,7 @@
 <script>
 import comBase from './component-base.vue'
 import comOverview from './component-overview.vue'
+import mCategories from '../data/categories'
 
 export default {
   name: 'category',
@@ -26,20 +37,70 @@ export default {
   },
   data () {
     return {
+      showImg: false,
+      imgSrc: '',
       propCategory: this.$route.query.category
     }
   },
+  created () {
+    this.loadResource()
+  },
   methods: {
+    loadResource: function () {
+      if (mCategories.categories !== null && mCategories.categories.length > 0) {
+        for (var i = 0; i <= mCategories.categories.length; i++) {
+          if (mCategories.categories[i].name === this.propCategory) {
+            this.showImg = true
+            this.imgSrc = mCategories.categories[i].src
+            break
+          }
+        }
+      }
+    },
+    search: function (value) {
+      console.log('search: ' + value)
+    }
   }
 }
 </script>
 
 <style scoped>
-.div_category{
+.div_category {
   margin: 20px 30px;
 }
 
-.breadcrumb_category{
+.div_affix {
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  display: flex;
+  display: -webkit-flex;
+  border: 5px solid #dcdee2;
+  border-radius: 5px;
+  background: #ffffff;
+}
+
+.breadcrumb_category {
   text-align: start;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.div_info {
+  display: inline;
+  align-items: center;
+}
+
+.img_category {
+  width: 22px;
+  height: 22px;
+  margin-right: 5px;
+  transform: translateY(5px)
+}
+
+.div_search {
+  margin-left: auto;
+  margin-right: 0;
+  float: right;
 }
 </style>

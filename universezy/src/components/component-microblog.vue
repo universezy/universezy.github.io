@@ -10,7 +10,7 @@
       </Tag>
     </Row>
     <Row :class="abstractClassed">
-      <span>{{propMicroblog.abstract}}</span>
+      <div>{{propMicroblog.abstract}}</div>
     </Row>
     <Row class="row_time">
       <Time :time="propMicroblog.timestamp" type="date" />
@@ -105,7 +105,10 @@ export default {
 }
 
 .row_abstract{
-  min-height: 64px;
+  height: 60px;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .row_time{

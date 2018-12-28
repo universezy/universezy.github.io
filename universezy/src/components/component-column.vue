@@ -51,7 +51,7 @@ export default {
 
 <style scoped>
 .card_column {
-  margin: 10px auto 25px auto;
+  margin: auto;
   padding: 0 5px;
 }
 
@@ -66,8 +66,8 @@ export default {
 }
 
 .img_column {
-  width: 60px;
-  height: 60px;
+  width: 35px;
+  height: 35px;
   display: flex;
 }
 

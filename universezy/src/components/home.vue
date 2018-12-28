@@ -11,24 +11,26 @@
         <span class="span_notice_title">{{notice.title}}</span>
         <template slot="desc">{{notice.desc}}</template>
       </Alert>
-      <Carousel
-        class="carousel_home"
-        v-model="settings.value"
-        :autoplay="settings.autoplay"
-        :autoplay-speed="settings.autoplaySpeed"
-        :loop="settings.loop"
-        :dots="settings.dots"
-        :radius-dot="settings.radiusDot"
-        :trigger="settings.trigger"
-        :arrow="settings.arrow">
-        <CarouselItem v-for="item in banners" :key="item.src">
-          <div class="carousel_content">
-            <a :href="item.link">
-              <img class="img_banner" :src="item.src" :title="item.title" />
-            </a>
-          </div>
-        </CarouselItem>
-      </Carousel>
+      <div class="div_carousel">
+        <Carousel
+          class="carousel_home"
+          v-model="settings.value"
+          :autoplay="settings.autoplay"
+          :autoplay-speed="settings.autoplaySpeed"
+          :loop="settings.loop"
+          :dots="settings.dots"
+          :radius-dot="settings.radiusDot"
+          :trigger="settings.trigger"
+          :arrow="settings.arrow">
+          <CarouselItem v-for="item in banners" :key="item.src">
+            <div class="carousel_content">
+              <a :href="item.link">
+                <img class="img_banner" :src="item.src" :title="item.title" />
+              </a>
+            </div>
+          </CarouselItem>
+        </Carousel>
+      </div>
       <Divider orientation="left">最近更新</Divider>
       <div class="div_microblog" v-for="item in testMicroblogs" :key="item.id">
         <comMicroBlog :microblog="item" showIcon></comMicroBlog>
@@ -63,7 +65,7 @@ export default {
         dots: 'inside',
         radiusDot: false,
         trigger: 'click',
-        arrow: 'hover'
+        arrow: 'always'
       },
       banners: [],
       testMicroblogs: []
@@ -103,26 +105,29 @@ export default {
   text-align: left;
 }
 
+.div_carousel{
+  width: 100%;
+  height: auto;
+  text-align: center;
+  align-items: center;
+  background: #e8eaec;
+}
+
 .carousel_home {
-  margin: 20px 10px 60px 10px;
   width: auto;
+  max-width: 1000px;
+  margin: 20px auto;
   height: auto;
 }
 
 .carousel_content {
-  height: 300px;
-  line-height: 300px;
-  position: relative;
-  font-size: 20px;
+  height: 400px;
+  line-height: 400px;
   background: #e8eaec;
 }
 
 .img_banner {
   height: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   cursor: pointer;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -130,8 +135,8 @@ export default {
 }
 
 .div_microblog {
-  max-width: 400px;
-  min-width: 300px;
+  max-width: 360px;
+  min-width: 280px;
   float: left;
   display: inline;
   margin: 10px;
