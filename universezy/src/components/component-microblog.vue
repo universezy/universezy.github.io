@@ -5,7 +5,7 @@
       <span class="span_title" @click="clickTitle"><b>{{propMicroblog.title}}</b></span>
     </div>
     <Row class="row_microblog">
-      <Tag class="tag" color="primary" v-for="item in propMicroblog.tags" :key="item.tag">
+      <Tag color="primary" v-for="item in propMicroblog.tags" :key="item.tag">
         <span @click="clickTag(item.tag)">{{item.tag}}</span>
       </Tag>
     </Row>
@@ -101,10 +101,6 @@ export default {
 
 .row_microblog{
   margin-bottom: 10px;
-}
-
-.tag {
-  cursor: pointer;
 }
 
 .row_abstract{

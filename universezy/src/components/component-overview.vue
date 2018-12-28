@@ -1,12 +1,13 @@
 <template>
   <div>
-    <div class="div_microblog" v-for="item in microBlogs" :key="item.id">
+    <div class="div_microblog" v-for="item in displayBlogs" :key="item.id">
       <comMicroBlog v-show="item.show" :microblog="item" wide :showIcon="propShowIcon"></comMicroBlog>
     </div>
     <Page
       class-name="page_microblog"
-      :total="blogCount"
-      :page-size="pageSize"
+      :current.sync="settings.current"
+      :total="settings.total"
+      :page-size="settings.size"
       show-total
       show-elevator
       @on-change="changePage"/>
@@ -52,10 +53,15 @@ export default {
   },
   data () {
     return {
-      microBlogs: [],
+      originBlogs: [],
+      showBlogs: [],
+      displayBlogs: [],
       propShowIcon: this.showIcon,
-      pageSize: 10,
-      blogCount: 0
+      settings: {
+        current: 1,
+        total: 0,
+        size: 2
+      }
     }
   },
   created () {
@@ -63,50 +69,57 @@ export default {
   },
   watch: {
     keyword: function () {
-      this.filterKeyword(this.keyword)
+      this.filterShowByKeyword(this.keyword)
+      this.settings.total = this.showBlogs.length
+      this.settings.current = 1
+      this.updateDisplayBlogs()
     }
   },
   methods: {
     initBlogs: function () {
       if (mBlogs.blogs !== null && mBlogs.blogs.length > 0) {
-        mBlogs.blogs.forEach(element => {
-          this.microBlogs.push(element)
+        this.loadOriginBlogs()
+        this.filterOriginBlogs()
+        this.originBlogs.forEach(element => {
+          this.showBlogs.push(element)
         })
-        this.filterBlogs()
-        this.blogCount = this.microBlogs.length
+        this.settings.total = this.showBlogs.length
+        this.updateDisplayBlogs()
       }
     },
-    changePage: function (page) {
-      console.log('page = ' + page)
+    loadOriginBlogs: function () {
+      for (var i = mBlogs.blogs.length - 1; i >= 0; i--) {
+        this.originBlogs.push(mBlogs.blogs[i])
+      }
     },
-    filterBlogs: function () {
+    filterOriginBlogs: function () {
       if (this.filter.type === 'all') {
-        this.filterAll(true)
+        this.filterOriginForAll(true)
         return
       } else if (this.filter.type === 'category') {
-        this.filterCategory(this.filter.value)
+        this.filterOriginByCategory(this.filter.value)
       } else if (this.filter.type === 'column') {
-        this.filterColumn(this.filter.value)
+        this.filterOriginByColumn(this.filter.value)
       } else if (this.filter.type === 'tag') {
-        this.filterTag(this.filter.value)
+        this.filterOriginByTag(this.filter.value)
       }
-      for (var i = this.microBlogs.length - 1; i >= 0; i--) {
-        if (!this.microBlogs[i].show) {
-          this.microBlogs.splice(i, 1)
+      for (var i = this.originBlogs.length - 1; i >= 0; i--) {
+        if (!this.originBlogs[i].show) {
+          this.originBlogs.splice(i, 1)
         }
       }
     },
-    filterAll: function (show) {
-      this.microBlogs.forEach(element => {
+    filterOriginForAll: function (show) {
+      this.originBlogs.forEach(element => {
         element.show = show
       })
     },
-    filterCategory: function (value) {
-      this.microBlogs.forEach(element => {
+    filterOriginByCategory: function (value) {
+      this.originBlogs.forEach(element => {
         element.show = element.category === value
       })
     },
-    filterColumn: function (value) {
+    filterOriginByColumn: function (value) {
       var column = null
       for (var i = 0; i < mColumns.columns.length; i++) {
         if (mColumns.columns[i].name === value) {
@@ -115,31 +128,38 @@ export default {
         }
       }
       if (column === null || column.articles.length === 0) {
-        this.filterAll(false)
+        this.filterOriginForAll(false)
       } else {
-        this.microBlogs.forEach(element => {
+        this.originBlogs.forEach(element => {
           element.show = column.articles.indexOf(element.id) !== -1
         })
       }
     },
-    filterTag: function (value) {
-      this.microBlogs.forEach(element => {
+    filterOriginByTag: function (value) {
+      this.originBlogs.forEach(element => {
         element.show = element.tags.indexOf(value) !== -1
       })
     },
-    filterKeyword: function (keyword) {
-      var count = 0
-      for (var i = 0; i < this.microBlogs.length; i++) {
-        var element = this.microBlogs[i]
-        if (keyword === '' || element.title.indexOf(keyword) !== -1 || element.abstract.indexOf(keyword) !== -1) {
-          element.show = true
-          count++
-        } else {
-          element.show = false
+    filterShowByKeyword: function (keyword) {
+      this.showBlogs = []
+      this.originBlogs.forEach(element => {
+        var show = keyword === '' || element.title.indexOf(keyword) !== -1 || element.abstract.indexOf(keyword) !== -1
+        element.show = show
+        if (show) {
+          this.showBlogs.push(element)
         }
-        this.$set(this.microBlogs, i, element)
+      })
+    },
+    updateDisplayBlogs: function () {
+      this.displayBlogs = []
+      var index = (this.settings.current - 1) * this.settings.size
+      var count = 0
+      while (count < this.settings.size && index < this.showBlogs.length) {
+        this.$set(this.displayBlogs, count++, this.showBlogs[index++])
       }
-      this.blogCount = count
+    },
+    changePage: function (page) {
+      this.updateDisplayBlogs()
     }
   }
 }
