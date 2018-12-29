@@ -4,7 +4,6 @@ const blogs = [
     category: 'Openlayers',
     title: 'Openlayer3学习心得之Cluster',
     tags: [
-      {tag: 'Openlayer3'},
       {tag: 'Cluster'},
       {tag: 'GIS'}
     ],
@@ -16,7 +15,6 @@ const blogs = [
     category: 'Openlayers',
     title: 'Openlayer3学习心得之LineString',
     tags: [
-      {tag: 'Openlayer3'},
       {tag: 'LineString'},
       {tag: 'GIS'}
     ],
@@ -85,6 +83,73 @@ const blogs = [
     ],
     abstract: '经历秋招，才知道找工作多么难，竞争多么激烈，现实多么残酷。当然，如果你足够优秀，这些问题都不存在的。尽管秋招已经快收尾了，但是对于明年春招和今后秋招的同学，也算是一个参考吧。',
     timestamp: 1507625130000
+  },
+  {
+    id: 'Solution1OfUbuntu',
+    category: 'Ubuntu',
+    title: 'Ubuntu"无法连接到 Upstart: Failed to connect to socket /com/ubuntu/upstart: 拒绝连接"的解决方案',
+    tags: [
+      {tag: '16.04 LTS'},
+      {tag: '系统升级'},
+      {tag: 'solution'}
+    ],
+    abstract: '无法连接到 Upstart: Failed to connect to socket /com/ubuntu/upstart: 拒绝连接',
+    timestamp: 1516071553000
+  },
+  {
+    id: 'Solution2OfUbuntu',
+    category: 'Ubuntu',
+    title: 'Ubuntu升级到16.04后出现"Failed to start Load Kernel Modules"问题的解决方案',
+    tags: [
+      {tag: '16.04 LTS'},
+      {tag: '系统升级'},
+      {tag: 'solution'}
+    ],
+    abstract: 'Failed to start Load Kernel Modules',
+    timestamp: 1516072363000
+  },
+  {
+    id: 'NW.jsBuildWebApp',
+    category: 'NW.js',
+    title: 'Ubuntu环境下使用NW.js对web应用封装',
+    tags: [
+      {tag: 'Ubuntu'},
+      {tag: 'Hybrid App'}
+    ],
+    abstract: '通过两个Demo来引出后面的教程——使用NW.js来封装你想要的Web应用。',
+    timestamp: 1516152179000
+  },
+  {
+    id: 'Solution3OfUbuntu',
+    category: 'Ubuntu',
+    title: 'Ubuntu更新软件时报"http://cn.archive.ubuntu.com/ubuntu"相关错误的解决方案',
+    tags: [
+      {tag: '更新软件'},
+      {tag: 'solution'}
+    ],
+    abstract: '无法下载 http://cn.archive.ubuntu.com/ubuntu/dists/xxx  连接失败 [IP: *****]]',
+    timestamp: 1516266498000
+  },
+  {
+    id: 'ConfigEnvVarOnUbuntu',
+    category: 'Ubuntu',
+    title: 'Ubuntu设置系统环境变量',
+    tags: [
+      {tag: '环境变量'}
+    ],
+    abstract: '以java环境变量为例介绍Ubuntu下设置系统环境变量的方法',
+    timestamp: 1516269846000
+  },
+  {
+    id: 'ThunderbirdOnUbuntu',
+    category: 'Ubuntu',
+    title: 'Ubuntu下使用Thunderbird收发QQ邮箱',
+    tags: [
+      {tag: 'Thunderbird'},
+      {tag: 'email'}
+    ],
+    abstract: '介绍Ubuntu下使用Thunderbird收发QQ邮箱的方法',
+    timestamp: 1517211787000
   }
 ]
 
