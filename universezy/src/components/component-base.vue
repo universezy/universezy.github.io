@@ -22,7 +22,7 @@
             :active-name="propActive"
             @on-select="clickNav">
             <MenuItem v-for="item in navList" :key="item.name" :name="item.name">
-              <Icon :type="item.icon"></Icon>
+              <Icon :type="item.icon" size="18"></Icon>
               <span class="span_nav">{{item.desc}}</span>
             </MenuItem>
           </Menu>

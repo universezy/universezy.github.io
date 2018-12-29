@@ -32,7 +32,7 @@
         </Carousel>
       </div>
       <Divider orientation="left">最近更新</Divider>
-      <div class="div_microblog" v-for="item in testMicroblogs" :key="item.id">
+      <div class="div_microblog" v-for="item in microblogs" :key="item.id">
         <comMicroBlog :microblog="item" showIcon></comMicroBlog>
       </div>
     </div>
@@ -68,7 +68,8 @@ export default {
         arrow: 'always'
       },
       banners: [],
-      testMicroblogs: []
+      microblogs: [],
+      displaySize: 10
     }
   },
   created () {
@@ -79,12 +80,17 @@ export default {
       this.banners = mBanners.banners
     }
     if (mBlogs.blogs !== null && mBlogs.blogs.length > 0) {
-      this.testMicroblogs = mBlogs.blogs
+      var index = mBlogs.blogs.length - 1
+      var count = 0
+      while (index >= 0 && count < this.displaySize) {
+        this.microblogs.push(mBlogs.blogs[index--])
+        count++
+      }
     }
   },
   computed: {
     mountNotice: function () {
-      return this.notice.dispatch && this.$store.state.GlobalState.isNoticeShow
+      return this.notice.display && this.$store.state.GlobalState.isNoticeShow
     }
   },
   methods: {
@@ -101,7 +107,7 @@ export default {
 }
 
 .alert_notice {
-  margin: 5px 10px;
+  margin: 5px 0;
   text-align: left;
 }
 

@@ -1,54 +1,90 @@
 const blogs = [
   {
-    id: 0,
+    id: 'Openlayers3-Cluster',
+    category: 'Openlayers',
+    title: 'Openlayer3学习心得之Cluster',
+    tags: [
+      {tag: 'Openlayer3'},
+      {tag: 'Cluster'},
+      {tag: 'GIS'}
+    ],
+    abstract: '最近在学习开源地图引擎——Openlayers3，将自己的一些学习心得分享出来，第一次写文章，望支持。',
+    timestamp: 1493198368000
+  },
+  {
+    id: 'Openlayer3-LineString',
+    category: 'Openlayers',
+    title: 'Openlayer3学习心得之LineString',
+    tags: [
+      {tag: 'Openlayer3'},
+      {tag: 'LineString'},
+      {tag: 'GIS'}
+    ],
+    abstract: '关于LineString，官方的示例给的是鼠标画点，自动连线，并添加箭头，而在我们实际应用中，往往需要手动录入标记点，然后进行连线并添加箭头，下面就分享我使用LineString的过程。',
+    timestamp: 1493201697000
+  },
+  {
+    id: 'SolutionOfPackingJar',
     category: 'Java',
-    title: '这是一个测试标题',
+    title: '关于jar打包时的几个问题的汇总',
     tags: [
-      {tag: '设计原则'},
-      {tag: '里氏替换原则'}
+      {tag: 'jar'},
+      {tag: 'solution'}
     ],
-    abstract: '这是一段测试摘要内容：里氏代换原则，只有当衍生类可以替换掉基类，软件单位的功能不受到影响时，基类才能真正被复用，而衍生类也能够在基类的基础上增加新的行为。',
-    timestamp: 1545613813626
+    abstract: 'jar打包时容易出现的一些问题和解决方案',
+    timestamp: 1495587995000
   },
   {
-    id: 1,
+    id: 'ThinkingOfInternship',
+    category: 'Thinking',
+    title: '浅谈这半年的实习感想',
+    tags: [
+      {tag: '实习'},
+      {tag: '感想'}
+    ],
+    abstract: '谨以此文告诫刚满二十一岁的自己。同时勉励还在迷茫的朋友。',
+    timestamp: 1499338541000
+  },
+  {
+    id: 'ComparisonOf4MessageTypes',
     category: 'Android',
-    title: '这是一个测试标题',
+    title: 'Android四种常用的消息传递机制/模式的比较',
     tags: [
-      {tag: 'PackageManager'}
+      {tag: 'callback'},
+      {tag: 'Handler-Message'},
+      {tag: 'Broadcast Receiver'},
+      {tag: 'Observer-Subject'}
     ],
-    abstract: '这是一段测试摘要内容：PackageManager获取的信息即来自AndroidManifest.XML。',
-    timestamp: 1545619294133
+    abstract: '四种分别是callback interface，handler-message，broadcast receiver和observer-subject。',
+    timestamp: 1499424712000
   },
   {
-    id: 2,
-    category: 'Git',
-    title: '这是一个测试标题',
+    id: 'NotesOfJava',
+    category: 'Java',
+    title: 'Java学习笔记',
     tags: [
-      {tag: 'rebase'}
+      {tag: '学习笔记'},
+      {tag: '迭代'},
+      {tag: '线程安全'},
+      {tag: 'Bitmap'},
+      {tag: '内存抖动'},
+      {tag: 'List'},
+      {tag: 'String'},
+      {tag: '多继承'}
     ],
-    abstract: 'rebase可以对某一段线性提交历史进行编辑、删除、复制、粘贴；因此，合理使用rebase命令可以使我们的提交历史干净、简洁！',
-    timestamp: 1545624734835
+    abstract: '本文记录一些学习Java过程中觉得重要的笔记，不定期更新扩充。如有错误，欢迎指正。',
+    timestamp: 1503843953000
   },
   {
-    id: 3,
-    category: 'Vue.js',
-    title: '这是一个测试标题',
+    id: 'SummaryOfCampusRecruit',
+    category: 'Thinking',
+    title: '大四秋招总结 ',
     tags: [
-      {tag: 'slot'}
+      {tag: '校招'},
+      {tag: '总结'}
     ],
-    abstract: 'Vue 实现了一套内容分发的 API，这套 API 基于当前的 Web Components 规范草案，将 <slot> 元素作为承载分发内容的出口。',
-    timestamp: 1545629734835
-  },
-  {
-    id: 'test',
-    category: 'JavaScript',
-    title: '这是一个测试标题',
-    tags: [
-      {tag: '测试'}
-    ],
-    abstract: '测试Markdown文件',
-    timestamp: 1546013457032
+    abstract: '经历秋招，才知道找工作多么难，竞争多么激烈，现实多么残酷。当然，如果你足够优秀，这些问题都不存在的。尽管秋招已经快收尾了，但是对于明年春招和今后秋招的同学，也算是一个参考吧。',
+    timestamp: 1507625130000
   }
 ]
 

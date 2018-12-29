@@ -60,7 +60,7 @@ export default {
       settings: {
         current: 1,
         total: 0,
-        size: 2
+        size: 10
       }
     }
   },
