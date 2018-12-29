@@ -1,6 +1,6 @@
 ## 前言
 
-本文环境为Ubuntu16.04LTS，Tomcat版本为9.0。在此之前，请确保你已经安装并且配置好了Java环境，如果没有，可以参考[Ubuntu设置系统环境变量](https://blog.csdn.net/zy13608089849/article/details/79099018)。
+本文环境为Ubuntu16.04LTS，Tomcat版本为9.0。在此之前，请确保你已经安装并且配置好了Java环境，如果没有，可以参考[Ubuntu设置系统环境变量](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=ConfigEnvVarOnUbuntu)。
 
 ---
 ## 一、 下载

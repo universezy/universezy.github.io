@@ -159,6 +159,8 @@ export default {
       }
     },
     changePage: function (page) {
+      document.body.scrollTop = 0
+      document.documentElement.scrollTop = 0
       this.updateDisplayBlogs()
     }
   }
@@ -171,7 +173,7 @@ export default {
   text-align: left;
 }
 
-.page_microblog{
+.page_microblog {
   margin-top: 60px;
 }
 </style>

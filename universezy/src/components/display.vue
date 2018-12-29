@@ -2,9 +2,9 @@
   <comBase active="blog">
     <div v-if="showBlog" class="div_display">
       <Card>
-        <div class="div_title" slot="title">
+        <div class="div_info" slot="title">
           <img class="img_category" :src="imgSrc" @click="clickCategory"/>
-          <span><b>{{blog.title}}</b></span>
+          <div class="div_title"><b>{{blog.title}}</b></div>
         </div>
         <Button shape="circle" large icon="md-menu" slot="extra" @click="clickMore"></Button>
         <Row class="row_microblog">
@@ -140,7 +140,7 @@ export default {
   padding: 10px;
 }
 
-.div_title {
+.div_info {
   height: auto;
   display: flex;
   display: -webkit-flex;
@@ -154,21 +154,27 @@ export default {
   cursor: pointer;
 }
 
-.row_microblog{
+.div_title {
+  display: flex;
+  margin-right: 50px;
   text-align: left;
 }
 
-.div_time{
+.row_microblog {
+  text-align: left;
+}
+
+.div_time {
   display: inline;
   float: right;
   text-align: right;
 }
 
-.markdown{
+.markdown {
   z-index: 10;
 }
 
-.div_no_data{
+.div_no_data {
   max-width: 200px;
   margin: 10px auto auto auto;
 }

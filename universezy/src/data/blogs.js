@@ -18,7 +18,7 @@ const blogs = [
       {tag: 'LineString'},
       {tag: 'GIS'}
     ],
-    abstract: '关于LineString，官方的示例给的是鼠标画点，自动连线，并添加箭头，而在我们实际应用中，往往需要手动录入标记点，然后进行连线并添加箭头，下面就分享我使用LineString的过程。',
+    abstract: '分享我使用LineString的过程。',
     timestamp: 1493201697000
   },
   {
@@ -29,7 +29,7 @@ const blogs = [
       {tag: 'jar'},
       {tag: 'solution'}
     ],
-    abstract: 'jar打包时容易出现的一些问题和解决方案',
+    abstract: 'jar打包时容易出现的一些问题和解决方案。',
     timestamp: 1495587995000
   },
   {
@@ -61,14 +61,7 @@ const blogs = [
     category: 'Java',
     title: 'Java学习笔记',
     tags: [
-      {tag: '学习笔记'},
-      {tag: '迭代'},
-      {tag: '线程安全'},
-      {tag: 'Bitmap'},
-      {tag: '内存抖动'},
-      {tag: 'List'},
-      {tag: 'String'},
-      {tag: '多继承'}
+      {tag: '学习笔记'}
     ],
     abstract: '本文记录一些学习Java过程中觉得重要的笔记，不定期更新扩充。如有错误，欢迎指正。',
     timestamp: 1503843953000
@@ -137,7 +130,7 @@ const blogs = [
     tags: [
       {tag: '环境变量'}
     ],
-    abstract: '以java环境变量为例介绍Ubuntu下设置系统环境变量的方法',
+    abstract: '以java环境变量为例介绍Ubuntu下设置系统环境变量的方法。',
     timestamp: 1516269846000
   },
   {
@@ -148,7 +141,7 @@ const blogs = [
       {tag: 'Thunderbird'},
       {tag: 'email'}
     ],
-    abstract: '介绍Ubuntu下使用Thunderbird收发QQ邮箱的方法',
+    abstract: '介绍Ubuntu下使用Thunderbird收发QQ邮箱的方法。',
     timestamp: 1517211787000
   },
   {
@@ -160,7 +153,7 @@ const blogs = [
       {tag: '<pre>标签'},
       {tag: '转义'}
     ],
-    abstract: '<pre>标签中保留空格和换行，常用来展示代码片段，但如果直接嵌套HTML标签，会被浏览器解析，所以需要使用转义字符将代码片段转换为不被解析的文本。',
+    abstract: 'HTML的标签中嵌套HTML标签时被解析',
     timestamp: 1517978827000
   },
   {
@@ -172,7 +165,7 @@ const blogs = [
       {tag: '<pre>标签'},
       {tag: '转义'}
     ],
-    abstract: 'HTML中形如 &nbps;(空格) 、 &lt;(<符号) 、 &gt;(>符号) 等都会被转义成对应的值，那么要想保留转义字符本身，比如在贴代码或者教学中，只有破坏转义字符本身的结构，即：将 & 符号再次转义。',
+    abstract: '介绍HTML中保留转义字符的方法。',
     timestamp: 1517987174000
   },
   {
@@ -183,7 +176,7 @@ const blogs = [
       {tag: '校招'},
       {tag: '面试整理'}
     ],
-    abstract: '整理的一些Android校招面试知识点',
+    abstract: '整理的一些Android校招面试知识点。',
     timestamp: 1518017791000
   },
   {
@@ -193,7 +186,7 @@ const blogs = [
     tags: [
       {tag: 'DOM'}
     ],
-    abstract: '以博客栏为例，使用DOM实现批量化布局装载的动态加载网页，另附可收缩侧栏效果。',
+    abstract: '介绍DOM动态加载网页。',
     timestamp: 1518172042000
   },
   {
@@ -203,7 +196,7 @@ const blogs = [
     tags: [
       {tag: 'banner'}
     ],
-    abstract: 'css实现banner布局，js实现图片轮播，附带按钮二级效果、banner响应式缩放。',
+    abstract: '介绍css+js实现banner图片轮播。',
     timestamp: 1519356097000
   },
   {
@@ -215,7 +208,7 @@ const blogs = [
       {tag: '圣杯布局'},
       {tag: '双飞翼布局'}
     ],
-    abstract: '固比固三栏式布局对比：传统布局、圣杯布局、双飞翼布局。',
+    abstract: '介绍传统布局、圣杯布局、双飞翼布局的对比。',
     timestamp: 1519455952000
   },
   {
@@ -282,7 +275,7 @@ const blogs = [
       {tag: '上传'},
       {tag: 'add origin'}
     ],
-    abstract: '介绍git将本地仓库上传到远程仓库的方法',
+    abstract: '介绍git将本地仓库上传到远程仓库的方法。',
     timestamp: 1520328730000
   },
   {
@@ -293,7 +286,7 @@ const blogs = [
       {tag: '同步'},
       {tag: 'push origin'}
     ],
-    abstract: '介绍git将本地仓库同步到远程仓库的方法',
+    abstract: '介绍git将本地仓库同步到远程仓库的方法。',
     timestamp: 1520329252000
   },
   {
@@ -304,7 +297,7 @@ const blogs = [
       {tag: '博客'},
       {tag: '心得'}
     ],
-    abstract: '本文主要讲述一些平时写作过程中和查询资料时遇到的问题，整理出来并加上个人见解，供大家交流分享。',
+    abstract: '本文主要讲述一些平时写作过程中和查询资料时遇到的问题。',
     timestamp: 1520755185000
   },
   {
@@ -331,7 +324,7 @@ const blogs = [
       {tag: '时区'},
       {tag: 'solution'}
     ],
-    abstract: '介绍深克隆Date对象时的问题',
+    abstract: '介绍深克隆Date对象时的问题。',
     timestamp: 1521528873000
   },
   {
@@ -343,7 +336,7 @@ const blogs = [
       {tag: '图片转pdf'},
       {tag: 'pdf合并'}
     ],
-    abstract: '介绍Ubuntu下图片转pdf和pdf合并的方法',
+    abstract: '介绍Ubuntu下图片转pdf和pdf合并的方法。',
     timestamp: 1522143961000
   },
   {
@@ -388,6 +381,193 @@ const blogs = [
     ],
     abstract: '介绍Github设置仓库语言的方法',
     timestamp: 1522395060000
+  },
+  {
+    id: 'SetPermissionOnUbuntu',
+    category: 'Ubuntu',
+    title: 'Ubuntu修改目录下所有内容权限',
+    tags: [
+      {tag: '权限'},
+      {tag: 'chmod'}
+    ],
+    abstract: '介绍Ubuntu修改目录下所有内容权限的方法',
+    timestamp: 1522725897000
+  },
+  {
+    id: 'MavenBuildJavaWeb',
+    category: 'Maven',
+    title: '使用Maven构建Java Web工程的教程',
+    tags: [
+      {tag: 'Java Web'}
+    ],
+    abstract: '本文使用Ubuntu16.04LTS操作系统+Eclipse集成开发环境+Tomcat服务器，通过Maven构建Java Web工程。',
+    timestamp: 1522765545000
+  },
+  {
+    id: 'SolutionOfJava1',
+    category: 'Java',
+    title: 'Java Web工程中index.jsp报"javax.servlet.http.HttpServlet"错误的解决方案',
+    tags: [
+      {tag: 'Java Web'},
+      {tag: 'index.jsp'},
+      {tag: 'servlet'},
+      {tag: 'solution'}
+    ],
+    abstract: 'javax.servlet.http.HttpServlet',
+    timestamp: 1522809980000
+  },
+  {
+    id: 'SolutionOfSpring1',
+    category: 'Spring',
+    title: 'SpringMVC下后端返回前端出现中文乱码的解决方案',
+    tags: [
+      {tag: 'SpringMVC'},
+      {tag: '中文乱码'},
+      {tag: 'solution'}
+    ],
+    abstract: '后端返回前端出现中文乱码',
+    timestamp: 1523187162000
+  },
+  {
+    id: 'SolutionOfSpring2',
+    category: 'Spring',
+    title: 'Spring工程中JDBC抛出"EmptyResultDataAccessException"异常的解决方案',
+    tags: [
+      {tag: 'JDBC'},
+      {tag: 'JdbcTemplate'},
+      {tag: 'solution'}
+    ],
+    abstract: 'EmptyResultDataAccessException',
+    timestamp: 1523411038000
+  },
+  {
+    id: 'SolutionOfJava2',
+    category: 'Java',
+    title: 'Java Web工程报"Invalid character found in the request target"错误的解决方案',
+    tags: [
+      {tag: 'Java Web'},
+      {tag: 'http'},
+      {tag: 'urlencode'},
+      {tag: 'solution'}
+    ],
+    abstract: 'Invalid character found in the request target',
+    timestamp: 1523499087000
+  },
+  {
+    id: 'SolutionOfSpring3',
+    category: 'Spring',
+    title: 'SpringMVC工程解决"CORS 头缺少 \'Access-Control-Allow-Origin\'"问题',
+    tags: [
+      {tag: 'SpringMVC'},
+      {tag: 'Java Web'},
+      {tag: 'CORS'},
+      {tag: 'solution'}
+    ],
+    abstract: 'CORS 头缺少 \'Access-Control-Allow-Origin\'',
+    timestamp: 1523608836000
+  },
+  {
+    id: 'SolutionOfSpring4',
+    category: 'Spring',
+    title: 'SpringMVC解决无法接收PUT请求的问题',
+    tags: [
+      {tag: 'SpringMVC'},
+      {tag: 'http'},
+      {tag: 'PUT'},
+      {tag: 'solution'}
+    ],
+    abstract: '无法接收PUT请求',
+    timestamp: 1524126091000
+  },
+  {
+    id: 'SpringTeaching1',
+    category: 'Spring',
+    title: 'Spring快速上手攻略之搭建后端web工程(一)',
+    tags: [
+      {tag: 'SpringMVC'},
+      {tag: 'Java Web'}
+    ],
+    abstract: '本文讲述作者初学Spring时经历的痛苦和折磨，以及发誓要整理出本文来帮助初学Spring开发后端的朋友，同时分享一些心得体会。',
+    timestamp: 1524186781000
+  },
+  {
+    id: 'SpringTeaching2',
+    category: 'Spring',
+    title: 'Spring快速上手攻略之搭建后端web工程(二)',
+    tags: [
+      {tag: 'SpringMVC'},
+      {tag: 'Java Web'}
+    ],
+    abstract: 'Chapter 1 —— 吐槽网上教程。',
+    timestamp: 1524186781000
+  },
+  {
+    id: 'SpringTeaching3',
+    category: 'Spring',
+    title: 'Spring快速上手攻略之搭建后端web工程(三)',
+    tags: [
+      {tag: 'SpringMVC'},
+      {tag: 'Java Web'}
+    ],
+    abstract: 'Chapter 2 —— 准备工作。',
+    timestamp: 1524186781000
+  },
+  {
+    id: 'SpringTeaching4',
+    category: 'Spring',
+    title: 'Spring快速上手攻略之搭建后端web工程(四)',
+    tags: [
+      {tag: 'SpringMVC'},
+      {tag: 'Java Web'}
+    ],
+    abstract: 'Chapter 3 —— 认识IoC',
+    timestamp: 1524186781000
+  },
+  {
+    id: 'SpringTeaching5',
+    category: 'Spring',
+    title: 'Spring快速上手攻略之搭建后端web工程(五)',
+    tags: [
+      {tag: 'SpringMVC'},
+      {tag: 'Java Web'}
+    ],
+    abstract: 'Chapter 4 —— 剖析SpringMVC架构',
+    timestamp: 1524186781000
+  },
+  {
+    id: 'SpringTeaching6',
+    category: 'Spring',
+    title: 'Spring快速上手攻略之搭建后端web工程(六)',
+    tags: [
+      {tag: 'SpringMVC'},
+      {tag: 'Java Web'}
+    ],
+    abstract: 'Chapter 5 —— 编写工程',
+    timestamp: 1524186781000
+  },
+  {
+    id: 'SpringTeaching7',
+    category: 'Spring',
+    title: 'Spring快速上手攻略之搭建后端web工程(七)',
+    tags: [
+      {tag: 'SpringMVC'},
+      {tag: 'Java Web'}
+    ],
+    abstract: 'Chapter 6 —— 后记',
+    timestamp: 1524186781000
+  },
+  {
+    id: 'SolutionOfPackingVue.js',
+    category: 'Vue.js',
+    title: 'Vue.js打包静态网页出现空白或路径错误的问题解决方案',
+    tags: [
+      {tag: '打包'},
+      {tag: '空白'},
+      {tag: '路径错误'},
+      {tag: 'solution'}
+    ],
+    abstract: 'Vue.js打包静态网页出现空白或路径错误',
+    timestamp: 1524464227000
   }
 ]
 
