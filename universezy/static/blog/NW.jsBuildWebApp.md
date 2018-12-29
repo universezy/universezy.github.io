@@ -51,13 +51,16 @@
 
 ```html
 <html>
- 	<head>
-  		<meta charset="utf-8">
-  		<title>Wechat</title>
- 	</head>
- 	<body>
- 		 <iframe src="https://wx.qq.com/"/>
-	 </body>
+
+<head>
+  <meta charset="utf-8">
+  <title>Wechat</title>
+</head>
+
+<body>
+  <iframe src="https://wx.qq.com/" />
+</body>
+
 </html>
 ```
 

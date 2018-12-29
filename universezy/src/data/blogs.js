@@ -150,6 +150,107 @@ const blogs = [
     ],
     abstract: '介绍Ubuntu下使用Thunderbird收发QQ邮箱的方法',
     timestamp: 1517211787000
+  },
+  {
+    id: 'Solution1OfHTML',
+    category: 'HTML',
+    title: 'HTML的标签中嵌套HTML标签时被解析的解决方案',
+    tags: [
+      {tag: 'HTML标签'},
+      {tag: '<pre>标签'},
+      {tag: '转义'}
+    ],
+    abstract: '<pre>标签中保留空格和换行，常用来展示代码片段，但如果直接嵌套HTML标签，会被浏览器解析，所以需要使用转义字符将代码片段转换为不被解析的文本。',
+    timestamp: 1517978827000
+  },
+  {
+    id: 'Solution2OfHTML',
+    category: 'HTML',
+    title: 'HTML中保留转义字符的方法',
+    tags: [
+      {tag: 'HTML标签'},
+      {tag: '<pre>标签'},
+      {tag: '转义'}
+    ],
+    abstract: 'HTML中形如 &nbps;(空格) 、 &lt;(<符号) 、 &gt;(>符号) 等都会被转义成对应的值，那么要想保留转义字符本身，比如在贴代码或者教学中，只有破坏转义字符本身的结构，即：将 & 符号再次转义。',
+    timestamp: 1517987174000
+  },
+  {
+    id: 'CampusRecruitNotesOfAndroid',
+    category: 'Android',
+    title: 'Android校招面试知识点整理',
+    tags: [
+      {tag: '校招'},
+      {tag: '面试整理'}
+    ],
+    abstract: '整理的一些Android校招面试知识点',
+    timestamp: 1518017791000
+  },
+  {
+    id: 'DomLoading',
+    category: 'JavaScript',
+    title: '使用DOM实现批量化布局装载的动态加载网页',
+    tags: [
+      {tag: 'DOM'}
+    ],
+    abstract: '以博客栏为例，使用DOM实现批量化布局装载的动态加载网页，另附可收缩侧栏效果。',
+    timestamp: 1518172042000
+  },
+  {
+    id: 'WebBanner',
+    category: 'JavaScript',
+    title: 'css+js实现banner图片轮播',
+    tags: [
+      {tag: 'banner'}
+    ],
+    abstract: 'css实现banner布局，js实现图片轮播，附带按钮二级效果、banner响应式缩放。',
+    timestamp: 1519356097000
+  },
+  {
+    id: 'ComparisonOf3ColumnLayout',
+    category: 'CSS',
+    title: '固比固三栏式布局对比',
+    tags: [
+      {tag: '三栏式布局'},
+      {tag: '圣杯布局'},
+      {tag: '双飞翼布局'}
+    ],
+    abstract: '固比固三栏式布局对比：传统布局、圣杯布局、双飞翼布局。',
+    timestamp: 1519455952000
+  },
+  {
+    id: 'Solution1OfNPM',
+    category: 'NPM',
+    title: '使用npm安装vue时报"no such file or directory, open \'xxx\\package.json\'"的解决方案',
+    tags: [
+      {tag: 'vue'},
+      {tag: 'solution'}
+    ],
+    abstract: 'no such file or directory, open \'xxx\\package.json\'',
+    timestamp: 1519628387000
+  },
+  {
+    id: 'Solution1OfAndroid',
+    category: 'Android',
+    title: 'AS启动时报"Please check your firewall settings and restart Android Studio"的解决方案',
+    tags: [
+      {tag: 'Android Studio'},
+      {tag: 'solution'}
+    ],
+    abstract: 'Please check your firewall settings and restart Android Studio',
+    timestamp: 1519652663000
+  },
+  {
+    id: 'Solution4OfUbuntu',
+    category: 'Ubuntu',
+    title: 'Ubuntu下安装淘宝npm镜像后出现"未找到 \'cnpm\' 命令"问题的解决方案',
+    tags: [
+      {tag: 'npm'},
+      {tag: '镜像'},
+      {tag: 'solution'}
+    ],
+    abstract: '未找到 \'cnpm\' 命令',
+    timestamp: 1519789151000
   }
 ]
 
