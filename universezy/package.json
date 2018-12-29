@@ -1,8 +1,8 @@
 {
   "name": "universezy",
   "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "ame <1213814232@qq.com>",
+  "description": "Zengyu's github pages.",
+  "author": "曾宇 <1213814232@qq.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",

@@ -4,28 +4,28 @@ const columns = [
     name: 'Android',
     title: 'Android进阶之路',
     desc: '分享一些Android开发过程中的技术心得。',
-    articles: ['ComparisonOf4MessageTypes']
+    articles: ['CampusRecruitNotesOfAndroid', 'ComparisonOf4MessageTypes']
   },
   {
     src: 'static/category/Java.png',
     name: 'Java',
     title: '探究Java的奥秘',
     desc: '一代版本一代神，代代都有Java人。',
-    articles: []
+    articles: ['NotesOfJava']
   },
   {
     src: 'static/category/Ubuntu.png',
     name: 'Ubuntu',
     title: '玩转Ubuntu',
     desc: '介绍一些Ubuntu下的小知识。',
-    articles: []
+    articles: ['PdfTipsOnUbuntu', 'ThunderbirdOnUbuntu', 'ConfigEnvVarOnUbuntu']
   },
   {
     src: 'static/category/Git.png',
     name: 'Git',
     title: 'Git简单应用',
     desc: '介绍一些入门的git操作。。',
-    articles: []
+    articles: ['ConfigLanguageOfGit', 'GitPushOrigin', 'GitAddOrigin']
   },
   {
     src: 'static/category/Spring.png',
@@ -39,7 +39,7 @@ const columns = [
     name: 'Thinking',
     title: '我思故我在',
     desc: '程序书写人生。',
-    articles: ['SummaryOfCampusRecruit', 'ThinkingOfInternship']
+    articles: ['ExperienceOfWriting', 'SummaryOfCampusRecruit', 'ThinkingOfInternship']
   }
 ]
 
