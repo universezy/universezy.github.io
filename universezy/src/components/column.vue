@@ -5,7 +5,7 @@
         <div class="div_affix">
           <div class="div_breadcrumb">
             <Breadcrumb class="breadcrumb_column">
-              <BreadcrumbItem :to="'/blog?tab=column'">
+              <BreadcrumbItem to="/blog?tab=column">
                 <Icon type="md-folder"></Icon> 专栏
               </BreadcrumbItem>
             </Breadcrumb>

@@ -4,7 +4,7 @@
       <Affix :offset-top="0">
         <div class="div_affix">
           <Breadcrumb class="breadcrumb_category">
-            <BreadcrumbItem :to="'/blog?tab=category'">
+            <BreadcrumbItem to="/blog?tab=category">
               <Icon type="md-pricetags"></Icon> 类别
             </BreadcrumbItem>
             <BreadcrumbItem>

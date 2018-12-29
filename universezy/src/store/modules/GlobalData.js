@@ -1,7 +1,8 @@
 import * as types from '../mutation-types'
 
 const state = {
-  bio: null
+  bio: null,
+  title: '进击的小宇宙'
 }
 
 const mutations = {

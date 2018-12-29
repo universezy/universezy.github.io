@@ -147,6 +147,7 @@ export default {
   created () {
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
+    document.title = this.$store.state.GlobalData.title
   },
   methods: {
     clickNav: function (propActive) {

@@ -14,6 +14,13 @@
           <Divider />
           <span class="span_date">2018年12月25日</span>
           <Divider />
+          <span class="span_about">今天完成了所有基础功能，非常激动，整体效果不输于一些专业博客网站，分享和评论功能后期陆续开放，请给我点时间。</span>
+          <Divider />
+          <span class="span_about">这周每天白天上班时抽空写点，中午不吃饭，把时间利用起来，下班回去接着写，一点之前不睡觉，看着项目一点点推进，功能一个个实现，心里非常高兴，成就感就是最大的精神粮食！</span>
+          <Divider />
+          <span class="span_about">接下来要花较长时间把过去一年多时间里写的70余篇博客导进来，然后继续维护和增加新功能，主页轮播图bug已经发现了，还没提issue，欢迎读者帮我提上去。</span>
+          <Divider />
+          <span class="span_date">2018年12月29日</span>
         </Card>
       </div>
     </div>

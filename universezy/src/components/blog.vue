@@ -1,7 +1,7 @@
 <template>
   <comBase active="blog">
     <div class="div_blog">
-      <Tabs v-model="tabValue">
+      <Tabs v-model="tabValue" :animated="false">
         <TabPane name="overview" label="总览" icon="md-list-box">
           <comOverview showIcon v-bind:keyword="keyword"></comOverview>
         </TabPane>

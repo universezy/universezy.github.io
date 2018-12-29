@@ -135,8 +135,7 @@ export default {
 }
 
 .div_microblog {
-  max-width: 360px;
-  min-width: 280px;
+  width: 360px;
   float: left;
   display: inline;
   margin: 10px;

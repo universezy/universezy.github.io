@@ -1,43 +1,24 @@
 <template>
   <comBase active="blog">
     <div v-if="showBlog" class="div_display">
-      <Affix :offset-top="0">
-        <div class="div_affix">
-          <Card>
-            <div class="div_title" slot="title">
-              <img class="img_category" :src="imgSrc" />
-              <span><b>{{blog.title}}</b></span>
-            </div>
-            <Row class="row_microblog">
-              <Tag color="primary" v-for="item in blog.tags" :key="item.tag">
-                <span>{{item.tag}}</span>
-              </Tag>
-            </Row>
-            <Divider />
-            <Row>
-              <div class="div_buttons">
-                <Button type="primary">
-                  评论
-                </Button>
-                <ButtonGroup shape="circle">
-                  <Button type="primary">
-                    <Icon type="ios-arrow-back"></Icon>
-                    上一篇
-                  </Button>
-                  <Button type="primary">
-                    下一篇
-                    <Icon type="ios-arrow-forward"></Icon>
-                  </Button>
-                </ButtonGroup>
-              </div>
-            </Row>
-            <Row class="row_time">
-              <Time :time="blog.timestamp" type="date" />
-            </Row>
-          </Card>
+      <Card>
+        <div class="div_title" slot="title">
+          <img class="img_category" :src="imgSrc" @click="clickCategory"/>
+          <span><b>{{blog.title}}</b></span>
         </div>
-      </Affix>
+        <Button shape="circle" large icon="md-menu" slot="extra" @click="clickMore"></Button>
+        <Row class="row_microblog">
+          <Tag color="primary" v-for="item in blog.tags" :key="item.tag">
+            <span>{{item.tag}}</span>
+          </Tag>
+        <div class="div_time">
+          <Time :time="blog.timestamp" type="date" />
+        </div>
+        </Row>
+      </Card>
+      <Divider />
       <mavon-editor
+        class="markdown"
         v-model="blogData"
         :subfield="settings.subfield"
         :defaultOpen="settings.defaultOpen"
@@ -46,13 +27,17 @@
         :toolbars="settings.toolbars"/>
     </div>
     <div v-else class="div_no_data">
-      <span>没有这个资源</span>
+      <Alert type="error" show-icon>请求的资源不存在</Alert>
     </div>
+    <Drawer width="320" :closable="false" v-model="showDrawer">
+      <comDrawer v-bind:prev="prevBlog" v-bind:next="nextBlog"></comDrawer>
+    </Drawer>
   </comBase>
 </template>
 
 <script>
 import comBase from './component-base.vue'
+import comDrawer from './component-drawer.vue'
 import mBlogs from '../data/blogs'
 import requestApi from '../api/requestApi'
 import {markdownApi} from '../api/urls'
@@ -60,7 +45,8 @@ import {markdownApi} from '../api/urls'
 export default {
   name: 'display',
   components: {
-    comBase
+    comBase,
+    comDrawer
   },
   data () {
     return {
@@ -76,6 +62,7 @@ export default {
           navigation: true // 导航目录
         }
       },
+      showDrawer: false,
       showBlog: true,
       id: this.$route.query.id,
       prevBlog: null,
@@ -136,7 +123,13 @@ export default {
       this.$Message.error('请求服务器失败，请稍后再试。')
     },
     setData: function () {
-      document.title += ' - ' + this.blog.title
+      document.title = this.blog.title + ' - ' + this.$store.state.GlobalData.title
+    },
+    clickCategory: function () {
+      this.$router.push('/blog/category?category=' + this.blog.category)
+    },
+    clickMore: function () {
+      this.showDrawer = !this.showDrawer
     }
   }
 }
@@ -158,13 +151,25 @@ export default {
   width: 35px;
   height: 35px;
   margin-right: 15px;
+  cursor: pointer;
 }
 
 .row_microblog{
   text-align: left;
 }
 
-.row_time{
+.div_time{
+  display: inline;
+  float: right;
   text-align: right;
+}
+
+.markdown{
+  z-index: 10;
+}
+
+.div_no_data{
+  max-width: 200px;
+  margin: 10px auto auto auto;
 }
 </style>
