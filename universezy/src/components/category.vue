@@ -1,24 +1,22 @@
 <template>
   <comBase active="blog">
     <div class="div_category">
-      <Affix :offset-top="0">
-        <div class="div_affix">
-          <Breadcrumb class="breadcrumb_category">
-            <BreadcrumbItem to="/blog?tab=category">
-              <Icon type="md-pricetags"></Icon> 类别
-            </BreadcrumbItem>
-            <BreadcrumbItem>
-              <div class="div_info">
-                <img v-if="showImg" class="img_category" :src="imgSrc" />
-                <span>{{propCategory}}</span>
-              </div>
-            </BreadcrumbItem>
-          </Breadcrumb>
-          <div class="div_search">
-            <Input search enter-button slot="extra" @on-search="search"/>
-          </div>
+      <div class="div_head">
+        <Breadcrumb class="breadcrumb_category">
+          <BreadcrumbItem to="/blog?tab=category">
+            <Icon type="md-pricetags"></Icon> 类别
+          </BreadcrumbItem>
+          <BreadcrumbItem>
+            <div class="div_info">
+              <img v-if="showImg" class="img_category" :src="imgSrc" />
+              <span>{{propCategory}}</span>
+            </div>
+          </BreadcrumbItem>
+        </Breadcrumb>
+        <div class="div_search">
+          <Input search enter-button slot="extra" @on-search="search"/>
         </div>
-      </Affix>
+      </div>
       <comOverview :filter="filter" v-bind:keyword="keyword"></comOverview>
     </div>
   </comBase>
@@ -74,7 +72,7 @@ export default {
   margin: 20px 30px;
 }
 
-.div_affix {
+.div_head {
   width: 100%;
   height: auto;
   padding: 20px;

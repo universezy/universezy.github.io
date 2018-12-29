@@ -72,4 +72,4 @@ SpringMVC是一个开发架构，MVC知道吧，model，view，controller，Spri
 
 - [Chapter 6 —— 后记](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SpringTeaching7)
 
-- [Issues —— 问题或反馈](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SpringTeaching8)
+- [Issues —— 问题或反馈](https://github.com/universezy/SpringWebServer-Teaching/issues)

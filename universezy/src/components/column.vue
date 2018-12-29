@@ -1,21 +1,19 @@
 <template>
   <comBase active="blog">
     <div class="div_column">
-      <Affix :offset-top="0">
-        <div class="div_affix">
-          <div class="div_breadcrumb">
-            <Breadcrumb class="breadcrumb_column">
-              <BreadcrumbItem to="/blog?tab=column">
-                <Icon type="md-folder"></Icon> 专栏
-              </BreadcrumbItem>
-            </Breadcrumb>
-            <div class="div_search">
-              <Input search enter-button slot="extra" @on-search="search"/>
-            </div>
+      <div class="div_head">
+        <div class="div_breadcrumb">
+          <Breadcrumb class="breadcrumb_column">
+            <BreadcrumbItem to="/blog?tab=column">
+              <Icon type="md-folder"></Icon> 专栏
+            </BreadcrumbItem>
+          </Breadcrumb>
+          <div class="div_search">
+            <Input search enter-button slot="extra" @on-search="search"/>
           </div>
-          <comColumn :column="dataColumn" wide></comColumn>
         </div>
-      </Affix>
+        <comColumn :column="dataColumn" wide></comColumn>
+      </div>
       <comOverview :filter="filter" v-bind:keyword="keyword"></comOverview>
     </div>
   </comBase>
@@ -73,7 +71,7 @@ export default {
   margin: 20px 30px;
 }
 
-.div_affix {
+.div_head {
   width: 100%;
   height: auto;
   padding: 20px;

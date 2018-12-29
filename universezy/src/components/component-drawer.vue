@@ -4,13 +4,13 @@
     <span>开发中，敬请期待！</span>
     <Divider class="divider">更多</Divider>
     <ButtonGroup size="large">
-      <Tooltip :content="settings.prevTitle" placement="bottom-end">
+      <Tooltip :content="settings.prevTitle" placement="bottom">
         <Button type="primary" :disabled="settings.prevDisabled" @click="clickPrev">
           <Icon type="ios-arrow-back"></Icon>
           上一篇
         </Button>
       </Tooltip>
-      <Tooltip :content="settings.nextTitle" placement="bottom-end">
+      <Tooltip :content="settings.nextTitle" placement="bottom">
         <Button type="primary" :disabled="settings.nextDisabled" @click="clickNext">
           下一篇
           <Icon type="ios-arrow-forward"></Icon>

@@ -568,6 +568,227 @@ const blogs = [
     ],
     abstract: 'Vue.js打包静态网页出现空白或路径错误',
     timestamp: 1524464227000
+  },
+  {
+    id: 'GetScreenSizeOnAndroid',
+    category: 'Android',
+    title: 'Android获取屏幕宽高',
+    tags: [
+      {tag: '屏幕'},
+      {tag: '宽高'}
+    ],
+    abstract: '介绍Android获取屏幕宽高的方法。',
+    timestamp: 1531214818000
+  },
+  {
+    id: 'SolutionOfAndroid2',
+    category: 'Android',
+    title: 'Android使用MediaRecorder的stop方法报"stop failed"错误的解决方案',
+    tags: [
+      {tag: 'MediaRecorder'},
+      {tag: 'stop'},
+      {tag: 'solution'}
+    ],
+    abstract: 'stop failed',
+    timestamp: 1532603685000
+  },
+  {
+    id: 'SolutionOfAndroid3',
+    category: 'Android',
+    title: 'Android代码混淆时报错"transformClassesAndResourcesWithProguardForRelease"的解决方案',
+    tags: [
+      {tag: '混淆'},
+      {tag: 'solution'}
+    ],
+    abstract: 'transformClassesAndResourcesWithProguardForRelease',
+    timestamp: 1533609812000
+  },
+  {
+    id: 'SolutionOfAndroid4',
+    category: 'Android',
+    title: 'Android Studio编译AIDL文件时报"finished with non-zero exit value 1"错误的解决方案',
+    tags: [
+      {tag: 'Android Studio'},
+      {tag: 'AIDL'},
+      {tag: 'solution'}
+    ],
+    abstract: 'finished with non-zero exit value 1',
+    timestamp: 1534240924000
+  },
+  {
+    id: 'GetCallingPkgOnAndroid',
+    category: 'Android',
+    title: 'Android获取接口调用者的包名',
+    tags: [
+      {tag: '调用者'},
+      {tag: '包名'}
+    ],
+    abstract: '介绍Android获取接口调用者的包名的方法。',
+    timestamp: 1536202874000
+  },
+  {
+    id: 'RegisterAndroidDeviceOnUbuntu',
+    category: 'Android',
+    title: 'Ubuntu下注册Android设备',
+    tags: [
+      {tag: '注册usb'},
+      {tag: 'adb'}
+    ],
+    abstract: '介绍Ubuntu下注册Android设备的方法。',
+    timestamp: 1536655489000
+  },
+  {
+    id: 'DeadCycleOnJava',
+    category: 'Java',
+    title: 'Java中的for(;;)和while(true)',
+    tags: [
+      {tag: 'for(;;)'},
+      {tag: 'while(true)'}
+    ],
+    abstract: '介绍Java中的for(;;)和while(true)的区别。',
+    timestamp: 1536723838000
+  },
+  {
+    id: 'ThreadSafeInDoubleCheckLockOnJava',
+    category: 'Java',
+    title: 'Java单例模式中双检锁的线程安全问题',
+    tags: [
+      {tag: '单例模式'},
+      {tag: '双检锁'},
+      {tag: '线程安全'},
+      {tag: '指令重排序'},
+      {tag: '原子操作'},
+      {tag: 'synchronized'},
+      {tag: 'volatile'}
+    ],
+    abstract: '介绍Java单例模式中双检锁的线程安全问题。',
+    timestamp: 1536908780000
+  },
+  {
+    id: 'UseAdbToModifyHostsInPhone',
+    category: 'Android',
+    title: '使用adb修改手机hosts文件',
+    tags: [
+      {tag: 'adb'},
+      {tag: 'hosts'}
+    ],
+    abstract: '介绍使用adb修改手机hosts文件的方法。',
+    timestamp: 1537944342000
+  },
+  {
+    id: 'PriorityBetweenSingleInstance&taskAffinity',
+    category: 'Android',
+    title: 'Android中singleInstance和taskAffinity的优先级',
+    tags: [
+      {tag: 'singleInstance'},
+      {tag: 'taskAffinity'},
+      {tag: '优先级'}
+    ],
+    abstract: '介绍Android中singleInstance和taskAffinity的优先级。',
+    timestamp: 1539154585000
+  },
+  {
+    id: '4ReferencesOnJava',
+    category: 'Java',
+    title: 'Java四种引用方式',
+    tags: [
+      {tag: '强引用'},
+      {tag: '软引用'},
+      {tag: '弱引用'},
+      {tag: '虚引用'}
+    ],
+    abstract: '介绍Java的四种引用方式。',
+    timestamp: 1540201166000
+  },
+  {
+    id: 'ComparisonOfArrayList&LinkedList',
+    category: 'Java',
+    title: 'ArrayList和LinkedList的效率对比',
+    tags: [
+      {tag: 'ArrayList'},
+      {tag: 'LinkedList'}
+    ],
+    abstract: '介绍ArrayList和LinkedList的效率对比',
+    timestamp: 1540350550000
+  },
+  {
+    id: 'DangerOfArrays.asList',
+    category: 'Java',
+    title: '当心Arrays.asList()挖的巨坑',
+    tags: [
+      {tag: 'Arrays.asList'},
+      {tag: 'ArrayList'}
+    ],
+    abstract: '介绍Arrays.asList()挖的巨坑。',
+    timestamp: 1542266614000
+  },
+  {
+    id: 'GitDeleteOrigin',
+    category: 'Git',
+    title: 'git删除远程仓库分支',
+    tags: [
+      {tag: 'delete origin'}
+    ],
+    abstract: '介绍git删除远程仓库分支的方法。',
+    timestamp: 1542361122000
+  },
+  {
+    id: 'ConfigMinifyOfGradle',
+    category: 'Gradle',
+    title: 'Gradle设置代码混淆',
+    tags: [
+      {tag: '混淆'}
+    ],
+    abstract: '介绍Gradle设置代码混淆的方法。',
+    timestamp: 1542676528000
+  },
+  {
+    id: 'SolutionOfGit2',
+    category: 'Git',
+    title: 'repo拉取仓库时报"Cannot get https://gerrit.googlesource.com/git-repo/clone.bundle"的解决方案',
+    tags: [
+      {tag: 'repo'},
+      {tag: 'googlesource'},
+      {tag: 'solution'}
+    ],
+    abstract: 'Cannot get https://gerrit.googlesource.com/git-repo/clone.bundle',
+    timestamp: 1543822454000
+  },
+  {
+    id: 'SolutionOfAndroid5',
+    category: 'Android',
+    title: 'adb调试时报"error:insufficient permissions for device"的解决方案',
+    tags: [
+      {tag: 'adb'},
+      {tag: 'solution'}
+    ],
+    abstract: 'error:insufficient permissions for device',
+    timestamp: 1544060959000
+  },
+  {
+    id: 'SolutionOfVue.js3',
+    category: 'Vue.js',
+    title: 'Vue.js工程打包静态网页提示CORS问题的解决方案',
+    tags: [
+      {tag: '打包'},
+      {tag: 'CORS'},
+      {tag: 'solution'}
+    ],
+    abstract: '打包静态网页提示CORS',
+    timestamp: 1545215279000
+  },
+  {
+    id: 'CognitionOfIndustry',
+    category: 'Thinking',
+    title: '我能为IT行业做什么',
+    tags: [
+      {tag: '行业认知'},
+      {tag: 'IT'},
+      {tag: '开源'},
+      {tag: '职场感悟'}
+    ],
+    abstract: '站在互联网之海前，应具备宽广的胸怀，放眼未来。',
+    timestamp: 1545399340000
   }
 ]
 
