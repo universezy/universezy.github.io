@@ -85,7 +85,7 @@ const blogs = [
     timestamp: 1507625130000
   },
   {
-    id: 'Solution1OfUbuntu',
+    id: 'SolutionOfUbuntu1',
     category: 'Ubuntu',
     title: 'Ubuntu"无法连接到 Upstart: Failed to connect to socket /com/ubuntu/upstart: 拒绝连接"的解决方案',
     tags: [
@@ -97,7 +97,7 @@ const blogs = [
     timestamp: 1516071553000
   },
   {
-    id: 'Solution2OfUbuntu',
+    id: 'SolutionOfUbuntu2',
     category: 'Ubuntu',
     title: 'Ubuntu升级到16.04后出现"Failed to start Load Kernel Modules"问题的解决方案',
     tags: [
@@ -120,7 +120,7 @@ const blogs = [
     timestamp: 1516152179000
   },
   {
-    id: 'Solution3OfUbuntu',
+    id: 'SolutionOfUbuntu3',
     category: 'Ubuntu',
     title: 'Ubuntu更新软件时报"http://cn.archive.ubuntu.com/ubuntu"相关错误的解决方案',
     tags: [
@@ -152,7 +152,7 @@ const blogs = [
     timestamp: 1517211787000
   },
   {
-    id: 'Solution1OfHTML',
+    id: 'SolutionOfHTML1',
     category: 'HTML',
     title: 'HTML的标签中嵌套HTML标签时被解析的解决方案',
     tags: [
@@ -164,7 +164,7 @@ const blogs = [
     timestamp: 1517978827000
   },
   {
-    id: 'Solution2OfHTML',
+    id: 'SolutionOfHTML2',
     category: 'HTML',
     title: 'HTML中保留转义字符的方法',
     tags: [
@@ -219,7 +219,7 @@ const blogs = [
     timestamp: 1519455952000
   },
   {
-    id: 'Solution1OfNPM',
+    id: 'SolutionOfNPM1',
     category: 'NPM',
     title: '使用npm安装vue时报"no such file or directory, open \'xxx\\package.json\'"的解决方案',
     tags: [
@@ -230,7 +230,7 @@ const blogs = [
     timestamp: 1519628387000
   },
   {
-    id: 'Solution1OfAndroid',
+    id: 'SolutionOfAndroid1',
     category: 'Android',
     title: 'AS启动时报"Please check your firewall settings and restart Android Studio"的解决方案',
     tags: [
@@ -241,7 +241,7 @@ const blogs = [
     timestamp: 1519652663000
   },
   {
-    id: 'Solution4OfUbuntu',
+    id: 'SolutionOfUbuntu4',
     category: 'Ubuntu',
     title: 'Ubuntu下安装淘宝npm镜像后出现"未找到 \'cnpm\' 命令"问题的解决方案',
     tags: [
@@ -251,6 +251,143 @@ const blogs = [
     ],
     abstract: '未找到 \'cnpm\' 命令',
     timestamp: 1519789151000
+  },
+  {
+    id: 'SolutionOfVue.js1',
+    category: 'Vue.js',
+    title: 'v-for报"Elements in iteration expect to have \'v-bind:key\' directives"错误的解决方案',
+    tags: [
+      {tag: 'v-for'},
+      {tag: 'solution'}
+    ],
+    abstract: 'Elements in iteration expect to have \'v-bind:key\' directives',
+    timestamp: 1520234464000
+  },
+  {
+    id: 'SolutionOfGit1',
+    category: 'Git',
+    title: 'git push时报"error: src refspec master does not match any."的解决方案',
+    tags: [
+      {tag: 'push'},
+      {tag: 'solution'}
+    ],
+    abstract: 'error: src refspec master does not match any.',
+    timestamp: 1520327694000
+  },
+  {
+    id: 'GitAddOrigin',
+    category: 'Git',
+    title: 'git将本地仓库上传到远程仓库',
+    tags: [
+      {tag: '上传'},
+      {tag: 'add origin'}
+    ],
+    abstract: '介绍git将本地仓库上传到远程仓库的方法',
+    timestamp: 1520328730000
+  },
+  {
+    id: 'GitPushOrigin',
+    category: 'Git',
+    title: 'git将本地仓库同步到远程仓库',
+    tags: [
+      {tag: '同步'},
+      {tag: 'push origin'}
+    ],
+    abstract: '介绍git将本地仓库同步到远程仓库的方法',
+    timestamp: 1520329252000
+  },
+  {
+    id: 'ExperienceOfWriting',
+    category: 'Thinking',
+    title: '记录一些博客写作心得',
+    tags: [
+      {tag: '博客'},
+      {tag: '心得'}
+    ],
+    abstract: '本文主要讲述一些平时写作过程中和查询资料时遇到的问题，整理出来并加上个人见解，供大家交流分享。',
+    timestamp: 1520755185000
+  },
+  {
+    id: 'SolutionOfVue.js2',
+    category: 'Vue.js',
+    title: '使用iView时报"Parsing error: x-invalid-end-tag"错误的解决方案',
+    tags: [
+      {tag: 'iView'},
+      {tag: 'tag'},
+      {tag: 'solution'}
+    ],
+    abstract: 'Parsing error: x-invalid-end-tag',
+    timestamp: 1520942516000
+  },
+  {
+    id: 'SolutionOfJavaScript1',
+    category: 'JavaScript',
+    title: '使用JSON序列化实现伪深克隆时Date对象时区问题的解决方案',
+    tags: [
+      {tag: 'json'},
+      {tag: '序列化'},
+      {tag: '克隆'},
+      {tag: 'Date'},
+      {tag: '时区'},
+      {tag: 'solution'}
+    ],
+    abstract: '介绍深克隆Date对象时的问题',
+    timestamp: 1521528873000
+  },
+  {
+    id: 'PdfTipsOnUbuntu',
+    category: 'Ubuntu',
+    title: 'Ubuntu下图片转pdf和pdf合并',
+    tags: [
+      {tag: 'pdf'},
+      {tag: '图片转pdf'},
+      {tag: 'pdf合并'}
+    ],
+    abstract: '介绍Ubuntu下图片转pdf和pdf合并的方法',
+    timestamp: 1522143961000
+  },
+  {
+    id: 'ConfigMavenOnUbuntu',
+    category: 'Ubuntu',
+    title: 'Ubuntu下Maven的配置',
+    tags: [
+      {tag: 'Maven'}
+    ],
+    abstract: '本文以Ubuntu16.04LTS为例，介绍Maven的下载配置过程。',
+    timestamp: 1522209073000
+  },
+  {
+    id: 'ConfigTomcatOnUbuntu',
+    category: 'Ubuntu',
+    title: 'Ubuntu下搭建Tomcat服务器',
+    tags: [
+      {tag: 'Tomcat'}
+    ],
+    abstract: '本文以Ubuntu16.04LTS为例，介绍Tomcat的下载配置过程。',
+    timestamp: 1522227981000
+  },
+  {
+    id: 'ModifyCharsetOnMySQL',
+    category: 'SQL',
+    title: 'MySQL修改表中字段编码格式',
+    tags: [
+      {tag: 'MySQL'},
+      {tag: '编码格式'}
+    ],
+    abstract: '介绍MySQL修改表中字段编码格式的方法',
+    timestamp: 1522393455000
+  },
+  {
+    id: 'ConfigLanguageOfGit',
+    category: 'Git',
+    title: 'Github设置仓库语言',
+    tags: [
+      {tag: 'Github'},
+      {tag: '仓库语言'},
+      {tag: 'gitattributes'}
+    ],
+    abstract: '介绍Github设置仓库语言的方法',
+    timestamp: 1522395060000
   }
 ]
 
