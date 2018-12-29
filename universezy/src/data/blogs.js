@@ -12,7 +12,7 @@ const blogs = [
     timestamp: 1493198368000
   },
   {
-    id: 'Openlayer3-LineString',
+    id: 'Openlayers3-LineString',
     category: 'Openlayers',
     title: 'Openlayer3学习心得之LineString',
     tags: [
