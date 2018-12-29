@@ -4,14 +4,14 @@ const columns = [
     name: 'Android',
     title: 'Android进阶之路',
     desc: '分享一些Android开发过程中的技术心得。',
-    articles: ['PriorityBetweenSingleInstance&taskAffinity', 'UseAdbToModifyHostsInPhone', 'RegisterAndroidDeviceOnUbuntu', 'GetCallingPkgOnAndroid', 'GetScreenSizeOnAndroid', 'CampusRecruitNotesOfAndroid', 'ComparisonOf4MessageTypes']
+    articles: ['PriorityOfSingleInstanceAndtaskAffinity', 'AdbModifyHosts', 'RegisterAndroidDeviceOnUbuntu', 'GetCallingPkgOnAndroid', 'GetScreenSizeOnAndroid', 'CampusRecruitNotesOfAndroid', 'ComparisonOf4MsgTypes']
   },
   {
     src: 'static/category/Java.png',
     name: 'Java',
     title: '探究Java的奥秘',
     desc: '一代版本一代神，代代都有Java人。',
-    articles: ['DangerOfArrays.asList', 'ComparisonOfArrayList&LinkedList', '4ReferencesOnJava', 'ThreadSafeInDoubleCheckLockOnJava', 'DeadCycleOnJava', 'NotesOfJava']
+    articles: ['DangerOfArrays_asList', 'ComparisonOfArrayListAndLinkedList', '4ReferencesOnJava', 'ThreadSafeInDCLOnJava', 'DeadCycleOnJava', 'NotesOfJava']
   },
   {
     src: 'static/category/Ubuntu.png',

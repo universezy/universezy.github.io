@@ -1,6 +1,6 @@
 const blogs = [
   {
-    id: 'Openlayers3-Cluster',
+    id: 'Openlayers3Cluster',
     category: 'Openlayers',
     title: 'Openlayer3学习心得之Cluster',
     tags: [
@@ -11,7 +11,7 @@ const blogs = [
     timestamp: 1493198368000
   },
   {
-    id: 'Openlayers3-LineString',
+    id: 'Openlayers3LineString',
     category: 'Openlayers',
     title: 'Openlayer3学习心得之LineString',
     tags: [
@@ -44,7 +44,7 @@ const blogs = [
     timestamp: 1499338541000
   },
   {
-    id: 'ComparisonOf4MessageTypes',
+    id: 'ComparisonOf4MsgTypes',
     category: 'Android',
     title: 'Android四种常用的消息传递机制/模式的比较',
     tags: [
@@ -102,7 +102,7 @@ const blogs = [
     timestamp: 1516072363000
   },
   {
-    id: 'NW.jsBuildWebApp',
+    id: 'NW_jsBuildWebApp',
     category: 'NW.js',
     title: 'Ubuntu环境下使用NW.js对web应用封装',
     tags: [
@@ -200,7 +200,7 @@ const blogs = [
     timestamp: 1519356097000
   },
   {
-    id: 'ComparisonOf3ColumnLayout',
+    id: 'ComparisonOf3ColsLayout',
     category: 'CSS',
     title: '固比固三栏式布局对比',
     tags: [
@@ -234,11 +234,11 @@ const blogs = [
     timestamp: 1519652663000
   },
   {
-    id: 'SolutionOfUbuntu4',
-    category: 'Ubuntu',
+    id: 'SolutionOfNPM2',
+    category: 'NPM',
     title: 'Ubuntu下安装淘宝npm镜像后出现"未找到 \'cnpm\' 命令"问题的解决方案',
     tags: [
-      {tag: 'npm'},
+      {tag: 'Ubuntu'},
       {tag: '镜像'},
       {tag: 'solution'}
     ],
@@ -246,7 +246,7 @@ const blogs = [
     timestamp: 1519789151000
   },
   {
-    id: 'SolutionOfVue.js1',
+    id: 'SolutionOfVue_js1',
     category: 'Vue.js',
     title: 'v-for报"Elements in iteration expect to have \'v-bind:key\' directives"错误的解决方案',
     tags: [
@@ -301,7 +301,7 @@ const blogs = [
     timestamp: 1520755185000
   },
   {
-    id: 'SolutionOfVue.js2',
+    id: 'SolutionOfVue_js2',
     category: 'Vue.js',
     title: '使用iView时报"Parsing error: x-invalid-end-tag"错误的解决方案',
     tags: [
@@ -557,7 +557,7 @@ const blogs = [
     timestamp: 1524186781000
   },
   {
-    id: 'SolutionOfPackingVue.js',
+    id: 'SolutionOfPackingVue_js',
     category: 'Vue.js',
     title: 'Vue.js打包静态网页出现空白或路径错误的问题解决方案',
     tags: [
@@ -649,7 +649,7 @@ const blogs = [
     timestamp: 1536723838000
   },
   {
-    id: 'ThreadSafeInDoubleCheckLockOnJava',
+    id: 'ThreadSafeInDCLOnJava',
     category: 'Java',
     title: 'Java单例模式中双检锁的线程安全问题',
     tags: [
@@ -665,7 +665,7 @@ const blogs = [
     timestamp: 1536908780000
   },
   {
-    id: 'UseAdbToModifyHostsInPhone',
+    id: 'AdbModifyHosts',
     category: 'Android',
     title: '使用adb修改手机hosts文件',
     tags: [
@@ -676,7 +676,7 @@ const blogs = [
     timestamp: 1537944342000
   },
   {
-    id: 'PriorityBetweenSingleInstance&taskAffinity',
+    id: 'PriorityOfSingleInstanceAndTaskAffinity',
     category: 'Android',
     title: 'Android中singleInstance和taskAffinity的优先级',
     tags: [
@@ -701,7 +701,7 @@ const blogs = [
     timestamp: 1540201166000
   },
   {
-    id: 'ComparisonOfArrayList&LinkedList',
+    id: 'ComparisonOfArrayListAndLinkedList',
     category: 'Java',
     title: 'ArrayList和LinkedList的效率对比',
     tags: [
@@ -712,7 +712,7 @@ const blogs = [
     timestamp: 1540350550000
   },
   {
-    id: 'DangerOfArrays.asList',
+    id: 'DangerOfArrays_asList',
     category: 'Java',
     title: '当心Arrays.asList()挖的巨坑',
     tags: [

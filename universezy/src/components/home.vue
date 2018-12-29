@@ -24,9 +24,7 @@
           :arrow="settings.arrow">
           <CarouselItem v-for="item in banners" :key="item.src">
             <div class="carousel_content">
-              <a :href="item.link">
-                <img class="img_banner" :src="item.src" :title="item.title" />
-              </a>
+              <img class="img_banner" :src="item.src" :title="item.title" @click="clickBanner(item.id)"/>
             </div>
           </CarouselItem>
         </Carousel>
@@ -96,6 +94,9 @@ export default {
   methods: {
     closeNotice: function () {
       this.$store.dispatch('closeNotice')
+    },
+    clickBanner: function (id) {
+      this.$router.push('/blog/display?id=' + id)
     }
   }
 }
