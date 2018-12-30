@@ -15,6 +15,12 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '*',
+      name: 'error',
+      redirect: '/home',
+      component: home
+    },
+    {
       path: '/',
       name: 'home-default',
       redirect: '/home',

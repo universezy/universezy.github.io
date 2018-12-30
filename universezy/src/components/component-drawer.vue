@@ -41,9 +41,9 @@
     </ButtonGroup>
     <Divider class="divider_drawer">跳转</Divider>
     <ButtonGroup size="large">
-      <Button type="primary" ghost to="/blog?tab=overview">总览</Button>
-      <Button type="primary" ghost to="/blog?tab=category">类别</Button>
-      <Button type="primary" ghost to="/blog?tab=column">专栏</Button>
+      <Button type="primary" ghost to="/blog/tab/overview">总览</Button>
+      <Button type="primary" ghost to="/blog/tab/category">类别</Button>
+      <Button type="primary" ghost to="/blog/tab/column">专栏</Button>
     </ButtonGroup>
     <Divider class="divider_drawer">评论</Divider>
     <span>开发中，敬请期待！</span>
