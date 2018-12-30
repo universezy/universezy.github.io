@@ -4,15 +4,15 @@
       <Card>
         <div class="div_info" slot="title">
           <img class="img_category" :src="imgSrc" @click="clickCategory"/>
-          <div class="div_title"><b>{{blog.title}}</b></div>
+          <div class="div_title"><b>{{currentBlog.title}}</b></div>
         </div>
         <Button type="warning" shape="circle" large icon="md-menu" slot="extra" @click="clickMore"></Button>
         <Row class="row_microblog">
-          <Tag color="primary" v-for="item in blog.tags" :key="item.tag">
+          <Tag color="primary" v-for="item in currentBlog.tags" :key="item.tag">
             <span>{{item.tag}}</span>
           </Tag>
         <div class="div_time">
-          <Time :time="blog.timestamp" type="date" />
+          <Time :time="currentBlog.timestamp" type="date" />
         </div>
         </Row>
       </Card>
@@ -30,7 +30,7 @@
       <Alert type="error" show-icon>请求的资源不存在</Alert>
     </div>
     <Drawer width="320" :closable="false" v-model="showDrawer">
-      <comDrawer v-bind:prev="prevBlog" v-bind:next="nextBlog"></comDrawer>
+      <comDrawer v-bind:current="currentBlog" v-bind:prev="prevBlog" v-bind:next="nextBlog"></comDrawer>
     </Drawer>
   </comBase>
 </template>
@@ -67,13 +67,13 @@ export default {
       id: this.$route.query.id,
       prevBlog: null,
       nextBlog: null,
-      blog: null,
+      currentBlog: null,
       blogData: '请求资源中......'
     }
   },
   computed: {
     imgSrc: function () {
-      return './static/category/' + this.blog.category + '.png'
+      return './static/category/' + this.currentBlog.category + '.png'
     }
   },
   created () {
@@ -89,7 +89,7 @@ export default {
         this.originBlogs = mBlogs.blogs
         for (var i = mBlogs.blogs.length - 1; i >= 0; i--) {
           if (mBlogs.blogs[i].id === this.id) {
-            this.blog = mBlogs.blogs[i]
+            this.currentBlog = mBlogs.blogs[i]
             if (i - 1 >= 0) {
               this.prevBlog = mBlogs.blogs[i - 1]
             }
@@ -123,10 +123,10 @@ export default {
       this.$Message.error('请求服务器失败，请稍后再试。')
     },
     setData: function () {
-      document.title = this.blog.title + ' - ' + this.$store.state.GlobalData.title
+      document.title = this.currentBlog.title + ' - ' + this.$store.state.GlobalData.title
     },
     clickCategory: function () {
-      this.$router.push('/blog/category?category=' + this.blog.category)
+      this.$router.push('/blog/category?category=' + this.currentBlog.category)
     },
     clickMore: function () {
       this.showDrawer = !this.showDrawer

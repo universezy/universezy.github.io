@@ -1,6 +1,20 @@
 <template>
   <div class="div_drawer">
     <Divider style="font-weight: bold;">分享</Divider>
+    <Row>
+      <div class="div_share">
+        <img class="img_share" src="../assets/qq.svg" @click="shareToQQ"/>
+      </div>
+      <div class="div_share">
+        <Tooltip placement="bottom" @on-popper-show="showQrcode">
+          <div class="div_qrcode" slot="content">
+            <div id="qrcode" ref="qrcode"></div>
+            <span class="span_qrcode">微信扫一扫</span>
+          </div>
+          <img class="img_share" src="../assets/wechat.svg"/>
+        </Tooltip>
+      </div>
+    </Row>
     <span>开发中，敬请期待！</span>
     <Divider class="divider_drawer">更多</Divider>
     <ButtonGroup size="large">
@@ -31,9 +45,18 @@
 </template>
 
 <script>
+import {blogApi, shareApi} from '../api/urls'
+import QRCode from 'qrcodejs2'
+
+var qrcode = null
+
 export default {
   name: 'component-drawer',
   props: {
+    current: {
+      type: Object,
+      default: null
+    },
     prev: {
       type: Object,
       default: null
@@ -66,6 +89,25 @@ export default {
     }
   },
   methods: {
+    getValidUrl: function () {
+      var id = this.current === null ? null : this.current.id
+      return blogApi.getPageUrl(id)
+    },
+    shareToQQ: function () {
+      let shareUrl = shareApi.getQQUrl(this.current)
+      window.open(shareUrl)
+    },
+    showQrcode: function () {
+      if (qrcode !== null) return
+      qrcode = new QRCode('qrcode', {
+        text: this.getValidUrl(),
+        width: 100,
+        height: 100,
+        colorDark: '#17233d',
+        colorLight: '#f8f8f9',
+        correctLevel: QRCode.CorrectLevel.H
+      })
+    },
     clickPrev: function () {
       this.$router.push('/blog/display?id=' + this.prev.id)
       this.$router.go(0)
@@ -93,6 +135,35 @@ export default {
 }
 
 .div_poptip{
+  color: #17233d;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.div_share{
+  width: auto;
+  height: auto;
+  display: inline-block;
+}
+
+.img_share{
+  cursor: pointer;
+}
+
+.div_qrcode{
+  width: 120px;
+  height: auto;
+  padding: 10px;
+  background: #f8f8f9;
+  text-align: center;
+}
+
+#qrcode{
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.span_qrcode{
   color: #17233d;
   font-size: 14px;
   font-weight: bold;

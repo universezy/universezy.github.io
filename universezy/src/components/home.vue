@@ -95,7 +95,6 @@ export default {
       this.$store.dispatch('closeNotice')
     },
     clickBanner: function (id) {
-      console.log('id=' + id)
       this.$router.push('/blog/display?id=' + id)
     }
   }
