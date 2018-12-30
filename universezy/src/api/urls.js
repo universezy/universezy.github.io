@@ -23,13 +23,13 @@ export const imageApi = {
     return baseResourceUrl + 'logo.png'
   },
   getBannerUrl: (name) => {
-    return '/static/banner/' + name + '.jpg'
+    return './static/banner/' + name + '.jpg'
   },
   getCategoryUrl: (name) => {
-    return '/static/category/' + name + '.png'
+    return './static/category/' + name + '.png'
   },
   getFavorite: (name) => {
-    return '/static/favorite/' + name + '.jpg'
+    return './static/favorite/' + name + '.jpg'
   }
 }
 
