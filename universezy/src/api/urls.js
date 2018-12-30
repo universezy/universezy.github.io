@@ -1,5 +1,5 @@
 const baseResourceUrl = 'https://raw.githubusercontent.com/universezy/universezy.github.io/master/universezy/dist/static/'
-const basePageUrl = 'https://universezy.github.io/universezy/dist/index.html/'
+const basePageUrl = 'https://universezy.github.io/universezy/dist/index.html#/'
 const baseQQShareUrl = 'http://connect.qq.com/widget/shareqq/index.html?'
 const baseQZoneShareUrl = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?'
 

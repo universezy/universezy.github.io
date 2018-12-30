@@ -113,11 +113,15 @@ export default {
     },
     shareToQQ: function () {
       let shareUrl = shareApi.getQQUrl(this.current)
-      window.open(shareUrl)
+      console.log('shareUrl = ' + shareUrl)
+      this.showErrorNotice()
+      // window.open(shareUrl)
     },
     shareToQZone: function () {
       let shareUrl = shareApi.getQZoneUrl(this.current)
-      window.open(shareUrl)
+      console.log('shareUrl = ' + shareUrl)
+      this.showErrorNotice()
+      // window.open(shareUrl)
     },
     shareToWeibo: function () {
       this.showErrorNotice()
