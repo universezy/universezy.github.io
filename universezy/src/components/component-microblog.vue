@@ -20,7 +20,7 @@
 
 <script>
 import {imageApi} from '../api/urls'
-import {globalRouters} from '../router/routers'
+import {globalRouters} from '../api/routers'
 
 export default {
   name: 'component-microblog',

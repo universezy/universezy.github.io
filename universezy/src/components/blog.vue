@@ -33,7 +33,7 @@ import comCategory from './component-category.vue'
 import comColumn from './component-column.vue'
 import mCategories from '../data/categories'
 import mColumns from '../data/columns'
-import {globalRouters} from '../router/routers'
+import {globalRouters} from '../api/routers'
 
 export default {
   name: 'blog',

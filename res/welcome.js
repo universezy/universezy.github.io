@@ -1,7 +1,7 @@
 var timeoutId = 0;
 
 redirect = () => {
-  window.location.href="universezy/dist/index.html";
+  window.location.href="https://universezy.github.io/universezy/dist/index.html";
 }
 
 window.onload = () => {

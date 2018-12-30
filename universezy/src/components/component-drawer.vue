@@ -52,7 +52,7 @@
 
 <script>
 import {blogApi, shareApi} from '../api/urls'
-import {globalRouters} from '../router/routers'
+import {globalRouters} from '../api/routers'
 import QRCode from 'qrcodejs2'
 
 var qrcode = null
