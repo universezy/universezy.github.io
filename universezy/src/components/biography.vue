@@ -49,7 +49,7 @@ export default {
       } else {
         try {
           let _this = this
-          requestApi.fetch(markdownApi.getBioUrl()).then(function (response) {
+          requestApi.fetch(markdownApi.getBioUrl()).then((response) => {
             if (response.status === 200) {
               _this.bio = response.data
               _this.$store.dispatch('saveBio', response.data)

@@ -23,7 +23,11 @@
             :trigger="settings.trigger"
             :arrow="settings.arrow">
             <CarouselItem v-for="item in banners" :key="item.id">
-              <img class="img_banner" :src="item.src" :title="item.title" @click="clickBanner(item.id)"/>
+              <img
+                class="img_banner"
+                :src="getImgSrc(item.id)"
+                :title="item.title"
+                @click="clickBanner(item.id)"/>
             </CarouselItem>
           </Carousel>
         </div>
@@ -42,6 +46,7 @@ import comMicroBlog from './component-microblog.vue'
 import mNotice from '../data/notice'
 import mBanners from '../data/banners'
 import mBlogs from '../data/blogs'
+import {imageApi} from '../api/urls'
 
 export default {
   name: 'home',
@@ -74,7 +79,9 @@ export default {
       this.notice = mNotice.notice
     }
     if (mBanners.banners !== null && mBanners.banners.length > 0) {
-      this.banners = mBanners.banners
+      for (var i = mBanners.banners.length - 1; i >= 0; i--) {
+        this.banners.push(mBanners.banners[i])
+      }
     }
     if (mBlogs.blogs !== null && mBlogs.blogs.length > 0) {
       var index = mBlogs.blogs.length - 1
@@ -95,7 +102,10 @@ export default {
       this.$store.dispatch('closeNotice')
     },
     clickBanner: function (id) {
-      this.$router.push('/blog/display?id=' + id)
+      this.$router.push('/blog/display/' + id)
+    },
+    getImgSrc: function (id) {
+      return imageApi.getBannerUrl(id)
     }
   }
 }

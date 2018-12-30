@@ -3,7 +3,7 @@
     <div class="div_category">
       <div class="div_head">
         <Breadcrumb class="breadcrumb_category">
-          <BreadcrumbItem to="/blog?tab=category">
+          <BreadcrumbItem to="/blog/tab/category">
             <Icon type="md-pricetags"></Icon> 类别
           </BreadcrumbItem>
           <BreadcrumbItem>
@@ -26,6 +26,7 @@
 import comBase from './component-base.vue'
 import comOverview from './component-overview.vue'
 import mCategories from '../data/categories'
+import {imageApi} from '../api/urls'
 
 export default {
   name: 'category',
@@ -37,10 +38,10 @@ export default {
     return {
       showImg: false,
       imgSrc: '',
-      propCategory: this.$route.query.category,
+      propCategory: this.$route.params.category,
       filter: {
         type: 'category',
-        value: this.$route.query.category
+        value: this.$route.params.category
       },
       keyword: ''
     }
@@ -54,7 +55,7 @@ export default {
         for (var i = 0; i <= mCategories.categories.length; i++) {
           if (mCategories.categories[i].name === this.propCategory) {
             this.showImg = true
-            this.imgSrc = mCategories.categories[i].src
+            this.imgSrc = imageApi.getCategoryUrl(this.propCategory)
             break
           }
         }

@@ -40,7 +40,7 @@ import comBase from './component-base.vue'
 import comDrawer from './component-drawer.vue'
 import mBlogs from '../data/blogs'
 import requestApi from '../api/requestApi'
-import {markdownApi} from '../api/urls'
+import {markdownApi, imageApi} from '../api/urls'
 
 export default {
   name: 'display',
@@ -64,7 +64,7 @@ export default {
       },
       showDrawer: false,
       showBlog: true,
-      id: this.$route.query.id,
+      id: this.$route.params.id,
       prevBlog: null,
       nextBlog: null,
       currentBlog: null,
@@ -73,7 +73,7 @@ export default {
   },
   computed: {
     imgSrc: function () {
-      return './static/category/' + this.currentBlog.category + '.png'
+      return imageApi.getCategoryUrl(this.currentBlog.category)
     }
   },
   created () {
@@ -105,7 +105,7 @@ export default {
     load: function () {
       try {
         let _this = this
-        requestApi.fetch(markdownApi.getBlogUrl(this.id)).then(function (response) {
+        requestApi.fetch(markdownApi.getBlogUrl(this.id)).then((response) => {
           if (response.status === 200) {
             _this.blogData = response.data
             _this.setData()
@@ -126,7 +126,7 @@ export default {
       document.title = this.currentBlog.title + ' - ' + this.$store.state.GlobalData.title
     },
     clickCategory: function () {
-      this.$router.push('/blog/category?category=' + this.currentBlog.category)
+      this.$router.push('/blog/category/' + this.currentBlog.category)
     },
     clickMore: function () {
       this.showDrawer = !this.showDrawer

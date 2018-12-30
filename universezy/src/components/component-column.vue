@@ -1,7 +1,7 @@
 <template>
   <Card :class="cardClasses">
     <span class="span_column" slot="title">
-      <img class="img_column" :src="propColumn.src" />
+      <img class="img_column" :src="imgSrc" />
       <h3 class="span_title">{{propColumn.title}}</h3>
     </span>
     <div class="div_desc">
@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import {imageApi} from '../api/urls'
+
 export default {
   name: 'component-column',
   props: {
@@ -18,7 +20,6 @@ export default {
       type: Object,
       default: function () {
         return {
-          src: '#',
           name: 'null',
           title: 'null',
           desc: 'null',
@@ -44,6 +45,9 @@ export default {
       return [
         'card_column', this.wide ? '' : 'card_column_small'
       ]
+    },
+    imgSrc: function () {
+      return imageApi.getCategoryUrl(this.propColumn.name)
     }
   }
 }

@@ -19,7 +19,8 @@
 </template>
 
 <script>
-import {blogApi} from '../api/urls'
+import {imageApi} from '../api/urls'
+import {globalRouters} from '../router/routers'
 
 export default {
   name: 'component-microblog',
@@ -57,7 +58,7 @@ export default {
   },
   computed: {
     imgSrc: function () {
-      return './static/category/' + this.propMicroblog.category + '.png'
+      return imageApi.getCategoryUrl(this.propMicroblog.category)
     },
     abstractClassed: function () {
       return [
@@ -68,10 +69,10 @@ export default {
   },
   methods: {
     clickCategory: function () {
-      this.$router.push('/blog/category?category=' + this.propMicroblog.category)
+      this.$router.push(globalRouters.getCategoryRouter(this.propMicroblog.category))
     },
     clickTitle: function () {
-      window.open(blogApi.getPageUrl(this.propMicroblog.id))
+      this.$router.push(globalRouters.getDisplayRouter(this.propMicroblog.id))
     },
     clickTag: function (tag) {
       console.log('clickTag: ' + tag)

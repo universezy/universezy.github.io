@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import {imageApi} from '../api/urls'
+
 export default {
   name: 'component-favorite',
   props: {
@@ -18,7 +20,7 @@ export default {
       type: Object,
       default: function () {
         return {
-          src: '#',
+          id: 'null',
           link: '#',
           name: 'null'
         }
@@ -35,7 +37,7 @@ export default {
   },
   computed: {
     imgSrc: function () {
-      return './static/favorite/' + this.propFavorite.src
+      return imageApi.getFavorite(this.propFavorite.id)
     }
   }
 }

@@ -4,7 +4,7 @@
       <div class="div_head">
         <div class="div_breadcrumb">
           <Breadcrumb class="breadcrumb_column">
-            <BreadcrumbItem to="/blog?tab=column">
+            <BreadcrumbItem to="/blog/tab/column">
               <Icon type="md-folder"></Icon> 专栏
             </BreadcrumbItem>
           </Breadcrumb>
@@ -35,10 +35,10 @@ export default {
   data () {
     return {
       dataColumn: null,
-      propColumn: this.$route.query.column,
+      propColumn: this.$route.params.column,
       filter: {
         type: 'column',
-        value: this.$route.query.column
+        value: this.$route.params.column
       },
       keyword: ''
     }

@@ -3,16 +3,22 @@
     <Divider style="font-weight: bold;">分享</Divider>
     <Row>
       <div class="div_share">
-        <img class="img_share" src="../assets/qq.svg" @click="shareToQQ"/>
-      </div>
-      <div class="div_share">
         <Tooltip placement="bottom" @on-popper-show="showQrcode">
           <div class="div_qrcode" slot="content">
-            <div id="qrcode" ref="qrcode"></div>
+            <div id="qrcode"></div>
             <span class="span_qrcode">微信扫一扫</span>
           </div>
           <img class="img_share" src="../assets/wechat.svg"/>
         </Tooltip>
+      </div>
+      <div class="div_share">
+        <img class="img_share" src="../assets/qq.svg" @click="shareToQQ"/>
+      </div>
+      <div class="div_share">
+        <img class="img_share" src="../assets/qzone.svg" @click="shareToQZone"/>
+      </div>
+      <div class="div_share">
+        <img class="img_share" src="../assets/weibo.svg" @click="shareToWeibo"/>
       </div>
     </Row>
     <span>开发中，敬请期待！</span>
@@ -20,14 +26,14 @@
     <ButtonGroup size="large">
       <Poptip trigger="hover" word-wrap width="200" placement="bottom">
         <div class="div_poptip" slot="content">{{settings.prevTitle}}</div>
-        <Button type="primary" :disabled="settings.prevDisabled" @click="clickPrev">
+        <Button type="primary" :disabled="settings.prevDisabled" @click="shiftBlog(prev.id)">
           <Icon type="ios-arrow-back"></Icon>
           上一篇
         </Button>
       </Poptip>
       <Poptip trigger="hover" word-wrap width="200" placement="bottom">
         <div class="div_poptip" slot="content">{{settings.nextTitle}}</div>
-        <Button type="primary" :disabled="settings.nextDisabled" @click="clickNext">
+        <Button type="primary" :disabled="settings.nextDisabled" @click="shiftBlog(next.id)">
           下一篇
           <Icon type="ios-arrow-forward"></Icon>
         </Button>
@@ -46,6 +52,7 @@
 
 <script>
 import {blogApi, shareApi} from '../api/urls'
+import {globalRouters} from '../router/routers'
 import QRCode from 'qrcodejs2'
 
 var qrcode = null
@@ -93,10 +100,6 @@ export default {
       var id = this.current === null ? null : this.current.id
       return blogApi.getPageUrl(id)
     },
-    shareToQQ: function () {
-      let shareUrl = shareApi.getQQUrl(this.current)
-      window.open(shareUrl)
-    },
     showQrcode: function () {
       if (qrcode !== null) return
       qrcode = new QRCode('qrcode', {
@@ -108,17 +111,27 @@ export default {
         correctLevel: QRCode.CorrectLevel.H
       })
     },
-    clickPrev: function () {
-      this.$router.push('/blog/display?id=' + this.prev.id)
-      this.$router.go(0)
+    shareToQQ: function () {
+      let shareUrl = shareApi.getQQUrl(this.current)
+      window.open(shareUrl)
     },
-    clickNext: function () {
-      this.$router.push('/blog/display?id=' + this.next.id)
+    shareToQZone: function () {
+      let shareUrl = shareApi.getQZoneUrl(this.current)
+      window.open(shareUrl)
+    },
+    shareToWeibo: function () {
+      this.showErrorNotice()
+    },
+    shiftBlog: function (id) {
+      this.$router.push(globalRouters.getDisplayRouter(id))
       this.$router.go(0)
     },
     submitComment: function () {
       console.log('submitComment')
       // TODO
+    },
+    showErrorNotice: function () {
+      this.$Message.error('该分享功能开发中')
     }
   }
 }
@@ -160,7 +173,6 @@ export default {
 
 #qrcode{
   margin-bottom: 5px;
-  text-align: center;
 }
 
 .span_qrcode{

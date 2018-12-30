@@ -151,26 +151,7 @@ export default {
   },
   methods: {
     clickNav: function (propActive) {
-      switch (propActive) {
-        case 'biography':
-          this.$router.push('/biography')
-          break
-        case 'blog':
-          this.$router.push('/blog?tab=overview')
-          break
-        case 'favorite':
-          this.$router.push('/favorite')
-          break
-        case 'friendlink':
-          this.$router.push('/friendlink')
-          break
-        case 'about':
-          this.$router.push('/about')
-          break
-        case 'home':
-        default:
-          this.$router.push('/home')
-      }
+      this.$router.push('/' + propActive)
     }
   }
 }

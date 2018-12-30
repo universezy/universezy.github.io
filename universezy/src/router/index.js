@@ -13,10 +13,12 @@ import friendlink from '@/components/friendlink'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
-      name: '',
+      name: 'home-default',
+      redirect: '/home',
       component: home
     },
     {
@@ -36,23 +38,53 @@ export default new Router({
     },
     {
       path: '/blog',
-      name: 'blog',
+      name: 'blog-default',
+      redirect: '/blog/tab/overview',
       component: blog
     },
     {
-      path: '/blog/category',
-      name: 'category',
+      path: '/blog/tab/:tab',
+      name: 'blog/tab',
+      component: blog
+    },
+    {
+      path: '/blog/tab/',
+      name: 'blog-error',
+      redirect: '/blog/tab/overview',
+      component: blog
+    },
+    {
+      path: '/blog/category/:category',
+      name: '/blog/category',
       component: category
     },
     {
-      path: '/blog/column',
-      name: 'column',
+      path: '/blog/category',
+      name: 'category-error',
+      redirect: '/blog',
+      component: blog
+    },
+    {
+      path: '/blog/column/:column',
+      name: '/blog/column',
       component: column
     },
     {
-      path: '/blog/display',
-      name: 'display',
+      path: '/blog/column',
+      name: 'column-error',
+      redirect: '/blog',
+      component: column
+    },
+    {
+      path: '/blog/display/:id',
+      name: '/blog/display',
       component: display
+    },
+    {
+      path: '/blog/display',
+      name: 'display-error',
+      redirect: '/blog',
+      component: blog
     },
     {
       path: '/favorite',

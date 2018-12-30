@@ -15,7 +15,12 @@
             <comColumn :column="item"></comColumn>
           </div>
         </TabPane>
-        <Input search enter-button slot="extra" @on-search="search" v-show="showSearchView"/>
+        <Input
+          v-show="showSearchView"
+          search
+          enter-button
+          slot="extra"
+          @on-search="search"/>
       </Tabs>
     </div>
   </comBase>
@@ -28,6 +33,7 @@ import comCategory from './component-category.vue'
 import comColumn from './component-column.vue'
 import mCategories from '../data/categories'
 import mColumns from '../data/columns'
+import {globalRouters} from '../router/routers'
 
 export default {
   name: 'blog',
@@ -54,7 +60,7 @@ export default {
     if (mColumns.columns !== null && mColumns.columns.length > 0) {
       this.columns = mColumns.columns
     }
-    let tab = this.$route.query.tab
+    let tab = this.$route.params.tab
     this.tabValue = tab !== null && this.tabs.indexOf(tab) !== -1 ? tab : this.tabs[0]
   },
   watch: {
@@ -64,10 +70,10 @@ export default {
   },
   methods: {
     clickCategory: function (name) {
-      this.$router.push('/blog/category?category=' + name)
+      this.$router.push(globalRouters.getCategoryRouter(name))
     },
     clickColumn: function (name) {
-      this.$router.push('blog/column?column=' + name)
+      this.$router.push(globalRouters.getColumnRouter(name))
     },
     search: function (value) {
       this.keyword = value
