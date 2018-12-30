@@ -6,7 +6,7 @@
           <img class="img_category" :src="imgSrc" @click="clickCategory"/>
           <div class="div_title"><b>{{blog.title}}</b></div>
         </div>
-        <Button shape="circle" large icon="md-menu" slot="extra" @click="clickMore"></Button>
+        <Button type="warning" shape="circle" large icon="md-menu" slot="extra" @click="clickMore"></Button>
         <Row class="row_microblog">
           <Tag color="primary" v-for="item in blog.tags" :key="item.tag">
             <span>{{item.tag}}</span>

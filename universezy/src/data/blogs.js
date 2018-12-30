@@ -766,7 +766,7 @@ const blogs = [
     timestamp: 1544060959000
   },
   {
-    id: 'SolutionOfVue.js3',
+    id: 'SolutionOfVue_js3',
     category: 'Vue.js',
     title: 'Vue.js工程打包静态网页提示CORS问题的解决方案',
     tags: [

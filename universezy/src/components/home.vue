@@ -12,22 +12,21 @@
         <template slot="desc">{{notice.desc}}</template>
       </Alert>
       <div class="div_carousel">
-        <Carousel
-          class="carousel_home"
-          v-model="settings.value"
-          :autoplay="settings.autoplay"
-          :autoplay-speed="settings.autoplaySpeed"
-          :loop="settings.loop"
-          :dots="settings.dots"
-          :radius-dot="settings.radiusDot"
-          :trigger="settings.trigger"
-          :arrow="settings.arrow">
-          <CarouselItem v-for="item in banners" :key="item.src">
-            <div class="carousel_content">
+        <div class="div_inner">
+          <Carousel
+            v-model="settings.value"
+            :autoplay="settings.autoplay"
+            :autoplay-speed="settings.autoplaySpeed"
+            :loop="settings.loop"
+            :dots="settings.dots"
+            :radius-dot="settings.radiusDot"
+            :trigger="settings.trigger"
+            :arrow="settings.arrow">
+            <CarouselItem v-for="item in banners" :key="item.id">
               <img class="img_banner" :src="item.src" :title="item.title" @click="clickBanner(item.id)"/>
-            </div>
-          </CarouselItem>
-        </Carousel>
+            </CarouselItem>
+          </Carousel>
+        </div>
       </div>
       <Divider orientation="left">最近更新</Divider>
       <div class="div_microblog" v-for="item in microblogs" :key="item.id">
@@ -63,7 +62,7 @@ export default {
         dots: 'inside',
         radiusDot: false,
         trigger: 'click',
-        arrow: 'always'
+        arrow: 'hover'
       },
       banners: [],
       microblogs: [],
@@ -96,6 +95,7 @@ export default {
       this.$store.dispatch('closeNotice')
     },
     clickBanner: function (id) {
+      console.log('id=' + id)
       this.$router.push('/blog/display?id=' + id)
     }
   }
@@ -115,22 +115,20 @@ export default {
 .div_carousel{
   width: 100%;
   height: auto;
+  margin: 20px 0;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  background: #e8eaec;
+  overflow: hidden;
+}
+
+.div_inner{
+  width: 500px;
+  height: 300px;
+  margin: 0 auto;
   text-align: center;
   align-items: center;
-  background: #e8eaec;
-}
-
-.carousel_home {
-  width: auto;
-  max-width: 1000px;
-  margin: 20px auto;
-  height: auto;
-}
-
-.carousel_content {
-  height: 400px;
-  line-height: 400px;
-  background: #e8eaec;
 }
 
 .img_banner {

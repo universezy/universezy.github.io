@@ -9,7 +9,7 @@ SpringMVC搭建的服务器，前端请求时返回的中文乱码。
 
 ### 1. 数据库编码设置
 
-检查数据库的编码是否为UTF8，如果不是，以MySQL为例，设置编码格式，参考：[MySQL修改表中字段编码格式](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=ModifyCharsetOnMySQL)
+检查数据库的编码是否为UTF8，如果不是，以MySQL为例，设置编码格式，参考：《[MySQL修改表中字段编码格式](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=ModifyCharsetOnMySQL)》
 
 ---
 ### 2. JDBC编码设置

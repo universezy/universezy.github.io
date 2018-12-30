@@ -1,29 +1,31 @@
 <template>
   <div class="div_drawer">
-    <Divider>分享</Divider>
+    <Divider style="font-weight: bold;">分享</Divider>
     <span>开发中，敬请期待！</span>
-    <Divider class="divider">更多</Divider>
+    <Divider class="divider_drawer">更多</Divider>
     <ButtonGroup size="large">
-      <Tooltip :content="settings.prevTitle" placement="bottom">
+      <Poptip trigger="hover" word-wrap width="240" placement="bottom-start">
+        <div class="div_poptip" slot="content">{{settings.prevTitle}}</div>
         <Button type="primary" :disabled="settings.prevDisabled" @click="clickPrev">
           <Icon type="ios-arrow-back"></Icon>
           上一篇
         </Button>
-      </Tooltip>
-      <Tooltip :content="settings.nextTitle" placement="bottom">
+      </Poptip>
+      <Poptip trigger="hover" word-wrap width="240" placement="bottom-end">
+        <div class="div_poptip" slot="content">{{settings.nextTitle}}</div>
         <Button type="primary" :disabled="settings.nextDisabled" @click="clickNext">
           下一篇
           <Icon type="ios-arrow-forward"></Icon>
         </Button>
-      </Tooltip>
+      </Poptip>
     </ButtonGroup>
-    <Divider class="divider">跳转</Divider>
+    <Divider class="divider_drawer">跳转</Divider>
     <ButtonGroup size="large">
       <Button type="primary" ghost to="/blog?tab=overview">总览</Button>
       <Button type="primary" ghost to="/blog?tab=category">类别</Button>
       <Button type="primary" ghost to="/blog?tab=column">专栏</Button>
     </ButtonGroup>
-    <Divider class="divider">评论</Divider>
+    <Divider class="divider_drawer">评论</Divider>
     <span>开发中，敬请期待！</span>
   </div>
 </template>
@@ -85,7 +87,14 @@ export default {
   text-align: center;
 }
 
-.divider{
+.divider_drawer{
   margin-top: 50px;
+  font-weight: bold;
+}
+
+.div_poptip{
+  color: #17233d;
+  font-size: 14px;
+  font-weight: bold;
 }
 </style>

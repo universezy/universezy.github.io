@@ -14,7 +14,7 @@
 ```java
 public class Demo {
     public void demo1() {
-        for (;;) {}
+        for ( ; ; ) {}
     }
 
     public void demo2() {

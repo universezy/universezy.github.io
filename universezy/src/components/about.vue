@@ -21,6 +21,10 @@
           <span class="span_about">接下来要花较长时间把过去一年多时间里写的70余篇博客导进来，然后继续维护和增加新功能，主页轮播图bug已经发现了，还没提issue，欢迎读者帮我提上去。</span>
           <Divider />
           <span class="span_date">2018年12月29日</span>
+          <Divider />
+          <span class="span_about">博客导入工作结束，开始修复已知bug并开发新功能。</span>
+          <Divider />
+          <span class="span_date">2018年12月30日</span>
         </Card>
       </div>
     </div>

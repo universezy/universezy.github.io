@@ -7,12 +7,12 @@
 ---
 ## 一、 配置Maven
 
-参考我的另一篇文章[Ubuntu下Maven的配置](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=ConfigMavenOnUbuntu)
+参考我的另一篇文章《[Ubuntu下Maven的配置](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=ConfigMavenOnUbuntu)》
 
 ---
 ## 二、 配置Tomcat
 
-参考我的另一篇文章[Ubuntu下搭建Tomcat服务器](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=ConfigTomcatOnUbuntu)
+参考我的另一篇文章《[Ubuntu下搭建Tomcat服务器](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=ConfigTomcatOnUbuntu)》
 
 ---
 ## 三、 将Maven添加到Eclipse
