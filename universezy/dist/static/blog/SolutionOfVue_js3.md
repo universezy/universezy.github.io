@@ -11,4 +11,4 @@
 ```
 
 但是我遇到的只是部分资源请求不到，也就排除了CORS问题，那么另一种可能，那就是请求的url错了，检查报错项的路径，发现确实有问题，原因在于打包时未配置好相对路径，这种情况参考我的另一篇解决方案：
-[Vue.js打包静态网页出现空白或路径错误的问题解决方案](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SolutionOfPackingVue.js)
+《[Vue.js打包静态网页出现空白或路径错误的问题解决方案](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SolutionOfPackingVue_js)》

@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import {blogApi} from '../api/urls'
+
 export default {
   name: 'component-microblog',
   props: {
@@ -69,7 +71,7 @@ export default {
       this.$router.push('/blog/category?category=' + this.propMicroblog.category)
     },
     clickTitle: function () {
-      this.$router.push('/blog/display?id=' + this.propMicroblog.id)
+      window.open(blogApi.getPageUrl(this.propMicroblog.id))
     },
     clickTag: function (tag) {
       console.log('clickTag: ' + tag)

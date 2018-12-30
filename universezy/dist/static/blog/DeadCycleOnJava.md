@@ -2,7 +2,7 @@
 
 在Java代码中，对于死循环有两种常见的方式：
 
-- for(;;)
+- for( ; ; )
 - while(true)
 
 那么二者到底有什么区别呢？
@@ -14,7 +14,7 @@
 ```java
 public class Demo {
     public void demo1() {
-        for ( ; ; ) {}
+        for (;;) {}
     }
 
     public void demo2() {

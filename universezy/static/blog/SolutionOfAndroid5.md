@@ -12,4 +12,4 @@ error: insufficient permissions for device
 ---
 ## 三、 解决方案
 
-参考我的另一篇文章：[Ubuntu下注册Android设备](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=RegisterAndroidDeviceOnUbuntu)
+参考我的另一篇文章：《[Ubuntu下注册Android设备](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=RegisterAndroidDeviceOnUbuntu)》

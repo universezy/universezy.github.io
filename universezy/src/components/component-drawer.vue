@@ -4,14 +4,14 @@
     <span>开发中，敬请期待！</span>
     <Divider class="divider_drawer">更多</Divider>
     <ButtonGroup size="large">
-      <Poptip trigger="hover" word-wrap width="240" placement="bottom-start">
+      <Poptip trigger="hover" word-wrap width="200" placement="bottom">
         <div class="div_poptip" slot="content">{{settings.prevTitle}}</div>
         <Button type="primary" :disabled="settings.prevDisabled" @click="clickPrev">
           <Icon type="ios-arrow-back"></Icon>
           上一篇
         </Button>
       </Poptip>
-      <Poptip trigger="hover" word-wrap width="240" placement="bottom-end">
+      <Poptip trigger="hover" word-wrap width="200" placement="bottom">
         <div class="div_poptip" slot="content">{{settings.nextTitle}}</div>
         <Button type="primary" :disabled="settings.nextDisabled" @click="clickNext">
           下一篇
