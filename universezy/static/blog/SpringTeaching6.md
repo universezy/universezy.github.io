@@ -9,7 +9,7 @@
 
 ### 1. 创建工程
 
-eclipse创建一个Maven工程，选择webapp类型，具体步骤参考我的另一篇教程《[使用Maven构建Java Web工程的教程](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=MavenBuildJavaWeb)》。
+eclipse创建一个Maven工程，选择webapp类型，具体步骤参考我的另一篇教程《[使用Maven构建Java Web工程的教程](https://universezy.github.io/universezy/dist/index.html#/blog/display/MavenBuildJavaWeb)》。
 
 为了便于读者和本文对照，我建议读者将"Group Id"设置为"com.example"，"Artifact Id"设为"springdemo"，"Package"会自动生成。
 
@@ -787,15 +787,15 @@ INSERT INTO demo VALUES(1,'test');
 ---
 ## 九、 可能出现的问题
 
-- 中文乱码：[SpringMVC下后端返回前端出现中文乱码的解决方案](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SolutionOfSpring1)
+- 中文乱码：[SpringMVC下后端返回前端出现中文乱码的解决方案](https://universezy.github.io/universezy/dist/index.html#/blog/display/SolutionOfSpring1)
 
-- 前端报CORS错误：[SpringMVC工程解决"CORS 头缺少 'Access-Control-Allow-Origin'"问题](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SolutionOfSpring3)
+- 前端报CORS错误：[SpringMVC工程解决"CORS 头缺少 'Access-Control-Allow-Origin'"问题](https://universezy.github.io/universezy/dist/index.html#/blog/display/SolutionOfSpring3)
 
-- 服务器端无法接收put请求的参数：[SpringMVC解决无法接收PUT请求的问题](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SolutionOfSpring4)
+- 服务器端无法接收put请求的参数：[SpringMVC解决无法接收PUT请求的问题](https://universezy.github.io/universezy/dist/index.html#/blog/display/SolutionOfSpring4)
 
-- jdbcTemplate.queryForObject抛出异常：[Spring工程中JDBC抛出"EmptyResultDataAccessException"异常的解决方案](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SolutionOfSpring2)
+- jdbcTemplate.queryForObject抛出异常：[Spring工程中JDBC抛出"EmptyResultDataAccessException"异常的解决方案](https://universezy.github.io/universezy/dist/index.html#/blog/display/SolutionOfSpring2)
 
-- 服务器端报非法字符异常：[Java Web工程报"Invalid character found in the request target"错误的解决方案](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SolutionOfJava2)
+- 服务器端报非法字符异常：[Java Web工程报"Invalid character found in the request target"错误的解决方案](https://universezy.github.io/universezy/dist/index.html#/blog/display/SolutionOfJava2)
 
 ---
 ## 十、 总结回顾
@@ -808,18 +808,18 @@ IoC机制贯穿整个工程，几乎处处都有用到。
 
 ---
 
-- [首页](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SpringTeaching1)
+- [首页](https://universezy.github.io/universezy/dist/index.html#/blog/display/SpringTeaching1)
 
-- [Chapter 1 —— 吐槽网上教程](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SpringTeaching2)
+- [Chapter 1 —— 吐槽网上教程](https://universezy.github.io/universezy/dist/index.html#/blog/display/SpringTeaching2)
 
-- [Chapter 2 —— 准备工作](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SpringTeaching3)
+- [Chapter 2 —— 准备工作](https://universezy.github.io/universezy/dist/index.html#/blog/display/SpringTeaching3)
 
-- [Chapter 3 —— 认识IoC](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SpringTeaching4)
+- [Chapter 3 —— 认识IoC](https://universezy.github.io/universezy/dist/index.html#/blog/display/SpringTeaching4)
 
-- [Chapter 4 —— 剖析SpringMVC架构](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SpringTeaching5)
+- [Chapter 4 —— 剖析SpringMVC架构](https://universezy.github.io/universezy/dist/index.html#/blog/display/SpringTeaching5)
 
 - Chapter 5 —— 编写工程
 
-- [Chapter 6 —— 后记](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SpringTeaching7)
+- [Chapter 6 —— 后记](https://universezy.github.io/universezy/dist/index.html#/blog/display/SpringTeaching7)
 
 - [Issues —— 问题或反馈](https://github.com/universezy/SpringWebServer-Teaching/issues)

@@ -1,5 +1,5 @@
 ## 前言
-如果你的本地仓库和远程仓库没有建立连接，请先看《[git将本地仓库上传到远程仓库](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=GitAddOrigin)》，如果你已经建立连接或者是直接clone到本地仓库的，请往下读：
+如果你的本地仓库和远程仓库没有建立连接，请先看《[git将本地仓库上传到远程仓库](https://universezy.github.io/universezy/dist/index.html#/blog/display/GitAddOrigin)》，如果你已经建立连接或者是直接clone到本地仓库的，请往下读：
 
 ---
 ## 1. 添加内容

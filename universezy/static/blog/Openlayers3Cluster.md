@@ -129,4 +129,4 @@ map.getView().on('change:resolution',function(){
 
 
 ---
-**关于Cluster的心得就说这么多，下一章说说[LineString](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=Openlayers3LineString)的静态和动态使用。**
+**关于Cluster的心得就说这么多，下一章说说[LineString](https://universezy.github.io/universezy/dist/index.html#/blog/display/Openlayers3LineString)的静态和动态使用。**

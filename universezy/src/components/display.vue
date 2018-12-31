@@ -4,15 +4,15 @@
       <Card>
         <div class="div_info" slot="title">
           <img class="img_category" :src="imgSrc" @click="clickCategory"/>
-          <div class="div_title"><b>{{currentBlog.title}}</b></div>
+          <div class="div_title"><b>{{current.title}}</b></div>
         </div>
         <Button type="warning" shape="circle" large icon="md-menu" slot="extra" @click="clickMore"></Button>
         <Row class="row_microblog">
-          <Tag color="primary" v-for="item in currentBlog.tags" :key="item.tag">
+          <Tag color="primary" v-for="item in current.tags" :key="item.tag">
             <span>{{item.tag}}</span>
           </Tag>
         <div class="div_time">
-          <Time :time="currentBlog.timestamp" type="date" />
+          <Time :time="current.timestamp" type="date" />
         </div>
         </Row>
       </Card>
@@ -20,37 +20,87 @@
       <mavon-editor
         class="markdown"
         v-model="blogData"
-        :subfield="settings.subfield"
-        :defaultOpen="settings.defaultOpen"
-        :toolbarsFlag="settings.toolbarsFlag"
-        :navigation="settings.navigation"
-        :toolbars="settings.toolbars"/>
+        :subfield="settingsMd.subfield"
+        :defaultOpen="settingsMd.defaultOpen"
+        :toolbarsFlag="settingsMd.toolbarsFlag"
+        :navigation="settingsMd.navigation"
+        :toolbars="settingsMd.toolbars"/>
     </div>
     <div v-else class="div_no_data">
       <Alert type="error" show-icon>请求的资源不存在</Alert>
     </div>
     <Drawer width="320" :closable="false" v-model="showDrawer">
-      <comDrawer v-bind:current="currentBlog" v-bind:prev="prevBlog" v-bind:next="nextBlog"></comDrawer>
+      <div class="div_drawer">
+        <Divider style="font-weight: bold;">分享</Divider>
+        <Row>
+          <div class="div_share">
+            <Tooltip placement="bottom" @on-popper-show="showQrcode">
+              <div class="div_qrcode" slot="content">
+                <div id="qrcode"></div>
+                <span class="span_qrcode">微信扫一扫</span>
+              </div>
+              <img class="img_share" src="../assets/wechat.svg"/>
+            </Tooltip>
+          </div>
+          <div class="div_share">
+            <img class="img_share" src="../assets/qq.svg" @click="shareToQQ"/>
+          </div>
+          <div class="div_share">
+            <img class="img_share" src="../assets/qzone.svg" @click="shareToQZone"/>
+          </div>
+          <div class="div_share">
+            <img class="img_share" src="../assets/weibo.svg" @click="shareToWeibo"/>
+          </div>
+        </Row>
+        <span>开发中，敬请期待！</span>
+        <Divider class="divider_drawer">更多</Divider>
+        <ButtonGroup size="large">
+          <Poptip trigger="hover" word-wrap width="200" placement="bottom">
+            <div class="div_poptip" slot="content">{{settingsDr.prevTitle}}</div>
+            <Button type="primary" :disabled="settingsDr.prevDisabled" @click="shiftBlog(-1)">
+              <Icon type="ios-arrow-back"></Icon>
+              上一篇
+            </Button>
+          </Poptip>
+          <Poptip trigger="hover" word-wrap width="200" placement="bottom">
+            <div class="div_poptip" slot="content">{{settingsDr.nextTitle}}</div>
+            <Button type="primary" :disabled="settingsDr.nextDisabled" @click="shiftBlog(1)">
+              下一篇
+              <Icon type="ios-arrow-forward"></Icon>
+            </Button>
+          </Poptip>
+        </ButtonGroup>
+        <Divider class="divider_drawer">跳转</Divider>
+        <ButtonGroup size="large">
+          <Button type="primary" ghost to="/blog/tab/overview">总览</Button>
+          <Button type="primary" ghost to="/blog/tab/category">类别</Button>
+          <Button type="primary" ghost to="/blog/tab/column">专栏</Button>
+        </ButtonGroup>
+        <Divider class="divider_drawer">评论</Divider>
+        <span>开发中，敬请期待！</span>
+      </div>
     </Drawer>
   </comBase>
 </template>
 
 <script>
 import comBase from './component-base.vue'
-import comDrawer from './component-drawer.vue'
 import mBlogs from '../data/blogs'
 import requestApi from '../api/requestApi'
-import {markdownApi, imageApi} from '../api/urls'
+import {markdownApi, imageApi, blogApi, shareApi} from '../api/urls'
+import {globalRouters} from '../api/routers'
+import QRCode from 'qrcodejs2'
+
+var qrcode = null
 
 export default {
   name: 'display',
   components: {
-    comBase,
-    comDrawer
+    comBase
   },
   data () {
     return {
-      settings: {
+      settingsMd: {
         subfield: false, // 单双栏模式
         defaultOpen: 'preview', // 默认展示
         toolbarsFlag: true, // 工具栏是否显示
@@ -62,39 +112,60 @@ export default {
           navigation: true // 导航目录
         }
       },
+      settingsDr: {
+        prevTitle: '',
+        prevTitleDefault: '已经是第一篇',
+        prevDisabled: false,
+        nextTitle: '',
+        nextTitleDefault: '已经是最后一篇',
+        nextDisabled: false
+      },
       showDrawer: false,
       showBlog: true,
       id: this.$route.params.id,
-      prevBlog: null,
-      nextBlog: null,
-      currentBlog: null,
+      prev: null,
+      next: null,
+      current: null,
       blogData: '请求资源中......'
     }
   },
   computed: {
     imgSrc: function () {
-      return imageApi.getCategoryUrl(this.currentBlog.category)
+      return imageApi.getCategoryUrl(this.current.category)
+    }
+  },
+  watch: {
+    refresh: function () {
+      if (this.refresh !== 0) {
+        this.reload()
+      }
     }
   },
   created () {
-    if (this.check()) {
-      this.load()
-    } else {
-      this.showBlog = false
-    }
+    this.init()
   },
   methods: {
+    init: function () {
+      if (this.check()) {
+        this.load()
+      } else {
+        this.showBlog = false
+      }
+    },
     check: function () {
       if (mBlogs.blogs !== null && mBlogs.blogs.length > 0) {
-        this.originBlogs = mBlogs.blogs
         for (var i = mBlogs.blogs.length - 1; i >= 0; i--) {
           if (mBlogs.blogs[i].id === this.id) {
-            this.currentBlog = mBlogs.blogs[i]
+            this.current = mBlogs.blogs[i]
             if (i - 1 >= 0) {
-              this.prevBlog = mBlogs.blogs[i - 1]
+              this.prev = mBlogs.blogs[i - 1]
+            } else {
+              this.prev = null
             }
             if (i + 1 <= mBlogs.blogs.length - 1) {
-              this.nextBlog = mBlogs.blogs[i + 1]
+              this.next = mBlogs.blogs[i + 1]
+            } else {
+              this.next = null
             }
             return true
           }
@@ -123,13 +194,79 @@ export default {
       this.$Message.error('请求服务器失败，请稍后再试。')
     },
     setData: function () {
-      document.title = this.currentBlog.title + ' - ' + this.$store.state.GlobalData.title
+      document.title = this.current.title + ' - ' + this.$store.state.GlobalData.title
+      if (this.prev === null) {
+        this.settingsDr.prevDisabled = true
+        this.settingsDr.prevTitle = this.settingsDr.prevTitleDefault
+      } else {
+        this.settingsDr.prevDisabled = false
+        this.settingsDr.prevTitle = this.prev.title
+      }
+      if (this.next === null) {
+        this.settingsDr.nextDisabled = true
+        this.settingsDr.nextTitle = this.settingsDr.nextTitleDefault
+      } else {
+        this.settingsDr.nextDisabled = false
+        this.settingsDr.nextTitle = this.next.title
+      }
     },
     clickCategory: function () {
-      this.$router.push('/blog/category/' + this.currentBlog.category)
+      this.$router.push(globalRouters.getCategoryRouter(this.current.category))
     },
     clickMore: function () {
       this.showDrawer = !this.showDrawer
+    },
+    getValidUrl: function () {
+      var id = this.current === null ? null : this.current.id
+      return blogApi.getPageUrl(id)
+    },
+    showQrcode: function () {
+      if (qrcode === null) {
+        qrcode = new QRCode('qrcode', {
+          text: this.getValidUrl(),
+          width: 100,
+          height: 100,
+          colorDark: '#17233d',
+          colorLight: '#f8f8f9',
+          correctLevel: QRCode.CorrectLevel.H
+        })
+      } else {
+        qrcode.clear()
+        qrcode.makeCode(this.getValidUrl())
+      }
+    },
+    shareToQQ: function () {
+      let shareUrl = shareApi.getQQUrl(this.current)
+      console.log('shareUrl = ' + shareUrl)
+      this.showErrorNotice()
+      // window.open(shareUrl)
+    },
+    shareToQZone: function () {
+      let shareUrl = shareApi.getQZoneUrl(this.current)
+      console.log('shareUrl = ' + shareUrl)
+      this.showErrorNotice()
+      // window.open(shareUrl)
+    },
+    shareToWeibo: function () {
+      this.showErrorNotice()
+    },
+    shiftBlog: function (value) {
+      var id = 0
+      if (value === 1) {
+        id = this.next.id
+      } else if (value === -1) {
+        id = this.prev.id
+      }
+      this.$router.push(globalRouters.getDisplayRouter(id))
+      this.id = id
+      this.init()
+    },
+    submitComment: function () {
+      console.log('submitComment')
+      // TODO
+    },
+    showErrorNotice: function () {
+      this.$Message.error('该分享功能开发中')
     }
   }
 }
@@ -177,5 +314,48 @@ export default {
 .div_no_data {
   max-width: 200px;
   margin: 10px auto auto auto;
+}
+
+.div_drawer{
+  text-align: center;
+}
+
+.divider_drawer{
+  margin-top: 50px;
+  font-weight: bold;
+}
+
+.div_poptip{
+  color: #17233d;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.div_share{
+  width: auto;
+  height: auto;
+  display: inline-block;
+}
+
+.img_share{
+  cursor: pointer;
+}
+
+.div_qrcode{
+  width: 120px;
+  height: auto;
+  padding: 10px;
+  background: #f8f8f9;
+  text-align: center;
+}
+
+#qrcode{
+  margin-bottom: 5px;
+}
+
+.span_qrcode{
+  color: #17233d;
+  font-size: 14px;
+  font-weight: bold;
 }
 </style>

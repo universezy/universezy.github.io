@@ -7,12 +7,12 @@
 ---
 ## 一、 配置Maven
 
-参考我的另一篇文章《[Ubuntu下Maven的配置](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=ConfigMavenOnUbuntu)》
+参考我的另一篇文章《[Ubuntu下Maven的配置](https://universezy.github.io/universezy/dist/index.html#/blog/display/ConfigMavenOnUbuntu)》
 
 ---
 ## 二、 配置Tomcat
 
-参考我的另一篇文章《[Ubuntu下搭建Tomcat服务器](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=ConfigTomcatOnUbuntu)》
+参考我的另一篇文章《[Ubuntu下搭建Tomcat服务器](https://universezy.github.io/universezy/dist/index.html#/blog/display/ConfigTomcatOnUbuntu)》
 
 ---
 ## 三、 将Maven添加到Eclipse
@@ -74,7 +74,7 @@ Update Settings - Apply
 
 ### 1.
 
-也可参考[Java Web工程中index.jsp报"javax.servlet.http.HttpServlet"错误的解决方案 ](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SolutionOfJava1)解决。
+也可参考[Java Web工程中index.jsp报"javax.servlet.http.HttpServlet"错误的解决方案 ](https://universezy.github.io/universezy/dist/index.html#/blog/display/SolutionOfJava1)解决。
 
 此时工程有报错感叹号，定位在index.jsp文件，出现这个错误是因为缺少Servlet包，前往Maven仓库搜索[Servlet](http://mvnrepository.com/artifact/javax.servlet/servlet-api)，然后在pom.xml文件中添加依赖，参考：
 ```xml

@@ -35,10 +35,10 @@ public void doGet(HttpServletRequest req, HttpServletResponse response) throws S
 
 如果你使用的不是Eclipse，比如IntelliJ IDEA，也不必担心，你只需在IDE差异性操作的时候会用就行。
 
-如果没有安装Maven，可以参考我的另一篇文章《[Ubuntu下Maven的配置](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=ConfigMavenOnUbuntu)》。
+如果没有安装Maven，可以参考我的另一篇文章《[Ubuntu下Maven的配置](https://universezy.github.io/universezy/dist/index.html#/blog/display/ConfigMavenOnUbuntu)》。
 有了Maven，最直观的体验在于依赖第三方jar包不需要手动下载导入，而是统一在一个文件中管理，并且很轻松地修改版本，同时，在打包Spring工程导出文件时，Maven可以省很多事。
 
-如果没有安装Tomcat，可以参考我的另一篇文章《[Ubuntu下搭建Tomcat服务器](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=ConfigTomcatOnUbuntu)》
+如果没有安装Tomcat，可以参考我的另一篇文章《[Ubuntu下搭建Tomcat服务器](https://universezy.github.io/universezy/dist/index.html#/blog/display/ConfigTomcatOnUbuntu)》
 如果你用的不是Tomcat，也不必担心，你只需会使用你的服务器工具并且让你的工程运行在它上面就行。
 
 MySQL Workbench可以在[官网](https://dev.mysql.com/downloads/workbench/)上按照提示进行安装，当然，你也可以仅使用命令行来操作你的数据库。如果你使用的不是MySQL，那么你需要在JDBC相关操作时替换为你的数据库的相关设置或方法。
@@ -58,18 +58,18 @@ SpringMVC是一个开发架构，MVC知道吧，model，view，controller，Spri
 
 ---
 
-- [首页](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SpringTeaching1)
+- [首页](https://universezy.github.io/universezy/dist/index.html#/blog/display/SpringTeaching1)
 
-- [Chapter 1 —— 吐槽网上教程](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SpringTeaching2)
+- [Chapter 1 —— 吐槽网上教程](https://universezy.github.io/universezy/dist/index.html#/blog/display/SpringTeaching2)
 
 - Chapter 2 —— 准备工作
 
-- [Chapter 3 —— 认识IoC](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SpringTeaching4)
+- [Chapter 3 —— 认识IoC](https://universezy.github.io/universezy/dist/index.html#/blog/display/SpringTeaching4)
 
-- [Chapter 4 —— 剖析SpringMVC架构](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SpringTeaching5)
+- [Chapter 4 —— 剖析SpringMVC架构](https://universezy.github.io/universezy/dist/index.html#/blog/display/SpringTeaching5)
 
-- [Chapter 5 —— 编写工程](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SpringTeaching6)
+- [Chapter 5 —— 编写工程](https://universezy.github.io/universezy/dist/index.html#/blog/display/SpringTeaching6)
 
-- [Chapter 6 —— 后记](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SpringTeaching7)
+- [Chapter 6 —— 后记](https://universezy.github.io/universezy/dist/index.html#/blog/display/SpringTeaching7)
 
 - [Issues —— 问题或反馈](https://github.com/universezy/SpringWebServer-Teaching/issues)

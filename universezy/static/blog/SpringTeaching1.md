@@ -23,16 +23,16 @@ Let's go！
 
 - 首页
 
-- [Chapter 1 —— 吐槽网上教程](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SpringTeaching2)
+- [Chapter 1 —— 吐槽网上教程](https://universezy.github.io/universezy/dist/index.html#/blog/display/SpringTeaching2)
 
-- [Chapter 2 —— 准备工作](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SpringTeaching3)
+- [Chapter 2 —— 准备工作](https://universezy.github.io/universezy/dist/index.html#/blog/display/SpringTeaching3)
 
-- [Chapter 3 —— 认识IoC](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SpringTeaching4)
+- [Chapter 3 —— 认识IoC](https://universezy.github.io/universezy/dist/index.html#/blog/display/SpringTeaching4)
 
-- [Chapter 4 —— 剖析SpringMVC架构](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SpringTeaching5)
+- [Chapter 4 —— 剖析SpringMVC架构](https://universezy.github.io/universezy/dist/index.html#/blog/display/SpringTeaching5)
 
-- [Chapter 5 —— 编写工程](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SpringTeaching6)
+- [Chapter 5 —— 编写工程](https://universezy.github.io/universezy/dist/index.html#/blog/display/SpringTeaching6)
 
-- [Chapter 6 —— 后记](https://universezy.github.io/universezy/dist/index.html#/blog/display?id=SpringTeaching7)
+- [Chapter 6 —— 后记](https://universezy.github.io/universezy/dist/index.html#/blog/display/SpringTeaching7)
 
 - [Issues —— 问题或反馈](https://github.com/universezy/SpringWebServer-Teaching/issues)
