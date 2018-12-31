@@ -1,5 +1,6 @@
 const originUrl = 'https://universezy.github.io/'
-const baseResourceUrl = 'https://raw.githubusercontent.com/universezy/universezy.github.io/master/universezy/dist/static/'
+// const baseResourceUrl = 'https://raw.githubusercontent.com/universezy/universezy.github.io/master/universezy/dist/static/'
+const baseResourceUrl = './static/'
 const basePageUrl = 'https://universezy.github.io/universezy/dist/index.html#/'
 const baseQQShareUrl = 'http://connect.qq.com/widget/shareqq/index.html'
 const baseQZoneShareUrl = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey'
@@ -27,13 +28,13 @@ export const imageApi = {
     return baseResourceUrl + 'logo.png'
   },
   getBannerUrl: (name) => {
-    return './static/banner/' + name + '.jpg'
+    return baseResourceUrl + 'banner/' + name + '.jpg'
   },
   getCategoryUrl: (name) => {
-    return './static/category/' + name + '.png'
+    return baseResourceUrl + 'category/' + name + '.png'
   },
   getFavorite: (name) => {
-    return './static/favorite/' + name + '.jpg'
+    return baseResourceUrl + 'favorite/' + name + '.jpg'
   }
 }
 

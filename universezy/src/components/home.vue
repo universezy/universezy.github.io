@@ -47,7 +47,7 @@ import mNotice from '../data/notice'
 import mBanners from '../data/banners'
 import mBlogs from '../data/blogs'
 import {blogApi, imageApi} from '../api/urls'
-import {globalRouters} from '../api/routers'
+// import {globalRouters} from '../api/routers'
 
 export default {
   name: 'home',
