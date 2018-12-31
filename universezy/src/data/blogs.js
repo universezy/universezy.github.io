@@ -789,6 +789,19 @@ const blogs = [
     ],
     abstract: '站在互联网之海前，应具备宽广的胸怀，放眼未来。',
     timestamp: 1545399340000
+  },
+  {
+    id: 'Vue_jsUseQrcodejs',
+    category: 'Vue.js',
+    title: 'Vue.js工程中使用二维码js库的qrcodejs',
+    tags: [
+      {tag: '二维码'},
+      {tag: 'js'},
+      {tag: 'qrcodejs'},
+      {tag: 'QRCode.js'}
+    ],
+    abstract: '介绍二维码js库QRCode.js的使用方法。',
+    timestamp: 1546174891000
   }
 ]
 
