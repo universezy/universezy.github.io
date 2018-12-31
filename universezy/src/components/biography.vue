@@ -47,9 +47,9 @@ export default {
       if (this.$store.state.GlobalData.bio !== null) {
         this.bio = this.$store.state.GlobalData.bio
       } else {
-        try {
-          let _this = this
-          requestApi.fetch(markdownApi.getBioUrl()).then((response) => {
+        let _this = this
+        requestApi.fetch(markdownApi.getBioUrl())
+          .then((response) => {
             if (response.status === 200) {
               _this.bio = response.data
               _this.$store.dispatch('saveBio', response.data)
@@ -58,14 +58,15 @@ export default {
               console.log('response status: ' + response.status)
             }
           })
-        } catch (error) {
-          this.requestFailed()
-          console.log('request error: ' + error)
-        }
+          .catch(error => {
+            console.log(error)
+            _this.requestFailed()
+          })
       }
     },
     requestFailed: function () {
       this.$Message.error('请求服务器失败，请稍后再试。')
+      this.bio = '请求服务器失败，请稍后再试。'
     }
   }
 }

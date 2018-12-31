@@ -1,7 +1,8 @@
+const originUrl = 'https://universezy.github.io/'
 const baseResourceUrl = 'https://raw.githubusercontent.com/universezy/universezy.github.io/master/universezy/dist/static/'
 const basePageUrl = 'https://universezy.github.io/universezy/dist/index.html#/'
-const baseQQShareUrl = 'http://connect.qq.com/widget/shareqq/index.html?'
-const baseQZoneShareUrl = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?'
+const baseQQShareUrl = 'http://connect.qq.com/widget/shareqq/index.html'
+const baseQZoneShareUrl = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey'
 
 export const markdownApi = {
   getBioUrl: () => {
@@ -13,6 +14,9 @@ export const markdownApi = {
 }
 
 export const blogApi = {
+  getRedirectUrl: (id) => {
+    return originUrl + '?blogId=' + id
+  },
   getPageUrl: (id) => {
     return id === null ? basePageUrl + 'blog' : basePageUrl + 'blog/display/' + id
   }
@@ -36,7 +40,7 @@ export const imageApi = {
 export const shareApi = {
   getQQUrl: (blog) => {
     var url = baseQQShareUrl +
-      'url=' + blogApi.getPageUrl(blog.id) +
+      '?url=' + blogApi.getRedirectUrl(blog.id) +
       '&pics=' + imageApi.getLogoUrl() +
       '&title=' + blog.title +
       '&summary=' + blog.abstract
@@ -44,7 +48,7 @@ export const shareApi = {
   },
   getQZoneUrl: (blog) => {
     var url = baseQZoneShareUrl +
-      'url=' + blogApi.getPageUrl(blog.id) +
+      '?url=' + blogApi.getRedirectUrl(blog.id) +
       '&pics=' + imageApi.getLogoUrl() +
       '&title=' + blog.title +
       '&summary=' + blog.abstract

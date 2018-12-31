@@ -52,7 +52,6 @@
             <img class="img_share" src="../assets/weibo.svg" @click="shareToWeibo"/>
           </div>
         </Row>
-        <span>开发中，敬请期待！</span>
         <Divider class="divider_drawer">更多</Divider>
         <ButtonGroup size="large">
           <Poptip trigger="hover" word-wrap width="200" placement="bottom">
@@ -186,12 +185,13 @@ export default {
           }
         })
         .catch(error => {
-          console.log('request error: ' + error)
+          console.log(error)
           _this.requestFailed()
         })
     },
     requestFailed: function (msg) {
       this.$Message.error('请求服务器失败，请稍后再试。')
+      this.blogData = '请求服务器失败，请稍后再试。'
     },
     setData: function () {
       document.title = this.current.title + ' - ' + this.$store.state.GlobalData.title
@@ -238,15 +238,11 @@ export default {
     },
     shareToQQ: function () {
       let shareUrl = shareApi.getQQUrl(this.current)
-      console.log('shareUrl = ' + shareUrl)
-      this.showErrorNotice()
-      // window.open(shareUrl)
+      window.open(shareUrl)
     },
     shareToQZone: function () {
       let shareUrl = shareApi.getQZoneUrl(this.current)
-      console.log('shareUrl = ' + shareUrl)
-      this.showErrorNotice()
-      // window.open(shareUrl)
+      window.open(shareUrl)
     },
     shareToWeibo: function () {
       this.showErrorNotice()

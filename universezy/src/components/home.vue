@@ -46,7 +46,8 @@ import comMicroBlog from './component-microblog.vue'
 import mNotice from '../data/notice'
 import mBanners from '../data/banners'
 import mBlogs from '../data/blogs'
-import {imageApi} from '../api/urls'
+import {blogApi, imageApi} from '../api/urls'
+import {globalRouters} from '../api/routers'
 
 export default {
   name: 'home',
@@ -75,6 +76,7 @@ export default {
     }
   },
   created () {
+    this.handleRedirect()
     if (mNotice.notice !== null) {
       this.notice = mNotice.notice
     }
@@ -98,6 +100,15 @@ export default {
     }
   },
   methods: {
+    handleRedirect: function () {
+      var url = window.location.href
+      var start = url.indexOf('?blogId=')
+      var end = url.indexOf('#')
+      if (start > 0 && end > start) {
+        var blogId = url.substring(start + '?blogId='.length, end)
+        window.location.href = blogApi.getPageUrl(blogId)
+      }
+    },
     closeNotice: function () {
       this.$store.dispatch('closeNotice')
     },
