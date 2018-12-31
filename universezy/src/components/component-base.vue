@@ -177,6 +177,7 @@ export default {
 
 .sider_base{
   padding-bottom: 20px;
+  z-index: 5;
 }
 
 .row_avator{

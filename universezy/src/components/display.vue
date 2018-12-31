@@ -34,7 +34,7 @@
         <Divider style="font-weight: bold;">分享</Divider>
         <Row>
           <div class="div_share">
-            <Tooltip placement="bottom" @on-popper-show="showQrcode">
+            <Tooltip placement="bottom">
               <div class="div_qrcode" slot="content">
                 <div id="qrcode"></div>
                 <span class="span_qrcode">微信扫一扫</span>
@@ -113,12 +113,12 @@ export default {
         }
       },
       settingsDr: {
-        prevTitle: '',
+        prevTitle: '已经是第一篇',
         prevTitleDefault: '已经是第一篇',
-        prevDisabled: false,
-        nextTitle: '',
+        prevDisabled: true,
+        nextTitle: '已经是最后一篇',
         nextTitleDefault: '已经是最后一篇',
-        nextDisabled: false
+        nextDisabled: true
       },
       showDrawer: false,
       showBlog: true,
@@ -134,15 +134,14 @@ export default {
       return imageApi.getCategoryUrl(this.current.category)
     }
   },
-  watch: {
-    refresh: function () {
-      if (this.refresh !== 0) {
-        this.reload()
-      }
-    }
-  },
   created () {
     this.init()
+  },
+  mounted () {
+    this.createQrcode()
+  },
+  destroyed () {
+    qrcode = null
   },
   methods: {
     init: function () {
@@ -174,23 +173,24 @@ export default {
       return false
     },
     load: function () {
-      try {
-        let _this = this
-        requestApi.fetch(markdownApi.getBlogUrl(this.id)).then((response) => {
+      let _this = this
+      requestApi.fetch(markdownApi.getBlogUrl(this.id))
+        .then(response => {
           if (response.status === 200) {
             _this.blogData = response.data
             _this.setData()
+          } else if (response.status === 404) {
+            this.showBlog = false
           } else {
             _this.requestFailed()
-            console.log('response status: ' + response.status)
           }
         })
-      } catch (error) {
-        this.requestFailed()
-        console.log('request error: ' + error)
-      }
+        .catch(error => {
+          console.log('request error: ' + error)
+          _this.requestFailed()
+        })
     },
-    requestFailed: function () {
+    requestFailed: function (msg) {
       this.$Message.error('请求服务器失败，请稍后再试。')
     },
     setData: function () {
@@ -209,6 +209,12 @@ export default {
         this.settingsDr.nextDisabled = false
         this.settingsDr.nextTitle = this.next.title
       }
+      if (qrcode === null) {
+        this.createQrcode()
+      } else {
+        qrcode.clear()
+        qrcode.makeCode(this.getValidUrl())
+      }
     },
     clickCategory: function () {
       this.$router.push(globalRouters.getCategoryRouter(this.current.category))
@@ -220,20 +226,15 @@ export default {
       var id = this.current === null ? null : this.current.id
       return blogApi.getPageUrl(id)
     },
-    showQrcode: function () {
-      if (qrcode === null) {
-        qrcode = new QRCode('qrcode', {
-          text: this.getValidUrl(),
-          width: 100,
-          height: 100,
-          colorDark: '#17233d',
-          colorLight: '#f8f8f9',
-          correctLevel: QRCode.CorrectLevel.H
-        })
-      } else {
-        qrcode.clear()
-        qrcode.makeCode(this.getValidUrl())
-      }
+    createQrcode: function () {
+      qrcode = new QRCode('qrcode', {
+        text: this.getValidUrl(),
+        width: 100,
+        height: 100,
+        colorDark: '#17233d',
+        colorLight: '#f8f8f9',
+        correctLevel: QRCode.CorrectLevel.H
+      })
     },
     shareToQQ: function () {
       let shareUrl = shareApi.getQQUrl(this.current)
