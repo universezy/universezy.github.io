@@ -6,11 +6,18 @@ function checkParams () {
   var index = url.indexOf('?blogId=');
   if (index > 0) {
     var params = url.substring(index);
-    redirectUrl="universezy/dist/index.html" + params;
+    redirectUrl += params;
     return true;
   } else {
-    return false;
+    var indexQZone = url.indexOf('?');
+    if (indexQZone > 0) {
+      var blogId = url.substring(indexQZone + 1);
+      var params = '?blogId=' + blogId;
+      redirectUrl += params;
+      return true;
+    }
   }
+  return false;
 }
 
 redirect = () => {

@@ -47,7 +47,6 @@ import mNotice from '../data/notice'
 import mBanners from '../data/banners'
 import mBlogs from '../data/blogs'
 import {blogApi, imageApi} from '../api/urls'
-// import {globalRouters} from '../api/routers'
 
 export default {
   name: 'home',
@@ -76,7 +75,7 @@ export default {
     }
   },
   created () {
-    this.handleRedirect()
+    if (this.handleRedirect()) return
     if (mNotice.notice !== null) {
       this.notice = mNotice.notice
     }
@@ -105,8 +104,12 @@ export default {
       var start = url.indexOf('?blogId=')
       var end = url.indexOf('#')
       if (start > 0 && end > start) {
+        this.$Message.loading('正在打开，请稍后......')
         var blogId = url.substring(start + '?blogId='.length, end)
         window.location.href = blogApi.getPageUrl(blogId)
+        return true
+      } else {
+        return false
       }
     },
     closeNotice: function () {

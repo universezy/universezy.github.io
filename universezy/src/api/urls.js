@@ -18,6 +18,9 @@ export const blogApi = {
   getRedirectUrl: (id) => {
     return originUrl + '?blogId=' + id
   },
+  getRedirectUrlForQZone: (id) => {
+    return originUrl + '?' + id
+  },
   getPageUrl: (id) => {
     return id === null ? basePageUrl + 'blog' : basePageUrl + 'blog/display/' + id
   }
@@ -49,7 +52,7 @@ export const shareApi = {
   },
   getQZoneUrl: (blog) => {
     var url = baseQZoneShareUrl +
-      '?url=' + blogApi.getRedirectUrl(blog.id) +
+      '?url=' + blogApi.getRedirectUrlForQZone(blog.id) +
       '&pics=' + imageApi.getLogoUrl() +
       '&title=' + blog.title +
       '&summary=' + blog.abstract
