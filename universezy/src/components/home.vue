@@ -11,6 +11,7 @@
         <span class="span_notice_title">{{notice.title}}</span>
         <template slot="desc">{{notice.desc}}</template>
       </Alert>
+      <Divider orientation="left">编程人生</Divider>
       <div class="div_carousel">
         <div class="div_inner">
           <Carousel
@@ -23,11 +24,9 @@
             :trigger="settings.trigger"
             :arrow="settings.arrow">
             <CarouselItem v-for="item in banners" :key="item.id">
-              <img
-                class="img_banner"
-                :src="getImgSrc(item.id)"
-                :title="item.title"
-                @click="clickBanner(item.id)"/>
+              <div @click="clickBanner(item.id)">
+                <img class="img_banner" :src="getImgSrc(item.id)" :title="item.title"/>
+              </div>
             </CarouselItem>
           </Carousel>
         </div>
@@ -126,7 +125,7 @@ export default {
 </script>
 
 <style scoped>
-.div_home{
+.div_home {
   padding: 0 50px;
 }
 
@@ -135,10 +134,10 @@ export default {
   text-align: left;
 }
 
-.div_carousel{
+.div_carousel {
   width: 100%;
   height: auto;
-  margin: 20px 0;
+  margin-bottom: 20px;
   display: inline-block;
   position: relative;
   text-align: center;
@@ -146,7 +145,7 @@ export default {
   overflow: hidden;
 }
 
-.div_inner{
+.div_inner {
   width: 500px;
   height: 300px;
   margin: 0 auto;

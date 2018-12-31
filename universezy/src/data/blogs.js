@@ -802,6 +802,17 @@ const blogs = [
     ],
     abstract: '介绍在Vue.js工程中使用二维码js库QRCode.js的使用方法。',
     timestamp: 1546174891000
+  },
+  {
+    id: 'SummaryOf2018',
+    category: 'Thinking',
+    title: '2018年终总结',
+    tags: [
+      {tag: '年终'},
+      {tag: '总结'}
+    ],
+    abstract: '大学毕业，告别学生时代；正式工作，步入社会，感受生活的酸甜苦辣；旧病复发，开始影响我的工作；失去了一位最亲的人；面临失业潮之下的裁员风波。',
+    timestamp: 1546277936141
   }
 ]
 

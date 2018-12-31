@@ -33,7 +33,7 @@ const columns = [
     name: 'Thinking',
     title: '我思故我在',
     desc: '程序书写人生。',
-    articles: ['CognitionOfIndustry', 'ExperienceOfWriting', 'SummaryOfCampusRecruit', 'ThinkingOfInternship']
+    articles: ['SummaryOf2018', 'CognitionOfIndustry', 'ExperienceOfWriting', 'SummaryOfCampusRecruit', 'ThinkingOfInternship']
   }
 ]
 

@@ -14,6 +14,10 @@ const banners = [
   {
     id: 'CognitionOfIndustry',
     title: '我能为IT行业做什么'
+  },
+  {
+    id: 'SummaryOf2018',
+    title: '2018年总结'
   }
 ]
 

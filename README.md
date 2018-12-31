@@ -5,7 +5,7 @@ Too young too simple, sometimes naive.
 ---
 ## 说明
 
-欢迎访问我的Github Pages，当前最新版本α版已经上线，博客文章已全部导入，正式环境测试中，更多功能将尽快添加。
+欢迎访问我的Github Pages，当前最新版本β版已经上线，博客文章已全部导入，正式环境测试中，更多功能将尽快添加。
 
 [>>> 新版入口 <<<](https://universezy.github.io/)
 
