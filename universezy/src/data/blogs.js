@@ -793,14 +793,14 @@ const blogs = [
   {
     id: 'Vue_jsUseQrcodejs',
     category: 'Vue.js',
-    title: 'Vue.js工程中使用二维码js库的qrcodejs',
+    title: 'Vue.js工程中使用二维码js库qrcodejs',
     tags: [
       {tag: '二维码'},
       {tag: 'js'},
       {tag: 'qrcodejs'},
       {tag: 'QRCode.js'}
     ],
-    abstract: '介绍二维码js库QRCode.js的使用方法。',
+    abstract: '介绍在Vue.js工程中使用二维码js库QRCode.js的使用方法。',
     timestamp: 1546174891000
   }
 ]
