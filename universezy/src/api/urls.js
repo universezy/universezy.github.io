@@ -4,6 +4,7 @@ const relativeResUrl = './static/'
 const basePageUrl = 'https://universezy.github.io/universezy/dist/index.html#/'
 const baseQQShareUrl = 'http://connect.qq.com/widget/shareqq/index.html'
 const baseQZoneShareUrl = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey'
+const baseWeiboShareUrl = 'http://service.weibo.com/share/share.php'
 
 export const markdownApi = {
   getBioUrl: () => {
@@ -56,6 +57,14 @@ export const shareApi = {
       '&pics=' + imageApi.getLogoUrl() +
       '&title=' + blog.title +
       '&summary=' + blog.abstract
+    return encodeURI(url)
+  },
+  getWeiboUrl: (blog) => {
+    var url = baseWeiboShareUrl +
+      '?url=' + blogApi.getRedirectUrl(blog.id) +
+      '&pic=' + imageApi.getLogoUrl() +
+      '&title=' + blog.title +
+      '&content=' + 'utf-8'
     return encodeURI(url)
   }
 }

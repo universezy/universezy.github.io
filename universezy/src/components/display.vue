@@ -245,7 +245,8 @@ export default {
       window.open(shareUrl)
     },
     shareToWeibo: function () {
-      this.showErrorNotice()
+      let shareUrl = shareApi.getWeiboUrl(this.current)
+      window.open(shareUrl)
     },
     shiftBlog: function (value) {
       var id = 0
