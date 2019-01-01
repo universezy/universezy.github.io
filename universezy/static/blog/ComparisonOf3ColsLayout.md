@@ -7,7 +7,7 @@
 ## 二、 实现过程
 ### 1. 传统布局
 
-参考《[css+js实现banner图片轮播](https://universezy.github.io/blog.html?blogId=17)》，其中banner实现过程即为传统布局，按照左-中-右顺序渲染。
+参考《[css+js实现banner图片轮播](https://universezy.github.io/universezy/dist/index.html#/blog/display/WebBanner)》，其中banner实现过程即为传统布局，按照左-中-右顺序渲染。
 
 **html部分**
 

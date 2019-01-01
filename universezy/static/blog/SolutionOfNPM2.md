@@ -33,4 +33,4 @@ registry=https://registry.npm.taobao.org
 
 ---
 ## 四、 参考文献
-- [ linux下安装node环境以及cnpm ](blog.csdn.net/a1104258464/article/details/52273774)
+- [ linux下安装node环境以及cnpm ](https://blog.csdn.net/a1104258464/article/details/52273774)

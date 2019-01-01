@@ -74,7 +74,40 @@ int height = metric.heightPixels; // 高度（PX）
 
 1.getMetrics：
 
-![getMetrics](https://img-blog.csdn.net/2018071017152589?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p5MTM2MDgwODk4NDk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+```java
+    /**
+     * Gets display metrics that describe the size and density of this display.
+     * The size returned by this method does not necessarily represent the
+     * actual raw size (native resolution) of the display.
+     * <p>
+     * 1. The returned size may be adjusted to exclude certain system decor elements
+     * that are always visible.
+     * </p><p>
+     * 2. It may be scaled to provide compatibility with older applications that
+     * were originally designed for smaller displays.
+     * </p><p>
+     * 3. It can be different depending on the WindowManager to which the display belongs.
+     * </p><p>
+     * - If requested from non-Activity context (e.g. Application context via
+     * {@code (WindowManager) getApplicationContext().getSystemService(Context.WINDOW_SERVICE)})
+     * metrics will report the size of the entire display based on current rotation and with
+     * subtracted system decoration areas.
+     * </p><p>
+     * - If requested from activity (either using {@code getWindowManager()} or
+     * {@code (WindowManager) getSystemService(Context.WINDOW_SERVICE)}) resulting metrics will
+     * correspond to current app window metrics. In this case the size can be smaller than physical
+     * size in multi-window mode.
+     * </p>
+     *
+     * @param outMetrics A {@link DisplayMetrics} object to receive the metrics.
+     */
+    public void getMetrics(DisplayMetrics outMetrics) {
+        synchronized (this) {
+            updateDisplayInfoLocked();
+            mDisplayInfo.getAppMetrics(outMetrics, getDisplayAdjustments());
+        }
+    }
+```
 
 - 包含decor时，返回的size可能不准确
 - 老式机型下可能不准确
@@ -82,14 +115,53 @@ int height = metric.heightPixels; // 高度（PX）
 
 2.getRealSize：
 
-![getRealSize](https://img-blog.csdn.net/20180710171601658?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p5MTM2MDgwODk4NDk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+```java
+    /**
+     * Gets the real size of the display without subtracting any window decor or
+     * applying any compatibility scale factors.
+     * <p>
+     * The size is adjusted based on the current rotation of the display.
+     * </p><p>
+     * The real size may be smaller than the physical size of the screen when the
+     * window manager is emulating a smaller display (using adb shell wm size).
+     * </p>
+     *
+     * @param outSize Set to the real size of the display.
+     */
+    public void getRealSize(Point outSize) {
+        synchronized (this) {
+            updateDisplayInfoLocked();
+            outSize.x = mDisplayInfo.logicalWidth;
+            outSize.y = mDisplayInfo.logicalHeight;
+        }
+    }
+```
 
 - 获取的size没有减去任何decor或者考虑缩放因素
 - 使用"adb shell wm size"可以查看设备的物理尺寸
 
 3.getRealMetrics：
 
-![getRealMetrics](https://img-blog.csdn.net/2018071017163797?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p5MTM2MDgwODk4NDk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+```java
+    /**
+     * Gets display metrics based on the real size of this display.
+     * <p>
+     * The size is adjusted based on the current rotation of the display.
+     * </p><p>
+     * The real size may be smaller than the physical size of the screen when the
+     * window manager is emulating a smaller display (using adb shell wm size).
+     * </p>
+     *
+     * @param outMetrics A {@link DisplayMetrics} object to receive the metrics.
+     */
+    public void getRealMetrics(DisplayMetrics outMetrics) {
+        synchronized (this) {
+            updateDisplayInfoLocked();
+            mDisplayInfo.getLogicalMetrics(outMetrics,
+                    CompatibilityInfo.DEFAULT_COMPATIBILITY_INFO, null);
+        }
+    }
+```
 
 - 基于getRealSize实现
 
