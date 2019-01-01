@@ -1,10 +1,12 @@
 <template>
-  <Card class="card_category">
-    <div class="div_category">
-      <img class="img_category" :src="imgSrc">
-      <h3>{{propCategory.name}}</h3>
-    </div>
-  </Card>
+  <Badge :count="propCategory.count" type="warning">
+    <Card class="card_category">
+      <div class="div_category">
+        <img class="img_category" :src="imgSrc">
+        <h3>{{propCategory.name}}</h3>
+      </div>
+    </Card>
+  </Badge>
 </template>
 
 <script>

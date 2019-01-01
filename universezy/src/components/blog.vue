@@ -33,6 +33,7 @@ import comCategory from './component-category.vue'
 import comColumn from './component-column.vue'
 import mCategories from '../data/categories'
 import mColumns from '../data/columns'
+import mBlogs from '../data/blogs'
 import {globalRouters} from '../api/routers'
 
 export default {
@@ -50,16 +51,21 @@ export default {
       showSearchView: true,
       keyword: '',
       categories: [],
-      columns: []
+      columns: [],
+      categoryMap: new Map()
     }
   },
   created () {
-    if (mCategories.categories !== null && mCategories.categories.length > 0) {
-      this.categories = mCategories.categories
-    }
-    if (mColumns.columns !== null && mColumns.columns.length > 0) {
-      this.columns = mColumns.columns
-    }
+    this.categories = mCategories.categories
+    mBlogs.blogs.forEach(element => {
+      var count = this.categoryMap.get(element.category) || 0
+      this.categoryMap.set(element.category, count + 1)
+    })
+    this.categories.forEach(element => {
+      element.count = this.categoryMap.get(element.name)
+    })
+    this.categoryMap = null
+    this.columns = mColumns.columns
     let tab = this.$route.params.tab
     this.tabValue = tab !== null && this.tabs.indexOf(tab) !== -1 ? tab : this.tabs[0]
   },
@@ -69,6 +75,9 @@ export default {
     }
   },
   methods: {
+    getCount: function (name) {
+      return this.categoryMap.get(name)
+    },
     clickCategory: function (name) {
       this.$router.push(globalRouters.getCategoryRouter(name))
     },

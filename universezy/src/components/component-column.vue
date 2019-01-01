@@ -4,6 +4,7 @@
       <img class="img_column" :src="imgSrc" />
       <h3 class="span_title">{{propColumn.title}}</h3>
     </span>
+    <Tag color="warning" slot="extra">{{propColumn.articles.length}}</Tag>
     <div class="div_desc">
       <span class="span_desc">{{propColumn.desc}}</span>
     </div>
