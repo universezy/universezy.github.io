@@ -813,6 +813,20 @@ const blogs = [
     ],
     abstract: '大学毕业，告别学生时代；正式工作，步入社会，感受生活的酸甜苦辣；旧病复发，开始影响我的工作；失去了一位最亲的人；面临失业潮之下的裁员风波。',
     timestamp: 1546277936141
+  },
+  {
+    id: 'RouterModeAndShareOnVue_js',
+    category: 'Vue.js',
+    title: 'Vue.js中的路由模式和第三方分享问题',
+    tags: [
+      {tag: 'router'},
+      {tag: 'mode'},
+      {tag: 'hash'},
+      {tag: 'history'},
+      {tag: '分享'}
+    ],
+    abstract: '介绍Vue.js中的两种路由模式：hash和history，并提供第三方分享url问题的解决方案。',
+    timestamp: 1546477801968
   }
 ]
 
