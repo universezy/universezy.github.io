@@ -1,5 +1,8 @@
 const categories = [
   {
+    name: 'Thinking'
+  },
+  {
     name: 'Android'
   },
   {
@@ -43,9 +46,6 @@ const categories = [
   },
   {
     name: 'Vue.js'
-  },
-  {
-    name: 'Thinking'
   }
 ]
 
