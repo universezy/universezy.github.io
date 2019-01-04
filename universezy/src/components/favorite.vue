@@ -39,4 +39,13 @@ export default {
   float: left;
   margin: 10px;
 }
+
+@media screen and (max-width: 1000px) {
+  .div_favorite{
+    padding: 10px 10px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+}
 </style>

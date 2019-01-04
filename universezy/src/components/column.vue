@@ -50,12 +50,10 @@ export default {
     loadResource: function () {
       let paramColumn = this.propColumn
       if (paramColumn === null) return
-      if (mColumns.columns !== null && mColumns.columns.length > 0) {
-        for (var i = 0; i <= mColumns.columns.length; i++) {
-          if (mColumns.columns[i].name === paramColumn) {
-            this.dataColumn = mColumns.columns[i]
-            break
-          }
+      for (var i = 0; i <= mColumns.columns.length; i++) {
+        if (mColumns.columns[i].name === paramColumn) {
+          this.dataColumn = mColumns.columns[i]
+          break
         }
       }
     },

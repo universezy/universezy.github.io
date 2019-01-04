@@ -9,7 +9,7 @@
         <Button type="warning" shape="circle" large icon="md-menu" slot="extra" @click="clickMore"></Button>
         <Row class="row_microblog">
           <Tag color="primary" v-for="item in current.tags" :key="item.tag">
-            <span>{{item.tag}}</span>
+            <span @click="clickTag(item.tag)">{{item.tag}}</span>
           </Tag>
         <div class="div_time">
           <Time :time="current.timestamp" type="date" />
@@ -56,14 +56,14 @@
         <ButtonGroup size="large">
           <Poptip trigger="hover" word-wrap width="200" placement="bottom">
             <div class="div_poptip" slot="content">{{settingsDr.prevTitle}}</div>
-            <Button type="primary" :disabled="settingsDr.prevDisabled" @click="shiftBlog(-1)">
+            <Button type="primary" :disabled="settingsDr.prevDisabled" @click="shiftBlog(prev.id)">
               <Icon type="ios-arrow-back"></Icon>
               上一篇
             </Button>
           </Poptip>
           <Poptip trigger="hover" word-wrap width="200" placement="bottom">
             <div class="div_poptip" slot="content">{{settingsDr.nextTitle}}</div>
-            <Button type="primary" :disabled="settingsDr.nextDisabled" @click="shiftBlog(1)">
+            <Button type="primary" :disabled="settingsDr.nextDisabled" @click="shiftBlog(next.id)">
               下一篇
               <Icon type="ios-arrow-forward"></Icon>
             </Button>
@@ -74,6 +74,7 @@
           <Button type="primary" ghost to="/blog/tab/overview">总览</Button>
           <Button type="primary" ghost to="/blog/tab/category">类别</Button>
           <Button type="primary" ghost to="/blog/tab/column">专栏</Button>
+          <Button type="primary" ghost to="/blog/tab/tag">标签</Button>
         </ButtonGroup>
         <Divider class="divider_drawer">评论</Divider>
         <span>开发中，敬请期待！</span>
@@ -121,11 +122,16 @@ export default {
       },
       showDrawer: false,
       showBlog: true,
-      id: this.$route.params.id,
+      id: 0,
       prev: null,
       next: null,
       current: null,
       blogData: '请求资源中......'
+    }
+  },
+  watch: {
+    '$route': function () {
+      this.init()
     }
   },
   computed: {
@@ -144,6 +150,7 @@ export default {
   },
   methods: {
     init: function () {
+      this.id = this.$route.params.id
       if (this.check()) {
         this.load()
       } else {
@@ -219,6 +226,9 @@ export default {
     clickCategory: function () {
       this.$router.push(globalRouters.getCategoryRouter(this.current.category))
     },
+    clickTag: function (name) {
+      this.$router.push(globalRouters.getTagRouter(name))
+    },
     clickMore: function () {
       this.showDrawer = !this.showDrawer
     },
@@ -248,16 +258,8 @@ export default {
       let shareUrl = shareApi.getWeiboUrl(this.current)
       window.open(shareUrl)
     },
-    shiftBlog: function (value) {
-      var id = 0
-      if (value === 1) {
-        id = this.next.id
-      } else if (value === -1) {
-        id = this.prev.id
-      }
+    shiftBlog: function (id) {
       this.$router.push(globalRouters.getDisplayRouter(id))
-      this.id = id
-      this.init()
     },
     submitComment: function () {
       console.log('submitComment')

@@ -33,5 +33,6 @@ export default {
 <style scoped>
 .div_friendlink {
   margin: 15px auto;
+  padding: 0 50px;
 }
 </style>

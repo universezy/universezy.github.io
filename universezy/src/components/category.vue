@@ -4,7 +4,7 @@
       <div class="div_head">
         <Breadcrumb class="breadcrumb_category">
           <BreadcrumbItem to="/blog/tab/category">
-            <Icon type="md-pricetags"></Icon> 类别
+            <Icon type="ios-archive"></Icon> 类别
           </BreadcrumbItem>
           <BreadcrumbItem>
             <div class="div_info">
@@ -51,13 +51,11 @@ export default {
   },
   methods: {
     loadResource: function () {
-      if (mCategories.categories !== null && mCategories.categories.length > 0) {
-        for (var i = 0; i <= mCategories.categories.length; i++) {
-          if (mCategories.categories[i].name === this.propCategory) {
-            this.showImg = true
-            this.imgSrc = imageApi.getCategoryUrl(this.propCategory)
-            break
-          }
+      for (var i = 0; i <= mCategories.categories.length; i++) {
+        if (mCategories.categories[i].name === this.propCategory) {
+          this.showImg = true
+          this.imgSrc = imageApi.getCategoryUrl(this.propCategory)
+          break
         }
       }
     },

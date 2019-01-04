@@ -5,7 +5,7 @@
         <TabPane name="overview" label="总览" icon="md-list-box">
           <comOverview showIcon v-bind:keyword="keyword"></comOverview>
         </TabPane>
-        <TabPane name="category" label="类别" icon="md-pricetags">
+        <TabPane name="category" label="类别" icon="ios-archive">
           <div class="div_category" v-for="item in categories" :key="item.name" @click="clickCategory(item.name)">
             <comCategory :category="item"></comCategory>
           </div>
@@ -13,6 +13,11 @@
         <TabPane name="column" label="专栏" icon="md-folder">
           <div class="div_column" v-for="item in columns" :key="item.name" @click="clickColumn(item.name)">
             <comColumn :column="item"></comColumn>
+          </div>
+        </TabPane>
+        <TabPane name="tag" label="标签" icon="md-pricetags">
+          <div class="div_tag" v-for="item in tags" :key="item.tag">
+            <comTag :tag="item"></comTag>
           </div>
         </TabPane>
         <Input
@@ -31,6 +36,7 @@ import comBase from './component-base.vue'
 import comOverview from './component-overview.vue'
 import comCategory from './component-category.vue'
 import comColumn from './component-column.vue'
+import comTag from './component-tag.vue'
 import mCategories from '../data/categories'
 import mColumns from '../data/columns'
 import mBlogs from '../data/blogs'
@@ -42,36 +48,56 @@ export default {
     comBase,
     comOverview,
     comCategory,
-    comColumn
+    comColumn,
+    comTag
   },
   data () {
     return {
-      tabs: ['overview', 'category', 'column'],
+      tabs: ['overview', 'category', 'column', 'tag'],
       tabValue: '',
       showSearchView: true,
       keyword: '',
       categories: [],
       columns: [],
-      categoryMap: new Map()
+      tags: []
     }
   },
   created () {
+    /** Init Category and Tag */
     this.categories = mCategories.categories
+    this.tags = []
+    var categoryMap = new Map()
+    var tagMap = new Map()
     mBlogs.blogs.forEach(element => {
-      var count = this.categoryMap.get(element.category) || 0
-      this.categoryMap.set(element.category, count + 1)
+      var categoryCount = categoryMap.get(element.category) || 0
+      categoryMap.set(element.category, categoryCount + 1)
+      element.tags.forEach(element => {
+        var key = encodeURI(element.tag)
+        var tagCount = tagMap.get(key) || 0
+        tagMap.set(key, tagCount + 1)
+      })
     })
     this.categories.forEach(element => {
-      element.count = this.categoryMap.get(element.name)
+      element.count = categoryMap.get(element.name)
     })
-    this.categoryMap = null
+    categoryMap = null
+    tagMap.forEach((value, key, map) => {
+      this.tags.push({
+        name: decodeURI(key),
+        count: value
+      })
+    })
+    tagMap = null
+    /** Init Column */
     this.columns = mColumns.columns
+    /** Init Tab */
     let tab = this.$route.params.tab
     this.tabValue = tab !== null && this.tabs.indexOf(tab) !== -1 ? tab : this.tabs[0]
   },
   watch: {
     tabValue: function () {
       this.showSearchView = this.tabValue === this.tabs[0]
+      this.$router.push(globalRouters.getBlogTabRouter(this.tabValue))
     }
   },
   methods: {
@@ -94,6 +120,9 @@ export default {
 <style scoped>
 .div_blog {
   margin: 20px 30px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .div_category {
@@ -107,5 +136,21 @@ export default {
   margin: 20px auto;
   text-align: center;
   cursor: pointer;
+  padding: 0 50px;
+}
+
+.div_tag{
+  float: left;
+  display: inline-block;
+  margin: 10px 5px;
+}
+
+@media screen and (max-width: 1000px) {
+  .div_blog {
+    margin: 10px 15px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+  }
 }
 </style>

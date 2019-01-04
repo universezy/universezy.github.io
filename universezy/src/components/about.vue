@@ -83,4 +83,13 @@ export default {
     transition: all 0.5s;
   }
 }
+
+@media screen and (max-width: 1000px) {
+  .div_about {
+    padding: 0 10px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+}
 </style>

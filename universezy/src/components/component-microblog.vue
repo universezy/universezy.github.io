@@ -75,8 +75,7 @@ export default {
       this.$router.push(globalRouters.getDisplayRouter(this.propMicroblog.id))
     },
     clickTag: function (tag) {
-      console.log('clickTag: ' + tag)
-      // TODO
+      this.$router.push(globalRouters.getTagRouter(tag))
     }
   }
 }

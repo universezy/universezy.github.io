@@ -6,6 +6,7 @@ import biography from '@/components/biography'
 import blog from '@/components/blog'
 import category from '@/components/category'
 import column from '@/components/column'
+import tag from '@/components/tag'
 import display from '@/components/display'
 import favorite from '@/components/favorite'
 import friendlink from '@/components/friendlink'
@@ -78,7 +79,18 @@ export default new Router({
       path: '/blog/column',
       name: 'column-error',
       redirect: '/blog',
-      component: column
+      component: blog
+    },
+    {
+      path: '/blog/tag/:tag',
+      name: '/blog/tag',
+      component: tag
+    },
+    {
+      path: '/blog/tag',
+      name: 'tag-error',
+      redirect: '/blog',
+      component: blog
     },
     {
       path: '/blog/display/:id',

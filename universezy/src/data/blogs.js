@@ -27,6 +27,7 @@ const blogs = [
     title: '关于jar打包时的几个问题的汇总',
     tags: [
       {tag: 'jar'},
+      {tag: '打包'},
       {tag: 'solution'}
     ],
     abstract: 'jar打包时容易出现的一些问题和解决方案。',
@@ -562,7 +563,6 @@ const blogs = [
     title: 'Vue.js打包静态网页出现空白或路径错误的问题解决方案',
     tags: [
       {tag: '打包'},
-      {tag: '空白'},
       {tag: '路径错误'},
       {tag: 'solution'}
     ],

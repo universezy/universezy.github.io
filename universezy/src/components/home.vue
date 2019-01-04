@@ -127,6 +127,9 @@ export default {
 <style scoped>
 .div_home {
   padding: 0 50px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .alert_notice {
@@ -167,5 +170,14 @@ export default {
   display: inline;
   margin: 10px;
   text-align: left;
+}
+
+@media screen and (max-width: 1000px) {
+  .div_home {
+    padding: 0 20px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+  }
 }
 </style>

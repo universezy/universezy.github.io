@@ -38,16 +38,20 @@
           </Tooltip>
         </Row>
         <Divider />
-        <Row class="row_nav" v-show="!isCollapsed">
-          <span class="span_nav">2018 &copy; ZengYu</span>
-        </Row>
-        <Row class="row_nav" v-show="!isCollapsed">
-          <a href="https://github.com/universezy/universezy.github.io" target="_blank">
-            <span class="span_nav">
-              <Icon type="logo-github" size=16></Icon> universezy.github.io
-            </span>
-          </a>
-        </Row>
+        <transition name="slide-fade">
+          <Row class="row_nav" v-show="!isCollapsed">
+            <span class="span_nav">2018 &copy; ZengYu</span>
+          </Row>
+        </transition>
+        <transition name="slide-fade">
+          <Row class="row_nav" v-show="!isCollapsed">
+            <a href="https://github.com/universezy/universezy.github.io" target="_blank">
+              <span class="span_nav">
+                <Icon type="logo-github" size=16></Icon> universezy.github.io
+              </span>
+            </a>
+          </Row>
+        </transition>
       </Sider>
       <Layout>
         <Content class="content_base">
@@ -166,7 +170,7 @@ export default {
   overflow: hidden;
 }
 
-.layout_base{
+.layout_base {
   min-height: 100vh;
 }
 
@@ -175,12 +179,12 @@ export default {
   width: 100%;
 }
 
-.sider_base{
+.sider_base {
   padding-bottom: 20px;
   z-index: 5;
 }
 
-.row_avator{
+.row_avator {
   background: #f5f7f9;
 }
 
@@ -226,7 +230,9 @@ export default {
   width: 80px;
   height: 80px;
   border-radius: 40px;
-  transition: all .2s ease .2s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .row_nav {
@@ -239,7 +245,21 @@ export default {
   color: white;
 }
 
-.content_base{
+.content_base {
   padding: 10px;
+}
+
+.slide-fade-leave-active {
+  transition: all .2s ease
+}
+
+.slide-fade-enter-active {
+  transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translateX(-40px);
+  opacity: 0;
 }
 </style>
