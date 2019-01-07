@@ -827,6 +827,19 @@ const blogs = [
     ],
     abstract: '介绍Vue.js中的两种路由模式：hash和history，并提供第三方分享url问题的解决方案。',
     timestamp: 1546477801968
+  },
+  {
+    id: 'CopyDirEfficiently',
+    category: 'Java',
+    title: 'Queue+FileChannel实现非递归高效率目录拷贝',
+    tags: [
+      {tag: 'Queue'},
+      {tag: 'FileChannel'},
+      {tag: '非递归'},
+      {tag: '目录拷贝'}
+    ],
+    abstract: '本文介绍非递归目录遍历的实现、FileChannel的使用，从而实现非递归的、安全的目录拷贝。',
+    timestamp: 1546844984362
   }
 ]
 
