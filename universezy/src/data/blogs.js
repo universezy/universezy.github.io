@@ -864,6 +864,17 @@ const blogs = [
     ],
     abstract: '本文介绍Android中的IPC方式之一——AIDL。',
     timestamp: 1546931800951
+  },
+  {
+    id: 'DynamicShortcut',
+    category: 'Android',
+    title: 'Android动态创建快捷方式',
+    tags: [
+      {tag: '快捷方式'},
+      {tag: 'shortcut'}
+    ],
+    abstract: '以Android O为分界，介绍两种动态创建快捷方式的途径：广播和ShortcutManager。',
+    timestamp: 1546933429448
   }
 ]
 
