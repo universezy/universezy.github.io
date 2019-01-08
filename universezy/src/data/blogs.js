@@ -871,7 +871,9 @@ const blogs = [
     title: 'Android动态创建快捷方式',
     tags: [
       {tag: '快捷方式'},
-      {tag: 'shortcut'}
+      {tag: 'shortcut'},
+      {tag: 'Android O'},
+      {tag: 'ShortcutManager'}
     ],
     abstract: '以Android O为分界，介绍两种动态创建快捷方式的途径：广播和ShortcutManager。',
     timestamp: 1546933429448
