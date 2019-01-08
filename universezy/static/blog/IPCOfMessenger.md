@@ -28,12 +28,26 @@ SDK中如此描述：
 
 整理出以下几个要点：
 
-- Messenger的构造参数需要传入一个Handler实例
+- 通过Handler创建一个Messanger
 - Messenger基于Binder实现
 - 注意你的组件的生命周期
 
-除了使用Handler实例的构造器，我们查看API文档还能发现，也可以通过IBinder实例构造：
+查看API文档，Messenger有两个构造方法：
 ```java
+private final IMessenger mTarget;
+
+/**
+ * Create a new Messenger pointing to the given Handler.  Any Message
+ * objects sent through this Messenger will appear in the Handler as if
+ * {@link Handler#sendMessage(Message) Handler.sendMessage(Message)} had
+ * been called directly.
+ * 
+ * @param target The Handler that will receive sent messages.
+ */
+public Messenger(Handler target) {
+    mTarget = target.getIMessenger();
+}
+
 /**
  * Create a Messenger from a raw IBinder, which had previously been
  * retrieved with {@link #getBinder}.
@@ -102,9 +116,9 @@ public class MessengerDemoService extends Service {
 
 然后在AndroidManifest中注册Service：
 ```xml
- <service
+<service
     android:name=".MessengerDemoService"
-     <!--表示允许其他应用调用我们这个Service-->
+    <!--表示允许其他应用调用我们这个Service-->
     android:exported="true">
 </service>
 ```

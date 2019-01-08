@@ -852,6 +852,18 @@ const blogs = [
     ],
     abstract: '本文介绍Android中的IPC方式之一——Messenger。',
     timestamp: 1546909828953
+  },
+  {
+    id: 'IPCOfAIDL',
+    category: 'Android',
+    title: 'Android进程间通信之AIDL',
+    tags: [
+      {tag: 'IPC'},
+      {tag: '进程间通信'},
+      {tag: 'AIDL'}
+    ],
+    abstract: '本文介绍Android中的IPC方式之一——AIDL。',
+    timestamp: 1546931800951
   }
 ]
 

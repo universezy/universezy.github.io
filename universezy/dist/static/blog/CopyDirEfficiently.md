@@ -129,9 +129,7 @@ private String getAbsDesPath(String absSrcBase, String absSrc, String absDesBase
  * to the target channel without actually copying them.  </p>
  *
  */
-public abstract long transferTo(long position, long count,
-                                WritableByteChannel target)
-    throws IOException;
+public abstract long transferTo(long position, long count, WritableByteChannel target) throws IOException;
 ```
 
 翻译过来就是，这个方法可能比从这个通道读取并写入目标通道的常规循环更有效。许多操作系统可以直接将字节从文件系统缓存传输到目标通道，而不需要实际复制它们。
