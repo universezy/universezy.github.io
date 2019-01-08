@@ -101,6 +101,6 @@ public boolean isRequestPinShortcutSupported() {
 判断设备是否支持ShortcutManager的这种方式动态创建快捷方式，如果Android版本低于Android O，使用“com.android.launcher.action.INSTALL_SHORTCUT”这个intent，即我们在上一节中使用的action。因此，如果这个方法返回false，我们应该仍使用广播的方式来动态创建。
 
 ---
-## 五、 参考文献
+## 四、 参考文献
 
 - [Android 8.0 快捷方式Shortcut](https://www.jianshu.com/p/c3b862279e38)
