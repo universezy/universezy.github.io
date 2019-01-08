@@ -9,7 +9,7 @@ const columns = [
     name: 'Android',
     title: 'Android进阶之路',
     desc: '分享一些Android开发过程中的技术心得。',
-    articles: ['PriorityOfSingleInstanceAndTaskAffinity', 'AdbModifyHosts', 'RegisterAndroidDeviceOnUbuntu', 'GetCallingPkgOnAndroid', 'GetScreenSizeOnAndroid', 'CampusRecruitNotesOfAndroid', 'ComparisonOf4MsgTypes']
+    articles: ['IPCOfMessenger', 'PriorityOfSingleInstanceAndTaskAffinity', 'AdbModifyHosts', 'RegisterAndroidDeviceOnUbuntu', 'GetCallingPkgOnAndroid', 'GetScreenSizeOnAndroid', 'CampusRecruitNotesOfAndroid', 'ComparisonOf4MsgTypes']
   },
   {
     name: 'Java',

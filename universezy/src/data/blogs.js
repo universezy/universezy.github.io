@@ -840,6 +840,18 @@ const blogs = [
     ],
     abstract: '本文介绍非递归目录遍历的实现、FileChannel的使用，从而实现非递归的、安全的目录拷贝。',
     timestamp: 1546844984362
+  },
+  {
+    id: 'IPCOfMessenger',
+    category: 'Android',
+    title: 'Android进程间通信之Messenger',
+    tags: [
+      {tag: 'IPC'},
+      {tag: '进程间通信'},
+      {tag: 'Messenger'}
+    ],
+    abstract: '本文介绍Android中的IPC方式之一——Messenger。',
+    timestamp: 1546909828953
   }
 ]
 
