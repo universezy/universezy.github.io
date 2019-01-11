@@ -877,6 +877,17 @@ const blogs = [
     ],
     abstract: '以Android O为分界，介绍两种动态创建快捷方式的途径：广播和ShortcutManager。',
     timestamp: 1546933429448
+  },
+  {
+    id: 'RenderProcessOnView',
+    category: 'Android',
+    title: 'Android中View的绘制流程',
+    tags: [
+      {tag: 'View'},
+      {tag: '绘制流程'}
+    ],
+    abstract: '介绍Android View的绘制流程，引出后续的异步消息、事件分发。',
+    timestamp: 1547191175140
   }
 ]
 
