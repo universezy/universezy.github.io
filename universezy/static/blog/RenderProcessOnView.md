@@ -104,7 +104,7 @@ private void performTraversals() {
 ---
 #### 2.4 performDraw
 
-这个方法中，做了很多复杂的操作，我们关心的draw具体实现的调用，绕了一些原路，首先通过
+这个方法中，做了很多复杂的操作，我们关心的draw具体实现的调用，绕了一些远路，首先通过
 > boolean canUseAsync = draw(fullRedrawNeeded);
 
 调用draw这个方法，然后通过
@@ -113,7 +113,7 @@ private void performTraversals() {
 调用drawSoftware这个方法，最后再通过
 > mView.draw(canvas);
 
-调用视图内容绘制的方法。
+调用视图绘制的具体方法。
 
 ---
 ## 三、 View
