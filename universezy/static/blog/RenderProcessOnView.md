@@ -52,6 +52,30 @@ private void performTraversals() {
     int childHeightMeasureSpec = getRootMeasureSpec(mHeight, lp.height);
     performMeasure(childWidthMeasureSpec, childHeightMeasureSpec);
 
+    /** 
+     * 特意列出这部分，在此处理LayoutParams布局参数的权重，即线性布局中设置的weight值，进行二次测量，并向子组件分发，
+     * 这将对UI的加载造成很大的额外负担，从而降低UI的渲染效率，因此在Android性能优化中，建议开发者尽可能避免使用权重
+     */
+    if (lp.horizontalWeight > 0.0f) {
+        width += (int) ((mWidth - width) * lp.horizontalWeight);
+        childWidthMeasureSpec = MeasureSpec.makeMeasureSpec(width,
+                MeasureSpec.EXACTLY);
+        measureAgain = true;
+    }
+    if (lp.verticalWeight > 0.0f) {
+        height += (int) ((mHeight - height) * lp.verticalWeight);
+        childHeightMeasureSpec = MeasureSpec.makeMeasureSpec(height,
+                MeasureSpec.EXACTLY);
+        measureAgain = true;
+    }
+
+    if (measureAgain) {
+        if (DEBUG_LAYOUT) Log.v(mTag,
+                "And hey let's measure once more: width=" + width
+                + " height=" + height);
+        performMeasure(childWidthMeasureSpec, childHeightMeasureSpec);
+    }
+
     // 将视图布置在正确位置
     performLayout(lp, mWidth, mHeight);
 
