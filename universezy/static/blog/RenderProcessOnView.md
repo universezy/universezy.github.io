@@ -140,7 +140,7 @@ private void performTraversals() {
 ---
 ### 2. View中的核心方法
 
-### 2.1. measure
+#### 2.1. measure
 
 ```java
 /**
@@ -171,7 +171,7 @@ public final void measure(int widthMeasureSpec, int heightMeasureSpec) {...}
 - onMeasure必须被子类重写。
 
 ---
-### 2.2. layout
+#### 2.2. layout
 
 ```java
 /**
@@ -206,7 +206,7 @@ public void layout(int l, int t, int r, int b) {...}
 - layout中会调用onLayout。
 
 ---
-### 2.3. draw
+#### 2.3. draw
 
 ```java
 /**
