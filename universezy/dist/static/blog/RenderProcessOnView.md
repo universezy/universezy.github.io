@@ -29,7 +29,7 @@
 ---
 ### 2. ViewRootImpl的具体流程
 
-#### 2.1 performTraversals
+#### 2.1. performTraversals
 
 一个核心的方法：performTraversals，我们通过方法调用倒推：
 > performTraversals <- doTraversal <- TraversalRunnable <- scheduleTraversals
@@ -93,7 +93,7 @@ private void performTraversals() {
 为什么此处不能获得具体宽高呢？举个例子，当前View包含了一些子View，当前View设置为WRAP_CONTENT，那么是不是就必须先获得子View的宽高后，才能得到当前View的宽高了呢？同样的，如果使用线性布局+权重值的方式设置宽高，也无法在此时获得准确值。
 
 ---
-#### 2.3 performLayout
+#### 2.3. performLayout
 
 在这个方法中，入参的布局参数包含了视图的坐标，再加上另两个参数宽高，便可以定位视图，通过View的layout方法向下传递并设置：
 
@@ -102,7 +102,7 @@ private void performTraversals() {
 读者可能会觉得奇怪，为什么前两个参数是0？因为这四个参数其实并不是绝对坐标，而是相对父组件的相对坐标，具体分析将在后面讲解。
 
 ---
-#### 2.4 performDraw
+#### 2.4. performDraw
 
 这个方法中，做了很多复杂的操作，我们关心的draw具体实现的调用，绕了一些远路，首先通过
 > boolean canUseAsync = draw(fullRedrawNeeded);
