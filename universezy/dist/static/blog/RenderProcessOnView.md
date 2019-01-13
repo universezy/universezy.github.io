@@ -2,7 +2,7 @@
 
 ## 一、 摘要
 
-介绍Android View的绘制流程，引出后续的异步消息、事件分发。
+介绍Android中View的绘制流程，以及更新视图的两种方法：invalidate和requestLayout。
 
 ---
 ## 二、 ViewRootImpl
@@ -226,7 +226,7 @@ public void draw(Canvas canvas) {...}
 - 在调用此方法之前，View必须已经完成了完整的布局（前一个阶段layout）。
 - 在实现View时，实现onDraw这个方法，不要重写本方法。
 - 如果确实需要重写本方法，请调用父类的具体实现。
-- draw中会调用onDraw
+- draw中会调用onDraw。
 
 draw中的绘制步骤为（跳过非必须的两步）：
 
@@ -251,6 +251,331 @@ draw中的绘制步骤为（跳过非必须的两步）：
 ![](https://raw.githubusercontent.com/universezy/TrilogyOfViewOnAndroid/master/image/RenderProcess.png)
 
 ---
-## 五、 参考文献
+## 五、 更新视图
+
+更新视图有两种方式：invalidate和requestLayout。下面分别对这两种方式进行介绍。
+
+### 1. invalidate
+
+在class注释中这样描述到：
+```java
+/**
+ * To force a view to draw, call {@link #invalidate()}.
+ */
+```
+
+可知该方法与视图的draw阶段有关。
+
+再看invalidate的注释：
+```java
+/**
+ * Invalidate the whole view. If the view is visible,
+ * {@link #onDraw(android.graphics.Canvas)} will be called at some point in
+ * the future.
+ * <p>
+ * This must be called from a UI thread. To call from a non-UI thread, call
+ * {@link #postInvalidate()}.
+ */
+public void invalidate() {...}
+```
+
+- 让整个视图作废。
+- 如果视图可见，接下来将调用onDraw()这个方法对Canvas对象进行绘制。
+- 必须在UI线程调用该方法，如果要在非UI线程，应该使用postInvalidate()。
+
+沿着invalidate的调用栈，我们追查到了View中的这个方法：
+```java
+void invalidateInternal(int l, int t, int r, int b, boolean invalidateCache, boolean fullInvalidate) {
+    // ...
+    final ViewParent p = mParent;
+    if (p != null && ai != null && l < r && t < b) {
+        final Rect damage = ai.mTmpInvalRect;
+        damage.set(l, t, r, b);
+        p.invalidateChild(this, damage);
+    }
+    // ...
+}
+```
+
+这里的mParent，需要特别注意，在Android的视图模型中，整个UI基于Window之上，这个Window之上首先是前面讲到的ViewRootImpl，ViewRootImpl之上是DecorView，它是一个特殊的View，我们将在后面专门用一篇文章进行讲解，DecorView包含两个部分，ActionBar和ContentParent，ContentParent就是我们xml文件的根节点对应的layout，它是一个ViewGroup。
+
+再回过头来看p.invalidateChild()，由于当前的View可能是普通的View，其mParent是ViewGroup，也可能当前的View已经是DecorView，那么它的mParent就是ViewRootImpl。
+
+我们先来看ViewGroup中的invalidateChild()：
+```java
+@Override
+public final void invalidateChild(View child, final Rect dirty) {
+    ViewParent parent = this;
+    // ...
+    do {
+        View view = null;
+        if (parent instanceof View) {
+            view = (View) parent;
+        }
+
+        if (drawAnimation) {
+            if (view != null) {
+                view.mPrivateFlags |= PFLAG_DRAW_ANIMATION;
+            } else if (parent instanceof ViewRootImpl) {
+                ((ViewRootImpl) parent).mIsAnimating = true;
+            }
+        }
+
+        // ...
+        parent = parent.invalidateChildInParent(location, dirty);
+        // ...
+    } while (parent != null);
+}
+```
+
+通过代码也能看出，此时当前的parent有ViewGroup和ViewRootImlp两种情况，先看ViewGroup中的invalidateChildInParent()：
+```java
+@Override
+public ViewParent invalidateChildInParent(final int[] location, final Rect dirty) {
+    if ((mPrivateFlags & (PFLAG_DRAWN | PFLAG_DRAWING_CACHE_VALID)) != 0) {
+        // ...
+        return mParent;
+    }
+
+    return null;
+}
+```
+
+通过这两部分代码可知，在do-while循环体内，会一直递归去找parent，什么时候为null呢？找到parent为ViewRootImpl时，就停下来了，于是看ViewRootImpl中：
+```java
+/**
+ * 在刚才的View.invalidateInternal中，如果mParent是一个ViewRootImpl，则直接到了这里
+ */
+@Override
+public void invalidateChild(View child, Rect dirty) {
+    invalidateChildInParent(null, dirty);
+}
+
+/**
+ * ViewGroup中通过递归会直接到这里
+ */
+@Override
+public ViewParent invalidateChildInParent(int[] location, Rect dirty) {
+    // ...
+    if (dirty == null) {
+        invalidate();
+        return null;
+    } else if (dirty.isEmpty() && !mIsAnimating) {
+        return null;
+    }
+    // ...
+    invalidateRectOnScreen(dirty);
+
+    return null;
+}
+
+private void invalidateRectOnScreen(Rect dirty) {
+    // ...
+    if (!mWillDrawSoon && (intersected || mIsAnimating)) {
+        scheduleTraversals();
+    }
+}
+```
+
+我们看到了在第二章讲述ViewRootImpl的具体流程时说的scheduleTraversals()。现在回到performTraversals()中，结合之前的绘制流程：
+```java
+private void performTraversals() {
+    // ...
+    boolean layoutRequested = mLayoutRequested && (!mStopped || mReportNextDraw);
+    // ...
+    boolean windowShouldResize = layoutRequested && windowSizeMayChange
+            && ((mWidth != host.getMeasuredWidth() || mHeight != host.getMeasuredHeight())
+                || (lp.width == ViewGroup.LayoutParams.WRAP_CONTENT &&
+                        frame.width() < desiredWindowWidth && frame.width() != mWidth)
+                || (lp.height == ViewGroup.LayoutParams.WRAP_CONTENT &&
+                        frame.height() < desiredWindowHeight && frame.height() != mHeight));
+    // ...
+    if (mFirst || windowShouldResize || insetsChanged || viewVisibilityChanged || params != null || mForceNextWindowRelayout) {
+        // ...
+        if (!mStopped || mReportNextDraw) {
+            if (focusChangedDueToTouchMode || mWidth != host.getMeasuredWidth()
+                            || mHeight != host.getMeasuredHeight() || contentInsetsChanged ||
+                            updatedConfiguration) {
+                // ...
+                performMeasure(childWidthMeasureSpec, childHeightMeasureSpec);
+                // ...
+                layoutRequested = true;
+            }
+        }
+    }
+    // ...
+    final boolean didLayout = layoutRequested && (!mStopped || mReportNextDraw);
+    // ...
+    if (didLayout) {
+        performLayout(lp, mWidth, mHeight);
+        // ...
+    }
+    // ...
+    performDraw();
+    // ...
+}
+
+private void performDraw() {
+    // ...
+    draw(fullRedrawNeeded);
+    // ...
+}
+
+private void draw(boolean fullRedrawNeeded) {
+    // ...
+    final Rect dirty = mDirty;
+    // ...
+    if (!dirty.isEmpty() || mIsAnimating || accessibilityFocusDirty) {
+        // ...
+        if (!drawSoftware(surface, mAttachInfo, xOffset, yOffset, scalingRequired, dirty)) {
+            return;
+        }
+    }
+    // ...
+}
+```
+
+从这里可以看出：
+- 调用performMeasure()的前提条件之一是layoutRequested为true。
+- 当视图的尺寸属性发生了变化后，才会调用performMeasure()。
+- 调用performLayout()的前提条件是调用了performMeasure()。
+- 最初在View.invalidateInternal传入的damege，即此处的mDirty，不为空，因此才能够执行后面的drawSoftware中的mView.draw()。
+
+在前一次绘制流程正常执行结束后，layoutRequested变成了false，因此，如果我们的View只有渲染内容改变，调用invalidate最后只有ViewRootImpl.performDraw()会调用，即：View中的draw()会执行。
+
+现在，我们可以得出一个结论，仅在内容改变的情况下，应当使用View.invalidate()去更新视图。
+
+---
+### 2. requestLayout
+
+在class注释中这样描述到：
+```java
+/**
+ * To initiate a layout, call {@link #requestLayout}. This method is typically
+ * called by a view on itself when it believes that is can no longer fit within
+ * its current bounds.
+ */
+```
+
+用于初始化布局，当视图现有的边界不适用时，就应该调用该方法。
+
+再看requestLayout的注释：
+```java
+/**
+ * Call this when something has changed which has invalidated the
+ * layout of this view. This will schedule a layout pass of the view
+ * tree. This should not be called while the view hierarchy is currently in a layout
+ * pass ({@link #isInLayout()}. If layout is happening, the request may be honored at the
+ * end of the current layout pass (and then layout will run again) or after the current
+ * frame is drawn and the next layout occurs.
+ *
+ * <p>Subclasses which override this method should call the superclass method to
+ * handle possible request-during-layout errors correctly.</p>
+ */
+@CallSuper
+public void requestLayout() {
+    // ...
+    if (mParent != null && !mParent.isLayoutRequested()) {
+        mParent.requestLayout();
+    }
+    // ...
+}
+```
+
+- 视图的布局无效时调用此方法。
+- 此方法将应用到整个视图树。
+- 当视图正在进行布局时（可通过isInLayout()判断），不应调用此方法。
+- 如果正在布局时调用此方法，将在当前布局过程结束后再次布局，或者下一次绘制布局过程中执行。
+- 子类重写此方法时应该调用该超类的具体实现。
+
+同样的，该方法中的mParent也有ViewGroup和ViewRootImpl两种情况，在ViewGroup中，没有对该方法进行重写，因此mParent.requestLayout()也是调用的View中的requestLayout()，最终会递归调用到ViewRootImpl.requestLayout()：
+```java
+@Override
+public void requestLayout() {
+    if (!mHandlingLayoutInLayoutRequest) {
+        checkThread();
+        mLayoutRequested = true;
+        scheduleTraversals();
+    }
+}
+```
+
+除了scheduleTraversals()这个方法，还多了一个mLayoutRequested = true，然后我们看performTraversals()中：
+```java
+private void performTraversals() {
+    // ...
+    boolean layoutRequested = mLayoutRequested && (!mStopped || mReportNextDraw);
+    // ...
+    boolean windowShouldResize = layoutRequested && windowSizeMayChange
+            && ((mWidth != host.getMeasuredWidth() || mHeight != host.getMeasuredHeight())
+                || (lp.width == ViewGroup.LayoutParams.WRAP_CONTENT &&
+                        frame.width() < desiredWindowWidth && frame.width() != mWidth)
+                || (lp.height == ViewGroup.LayoutParams.WRAP_CONTENT &&
+                        frame.height() < desiredWindowHeight && frame.height() != mHeight));
+    // ...
+    if (mFirst || windowShouldResize || insetsChanged || viewVisibilityChanged || params != null || mForceNextWindowRelayout) {
+        // ...
+        if (!mStopped || mReportNextDraw) {
+            if (focusChangedDueToTouchMode || mWidth != host.getMeasuredWidth()
+                            || mHeight != host.getMeasuredHeight() || contentInsetsChanged ||
+                            updatedConfiguration) {
+                // ...
+                performMeasure(childWidthMeasureSpec, childHeightMeasureSpec);
+                // ...
+                layoutRequested = true;
+            }
+        }
+    }
+    // ...
+    final boolean didLayout = layoutRequested && (!mStopped || mReportNextDraw);
+    // ...
+    if (didLayout) {
+        performLayout(lp, mWidth, mHeight);
+        // ...
+    }
+    // ...
+    performDraw();
+    // ...
+}
+
+private void performDraw() {
+    // ...
+    draw(fullRedrawNeeded);
+    // ...
+}
+
+private void draw(boolean fullRedrawNeeded) {
+    // ...
+    final Rect dirty = mDirty;
+    // ...
+    if (!dirty.isEmpty() || mIsAnimating || accessibilityFocusDirty) {
+        // ...
+        if (!drawSoftware(surface, mAttachInfo, xOffset, yOffset, scalingRequired, dirty)) {
+            return;
+        }
+    }
+    // ...
+}
+```
+
+由上一节可知：
+- 此时layoutRequested为true，如果View的尺寸有变化，那就会执行performMeasure()和performLayout()。
+- 由于没有传入dirty实例，此处的mDirty为空，也就不会执行后续drawSoftware中的mView.draw()。
+
+至此，我们得出第二个结论，仅当视图的尺寸发生变化时，应该调用View.requestLayout()去更新。
+
+---
+### 3. 总结
+
+- 当View的内容发生变化时，应当调用View.invalidate()去更新视图。
+- 当View的尺寸发生变化时，应当调用View.requestLayout()去更新视图。
+- 当View的内容和尺寸都发生变化时，（按照绘制流程顺序）应当先调用View.requestLayout()再调用View.invalidate()去更新视图。
+
+---
+## 六、 参考文献
 
 - [Android View的绘制流程](https://blog.csdn.net/sinat_27154507/article/details/79748010)
+- [Android View重绘和更新： invalidate和requestLayout](https://www.cnblogs.com/cfas/p/6427182.html?tdsourcetag=s_pcqq_aiomsg)
+- [从源码看invalidate和requestLayout的区别](https://blog.csdn.net/litefish/article/details/52859300)
+- [关于View中mParent的来龙去脉](https://www.jianshu.com/p/a6fd2c4db80d)
+- [Android DecorView学习](https://www.jianshu.com/p/6a3bca1b36e8)

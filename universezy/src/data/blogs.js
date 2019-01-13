@@ -884,9 +884,11 @@ const blogs = [
     title: 'Android中View的绘制流程',
     tags: [
       {tag: 'View'},
-      {tag: '绘制流程'}
+      {tag: '绘制流程'},
+      {tag: 'invalidate'},
+      {tag: 'requestLayout'}
     ],
-    abstract: '介绍Android View的绘制流程，引出后续的异步消息、事件分发。',
+    abstract: '介绍Android中View的绘制流程，以及更新视图的两种方法：invalidate和requestLayout。',
     timestamp: 1547191175140
   }
 ]
