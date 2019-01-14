@@ -87,7 +87,7 @@ private void performTraversals() {
 ---
 #### 2.2. performMeasure
 
-在这个方法中，通过WindowManager和各种参数形成一个约束，通过View的measure方法向下传递并，让View去获得最终宽高：
+在这个方法中，通过WindowManager和各种参数形成一个约束，通过View的measure方法向下传递，让View去获得最终宽高：
 > mView.measure(childWidthMeasureSpec, childHeightMeasureSpec);
 
 为什么此处不能获得具体宽高呢？举个例子，当前View包含了一些子View，当前View设置为WRAP_CONTENT，那么是不是就必须先获得子View的宽高后，才能得到当前View的宽高了呢？同样的，如果使用线性布局+权重值的方式设置宽高，也无法在此时获得准确值。

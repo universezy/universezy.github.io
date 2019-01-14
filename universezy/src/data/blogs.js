@@ -890,6 +890,18 @@ const blogs = [
     ],
     abstract: '介绍Android中View的绘制流程，以及更新视图的两种方法：invalidate和requestLayout。',
     timestamp: 1547191175140
+  },
+  {
+    id: 'AsyncMessage',
+    category: 'Android',
+    title: 'Android中View的异步消息',
+    tags: [
+      {tag: 'View'},
+      {tag: '异步消息'},
+      {tag: 'post'}
+    ],
+    abstract: '介绍Android中View的异步消息，以及消息传递流程。',
+    timestamp: 1547436896000
   }
 ]
 
