@@ -52,7 +52,7 @@ public boolean post(Runnable action) {
 
 ![](https://raw.githubusercontent.com/universezy/TrilogyOfViewOnAndroid/master/image/dispatchAttachedToWindow.png)
 
-根据上一节《[Android中View的绘制流程](https://universezy.github.io/universezy/dist/index.html#/blog/display/RenderProcessOnView)》所学内容，我们知道了ViewRootImpl中的这个View对象是一个DecorView实例，而DecorView又继承ViewGroup，因此通过ViewGroup的dispatchAttachedToWindow()，可以从ViewRootImpl到DecorView再到子View进行递归调用，将同一个AttachInfo对象传给它们。所以我们直接看ViewRootImpl中的这处调用，并且它位于上一节中分析过的performTraversals()中：
+根据上一章《[Android中View的绘制流程](https://universezy.github.io/universezy/dist/index.html#/blog/display/RenderProcessOnView)》所学内容，我们知道了ViewRootImpl中的这个View对象是一个DecorView实例，而DecorView又继承ViewGroup，因此通过ViewGroup的dispatchAttachedToWindow()，可以从ViewRootImpl到DecorView再到子View进行递归调用，将同一个AttachInfo对象传给它们。所以我们直接看ViewRootImpl中的这处调用，并且它位于上一章中分析过的performTraversals()中：
 ```java
 private void performTraversals() {
     final View host = mView;

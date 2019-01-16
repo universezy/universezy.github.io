@@ -902,6 +902,19 @@ const blogs = [
     ],
     abstract: '介绍Android中View的异步消息，以及消息传递流程。',
     timestamp: 1547436896000
+  },
+  {
+    id: 'EventDispatch',
+    category: 'Android',
+    title: 'Android中View的事件分发',
+    tags: [
+      {tag: 'View'},
+      {tag: '事件分发'},
+      {tag: '消费'},
+      {tag: '拦截'}
+    ],
+    abstract: '介绍Android中View的事件分发流程，以及对事件的消费和拦截。',
+    timestamp: 1547632071000
   }
 ]
 

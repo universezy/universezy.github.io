@@ -135,7 +135,7 @@ private void performTraversals() {
  - View是UI组件的基本构建块。
  - View在屏幕上占据一个矩形区域（所以我们想要各种不规则形状，都应该在View的绘制阶段实现），负责绘图和事件处理。
  - View是小部件的基类，小部件用于创建交互式UI组件(例如按钮Button、文本字段TextView等)。
- - ViewGroup子类是布局的基类，布局是不可见的容器，包含其他View(或其他ViewGroup)并定义它们的布局属性。
+ - ViewGroup子类是布局的基类，布局是不可见的容器，包含其他View(或其他ViewGroup)并定义它们的布局属性（即各种Layout容器）。
 
 ---
 ### 2. View中的核心方法
