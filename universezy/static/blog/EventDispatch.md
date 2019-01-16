@@ -21,7 +21,7 @@ View有四种基本事件，它们位于MotionEvent中：
 ### 1. 概述
 View的事件分发流程涉及到三个核心方法：dispatchTouchEvent()、onTouchEvent()和onInterceptTouchEvent()，这三个方法将事件在Activity、Window、DecorView、ViewGroup、View之间传递。
 
-通过前两章（《[Android中View的绘制流程](https://universezy.github.io/universezy/dist/index.html#/blog/display/RenderProcessOnView)》、《[Android中View的异步消息](https://universezy.github.io/universezy/dist/index.html#/blog/display/AsyncMessage.md)》）的学习，我们知道了Window、ViewRootImpl、DecorView、ViewGroup、View之间的关系，在源码中，Window只有唯一实现类——PhoneWindow：
+通过前两章（《[Android中View的绘制流程](https://universezy.github.io/universezy/dist/index.html#/blog/display/RenderProcessOnView)》、《[Android中View的异步消息](https://universezy.github.io/universezy/dist/index.html#/blog/display/AsyncMessage)》）的学习，我们知道了Window、ViewRootImpl、DecorView、ViewGroup、View之间的关系，在源码中，Window只有唯一实现类——PhoneWindow：
 ```java
 /**
  * <p>The only existing implementation of this abstract class is
