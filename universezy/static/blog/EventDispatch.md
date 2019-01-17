@@ -213,6 +213,8 @@ public boolean onInterceptTouchEvent(MotionEvent ev) {...}
 拦截，顾名思义，截断事件的传递过程，当事件被拦截后，无法再向下分发，由于拦截的方法onInterceptTouchEvent()仅存于ViewGroup中，因此我们只会在ViewGroup中分析拦截过程。
 
 ### 3. Activity中的流程
+
+我们先从Activity的入口——dispatchTouchEvent()开始分析，至于这个入口又是谁在调用，我们调一下顺序，放在后面来介绍。（因为一般情况下，我们只需要研究从Activity这里开始的内容，至于事件的来源，涉及到native部分）
 ```java
 /**
  * 分发
@@ -502,7 +504,363 @@ View的情况比较简单，很容易理解：
 - 如果当前View可点击，就处理事件，并返回true作为消费结果。
 
 ---
-### 4. 事件分发整体流程
+### 6. Activity中事件来源
+
+Activity中事件来源，也就是谁调用了dispatchTouchEvent()，我们查看方法栈，发现在DecorView中：
+```java
+@Override
+public boolean dispatchTouchEvent(MotionEvent ev) {
+    // ...
+    final Window.Callback cb = mWindow.getCallback();
+    return cb != null && !mWindow.isDestroyed() && mFeatureId < 0
+            ? cb.dispatchTouchEvent(ev) : super.dispatchTouchEvent(ev);
+}
+```
+
+Activity这个类是实现了Window.Callback接口的，因此事件从这里分发到Activity的dispatchTouchEvent()。接下来我们先看看这个mWindow的来源，再去追踪事件的来源：
+```java
+void setWindow(PhoneWindow phoneWindow) {
+    mWindow = phoneWindow;
+    Context context = getContext();
+    if (context instanceof DecorContext) {
+        DecorContext decorContext = (DecorContext) context;
+        decorContext.setPhoneWindow(mWindow);
+    }
+}
+```
+
+而这个setWindow()有两处调用：
+
+![](https://raw.githubusercontent.com/universezy/TrilogyOfViewOnAndroid/master/image/setWindow.png)
+
+实际上，这两处最后都是走到同一个方法中：
+```java
+private void installDecor() {
+    // ...
+    if (mDecor == null) {
+        // 这里第一处调用
+        mDecor = generateDecor(-1);
+       // ...
+    } else {
+        // 这是第二处调用
+        mDecor.setWindow(this);
+    }
+}
+
+protected DecorView generateDecor(int featureId) {
+    // ...
+    return new DecorView(context, featureId, this, getAttributes());
+}
+
+/**
+ * 位于DecorView类中的构造方法
+ */
+DecorView(Context context, int featureId, PhoneWindow window,
+    WindowManager.LayoutParams params) {
+    // ...
+    setWindow(window);
+    // ...
+}
+```
+
+继续，追踪installDecor()的调用：
+
+![](https://raw.githubusercontent.com/universezy/TrilogyOfViewOnAndroid/master/image/installDecor.png)
+
+这个方法有好几处调用，我们发现了其中有熟悉的方法——setContentView()，这是我们在Activity的onCreate()中用来加载xml文件，即ViewGroup的方法，于是我们查看它在Activity中的调用：
+```java
+public void setContentView(@LayoutRes int layoutResID) {
+    getWindow().setContentView(layoutResID);
+    initWindowDecorActionBar();
+}
+```
+
+好了，到了这里我们不再继续往下找，因为后面涉及到Activity加载机制，为了不偏离本文主题，将在另外的文章中学习到。
+
+至此我们来理一理：
+
+(1) Activity在onCreate()中调用setContentView()，Window对象也调用setContentView()；
+(2) Window的setContentView()中，对DecorView实例化；
+(3) 当事件分发到DecorView时，DecorView通过构造方法传进来的Window对象的回调，将事件又分发到Activity的dispatchTouchEvent()；
+
+现在，我们开始分析，是谁将事件分发到DecorView的，由于dispatchTouchEvent()的调用者太多，我们很难下手，因此我们改变一下思路，放弃逆推，选择顺推试试。从入参MotionEvent下手，并且尽可能朝着我们熟悉的这些组件去推理。
+
+MotionEvent继承于InputEvent，根据依赖倒置原则，我们去追踪InputEvent在哪儿产生，发现一个叫InputEventReceiver的类，这个类中有一个方法：
+```java
+// Called from native code.
+@SuppressWarnings("unused")
+private void dispatchInputEvent(int seq, InputEvent event, int displayId) {
+    mSeqMap.put(event.getSequenceNumber(), seq);
+    onInputEvent(event, displayId);
+}
+```
+
+由native层调用，当输入事件产生并分发到这里后，调用onInputEvent()，我们再看这个onInputEvent()：
+
+![](https://raw.githubusercontent.com/universezy/TrilogyOfViewOnAndroid/master/image/onInputEvent.png)
+
+里面一处调用位于ViewRootImpl：WindowInputEventReceiver，然后到ViewRootImpl中看看：
+```java
+final class WindowInputEventReceiver extends InputEventReceiver {
+    @Override
+    public void onInputEvent(InputEvent event, int displayId) {
+        // ...
+        // 将输入事件入列
+        enqueueInputEvent(event, this, 0, true);
+    }
+}
+
+void enqueueInputEvent(InputEvent event,
+            InputEventReceiver receiver, int flags, boolean processImmediately) {
+    // ...
+    // 如果是立即执行
+    if (processImmediately) {
+        // 处理输入事件
+        doProcessInputEvents();
+    } else {
+        // 调度输入事件，通过Handler-Message最终也是调用doProcessInputEvents()
+        scheduleProcessInputEvents();
+    }
+}
+
+void doProcessInputEvents() {
+    // ...
+    // 传递输入事件
+    deliverInputEvent(q);
+    // ...
+}
+
+private void deliverInputEvent(QueuedInputEvent q) {
+    // ...
+    InputStage stage;
+    if (q.shouldSendToSynthesizer()) {
+        stage = mSyntheticInputStage;
+    } else {
+        stage = q.shouldSkipIme() ? mFirstPostImeInputStage : mFirstInputStage;
+    }
+    // ...
+    if (stage != null) {
+        handleWindowFocusChanged();
+        // 传递有序的输入事件
+        stage.deliver(q);
+    } else {
+        finishInputEvent(q);
+    }
+}
+```
+
+此时我们得去追踪这个InputStage对象具体是哪一个实例，我们去查看这三个实例的初始化，发现是在同一个地方：
+```java
+public void setView(View view, WindowManager.LayoutParams attrs, View panelParentView) {
+    synchronized (this) {
+        if (mView == null) {
+            // ...
+            // Set up the input pipeline.
+            CharSequence counterSuffix = attrs.getTitle();
+            mSyntheticInputStage = new SyntheticInputStage();
+            InputStage viewPostImeStage = new ViewPostImeInputStage(mSyntheticInputStage);
+            InputStage nativePostImeStage = new NativePostImeInputStage(viewPostImeStage,
+                    "aq:native-post-ime:" + counterSuffix);
+            InputStage earlyPostImeStage = new EarlyPostImeInputStage(nativePostImeStage);
+            InputStage imeStage = new ImeInputStage(earlyPostImeStage,
+                    "aq:ime:" + counterSuffix);
+            InputStage viewPreImeStage = new ViewPreImeInputStage(imeStage);
+            InputStage nativePreImeStage = new NativePreImeInputStage(viewPreImeStage,
+                    "aq:native-pre-ime:" + counterSuffix);
+
+            mFirstInputStage = nativePreImeStage;
+            mFirstPostImeInputStage = earlyPostImeStage;
+        }
+    }
+}
+```
+
+这是什么操作？不明觉厉，这几个类都继承于InputStage，那就看看InputStage里面：
+```java
+/**
+ * 用于实现处理输入事件的责任链阶段的基类。
+ * 事件通过deliver()传递到该阶段，在此，可选择完成事件或者传递到下个阶段。
+ */
+abstract class InputStage {
+    private final InputStage mNext;
+
+    protected static final int FORWARD = 0;
+    protected static final int FINISH_HANDLED = 1;
+    protected static final int FINISH_NOT_HANDLED = 2;
+
+    /**
+     * 创建一个输入事件阶段
+     * @param next 下个阶段
+     */
+    public InputStage(InputStage next) {
+        mNext = next;
+    }
+
+    /**
+     * 传递一个事件来处理
+     */
+    public final void deliver(QueuedInputEvent q) {
+        if ((q.mFlags & QueuedInputEvent.FLAG_FINISHED) != 0) {
+            forward(q);
+        } else if (shouldDropInputEvent(q)) {
+            finish(q, false);
+        } else {
+            apply(q, onProcess(q));
+        }
+    }
+
+    /**
+     * 将事件标记为完成了，并传递到下个阶段
+     */
+    protected void finish(QueuedInputEvent q, boolean handled) {
+        q.mFlags |= QueuedInputEvent.FLAG_FINISHED;
+        if (handled) {
+            q.mFlags |= QueuedInputEvent.FLAG_FINISHED_HANDLED;
+        }
+        forward(q);
+    }
+
+    /**
+     * 传递事件到下个阶段
+     */
+    protected void forward(QueuedInputEvent q) {
+        onDeliverToNext(q);
+    }
+
+    /**
+     * 将onProcess()的结果码应用于指定事件
+     */
+    protected void apply(QueuedInputEvent q, int result) {
+        if (result == FORWARD) {
+            forward(q);
+        } else if (result == FINISH_HANDLED) {
+            finish(q, true);
+        } else if (result == FINISH_NOT_HANDLED) {
+            finish(q, false);
+        } else {
+            throw new IllegalArgumentException("Invalid result: " + result);
+        }
+    }
+
+    /**
+     * 处理事件时调用
+     * @return 事件处理结果
+     */
+    protected int onProcess(QueuedInputEvent q) {
+        return FORWARD;
+    }
+
+    /**
+     * 传递事件到下个阶段时调用
+     */
+    protected void onDeliverToNext(QueuedInputEvent q) {
+        if (DEBUG_INPUT_STAGES) {
+            Log.v(mTag, "Done with " + getClass().getSimpleName() + ". " + q);
+        }
+        if (mNext != null) {
+            mNext.deliver(q);
+        } else {
+            finishInputEvent(q);
+        }
+    }
+    // ...
+}
+```
+
+大致意思就是，有一条责任链，当事件传递到链首，开始处理或向后传递。
+
+结合ViewRootImpl中的责任链构造过程，我们去查看跟View有关的ViewPostImeInputStage，假设此时事件传递到这个阶段，由于它的内部没有重写deliver()，而是重写了onProcess()，那么其调用deliver()的情况是：
+```java
+/**
+ * Delivers post-ime input events to the view hierarchy.
+ */
+final class ViewPostImeInputStage extends InputStage {
+    // 继承父类的方法
+    public final void deliver(QueuedInputEvent q) {
+        if ((q.mFlags & QueuedInputEvent.FLAG_FINISHED) != 0) {
+            forward(q);
+        } else if (shouldDropInputEvent(q)) {
+            finish(q, false);
+        } else {
+            apply(q, onProcess(q));
+        }
+    }
+
+    @Override
+    protected int onProcess(QueuedInputEvent q) {
+        if (q.mEvent instanceof KeyEvent) {
+            return processKeyEvent(q);
+        } else {
+            final int source = q.mEvent.getSource();
+            if ((source & InputDevice.SOURCE_CLASS_POINTER) != 0) {
+                return processPointerEvent(q);
+            } else if ((source & InputDevice.SOURCE_CLASS_TRACKBALL) != 0) {
+                return processTrackballEvent(q);
+            } else {
+                return processGenericMotionEvent(q);
+            }
+        }
+    }
+}
+```
+
+onProcess()中的四个process方法中，观察processPointerEvent()发现其中出现了View事件类型：
+```java
+private int processPointerEvent(QueuedInputEvent q) {
+    // ...
+    boolean handled = mView.dispatchPointerEvent(event);
+    int action = event.getActionMasked();
+    if (!SCROLL_BOOST_SS_ENABLE) {
+        if (action == MotionEvent.ACTION_MOVE) {
+            mHaveMoveEvent = true;
+        } else if (action == MotionEvent.ACTION_UP) {
+            mHaveMoveEvent = false;
+            mIsPerfLockAcquired = false;
+        }
+    }
+    // ...
+}
+```
+
+而另一个更关键的信息是mView.dispatchPointerEvent(event)，查看其具体实现：
+```java
+/**
+ * Dispatch a pointer event.
+ * <p>
+ * Dispatches touch related pointer events to {@link #onTouchEvent(MotionEvent)} and all
+ * other events to {@link #onGenericMotionEvent(MotionEvent)}.  This separation of concerns
+ * reinforces the invariant that {@link #onTouchEvent(MotionEvent)} is really about touches
+ * and should not be expected to handle other pointing device features.
+ * </p>
+ *
+ * @param event The motion event to be dispatched.
+ * @return True if the event was handled by the view, false otherwise.
+ * @hide
+ */
+public final boolean dispatchPointerEvent(MotionEvent event) {
+    if (event.isTouchEvent()) {
+        return dispatchTouchEvent(event);
+    } else {
+        return dispatchGenericMotionEvent(event);
+    }
+}
+```
+
+- 分发指针事件。
+- 触摸相关的事件分发给onTouchEvent()。
+- 其他事件分发给onGenericMotionEvent()。
+
+我们知道了ViewRootImpl中的这个mView实例其实是DecorView对象，DecorView中正好对dispatchTouchEvent()进行了重写，那就是这一节最开始我们看到的具体实现。整理下这部分整个流程：
+
+- native层将事件传递到ViewRootImpl中。
+- ViewRootImpl将事件分发到DecorView中。
+- DecorView通过Window.Callback将事件分发到Activity中。
+- 然后再接上前面从Activity到ViewGroup再到View的流程。
+
+至此，关于View中触摸事件的来龙去脉，我们已经全部梳理完成。
+
+---
+### 7. 事件分发整体流程
 
 ![](https://raw.githubusercontent.com/universezy/TrilogyOfViewOnAndroid/master/image/EventDispatch.png)
 
@@ -511,3 +869,4 @@ View的情况比较简单，很容易理解：
 
 - [Android事件分发机制详解：史上最全面、最易懂](https://www.jianshu.com/p/38015afcdb58)
 - [一文读懂Android View事件分发机制](https://www.jianshu.com/p/238d1b753e64)
+- [Activity dispatchTouchEvent事件分发的源头](https://blog.csdn.net/conan9715/article/details/78529055)
