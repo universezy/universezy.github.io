@@ -20,6 +20,9 @@
             <comTag :tag="item"></comTag>
           </div>
         </TabPane>
+        <TabPane name="archive" label="归档" icon="md-calendar">
+          <comArchive></comArchive>
+        </TabPane>
         <Input
           v-show="showSearchView"
           search
@@ -37,6 +40,7 @@ import comOverview from './component-overview.vue'
 import comCategory from './component-category.vue'
 import comColumn from './component-column.vue'
 import comTag from './component-tag.vue'
+import comArchive from './component-archive.vue'
 import mCategories from '../data/categories'
 import mColumns from '../data/columns'
 import mBlogs from '../data/blogs'
@@ -49,11 +53,12 @@ export default {
     comOverview,
     comCategory,
     comColumn,
-    comTag
+    comTag,
+    comArchive
   },
   data () {
     return {
-      tabs: ['overview', 'category', 'column', 'tag'],
+      tabs: ['overview', 'category', 'column', 'tag', 'archive'],
       tabValue: '',
       showSearchView: true,
       keyword: '',

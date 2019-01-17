@@ -70,11 +70,8 @@
           </Poptip>
         </ButtonGroup>
         <Divider class="divider_drawer">跳转</Divider>
-        <ButtonGroup size="large">
-          <Button type="primary" ghost to="/blog/tab/overview">总览</Button>
-          <Button type="primary" ghost to="/blog/tab/category">类别</Button>
-          <Button type="primary" ghost to="/blog/tab/column">专栏</Button>
-          <Button type="primary" ghost to="/blog/tab/tag">标签</Button>
+        <ButtonGroup>
+          <Button type="primary" ghost v-for="item in jumpBtns" :key="item.tab" :to="item.tab">{{item.name}}</Button>
         </ButtonGroup>
         <Divider class="divider_drawer">评论</Divider>
         <span>开发中，敬请期待！</span>
@@ -126,7 +123,29 @@ export default {
       prev: null,
       next: null,
       current: null,
-      blogData: '请求资源中......'
+      blogData: '请求资源中......',
+      jumpBtns: [
+        {
+          tab: '/blog/tab/overview',
+          name: '总览'
+        },
+        {
+          tab: '/blog/tab/category',
+          name: '类别'
+        },
+        {
+          tab: '/blog/tab/column',
+          name: '专栏'
+        },
+        {
+          tab: '/blog/tab/tag',
+          name: '标签'
+        },
+        {
+          tab: '/blog/tab/archive',
+          name: '归档'
+        }
+      ]
     }
   },
   watch: {
