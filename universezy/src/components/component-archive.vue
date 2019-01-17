@@ -12,18 +12,23 @@
             <Panel v-for="(detail, index) in archive.details" :key="index" :name="''+index">
               {{detail.month}}月 {{detail.count}}篇
               <div slot="content">
-                <p>Blog1</p>
-                <p>Blog2</p>
+                <p class="p_test" v-for="(article, index) in detail.articles" :key="index" @click="clickArticle(article.id)">{{article.title}}</p>
               </div>
             </Panel>
           </Collapse>
         </div>
       </TimelineItem>
+      <TimelineItem>
+        <p class="content">未完待续</p>
+        </TimelineItem>
     </Timeline>
   </div>
 </template>
 
 <script>
+import mBlogs from '../data/blogs'
+import {globalRouters} from '../api/routers'
+
 export default {
   name: 'component-archive',
   data () {
@@ -35,27 +40,47 @@ export default {
           details: [
             {
               month: 4,
-              count: 2
-            },
-            {
-              month: 5,
-              count: 1
-            },
-            {
-              month: 7,
-              count: 2
-            },
-            {
-              month: 8,
-              count: 1
-            },
-            {
-              month: 10,
-              count: 1
+              count: 2,
+              articles: [
+                {
+                  id: 'Openlayers3Cluster',
+                  title: 'Openlayers3学习心得之Cluster'
+                },
+                {
+                  id: 'Openlayers3LineString',
+                  title: 'Openlayers3学习心得之Cluster'
+                }
+              ]
             }
           ]
+        },
+        {
+          year: 2018,
+          count: 64,
+          details: []
+        },
+        {
+          year: 2019,
+          count: 8,
+          details: []
         }
       ]
+    }
+  },
+  created () {
+    mBlogs.blogs.forEach(element => {
+      var date = new Date(element.timestamp)
+      var year = date.getFullYear()
+      var month = date.getMonth()
+      this.appendArchive(year, month, element.id, element.title)
+    })
+  },
+  methods: {
+    appendArchive: function (year, month, id, title) {
+      // TODO
+    },
+    clickArticle: function (id) {
+      this.$router.push(globalRouters.getDisplayRouter(id))
     }
   }
 }
@@ -72,5 +97,11 @@ export default {
   font-size: 14px;
   font-weight: bold;
   padding-left: 5px;
+}
+
+.p_test{
+  font-size: 14px;
+  margin: 3px;
+  cursor: pointer;
 }
 </style>

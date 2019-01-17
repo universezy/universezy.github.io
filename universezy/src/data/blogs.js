@@ -70,7 +70,7 @@ const blogs = [
   {
     id: 'SummaryOfCampusRecruit',
     category: 'Thinking',
-    title: '大四秋招总结 ',
+    title: '大四秋招总结',
     tags: [
       {tag: '校招'},
       {tag: '总结'}
