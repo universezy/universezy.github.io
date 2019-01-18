@@ -10,9 +10,9 @@
         <div>
           <Collapse simple>
             <Panel v-for="(detail, index) in archive.details" :key="index" :name="''+index">
-              {{detail.month}}月 {{detail.count}}篇
+              <span class="span_month">{{detail.month}}月</span><span class="span_count">{{detail.count}}篇</span>
               <div slot="content">
-                <p class="p_test" v-for="(article, index) in detail.articles" :key="index" @click="clickArticle(article.id)">{{article.title}}</p>
+                <p class="span_article" v-for="(article, index) in detail.articles" :key="index" @click="clickArticle(article.id)">{{article.title}}</p>
               </div>
             </Panel>
           </Collapse>
@@ -129,9 +129,31 @@ export default {
   padding-left: 5px;
 }
 
-.p_test{
+.span_month{
+  width: 50px;
+  display: inline-block;
+  color: orange;
+}
+
+.span_count{
+  color: orange;
+}
+
+.span_article{
+  width: auto;
+  margin: 5px 0;
   font-size: 14px;
-  margin: 3px;
+  text-decoration: underline;
   cursor: pointer;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.span_article:hover{
+  color: red;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
 }
 </style>
