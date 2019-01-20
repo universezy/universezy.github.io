@@ -570,6 +570,17 @@ const blogs = [
     timestamp: 1524464227000
   },
   {
+    id: 'SummaryOfUniversity',
+    category: 'Thinking',
+    title: '回顾大学四年 ',
+    tags: [
+      {tag: '大学'},
+      {tag: '总结'}
+    ],
+    abstract: '时光匆匆，短暂的四年大学生涯就这么结束了，花了一些时间整理一下。',
+    timestamp: 1528733160000
+  },
+  {
     id: 'GetScreenSizeOnAndroid',
     category: 'Android',
     title: 'Android获取屏幕宽高',

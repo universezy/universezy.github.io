@@ -12,6 +12,10 @@ const banners = [
     title: '记录一些博客写作心得'
   },
   {
+    id: 'SummaryOfUniversity',
+    title: '回顾大学四年'
+  },
+  {
     id: 'CognitionOfIndustry',
     title: '我能为IT行业做什么'
   },
