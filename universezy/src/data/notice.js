@@ -1,7 +1,7 @@
 const notice = {
   display: true,
-  title: '当前版本为β版',
-  desc: '正式环境测试第二阶段，相关说明请见<关于>页。'
+  title: '停更说明',
+  desc: '年前跳槽了，年后脱单了，事业爱情双丰收，心态有点膨胀，暂时停止更新。'
 }
 
 export default {
