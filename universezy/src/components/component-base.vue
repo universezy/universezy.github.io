@@ -40,7 +40,7 @@
         <Divider />
         <transition name="slide-fade">
           <Row class="row_nav" v-show="!isCollapsed">
-            <span class="span_nav">2018 &copy; ZengYu</span>
+            <span class="span_nav">2018-2019 &copy; ZengYu</span>
           </Row>
         </transition>
         <transition name="slide-fade">

@@ -4,6 +4,10 @@
       <div class="div_inner">
         <Card :bordered="false">
           <Divider />
+          <span class="span_about">很久没更新内容了，上班很忙，加班多，休息的时候也就不想再用脑。等缓一阵子再更新吧。</span>
+          <Divider />
+          <span class="span_date">2019年04月13日</span>
+          <Divider />
           <span class="span_about">赶在2018年最后一天，修复了几个主要问题，现已正式上线β版本。</span>
           <Divider />
           <span class="span_date">2018年12月31日</span>
