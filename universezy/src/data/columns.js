@@ -27,7 +27,7 @@ const columns = [
     name: 'Git',
     title: 'Git简单应用',
     desc: '介绍一些入门的git操作。。',
-    articles: ['GitDeleteOrigin', 'ConfigLanguageOfGit', 'GitPushOrigin', 'GitAddOrigin']
+    articles: ['GitDeleteOrigin', 'ConfigLanguageOfGit', 'GitPushOrigin', 'GitAddOrigin', 'GitTeachingBasedOnGerrit']
   },
   {
     name: 'Spring',

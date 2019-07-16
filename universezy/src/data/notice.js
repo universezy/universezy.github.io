@@ -1,7 +1,7 @@
 const notice = {
   display: true,
-  title: '停更说明',
-  desc: '工作繁忙，没时间更新内容，等一阵子再写。'
+  title: '恢复更新说明',
+  desc: '停更这么久，是时候重新开始写博客了。'
 }
 
 export default {
