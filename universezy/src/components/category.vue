@@ -16,8 +16,12 @@
         <div class="div_search">
           <Input search enter-button slot="extra" @on-search="search"/>
         </div>
+        <div class="div_share">
+          <Button icon="md-share" @click="clickShare">分享</Button>
+        </div>
       </div>
       <comOverview :filter="filter" v-bind:keyword="keyword"></comOverview>
+      <comShare v-bind:show="showShareModal" :showData="showData" :shareData="shareData"></comShare>
     </div>
   </comBase>
 </template>
@@ -25,14 +29,16 @@
 <script>
 import comBase from './component-base.vue'
 import comOverview from './component-overview.vue'
+import comShare from './component-share.vue'
 import mCategories from '../data/categories'
-import {imageApi} from '../api/urls'
+import {categoryApi, imageApi} from '../api/urls'
 
 export default {
   name: 'category',
   components: {
     comBase,
-    comOverview
+    comOverview,
+    comShare
   },
   data () {
     return {
@@ -43,7 +49,19 @@ export default {
         type: 'category',
         value: this.$route.params.category
       },
-      keyword: ''
+      keyword: '',
+      showShareModal: 0,
+      showData: {
+        title: '',
+        src: '',
+        abstract: null
+      },
+      shareData: {
+        title: '',
+        src: '',
+        url: '',
+        abstract: null
+      }
     }
   },
   created () {
@@ -57,7 +75,21 @@ export default {
       if (category) {
         this.showImg = true
         this.imgSrc = imageApi.getCategoryUrl(this.propCategory)
+        this.showData = {
+          title: '分享博客类别[' + category.name + ']',
+          src: imageApi.getCategoryUrl(category.name),
+          desc: null
+        }
+        this.shareData = {
+          title: '分享博客类别[' + category.name + '] - ' + this.$store.state.GlobalData.title,
+          src: imageApi.getLogoUrl,
+          url: categoryApi.getRedirectUrl(category.name),
+          desc: null
+        }
       }
+    },
+    clickShare: function () {
+      this.showShareModal++
     },
     search: function (value) {
       this.keyword = value
@@ -98,6 +130,12 @@ export default {
   height: 22px;
   margin-right: 5px;
   transform: translateY(5px)
+}
+
+.div_share {
+  margin-left: 10px;
+  margin-right: 0;
+  float: right;
 }
 
 .div_search {

@@ -45,7 +45,7 @@ import comMicroBlog from './component-microblog.vue'
 import mNotice from '../data/notice'
 import mBanners from '../data/banners'
 import mBlogs from '../data/blogs'
-import {blogApi, imageApi} from '../api/urls'
+import {blogApi, categoryApi, columnApi, imageApi} from '../api/urls'
 
 export default {
   name: 'home',
@@ -74,7 +74,7 @@ export default {
     }
   },
   created () {
-    if (this.handleRedirect()) return
+    if (this.handleParams()) return
     if (mNotice.notice !== null) {
       this.notice = mNotice.notice
     }
@@ -98,14 +98,17 @@ export default {
     }
   },
   methods: {
-    handleRedirect: function () {
+    handleParams: function () {
+      return this.handleRedirect('?blog$', blogApi) || this.handleRedirect('?cotegory$', categoryApi) || this.handleRedirect('?column$', columnApi)
+    },
+    handleRedirect: function (flag, api) {
       var url = window.location.href
-      var start = url.indexOf('?blogId=')
+      var start = url.indexOf(flag)
       var end = url.indexOf('#')
       if (start > 0 && end > start) {
         this.$Message.loading('正在打开，请稍后......')
-        var blogId = url.substring(start + '?blogId='.length, end)
-        window.location.href = blogApi.getPageUrl(blogId)
+        var value = url.substring(start + flag.length, end)
+        window.location.href = api.getPageUrl(value)
         return true
       } else {
         return false

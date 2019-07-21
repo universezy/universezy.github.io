@@ -8,6 +8,9 @@
               <Icon type="md-folder"></Icon> 专栏
             </BreadcrumbItem>
           </Breadcrumb>
+          <div class="div_share">
+            <Button icon="md-share" @click="clickShare">分享</Button>
+          </div>
           <div class="div_search">
             <Input search enter-button slot="extra" @on-search="search"/>
           </div>
@@ -15,6 +18,7 @@
         <comColumn :column="dataColumn" wide></comColumn>
       </div>
       <comOverview :filter="filter" v-bind:keyword="keyword"></comOverview>
+      <comShare v-bind:show="showShareModal" :showData="showData" :shareData="shareData"></comShare>
     </div>
   </comBase>
 </template>
@@ -23,14 +27,17 @@
 import comBase from './component-base.vue'
 import comColumn from './component-column.vue'
 import comOverview from './component-overview.vue'
+import comShare from './component-share.vue'
 import mColumns from '../data/columns'
+import {columnApi, imageApi} from '../api/urls'
 
 export default {
   name: 'column',
   components: {
     comBase,
     comColumn,
-    comOverview
+    comOverview,
+    comShare
   },
   data () {
     return {
@@ -40,7 +47,19 @@ export default {
         type: 'column',
         value: this.$route.params.column
       },
-      keyword: ''
+      keyword: '',
+      showShareModal: 0,
+      showData: {
+        title: '',
+        src: '',
+        abstract: null
+      },
+      shareData: {
+        title: '',
+        src: '',
+        url: '',
+        abstract: null
+      }
     }
   },
   created () {
@@ -55,7 +74,21 @@ export default {
       })
       if (column) {
         this.dataColumn = column
+        this.showData = {
+          title: '分享博客专栏[' + column.title + ']',
+          src: imageApi.getCategoryUrl(column.name),
+          desc: column.desc
+        }
+        this.shareData = {
+          title: '分享博客专栏[' + column.title + '] - ' + this.$store.state.GlobalData.title,
+          src: imageApi.getLogoUrl,
+          url: columnApi.getRedirectUrl(column.name),
+          desc: column.desc
+        }
       }
+    },
+    clickShare: function () {
+      this.showShareModal++
     },
     search: function (value) {
       this.keyword = value
@@ -87,6 +120,12 @@ export default {
   display: inline;
   font-size: 18px;
   font-weight: bold;
+}
+
+.div_share {
+  margin-left: 10px;
+  margin-right: 0;
+  float: right;
 }
 
 .div_search {

@@ -6,7 +6,7 @@
           <img class="img_category" :src="imgSrc" @click="clickCategory"/>
           <div class="div_title"><b>{{current.title}}</b></div>
         </div>
-        <Button type="warning" shape="circle" large icon="md-menu" slot="extra" @click="clickMore"></Button>
+        <Button icon="md-menu" slot="extra" @click="clickMore">更多</Button>
         <Row class="row_microblog">
           <Tag color="primary" v-for="item in current.tags" :key="item.tag">
             <span @click="clickTag(item.tag)">{{item.tag}}</span>
@@ -52,7 +52,7 @@
             <img class="img_share" src="../assets/weibo.svg" @click="shareToWeibo"/>
           </div>
         </Row>
-        <Divider class="divider_drawer">更多</Divider>
+        <Divider class="divider_drawer">阅读</Divider>
         <ButtonGroup size="large">
           <Poptip trigger="hover" word-wrap width="200" placement="bottom">
             <div class="div_poptip" slot="content">{{settingsDr.prevTitle}}</div>
@@ -84,7 +84,7 @@
 import comBase from './component-base.vue'
 import mBlogs from '../data/blogs'
 import requestApi from '../api/requestApi'
-import {markdownApi, imageApi, blogApi, shareApi} from '../api/urls'
+import {markdownApi, imageApi, blogApi, shareBlogApi} from '../api/urls'
 import {globalRouters} from '../api/routers'
 import QRCode from 'qrcodejs2'
 
@@ -267,15 +267,15 @@ export default {
       })
     },
     shareToQQ: function () {
-      let shareUrl = shareApi.getQQUrl(this.current)
+      let shareUrl = shareBlogApi.getQQUrl(this.current)
       window.open(shareUrl)
     },
     shareToQZone: function () {
-      let shareUrl = shareApi.getQZoneUrl(this.current)
+      let shareUrl = shareBlogApi.getQZoneUrl(this.current)
       window.open(shareUrl)
     },
     shareToWeibo: function () {
-      let shareUrl = shareApi.getWeiboUrl(this.current)
+      let shareUrl = shareBlogApi.getWeiboUrl(this.current)
       window.open(shareUrl)
     },
     shiftBlog: function (id) {

@@ -10,7 +10,7 @@
           <Card style="width:auto">
             <div style="text-align:center">
               <img :class="imgClass" src="../assets/logo.png">
-              <h3>曾宇</h3>
+              <h3>{{author}}</h3>
             </div>
           </Card>
         </Row>
@@ -60,14 +60,21 @@
       </Layout>
     </Layout>
     <BackTop></BackTop>
+    <comShare v-bind:show="showShareModal" :showData="showData" :shareData="shareData"></comShare>
   </div>
 </template>
 
 <script>
-const NavItems = ['home', 'biography', 'blog', 'favorite', 'friendlink', 'about']
+import comShare from './component-share.vue'
+import {originUrl, imageApi} from '../api/urls'
+
+const NavItems = ['home', 'biography', 'blog', 'favorite', 'friendlink', 'about', 'share']
 
 export default {
   name: 'component-base',
+  components: {
+    comShare
+  },
   props: {
     active: {
       type: String,
@@ -111,6 +118,11 @@ export default {
           name: 'about',
           icon: 'md-information-circle',
           desc: '关于'
+        },
+        {
+          name: 'share',
+          icon: 'md-share-alt',
+          desc: '分享'
         }
       ],
       navOthers: [
@@ -129,7 +141,21 @@ export default {
           link: 'http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=VWRnZGZtZGFnZmcVJCR7Njo4',
           icon: 'md-mail'
         }
-      ]
+      ],
+      author: '曾宇',
+      sign: 'Too young too simple, sometimes naive.',
+      showShareModal: 0,
+      showData: {
+        title: '',
+        src: '',
+        abstract: null
+      },
+      shareData: {
+        title: '',
+        src: '',
+        url: '',
+        abstract: null
+      }
     }
   },
   watch: {
@@ -152,10 +178,28 @@ export default {
     document.body.scrollTop = 0
     document.documentElement.scrollTop = 0
     document.title = this.$store.state.GlobalData.title
+    this.loadShareModal()
   },
   methods: {
-    clickNav: function (propActive) {
-      this.$router.push('/' + propActive)
+    loadShareModal: function () {
+      this.showData = {
+        title: '分享Github Pages[' + this.$store.state.GlobalData.title + ']',
+        src: imageApi.getLogoUrl,
+        desc: this.sign
+      }
+      this.shareData = {
+        title: '分享Github Pages[' + this.$store.state.GlobalData.title + ']',
+        src: imageApi.getLogoUrl,
+        url: originUrl,
+        desc: this.sign
+      }
+    },
+    clickNav: function (name) {
+      if (name === 'share') {
+        this.showShareModal++
+      } else {
+        this.$router.push('/' + name)
+      }
     }
   }
 }
