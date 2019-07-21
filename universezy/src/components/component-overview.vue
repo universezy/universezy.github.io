@@ -100,26 +100,19 @@ export default {
           return item.category === this.filter.value
         })
       } else if (this.filter.type === FilterTypes[2]) {
-        var column = null
-        for (var i = 0; i < mColumns.columns.length; i++) {
-          if (mColumns.columns[i].name === this.filter.value) {
-            column = mColumns.columns[i]
-            break
-          }
-        }
-        if (column !== null && column.articles.length > 0) {
+        var column = mColumns.columns.find(item => {
+          return item.name === this.filter.value
+        })
+        if (column && column.articles.length > 0) {
           this.originBlogs = this.originBlogs.filter(item => {
             return column.articles.indexOf(item.id) !== -1
           })
         }
       } else if (this.filter.type === FilterTypes[3]) {
         this.originBlogs = this.originBlogs.filter(item => {
-          for (var i = 0; i < item.tags.length; i++) {
-            if (item.tags[i].tag === this.filter.value) {
-              return true
-            }
-          }
-          return false
+          return item.tags.some(element => {
+            return element.tag === this.filter.value
+          })
         })
       }
     },
@@ -131,12 +124,9 @@ export default {
           item.abstract.indexOf(this.propKeyword) !== -1) {
           return true
         } else {
-          for (var i = 0; i < item.tags.length; i++) {
-            if (item.tags[i].tag === this.propKeyword) {
-              return true
-            }
-          }
-          return false
+          return item.tags.some(element => {
+            return element.tag === this.propKeyword
+          })
         }
       })
       this.settings.total = this.showBlogs.length

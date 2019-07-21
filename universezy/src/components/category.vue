@@ -51,12 +51,12 @@ export default {
   },
   methods: {
     loadResource: function () {
-      for (var i = 0; i <= mCategories.categories.length; i++) {
-        if (mCategories.categories[i].name === this.propCategory) {
-          this.showImg = true
-          this.imgSrc = imageApi.getCategoryUrl(this.propCategory)
-          break
-        }
+      var category = mCategories.categories.find(element => {
+        return element.name === this.propCategory
+      })
+      if (category) {
+        this.showImg = true
+        this.imgSrc = imageApi.getCategoryUrl(this.propCategory)
       }
     },
     search: function (value) {

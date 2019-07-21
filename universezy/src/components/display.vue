@@ -178,21 +178,22 @@ export default {
     },
     check: function () {
       if (mBlogs.blogs !== null && mBlogs.blogs.length > 0) {
-        for (var i = mBlogs.blogs.length - 1; i >= 0; i--) {
-          if (mBlogs.blogs[i].id === this.id) {
-            this.current = mBlogs.blogs[i]
-            if (i - 1 >= 0) {
-              this.prev = mBlogs.blogs[i - 1]
-            } else {
-              this.prev = null
-            }
-            if (i + 1 <= mBlogs.blogs.length - 1) {
-              this.next = mBlogs.blogs[i + 1]
-            } else {
-              this.next = null
-            }
-            return true
+        var index = mBlogs.blogs.findIndex(element => {
+          return element.id === this.id
+        })
+        if (index >= 0) {
+          this.current = mBlogs.blogs[index]
+          if (index - 1 >= 0) {
+            this.prev = mBlogs.blogs[index - 1]
+          } else {
+            this.prev = null
           }
+          if (index + 1 <= mBlogs.blogs.length - 1) {
+            this.next = mBlogs.blogs[index + 1]
+          } else {
+            this.next = null
+          }
+          return true
         }
       }
       return false

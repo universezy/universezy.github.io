@@ -50,11 +50,11 @@ export default {
     loadResource: function () {
       let paramColumn = this.propColumn
       if (paramColumn === null) return
-      for (var i = 0; i <= mColumns.columns.length; i++) {
-        if (mColumns.columns[i].name === paramColumn) {
-          this.dataColumn = mColumns.columns[i]
-          break
-        }
+      var column = mColumns.columns.find(element => {
+        return element.name === paramColumn
+      })
+      if (column) {
+        this.dataColumn = column
       }
     },
     search: function (value) {

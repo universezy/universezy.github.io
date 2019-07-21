@@ -58,27 +58,26 @@ export default {
   methods: {
     appendArchive: function (year, month, id, title) {
       var yearExist = false
-      for (var i = 0; i < this.archives.length; i++) {
-        if (this.archives[i].year === year) {
-          yearExist = true
-          var monthExist = false
-          for (var j = 0; j < this.archives[i].details.length; j++) {
-            var detail = this.archives[i].details[j]
-            if (detail.month === month) {
-              monthExist = true
-              var articleItem = this.createArticleItem(id, title)
-              detail.articles.push(articleItem)
-              detail.count++
-              break
-            }
-          }
-          if (!monthExist) {
-            var monthItem = this.createMonthItem(month, id, title)
-            this.archives[i].details.push(monthItem)
-          }
-          this.archives[i].count++
-          break
+      var archive = this.archives.find(element => {
+        return element.year === year
+      })
+      if (archive) {
+        yearExist = true
+        var monthExist = false
+        var detail = archive.details.find(element => {
+          return element.month === month
+        })
+        if (detail) {
+          monthExist = true
+          var articleItem = this.createArticleItem(id, title)
+          detail.articles.push(articleItem)
+          detail.count++
         }
+        if (!monthExist) {
+          var monthItem = this.createMonthItem(month, id, title)
+          archive.details.push(monthItem)
+        }
+        archive.count++
       }
       if (!yearExist) {
         var yearItem = this.createYearItem(year, month, id, title)

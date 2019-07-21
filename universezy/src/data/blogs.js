@@ -932,7 +932,6 @@ const blogs = [
     category: 'Git',
     title: '基于Gerrit的Git常用命令',
     tags: [
-      {tag: 'Git'},
       {tag: 'Gerrit'}
     ],
     abstract: '本文介绍日常开发中常用的git命令，从初阶到高阶都有，以及相关git、gerrit原理，以提升协同开发效率。',
