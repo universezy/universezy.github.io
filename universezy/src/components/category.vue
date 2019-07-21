@@ -84,7 +84,8 @@ export default {
           title: '分享博客类别[' + category.name + '] - ' + this.$store.state.GlobalData.title,
           src: imageApi.getLogoUrl,
           url: categoryApi.getRedirectUrl(category.name),
-          desc: null
+          desc: null,
+          qrcode: categoryApi.getPageUrl(category.name)
         }
       }
     },

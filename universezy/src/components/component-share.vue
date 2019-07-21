@@ -86,7 +86,7 @@ export default {
   methods: {
     createQrcode: function () {
       this.qrcode = new QRCode(this.qrcodeId, {
-        text: this.propShareData.url,
+        text: this.propShareData.qrcode,
         width: 100,
         height: 100,
         colorDark: '#17233d',

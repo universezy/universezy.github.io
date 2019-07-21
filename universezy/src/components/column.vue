@@ -83,7 +83,8 @@ export default {
           title: '分享博客专栏[' + column.title + '] - ' + this.$store.state.GlobalData.title,
           src: imageApi.getLogoUrl,
           url: columnApi.getRedirectUrl(column.name),
-          desc: column.desc
+          desc: column.desc,
+          qrcode: columnApi.getPageUrl(column.name)
         }
       }
     },
