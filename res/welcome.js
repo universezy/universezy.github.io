@@ -4,7 +4,7 @@ var redirectUrl = "universezy/dist/index.html";
 function checkParams () {
   var url = window.location.href;
   return checkRedirect(url, '?blog$') 
-    || checkRedirect(url, '?cotegory$') 
+    || checkRedirect(url, '?category$') 
     || checkRedirect(url, '?column$');
 }
 

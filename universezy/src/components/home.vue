@@ -99,7 +99,7 @@ export default {
   },
   methods: {
     handleParams: function () {
-      return this.handleRedirect('?blog$', blogApi) || this.handleRedirect('?cotegory$', categoryApi) || this.handleRedirect('?column$', columnApi)
+      return this.handleRedirect('?blog$', blogApi) || this.handleRedirect('?category$', categoryApi) || this.handleRedirect('?column$', columnApi)
     },
     handleRedirect: function (flag, api) {
       var url = window.location.href
