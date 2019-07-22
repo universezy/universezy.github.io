@@ -25,8 +25,8 @@ export const blogApi = {
 }
 
 export const categoryApi = {
-  getRedirectUrl: (category) => {
-    return originUrl + '?category$' + category
+  getRedirectUrl: (id) => {
+    return originUrl + '?category$' + id
   },
   getPageUrl: (id) => {
     return id === null ? basePageUrl + 'category' : basePageUrl + 'blog/category/' + id
@@ -34,8 +34,8 @@ export const categoryApi = {
 }
 
 export const columnApi = {
-  getRedirectUrl: (column) => {
-    return originUrl + '?column$' + column
+  getRedirectUrl: (id) => {
+    return originUrl + '?column$' + id
   },
   getPageUrl: (id) => {
     return id === null ? basePageUrl + 'column' : basePageUrl + 'blog/column/' + id

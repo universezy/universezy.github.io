@@ -191,7 +191,8 @@ export default {
         title: '分享Github Pages[' + this.$store.state.GlobalData.title + ']',
         src: imageApi.getLogoUrl,
         url: originUrl,
-        desc: this.sign
+        desc: this.sign,
+        qrcode: originUrl
       }
     },
     clickNav: function (name) {

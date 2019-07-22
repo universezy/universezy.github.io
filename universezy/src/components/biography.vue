@@ -2,6 +2,7 @@
   <comBase active="biography">
     <div class="div_biography">
       <mavon-editor
+        class="markdown"
         v-model="bio"
         :subfield="settings.subfield"
         :defaultOpen="settings.defaultOpen"
@@ -75,5 +76,9 @@ export default {
 <style scoped>
 .div_biography {
   padding: 10px;
+}
+
+.markdown {
+  z-index: 10;
 }
 </style>
