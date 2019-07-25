@@ -936,6 +936,18 @@ const blogs = [
     ],
     abstract: '本文介绍日常开发中常用的git命令，从初阶到高阶都有，以及相关git、gerrit原理，以提升协同开发效率。',
     timestamp: 1563275310000
+  },
+  {
+    id: 'RecyclerViewUseItemDecoration',
+    category: 'Android',
+    title: 'RecyclerView使用ItemDecoration绘制分割线',
+    tags: [
+      {tag: 'RecyclerView'},
+      {tag: 'ItemDecoration'},
+      {tag: '分割线'}
+    ],
+    abstract: '本文介绍使用RecyclerView的抽象内部类ItemDecoration实现ItemView分割线的绘制。',
+    timestamp: 1564044595000
   }
 ]
 
