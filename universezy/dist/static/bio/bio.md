@@ -4,15 +4,7 @@
 
 - **学位**：软件工程学士
 
-- **QQ**：[1213814232](http://wpa.qq.com/msgrd?v=3&amp;uin=1213814232&amp;site=qq&amp;menu=yes)
-
-- **Email**：[1213814232@qq.com](http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=VWRnZGZtZGFnZmcVJCR7Njo4)
-
-- **CET**：4级
-
-- **证书**：[卓越工程师教育培养计划](https://baike.baidu.com/item/%E5%8D%93%E8%B6%8A%E5%B7%A5%E7%A8%8B%E5%B8%88%E6%95%99%E8%82%B2%E5%9F%B9%E5%85%BB%E8%AE%A1%E5%88%92/4942299?fr=aladdin)
-
-- **岗位**：Android开发工程师
+- **岗位**：Android工程师
 
 ---
 ## 教育经历
@@ -35,24 +27,15 @@
 
 1. **厦门市公安局2017金砖会晤安防项目**
 
-- 和导师一起完成Android客户端开发；
-- 基于Redis的警情订阅功能；
-- WebView中接入地图JS库Openlayers实现瓦片图实时警情定位；
-
 2. **厦门市公安局警务巡逻车车载应用项目**
-
-- 和导师一起完成Android客户端开发；
-- 基于Redis的警情订阅功能；
 
 3. **厦门市第一看守所狱警手持终端项目**
 
-- 独自完成Android客户端开发；
-
 ### 二、 2018.1 - 2018.5：珠海市魅族科技有限公司 - Android开发工程师
 
-1. **[H5 + CSS + JS 实现的个人主页](https://github.com/universezy/frogfans.github.io/)**
+1. **[github.io（已弃用）](https://github.com/universezy/frogfans.github.io/)**
 
-2. **[Vue.js + SpringMVC + MySQL 实现的毕业设计 - 工作管理系统](https://github.com/FlymeStudio)**
+2. **[毕业设计](https://github.com/FlymeStudio)**
 
 ---
 ## 工作经历
@@ -61,19 +44,11 @@
 
 1. **快应用**
 
-- 参与客户端开发、维护
-- 负责为系统应用（应用商店、搜索、桌面、语音助手、应用安装器、手机管家、换机助手等）提供对内服务接口和技术支持
-- 负责对内SDK开发、维护
-
 2. **无线通讯**
-
-- 参与系统层无线通讯相关功能（无线网络、WIFI、热点等）的维护
 
 ### 二、 2019.2 - 至今：广东欧珀移动通讯有限公司 - 应用工程师
 
 1. **SystemUI**
-
-- 保密
 
 ---
 ## 自我评价
@@ -102,5 +77,5 @@
 
 - **CSDN博客**
 
-1. 80篇原创博客，包括技术分享、心得体会、问题解答、面试总结、职业规划等
+1. 80余篇原创博客，包括技术分享、心得体会、问题解答、面试总结、职业规划等
 2. 访问量超过12万

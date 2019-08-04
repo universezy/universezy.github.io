@@ -76,12 +76,12 @@ export default {
         this.showImg = true
         this.imgSrc = imageApi.getCategoryUrl(this.propCategory)
         this.showData = {
-          title: '分享博客类别[' + category.name + ']',
+          title: '分享 博客类别 [' + category.name + ']',
           src: imageApi.getCategoryUrl(category.name),
           desc: null
         }
         this.shareData = {
-          title: '分享博客类别[' + category.name + '] - ' + this.$store.state.GlobalData.title,
+          title: '分享 博客类别 [' + category.name + '] - ' + this.$store.state.GlobalData.title,
           src: imageApi.getLogoUrl,
           url: categoryApi.getRedirectUrl(category.name),
           desc: null,

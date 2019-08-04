@@ -75,12 +75,12 @@ export default {
       if (column) {
         this.dataColumn = column
         this.showData = {
-          title: '分享博客专栏[' + column.title + ']',
+          title: '分享 博客专栏 [' + column.title + ']',
           src: imageApi.getCategoryUrl(column.name),
           desc: column.desc
         }
         this.shareData = {
-          title: '分享博客专栏[' + column.title + '] - ' + this.$store.state.GlobalData.title,
+          title: '分享 博客专栏 [' + column.title + '] - ' + this.$store.state.GlobalData.title,
           src: imageApi.getLogoUrl,
           url: columnApi.getRedirectUrl(column.name),
           desc: column.desc,

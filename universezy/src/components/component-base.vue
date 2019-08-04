@@ -10,7 +10,11 @@
           <Card style="width:auto">
             <div style="text-align:center">
               <img :class="imgClass" src="../assets/logo.png">
-              <h3>{{author}}</h3>
+              <transition name="slide-fade">
+                <Row class="row_nav" v-show="!isCollapsed">
+                  <h3>{{author}}</h3>
+                </Row>
+              </transition>
             </div>
           </Card>
         </Row>
@@ -142,7 +146,7 @@ export default {
           icon: 'md-mail'
         }
       ],
-      author: '曾宇',
+      author: '进击的小宇宙',
       sign: 'Too young too simple, sometimes naive.',
       showShareModal: 0,
       showData: {
@@ -183,12 +187,12 @@ export default {
   methods: {
     loadShareModal: function () {
       this.showData = {
-        title: '分享Github Pages[' + this.$store.state.GlobalData.title + ']',
+        title: '分享 Github Pages [' + this.$store.state.GlobalData.title + ']',
         src: imageApi.getLogoUrl,
         desc: this.sign
       }
       this.shareData = {
-        title: '分享Github Pages[' + this.$store.state.GlobalData.title + ']',
+        title: '分享 Github Pages [' + this.$store.state.GlobalData.title + ']',
         src: imageApi.getLogoUrl,
         url: originUrl,
         desc: this.sign,
