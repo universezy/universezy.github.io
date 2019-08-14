@@ -948,6 +948,17 @@ const blogs = [
     ],
     abstract: '本文介绍使用RecyclerView的抽象内部类ItemDecoration实现ItemView分割线的绘制。',
     timestamp: 1564044595000
+  },
+  {
+    id: 'RecyclerViewUseSpanSizeLookup',
+    category: 'Android',
+    title: 'RecyclerView使用SpanSizeLookup设置Item占位',
+    tags: [
+      {tag: 'RecyclerView'},
+      {tag: 'SpanSizeLookup'}
+    ],
+    abstract: '本文介绍使用栅栏布局管理器的抽象内部类SpanSizeLookup实现Item占位多行或多列的方法。',
+    timestamp: 1565754567157
   }
 ]
 
