@@ -8,6 +8,7 @@ import category from '@/components/category'
 import column from '@/components/column'
 import tag from '@/components/tag'
 import display from '@/components/display'
+import wapDisplay from '@/components/wap-display'
 import favorite from '@/components/favorite'
 import friendlink from '@/components/friendlink'
 
@@ -100,6 +101,17 @@ export default new Router({
     {
       path: '/blog/display',
       name: 'display-error',
+      redirect: '/blog',
+      component: blog
+    },
+    {
+      path: '/blog/wapDisplay/:id',
+      name: '/blog/wapDisplay',
+      component: wapDisplay
+    },
+    {
+      path: '/blog/wapDisplay',
+      name: 'wapDisplay-error',
       redirect: '/blog',
       component: blog
     },

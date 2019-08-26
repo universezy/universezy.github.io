@@ -5,6 +5,7 @@ const basePageUrl = 'https://universezy.github.io/universezy/dist/index.html#/'
 const baseQQShareUrl = 'http://connect.qq.com/widget/shareqq/index.html'
 const baseQZoneShareUrl = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey'
 const baseWeiboShareUrl = 'http://service.weibo.com/share/share.php'
+const wapUserAgents = ['Android', 'iPhone']
 
 export const markdownApi = {
   getBioUrl: () => {
@@ -20,7 +21,8 @@ export const blogApi = {
     return originUrl + '?blog$' + id
   },
   getPageUrl: (id) => {
-    return id === null ? basePageUrl + 'blog' : basePageUrl + 'blog/display/' + id
+    var isWap = wapUserAgents.indexOf(navigator.userAgent)
+    return id === null ? basePageUrl + 'blog' : (basePageUrl + (isWap ? 'blog/wapDisplay/' : 'blog/display/') + id)
   }
 }
 
