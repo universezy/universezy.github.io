@@ -1,5 +1,5 @@
 <template>
-  <div class="div_top">
+  <div class="div_container">
     <h2 class="h2_title">{{current.title}}</h2>
     <div class="div_info">
       <span class="span_author" @click="clickAuthor">{{author}}</span>
@@ -12,8 +12,8 @@
       :subfield="settingsMd.subfield"
       :defaultOpen="settingsMd.defaultOpen"
       :toolbarsFlag="settingsMd.toolbarsFlag"
-      :navigation="settingsMd.navigation"
-      :toolbars="settingsMd.toolbars" />
+      :codeStyle="settingsMd.codeStyle" />
+    <BackTop></BackTop>
   </div>
 </template>
 
@@ -30,13 +30,7 @@ export default {
         subfield: false, // 单双栏模式
         defaultOpen: 'preview', // 默认展示
         toolbarsFlag: false, // 工具栏是否显示
-        navigation: false, // 导航目录
-        toolbars: {
-          fullscreen: true, // 全屏编辑
-          readmodel: true, // 沉浸式阅读
-          help: true, // 帮助
-          navigation: true // 导航目录
-        }
+        codeStyle: 'xcode' // 配色方案
       },
       id: 0,
       author: null,
@@ -95,27 +89,34 @@ export default {
       this.author = this.$store.state.GlobalData.title
     },
     clickAuthor: function () {
-      // TODO
+      this.$router.push('/home')
     }
   }
 }
 </script>
 
 <style scoped>
-.div_top {
-  float: left;
+.div_container {
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  position: fixed;
+  overflow-y: scroll;
+  overflow-x: hidden;
   text-align: left;
 }
 
 .h2_title {
   color: #f8f8f9;
-  margin-top: 30px;
-  margin-bottom: 15px;
+  margin: 30px 15px 15px 15px;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 }
 
 .div_info {
   display: inline-block;
   color: #e8eaec;
+  margin: 0 15px;
+  font-family:"Times New Roman",Times,serif;
 }
 
 .span_author {
@@ -125,6 +126,9 @@ export default {
 }
 
 .markdown {
+  width: auto;
+  min-width: 180px;
+  display: flex;
   z-index: 10;
 }
 </style>
