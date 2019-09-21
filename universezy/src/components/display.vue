@@ -24,6 +24,7 @@
         :defaultOpen="settingsMd.defaultOpen"
         :toolbarsFlag="settingsMd.toolbarsFlag"
         :navigation="settingsMd.navigation"
+        :codeStyle="settingsMd.codeStyle"
         :toolbars="settingsMd.toolbars"/>
     </div>
     <div v-else class="div_no_data">
@@ -102,6 +103,7 @@ export default {
         defaultOpen: 'preview', // 默认展示
         toolbarsFlag: true, // 工具栏是否显示
         navigation: false, // 导航目录
+        codeStyle: 'xcode', // 配色方案
         toolbars: {
           fullscreen: true, // 全屏编辑
           readmodel: true, // 沉浸式阅读
