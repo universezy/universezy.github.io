@@ -1,19 +1,23 @@
 <template>
-  <div class="div_container">
-    <h2 class="h2_title">{{current.title}}</h2>
-    <div class="div_info">
-      <span class="span_author" @click="clickAuthor">{{author}}</span>
-      <Time :time="current.timestamp" type="date" />
+  <div>
+    <div class="div_container">
+      <h1 class="h2_title">{{current.title}}</h1>
+      <div class="div_info">
+        <span class="span_author" @click="clickAuthor">{{author}}</span>
+        <Time :time="current.timestamp" type="date" />
+      </div>
+      <Divider dashed />
+      <mavon-editor
+        class="markdown"
+        v-model="blogData"
+        :subfield="settingsMd.subfield"
+        :defaultOpen="settingsMd.defaultOpen"
+        :toolbarsFlag="settingsMd.toolbarsFlag"
+        :codeStyle="settingsMd.codeStyle" />
     </div>
-    <Divider dashed />
-    <mavon-editor
-      class="markdown"
-      v-model="blogData"
-      :subfield="settingsMd.subfield"
-      :defaultOpen="settingsMd.defaultOpen"
-      :toolbarsFlag="settingsMd.toolbarsFlag"
-      :codeStyle="settingsMd.codeStyle" />
-    <BackTop></BackTop>
+    <div class="div_backtop">
+      <BackTop></BackTop>
+    </div>
   </div>
 </template>
 
@@ -115,13 +119,14 @@ export default {
 }
 
 .div_info {
-  display: inline-block;
   color: #e8eaec;
   margin: 0 15px;
   font-family:"Times New Roman",Times,serif;
+  font-size: 20px;
 }
 
 .span_author {
+  display: inline;
   color: #5cadff;
   margin-right: 15px;
   cursor: pointer;
@@ -130,7 +135,13 @@ export default {
 .markdown {
   width: auto;
   min-width: 180px;
+  margin-bottom: 100px;
   display: flex;
   z-index: 10;
+}
+
+.div_backtop {
+  position: relative;
+  z-index: 20;
 }
 </style>
