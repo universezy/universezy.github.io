@@ -15,7 +15,7 @@ const columns = [
     name: 'Java',
     title: '探究Java的奥秘',
     desc: '一代版本一代神，代代都有Java人。',
-    articles: ['CopyDirEfficiently', 'DangerOfArrays_asList', 'ComparisonOfArrayListAndLinkedList', '4ReferencesOnJava', 'ThreadSafeInDCLOnJava', 'DeadCycleOnJava', 'NotesOfJava']
+    articles: ['FunctionalProgramming', 'CopyDirEfficiently', 'DangerOfArrays_asList', 'ComparisonOfArrayListAndLinkedList', '4ReferencesOnJava', 'ThreadSafeInDCLOnJava', 'DeadCycleOnJava', 'NotesOfJava']
   },
   {
     name: 'Ubuntu',

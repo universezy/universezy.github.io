@@ -959,6 +959,16 @@ const blogs = [
     ],
     abstract: '本文介绍使用栅栏布局管理器的抽象内部类SpanSizeLookup实现Item占位多行或多列的方法。',
     timestamp: 1565754567157
+  },
+  {
+    id: 'FunctionalProgramming',
+    category: 'Java',
+    title: 'Java函数式编程',
+    tags: [
+      {tag: '函数式编程'}
+    ],
+    abstract: '本文介绍Java 8新特性之一——函数式编程。',
+    timestamp: 1570011688000
   }
 ]
 
