@@ -281,6 +281,6 @@ void setLayoutParams(WindowManager.LayoutParams attrs, boolean newView) {
 > 观察log发现，很快回调了B的onDetachedFromWindow，隔了很多log才回调了A的onAttachedToWindow
 
 学习完今天的内容便可以解释：
-A在addView之后，进入了mChoreographer的回调队列，等待下一次`vsync`信号，而B在removeView之后，即便处于下一次消息轮询，但在消息队列中的事件不足以多到丢帧的情况下，也会非常快轮询到并执行，因此`onAttachedToWindow`回调远远慢于`·`onDetachedFromWindow`。
+A在addView之后，进入了mChoreographer的回调队列，等待下一次`vsync`信号，而B在removeView之后，即便处于下一次消息轮询，但在消息队列中的事件不足以多到丢帧的情况下，也会非常快轮询到并执行，因此`onAttachedToWindow`回调远远慢于`onDetachedFromWindow`。
 
 增加View和删除View，都具有延迟性，因此我们不能过于依赖`onAttachedToWindow`和`onDetachedFromWindow`回调，并且WM重复增加或删除同一个View会抛异常。对于高频增删View的场景，我们可以通过设置可见性`setVisibility`来代替实现，这样便可避免像add之后立马remove这种场景导致异常的问题。
