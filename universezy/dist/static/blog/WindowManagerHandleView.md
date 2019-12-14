@@ -130,6 +130,14 @@ private void performTraversals() {
         host.dispatchAttachedToWindow(mAttachInfo, 0);
         // ...
     }
+    // ...
+    // Ask host how big it wants to be
+    performMeasure(childWidthMeasureSpec, childHeightMeasureSpec);
+    // ...
+    performLayout(lp, mWidth, mHeight);
+    // ...
+    performDraw();
+    // ...
 }
 ```
 
@@ -144,7 +152,7 @@ void dispatchAttachedToWindow(AttachInfo info, int visibility) {
 
 此时我们看到了`onAttachedToWindow`回调。
 
-综上分析，`onAttachedToWindow`回调发生的时机，是在添加的view被绘制出第一帧之后，因此该回调具有非常严重且明显的延迟性。
+综上分析，`onAttachedToWindow`回调发生的时机，是在添加的view绘制第一帧时，并且在`performMeasure`、`performLayout`、`performDraw`之前，因此该回调具有非常严重且明显的延迟性，这也是为什么我们在`onAttachedToWindow`中拿不到View的宽高。
 
 ---
 ## 四、 删除View
