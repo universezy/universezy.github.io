@@ -3,7 +3,7 @@ const columns = [
     name: 'Thinking',
     title: '我思故我在',
     desc: '程序书写人生。',
-    articles: ['SummaryOf2018', 'CognitionOfIndustry', 'SummaryOfUniversity', 'ExperienceOfWriting', 'SummaryOfCampusRecruit', 'ThinkingOfInternship']
+    articles: ['SummaryOf2019', 'SummaryOf2018', 'CognitionOfIndustry', 'SummaryOfUniversity', 'ExperienceOfWriting', 'SummaryOfCampusRecruit', 'ThinkingOfInternship']
   },
   {
     name: 'Android',

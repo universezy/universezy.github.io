@@ -22,6 +22,10 @@ const banners = [
   {
     id: 'SummaryOf2018',
     title: '2018年总结'
+  },
+  {
+    id: 'SummaryOf2019',
+    title: '2019——充实的一年'
   }
 ]
 

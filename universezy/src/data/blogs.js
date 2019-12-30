@@ -982,6 +982,17 @@ const blogs = [
     ],
     abstract: '本文通过源码分析WindowManager的几个重要的操作View的方法：addView，removeView，updateViewLayout等，以及它们隐含的一些风险项。',
     timestamp: 1570097049000
+  },
+  {
+    id: 'SummaryOf2019',
+    category: 'Thinking',
+    title: '2019——充实的一年',
+    tags: [
+      {tag: '年终'},
+      {tag: '总结'}
+    ],
+    abstract: '回想起一年前的此时，也是坐在电脑前，一边回顾总结，一边感叹时光。物是人非，心态早已是天壤之别。',
+    timestamp: 1577726218786
   }
 ]
 
