@@ -13,6 +13,7 @@
               <transition name="slide-fade">
                 <Row class="row_nav" v-show="!isCollapsed">
                   <h3>{{author}}</h3>
+                  <h4>{{desc}}</h4>
                 </Row>
               </transition>
             </div>
@@ -44,7 +45,7 @@
         <Divider />
         <transition name="slide-fade">
           <Row class="row_nav" v-show="!isCollapsed">
-            <span class="span_nav">2018-2019 &copy; ZengYu</span>
+            <span class="span_nav">2018-2020 &copy; ZengYu</span>
           </Row>
         </transition>
         <transition name="slide-fade">
@@ -147,6 +148,7 @@ export default {
         }
       ],
       author: '进击的小宇宙',
+      desc: 'universezy',
       sign: 'Too young too simple, sometimes naive.',
       showShareModal: 0,
       showData: {

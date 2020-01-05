@@ -53,7 +53,7 @@
             <img class="img_share" src="../assets/weibo.svg" @click="shareToWeibo"/>
           </div>
         </Row>
-        <Divider class="divider_drawer">Others</Divider>
+        <Divider style="font-weight: bold;" class="divider_drawer">Others</Divider>
         <ButtonGroup size="large" shape="circle">
           <Poptip trigger="hover" word-wrap width="200" placement="bottom">
             <div class="div_poptip" slot="content">{{settingsDr.prevTitle}}</div>
@@ -70,11 +70,11 @@
             </Button>
           </Poptip>
         </ButtonGroup>
-        <Divider class="divider_drawer">Navigation</Divider>
+        <Divider style="font-weight: bold;" class="divider_drawer">Navigation</Divider>
         <ButtonGroup>
           <Button type="primary" size="small" ghost v-for="item in jumpBtns" :key="item.tab" :to="item.tab">{{item.name}}</Button>
         </ButtonGroup>
-        <Divider class="divider_drawer">Comment</Divider>
+        <Divider style="font-weight: bold;" class="divider_drawer">Comment</Divider>
         <span>Developing</span>
       </div>
     </Drawer>
@@ -219,8 +219,8 @@ export default {
         })
     },
     requestFailed: function (msg) {
-      this.$Message.error('请求服务器失败，请稍后再试。')
-      this.blogData = '请求服务器失败，请稍后再试。'
+      this.$Message.error('Loading failed, retry later.')
+      this.blogData = 'Loading failed, retry later.'
     },
     setData: function () {
       document.title = this.current.title + ' - ' + this.$store.state.GlobalData.title
