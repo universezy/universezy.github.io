@@ -1,9 +1,10 @@
 const blogs = [
   {
     id: 'Openlayers3Cluster',
-    category: 'Openlayers',
+    category: 'JavaScript',
     title: 'Openlayer3学习心得之Cluster',
     tags: [
+      {tag: 'Openlayers'},
       {tag: 'Cluster'},
       {tag: 'GIS'}
     ],
@@ -12,9 +13,10 @@ const blogs = [
   },
   {
     id: 'Openlayers3LineString',
-    category: 'Openlayers',
+    category: 'JavaScript',
     title: 'Openlayer3学习心得之LineString',
     tags: [
+      {tag: 'Openlayers'},
       {tag: 'LineString'},
       {tag: 'GIS'}
     ],

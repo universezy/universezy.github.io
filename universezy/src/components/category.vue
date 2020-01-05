@@ -4,7 +4,7 @@
       <div class="div_head">
         <Breadcrumb class="breadcrumb_category">
           <BreadcrumbItem to="/blog/tab/category">
-            <Icon type="ios-archive"></Icon> 类别
+            <Icon type="ios-archive"></Icon> Category
           </BreadcrumbItem>
           <BreadcrumbItem>
             <div class="div_info">
@@ -17,7 +17,7 @@
           <Input search enter-button slot="extra" @on-search="search"/>
         </div>
         <div class="div_share">
-          <Button icon="md-share" @click="clickShare">分享</Button>
+          <Button icon="md-share" @click="clickShare">Share</Button>
         </div>
       </div>
       <comOverview :filter="filter" v-bind:keyword="keyword"></comOverview>

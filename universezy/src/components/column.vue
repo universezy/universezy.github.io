@@ -5,11 +5,11 @@
         <div class="div_breadcrumb">
           <Breadcrumb class="breadcrumb_column">
             <BreadcrumbItem to="/blog/tab/column">
-              <Icon type="md-folder"></Icon> 专栏
+              <Icon type="md-folder"></Icon> Column
             </BreadcrumbItem>
           </Breadcrumb>
           <div class="div_share">
-            <Button icon="md-share" @click="clickShare">分享</Button>
+            <Button icon="md-share" @click="clickShare">Share</Button>
           </div>
           <div class="div_search">
             <Input search enter-button slot="extra" @on-search="search"/>

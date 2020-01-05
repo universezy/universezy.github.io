@@ -96,37 +96,37 @@ export default {
         {
           name: 'home',
           icon: 'md-home',
-          desc: '主页'
+          desc: 'Home'
         },
         {
           name: 'biography',
           icon: 'md-person',
-          desc: '简历'
+          desc: 'Bio'
         },
         {
           name: 'blog',
           icon: 'md-document',
-          desc: '博客'
+          desc: 'Blog'
         },
         {
           name: 'favorite',
           icon: 'md-bookmark',
-          desc: '收藏'
+          desc: 'Favorite'
         },
         {
           name: 'friendlink',
           icon: 'md-link',
-          desc: '友链'
+          desc: 'Friend'
         },
         {
           name: 'about',
           icon: 'md-information-circle',
-          desc: '关于'
+          desc: 'About'
         },
         {
           name: 'share',
           icon: 'md-share-alt',
-          desc: '分享'
+          desc: 'Share'
         }
       ],
       navOthers: [

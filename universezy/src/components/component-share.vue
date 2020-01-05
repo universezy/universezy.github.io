@@ -5,7 +5,7 @@
     <Row>
       <div class="div_share">
         <Tooltip placement="bottom" max-width="200">
-          <span class="span_qrcode" slot="content">微信扫描下方二维码，然后点击右上角分享按钮</span>
+          <span class="span_qrcode" slot="content">Wechat Scan</span>
           <img class="img_share" src="../assets/wechat.svg" />
         </Tooltip>
       </div>

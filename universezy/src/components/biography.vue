@@ -28,16 +28,10 @@ export default {
       settings: {
         subfield: false, // 单双栏模式
         defaultOpen: 'preview', // 默认展示
-        toolbarsFlag: true, // 工具栏是否显示
-        navigation: false, // 导航目录
-        toolbars: {
-          fullscreen: true, // 全屏编辑
-          readmodel: true, // 沉浸式阅读
-          help: true, // 帮助
-          navigation: true // 导航目录
-        }
+        toolbarsFlag: false, // 工具栏是否显示
+        navigation: false // 导航目录
       },
-      bio: '请求资源中......'
+      bio: 'Loading...'
     }
   },
   created () {
@@ -66,8 +60,8 @@ export default {
       }
     },
     requestFailed: function () {
-      this.$Message.error('请求服务器失败，请稍后再试。')
-      this.bio = '请求服务器失败，请稍后再试。'
+      this.$Message.error('Loading failed, retry later.')
+      this.bio = 'Loading failed, retry later.'
     }
   }
 }
@@ -75,7 +69,7 @@ export default {
 
 <style scoped>
 .div_biography {
-  padding: 10px;
+  padding: 0px;
 }
 
 .markdown {

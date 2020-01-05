@@ -1,9 +1,8 @@
 <template>
   <div>
     <div class="div_container">
-      <h1 class="h2_title">{{current.title}}</h1>
+      <div class="div_author" @click="clickAuthor">{{author}}</div>
       <div class="div_info">
-        <span class="span_author" @click="clickAuthor">{{author}}</span>
         <Time :time="current.timestamp" type="date" />
       </div>
       <Divider dashed />
@@ -15,6 +14,9 @@
         :toolbarsFlag="settingsMd.toolbarsFlag"
         :codeStyle="settingsMd.codeStyle" />
     </div>
+    <div class="div_footer">
+      <span>Copyright © 2020 ZengYu</span>
+    </div>
     <div class="div_backtop">
       <BackTop></BackTop>
     </div>
@@ -24,7 +26,7 @@
 <script>
 import mBlogs from '../data/blogs'
 import requestApi from '../api/requestApi'
-import {markdownApi} from '../api/urls'
+import {imageApi, markdownApi} from '../api/urls'
 
 export default {
   name: 'wap-display',
@@ -39,11 +41,16 @@ export default {
       id: 0,
       author: null,
       current: null,
-      blogData: '请求资源中......'
+      blogData: 'Loading...'
     }
   },
   created () {
     this.init()
+  },
+  computed: {
+    imgSrc: function () {
+      return imageApi.getCategoryUrl(this.current.category)
+    }
   },
   methods: {
     init: function () {
@@ -51,7 +58,7 @@ export default {
       if (this.check()) {
         this.load()
       } else {
-        this.blogData = '请求资源失败。'
+        this.blogData = 'Resource not found.'
       }
     },
     check: function () {
@@ -74,7 +81,7 @@ export default {
             _this.blogData = response.data
             _this.setData()
           } else if (response.status === 404) {
-            this.blogData = '请求资源失败。'
+            this.blogData = 'Resource not found.'
           } else {
             _this.requestFailed()
           }
@@ -85,11 +92,11 @@ export default {
         })
     },
     requestFailed: function (msg) {
-      this.$Message.error('请求服务器失败，请稍后再试。')
-      this.blogData = '请求服务器失败，请稍后再试。'
+      this.$Message.error('Loading failed, retry later.')
+      this.blogData = 'Loading failed, retry later.'
     },
     setData: function () {
-      document.title = this.current.title + ' - ' + this.$store.state.GlobalData.title
+      document.title = this.current.title
       this.author = this.$store.state.GlobalData.title
     },
     clickAuthor: function () {
@@ -106,42 +113,44 @@ export default {
   left: 0;
   right: 0;
   width: auto;
-  position: fixed;
-  overflow-y: scroll;
+  overflow-y: hidden;
   overflow-x: hidden;
   text-align: left;
 }
 
-.h2_title {
-  color: #f8f8f9;
-  margin: 30px 15px 15px 15px;
-  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+.div_author {
+  color: #5cadff;
+  margin: 20px 15px;
+  font-size: 24px;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  cursor: pointer;
 }
 
 .div_info {
   color: #e8eaec;
-  margin: 0 15px;
+  margin: 20px 15px;
   font-family:"Times New Roman",Times,serif;
   font-size: 20px;
-}
-
-.span_author {
-  display: inline;
-  color: #5cadff;
-  margin-right: 15px;
-  cursor: pointer;
 }
 
 .markdown {
   width: auto;
   min-width: 180px;
-  margin-bottom: 100px;
+  margin-bottom: 60px;
   display: flex;
   z-index: 10;
 }
 
 .div_backtop {
-  position: relative;
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
   z-index: 20;
+}
+
+.div_footer {
+  color: #f8f8f9;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 </style>

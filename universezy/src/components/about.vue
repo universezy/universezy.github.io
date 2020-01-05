@@ -4,6 +4,10 @@
       <div class="div_inner">
         <Card :bordered="false">
           <Divider />
+          <span class="span_about">更新一下UI，wap版式精简。最近忙着总结性能优化相关内容，后续将逐步更新。</span>
+          <Divider />
+          <span class="span_date">2020年01月06日</span>
+          <Divider />
           <span class="span_about">很久没更新内容了，上班很忙，加班多，休息的时候也就不想再用脑。等缓一阵子再更新吧。</span>
           <Divider />
           <span class="span_date">2019年04月13日</span>

@@ -6,7 +6,7 @@
           <img class="img_category" :src="imgSrc" @click="clickCategory"/>
           <div class="div_title"><b>{{current.title}}</b></div>
         </div>
-        <Button icon="md-menu" slot="extra" @click="clickMore">更多</Button>
+        <Button icon="md-menu" slot="extra" @click="clickMore">More</Button>
         <Row class="row_microblog">
           <Tag color="primary" v-for="item in current.tags" :key="item.tag">
             <span @click="clickTag(item.tag)">{{item.tag}}</span>
@@ -28,17 +28,17 @@
         :toolbars="settingsMd.toolbars"/>
     </div>
     <div v-else class="div_no_data">
-      <Alert type="error" show-icon>请求的资源不存在</Alert>
+      <Alert type="error" show-icon>Resource not found</Alert>
     </div>
-    <Drawer width="320" :closable="false" v-model="showDrawer">
+    <Drawer width="400" :closable="false" v-model="showDrawer">
       <div class="div_drawer">
-        <Divider style="font-weight: bold;">分享</Divider>
+        <Divider style="font-weight: bold;">Share</Divider>
         <Row>
           <div class="div_share">
             <Tooltip placement="bottom">
               <div class="div_qrcode" slot="content">
                 <div id="qrcode"></div>
-                <span class="span_qrcode">微信扫一扫</span>
+                <span class="span_qrcode">Wechat Scan</span>
               </div>
               <img class="img_share" src="../assets/wechat.svg"/>
             </Tooltip>
@@ -53,29 +53,29 @@
             <img class="img_share" src="../assets/weibo.svg" @click="shareToWeibo"/>
           </div>
         </Row>
-        <Divider class="divider_drawer">阅读</Divider>
-        <ButtonGroup size="large">
+        <Divider class="divider_drawer">Others</Divider>
+        <ButtonGroup size="large" shape="circle">
           <Poptip trigger="hover" word-wrap width="200" placement="bottom">
             <div class="div_poptip" slot="content">{{settingsDr.prevTitle}}</div>
             <Button type="primary" :disabled="settingsDr.prevDisabled" @click="shiftBlog(prev.id)">
               <Icon type="ios-arrow-back"></Icon>
-              上一篇
+              Last
             </Button>
           </Poptip>
           <Poptip trigger="hover" word-wrap width="200" placement="bottom">
             <div class="div_poptip" slot="content">{{settingsDr.nextTitle}}</div>
             <Button type="primary" :disabled="settingsDr.nextDisabled" @click="shiftBlog(next.id)">
-              下一篇
+              Next
               <Icon type="ios-arrow-forward"></Icon>
             </Button>
           </Poptip>
         </ButtonGroup>
-        <Divider class="divider_drawer">跳转</Divider>
+        <Divider class="divider_drawer">Navigation</Divider>
         <ButtonGroup>
-          <Button type="primary" ghost v-for="item in jumpBtns" :key="item.tab" :to="item.tab">{{item.name}}</Button>
+          <Button type="primary" size="small" ghost v-for="item in jumpBtns" :key="item.tab" :to="item.tab">{{item.name}}</Button>
         </ButtonGroup>
-        <Divider class="divider_drawer">评论</Divider>
-        <span>开发中，敬请期待！</span>
+        <Divider class="divider_drawer">Comment</Divider>
+        <span>Developing</span>
       </div>
     </Drawer>
   </comBase>
@@ -101,7 +101,7 @@ export default {
       settingsMd: {
         subfield: false, // 单双栏模式
         defaultOpen: 'preview', // 默认展示
-        toolbarsFlag: true, // 工具栏是否显示
+        toolbarsFlag: false, // 工具栏是否显示
         navigation: false, // 导航目录
         codeStyle: 'xcode', // 配色方案
         toolbars: {
@@ -112,11 +112,11 @@ export default {
         }
       },
       settingsDr: {
-        prevTitle: '已经是第一篇',
-        prevTitleDefault: '已经是第一篇',
+        prevTitle: 'It\'s first one',
+        prevTitleDefault: 'It\'s first one',
         prevDisabled: true,
-        nextTitle: '已经是最后一篇',
-        nextTitleDefault: '已经是最后一篇',
+        nextTitle: 'It\'s last one',
+        nextTitleDefault: 'It\'s last one',
         nextDisabled: true
       },
       showDrawer: false,
@@ -125,27 +125,27 @@ export default {
       prev: null,
       next: null,
       current: null,
-      blogData: '请求资源中......',
+      blogData: 'Loading...',
       jumpBtns: [
         {
           tab: '/blog/tab/overview',
-          name: '总览'
+          name: 'Overview'
         },
         {
           tab: '/blog/tab/category',
-          name: '类别'
+          name: 'Category'
         },
         {
           tab: '/blog/tab/column',
-          name: '专栏'
+          name: 'Column'
         },
         {
           tab: '/blog/tab/tag',
-          name: '标签'
+          name: 'Tag'
         },
         {
           tab: '/blog/tab/archive',
-          name: '归档'
+          name: 'Archive'
         }
       ]
     }

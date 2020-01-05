@@ -3,15 +3,15 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import iView from 'iview'
-import 'iview/dist/styles/iview.css'
+import ViewUI from 'view-design'
+import 'view-design/dist/styles/iview.css'
 import vuex from 'vuex'
 import store from './store'
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 
 Vue.config.productionTip = false
-Vue.use(iView)
+Vue.use(ViewUI)
 Vue.use(vuex)
 Vue.use(mavonEditor)
 

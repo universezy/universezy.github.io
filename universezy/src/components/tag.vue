@@ -4,7 +4,7 @@
       <div class="div_head">
         <Breadcrumb class="breadcrumb_tag">
           <BreadcrumbItem to="/blog/tab/tag">
-            <Icon type="md-pricetags"></Icon> 标签
+            <Icon type="md-pricetags"></Icon> Tag
           </BreadcrumbItem>
           <BreadcrumbItem>
             <Tag color="error">{{propTag}}</Tag>

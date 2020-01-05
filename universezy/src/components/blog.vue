@@ -2,25 +2,25 @@
   <comBase active="blog">
     <div class="div_blog">
       <Tabs v-model="tabValue" :animated="false">
-        <TabPane name="overview" label="总览" icon="md-list-box">
+        <TabPane name="overview" label="Overview" icon="md-list-box">
           <comOverview showIcon v-bind:keyword="keyword"></comOverview>
         </TabPane>
-        <TabPane name="category" label="类别" icon="ios-archive">
+        <TabPane name="category" label="Category" icon="ios-archive">
           <div class="div_category" v-for="item in categories" :key="item.name" @click="clickCategory(item.name)">
             <comCategory :category="item"></comCategory>
           </div>
         </TabPane>
-        <TabPane name="column" label="专栏" icon="md-folder">
+        <TabPane name="column" label="Column" icon="md-folder">
           <div class="div_column" v-for="item in columns" :key="item.name" @click="clickColumn(item.name)">
             <comColumn :column="item"></comColumn>
           </div>
         </TabPane>
-        <TabPane name="tag" label="标签" icon="md-pricetags">
+        <TabPane name="tag" label="Tag" icon="md-pricetags">
           <div class="div_tag" v-for="item in tags" :key="item.tag">
             <comTag :tag="item"></comTag>
           </div>
         </TabPane>
-        <TabPane name="archive" label="归档" icon="md-calendar">
+        <TabPane name="archive" label="Archive" icon="md-calendar">
           <comArchive></comArchive>
         </TabPane>
         <Input

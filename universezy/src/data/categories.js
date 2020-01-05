@@ -33,9 +33,6 @@ const categories = [
     name: 'NW.js'
   },
   {
-    name: 'Openlayers'
-  },
-  {
     name: 'Spring'
   },
   {

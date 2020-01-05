@@ -11,7 +11,7 @@
         <span class="span_notice_title">{{notice.title}}</span>
         <template slot="desc">{{notice.desc}}</template>
       </Alert>
-      <Divider orientation="left">编程人生</Divider>
+      <Divider orientation="left">Life of Programming</Divider>
       <div class="div_carousel">
         <div class="div_inner">
           <Carousel
@@ -31,7 +31,7 @@
           </Carousel>
         </div>
       </div>
-      <Divider orientation="left">最近更新</Divider>
+      <Divider orientation="left">Recent updates</Divider>
       <div class="div_microblog" v-for="item in microblogs" :key="item.id">
         <comMicroBlog :microblog="item" showIcon></comMicroBlog>
       </div>
