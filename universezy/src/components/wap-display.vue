@@ -17,9 +17,7 @@
     <div class="div_footer">
       <span>Copyright © 2020 ZengYu</span>
     </div>
-    <div class="div_backtop">
-      <BackTop></BackTop>
-    </div>
+    <BackTop></BackTop>
   </div>
 </template>
 
@@ -139,13 +137,6 @@ export default {
   margin-bottom: 60px;
   display: flex;
   z-index: 10;
-}
-
-.div_backtop {
-  position: fixed;
-  right: 50px;
-  bottom: 50px;
-  z-index: 20;
 }
 
 .div_footer {

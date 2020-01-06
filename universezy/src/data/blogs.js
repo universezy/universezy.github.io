@@ -995,6 +995,29 @@ const blogs = [
     ],
     abstract: '回想起一年前的此时，也是坐在电脑前，一边回顾总结，一边感叹时光。物是人非，心态早已是天壤之别。',
     timestamp: 1577726218786
+  },
+  {
+    id: 'AndroidPerformanceOfMemory1',
+    category: 'Android',
+    title: 'Android性能优化之内存优化',
+    tags: [
+      {tag: '性能优化'},
+      {tag: '内存优化'}
+    ],
+    abstract: '本章内容基于Android Q，介绍Android性能优化中的内存优化方面，通过排查、检测、规避和表现等四个方面的讲解，让更多的开发者有能力去改善或设计出更优质的程序。',
+    timestamp: 1578310912658
+  },
+  {
+    id: 'AndroidPerformanceOfMemory2',
+    category: 'Android',
+    title: 'Android性能优化之内存优化——内存泄漏篇',
+    tags: [
+      {tag: '性能优化'},
+      {tag: '内存优化'},
+      {tag: '内存泄漏'}
+    ],
+    abstract: '本文介绍Android开发中的常见内存泄漏场景和解决方案。',
+    timestamp: 1578311006725
   }
 ]
 

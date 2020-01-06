@@ -7,6 +7,12 @@ const columns = [
   },
   {
     name: 'Android',
+    title: 'Android性能优化',
+    desc: '介绍Android内存优化和卡顿优化。',
+    articles: ['AndroidPerformanceOfMemory1', 'AndroidPerformanceOfMemory2']
+  },
+  {
+    name: 'Android',
     title: 'Android进阶之路',
     desc: '分享一些Android开发过程中的技术心得。',
     articles: ['WindowManagerHandleView', 'RecyclerViewUseSpanSizeLookup', 'RecyclerViewUseItemDecoration', 'EventDispatch', 'AsyncMessage', 'RenderProcessOnView', 'DynamicShortcut', 'IPCOfAIDL', 'IPCOfMessenger', 'PriorityOfSingleInstanceAndTaskAffinity', 'GetCallingPkgOnAndroid', 'GetScreenSizeOnAndroid', 'CampusRecruitNotesOfAndroid', 'ComparisonOf4MsgTypes']
