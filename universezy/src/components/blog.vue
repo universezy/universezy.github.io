@@ -135,19 +135,27 @@ export default {
   display: inline;
   margin: 20px;
   cursor: pointer;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .div_column {
-  margin: 20px auto;
+  margin: 20px 30px;
   text-align: center;
   cursor: pointer;
-  padding: 0 50px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .div_tag{
   float: left;
   display: inline-block;
   margin: 10px 5px;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 @media screen and (max-width: 1000px) {

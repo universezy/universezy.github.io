@@ -10,7 +10,8 @@
       :page-size="settings.size"
       show-total
       show-elevator
-      @on-change="changePage"/>
+      @on-change="changePage"
+      simple/>
   </div>
 </template>
 

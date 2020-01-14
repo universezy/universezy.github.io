@@ -14,7 +14,7 @@ const columns = [
     ]
   },
   {
-    name: 'Android',
+    name: 'AndroidPerformance',
     title: 'Android性能优化',
     desc: '介绍Android内存优化和卡顿优化。',
     articles: [

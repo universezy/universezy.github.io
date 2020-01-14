@@ -278,9 +278,9 @@ export default {
 }
 
 .img_avatar_large {
-  width: 80px;
-  height: 80px;
-  border-radius: 40px;
+  width: 70px;
+  height: 70px;
+  border-radius: 35px;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s;

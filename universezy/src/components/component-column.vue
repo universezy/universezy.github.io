@@ -1,5 +1,5 @@
 <template>
-  <Card :class="cardClasses">
+  <Card>
     <span class="span_column" slot="title">
       <img class="img_column" :src="imgSrc" />
       <h3 class="span_title">{{propColumn.title}}</h3>
@@ -42,11 +42,6 @@ export default {
     }
   },
   computed: {
-    cardClasses: function () {
-      return [
-        'card_column', this.wide ? '' : 'card_column_small'
-      ]
-    },
     imgSrc: function () {
       return imageApi.getCategoryUrl(this.propColumn.name)
     }
@@ -55,15 +50,6 @@ export default {
 </script>
 
 <style scoped>
-.card_column {
-  margin: auto;
-  padding: 0 5px;
-}
-
-.card_column_small {
-  max-width: 600px;
-}
-
 .span_column {
   display: flex;
   display: -webkit-flex;

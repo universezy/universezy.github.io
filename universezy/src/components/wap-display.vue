@@ -117,16 +117,17 @@ export default {
 }
 
 .div_author {
+  display: inline-block;
   color: #5cadff;
   margin: 20px 15px;
   font-size: 24px;
-  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  font-family: monospace,Georgia,serif,"Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
   cursor: pointer;
 }
 
 .div_info {
   color: #e8eaec;
-  margin: 20px 15px;
+  margin: 10px 15px;
   font-family:"Times New Roman",Times,serif;
   font-size: 20px;
 }
@@ -140,7 +141,7 @@ export default {
 }
 
 .div_footer {
-  color: #f8f8f9;
+  color: #d7dde4;
   font-size: 16px;
   margin-bottom: 10px;
 }
