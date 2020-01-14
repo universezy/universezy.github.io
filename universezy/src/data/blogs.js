@@ -1018,6 +1018,16 @@ const blogs = [
     ],
     abstract: '本文介绍Android开发中的常见内存泄漏场景和解决方案。',
     timestamp: 1578311006725
+  },
+  {
+    id: 'AndroidMultiUser',
+    category: 'Android',
+    title: 'Android多用户适配',
+    tags: [
+      {tag: '多用户'}
+    ],
+    abstract: '本文基于Android Q，介绍安卓原生的多用户功能适配相关内容，供开发者学习参考。',
+    timestamp: 1579014873222
   }
 ]
 
