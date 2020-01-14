@@ -978,9 +978,7 @@ const blogs = [
     title: 'WindowManager操作View源码分析',
     tags: [
       {tag: 'WindowManager'},
-      {tag: 'addView'},
-      {tag: 'removeView'},
-      {tag: 'updateViewLayout'}
+      {tag: 'View'}
     ],
     abstract: '本文通过源码分析WindowManager的几个重要的操作View的方法：addView，removeView，updateViewLayout等，以及它们隐含的一些风险项。',
     timestamp: 1570097049000
