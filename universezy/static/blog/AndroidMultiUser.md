@@ -39,7 +39,7 @@
 ---
 ## 三、 大致原理
 
-![](image/multiuser_1.png)
+![](static/blog/image/multiuser_1.png)
 
 - data目录下的两个user目录下，是存放每个用户的应用数据的，通过userId进行区分。
 - 当新建用户时，会先新建userId命名的目录，然后拷贝系统用户（userId等于0）的应用数据到新用户，具体是通过安装还是复制内容，待读者去分析。
