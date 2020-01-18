@@ -11,7 +11,7 @@
         <span class="span_notice_title">{{notice.title}}</span>
         <template slot="desc">{{notice.desc}}</template>
       </Alert>
-      <Divider orientation="left">Life of Programming</Divider>
+      <Divider orientation="left">Programming Life</Divider>
       <div class="div_carousel">
         <div class="div_inner">
           <Carousel

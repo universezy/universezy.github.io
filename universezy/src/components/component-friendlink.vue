@@ -1,7 +1,7 @@
 <template>
   <Card class="card_friendlink">
     <span class="span_friendlink" slot="title">
-      <img class="img_avator" :src="propFriendlink.src" />
+      <Avatar size="large" shape="square" :src="propFriendlink.src" />
       <span class="span_name">{{propFriendlink.name}}</span>
     </span>
     <a :href="propFriendlink.link" :target="aTraget" slot="extra">
@@ -56,12 +56,6 @@ export default {
   display: flex;
   display: -webkit-flex;
   align-items: center;
-}
-
-.img_avator {
-  width: 40px;
-  height: 40px;
-  display: flex;
 }
 
 .span_name {

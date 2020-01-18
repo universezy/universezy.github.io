@@ -22,6 +22,7 @@ export default {
       default: function () {
         return {
           name: 'null',
+          icon: 'null',
           title: 'null',
           desc: 'null',
           articles: []
@@ -43,7 +44,7 @@ export default {
   },
   computed: {
     imgSrc: function () {
-      return imageApi.getCategoryUrl(this.propColumn.name)
+      return imageApi.getCategoryUrl(this.propColumn.icon)
     }
   }
 }

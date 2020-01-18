@@ -1,6 +1,7 @@
 const columns = [
   {
     name: 'Thinking',
+    icon: 'Thinking',
     title: '我思故我在',
     desc: '程序书写人生。',
     articles: [
@@ -15,6 +16,7 @@ const columns = [
   },
   {
     name: 'AndroidPerformance',
+    icon: 'Android',
     title: 'Android性能优化',
     desc: '介绍Android内存优化和卡顿优化。',
     articles: [
@@ -24,6 +26,7 @@ const columns = [
   },
   {
     name: 'Android',
+    icon: 'Android',
     title: 'Android进阶之路',
     desc: '分享一些Android开发过程中的技术心得。',
     articles: [
@@ -46,6 +49,7 @@ const columns = [
   },
   {
     name: 'Java',
+    icon: 'Java',
     title: '探究Java的奥秘',
     desc: '一代版本一代神，代代都有Java人。',
     articles: [
@@ -61,6 +65,7 @@ const columns = [
   },
   {
     name: 'Ubuntu',
+    icon: 'Ubuntu',
     title: '玩转Ubuntu',
     desc: '介绍一些Ubuntu下的小知识。',
     articles: [
@@ -72,6 +77,7 @@ const columns = [
   },
   {
     name: 'Git',
+    icon: 'Git',
     title: 'Git简单应用',
     desc: '介绍一些入门的git操作。。',
     articles: [
@@ -84,6 +90,7 @@ const columns = [
   },
   {
     name: 'Spring',
+    icon: 'Spring',
     title: 'SpringMVC入门教程',
     desc: 'Spring Framework快速上手攻略之搭建后端web工程——经历学习Spring的痛苦和折磨后的呕心沥血之作。',
     articles: [

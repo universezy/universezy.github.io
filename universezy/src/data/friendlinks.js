@@ -1,19 +1,19 @@
 const friendlinks = [
   {
     link: 'http://www.heqiangfly.com/',
-    src: 'https://avatars3.githubusercontent.com/u/14286009?s=400&amp;v=4',
+    src: 'http://www.heqiangfly.com/images/icon.png',
     name: '寒江蓑笠',
     desc: '孤舟蓑笠翁，独钓寒江雪'
   },
   {
     link: 'https://blog.xingbofeng.com/',
-    src: 'https://avatars3.githubusercontent.com/u/15172026?s=88&v=4',
+    src: 'https://pic1.zhimg.com/v2-506b762e987554c38f0ee7f1eac7967c_xl.jpg',
     name: 'Encounter',
     desc: 'Why did you encounter me?'
   },
   {
     link: 'http://hanayo.cn/',
-    src: 'https://avatars3.githubusercontent.com/u/8843214?s=460&v=4',
+    src: 'http://hanayo.cn/css/images/favicon.ico',
     name: '花の様に',
     desc: 'green hand on cloud computing; software engineer'
   },
@@ -32,8 +32,8 @@ const friendlinks = [
   {
     link: '#',
     src: 'static/cooperation.jpg',
-    name: '期待你的加入',
-    desc: '互换友链请联系我'
+    name: 'Waiting for you',
+    desc: 'Contact with me'
   }
 ]
 

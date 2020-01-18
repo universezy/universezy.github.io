@@ -22,9 +22,11 @@
         v-model="blogData"
         :subfield="settingsMd.subfield"
         :defaultOpen="settingsMd.defaultOpen"
-        :toolbarsFlag="settingsMd.toolbarsFlag"
         :navigation="settingsMd.navigation"
         :codeStyle="settingsMd.codeStyle"
+        :boxShadow="settingsMd.boxShadow"
+        :previewBackground="settingsMd.previewBackground"
+        :toolbarsFlag="settingsMd.toolbarsFlag"
         :toolbars="settingsMd.toolbars"/>
     </div>
     <div v-else class="div_no_data">
@@ -54,25 +56,30 @@
           </div>
         </Row>
         <Divider style="font-weight: bold;" class="divider_drawer">Others</Divider>
-        <ButtonGroup size="large" shape="circle">
-          <Poptip trigger="hover" word-wrap width="200" placement="bottom">
-            <div class="div_poptip" slot="content">{{settingsDr.prevTitle}}</div>
-            <Button type="primary" :disabled="settingsDr.prevDisabled" @click="shiftBlog(prev.id)">
+        <ButtonGroup shape="circle">
+          <Button type="primary" :disabled="settingsDr.prevDisabled" @click="shiftBlog(prev.id)">
+            <Poptip trigger="hover" word-wrap width="200" placement="bottom">
+              <div class="div_poptip" slot="content">{{settingsDr.prevTitle}}</div>
               <Icon type="ios-arrow-back"></Icon>
               Last
-            </Button>
-          </Poptip>
-          <Poptip trigger="hover" word-wrap width="200" placement="bottom">
-            <div class="div_poptip" slot="content">{{settingsDr.nextTitle}}</div>
-            <Button type="primary" :disabled="settingsDr.nextDisabled" @click="shiftBlog(next.id)">
-              Next
+            </Poptip>
+          </Button>
+          <Button type="primary" :disabled="settingsDr.nextDisabled" @click="shiftBlog(next.id)">
+            <Poptip trigger="hover" word-wrap width="200" placement="bottom">
+              <div class="div_poptip" slot="content">{{settingsDr.nextTitle}}</div>
               <Icon type="ios-arrow-forward"></Icon>
-            </Button>
-          </Poptip>
+              Next
+            </Poptip>
+          </Button>
         </ButtonGroup>
         <Divider style="font-weight: bold;" class="divider_drawer">Navigation</Divider>
         <ButtonGroup>
-          <Button type="primary" size="small" ghost v-for="item in jumpBtns" :key="item.tab" :to="item.tab">{{item.name}}</Button>
+          <Button size="large" v-for="item in jumpBtns" :key="item.tab" :to="item.tab">
+            <Poptip trigger="hover" placement="bottom">
+              <div class="div_poptip" slot="content">{{item.name}}</div>
+              <Icon :type="item.icon"></Icon>
+            </Poptip>
+          </Button>
         </ButtonGroup>
         <Divider style="font-weight: bold;" class="divider_drawer">Comment</Divider>
         <span>Developing</span>
@@ -101,9 +108,11 @@ export default {
       settingsMd: {
         subfield: false, // 单双栏模式
         defaultOpen: 'preview', // 默认展示
-        toolbarsFlag: false, // 工具栏是否显示
         navigation: false, // 导航目录
         codeStyle: 'xcode', // 配色方案
+        boxShadow: false, // 开启边框阴影
+        previewBackground: '#f9f5f9', // 预览框背景颜色
+        toolbarsFlag: false, // 工具栏是否显示
         toolbars: {
           fullscreen: true, // 全屏编辑
           readmodel: true, // 沉浸式阅读
@@ -129,23 +138,28 @@ export default {
       jumpBtns: [
         {
           tab: '/blog/tab/overview',
-          name: 'Overview'
+          name: 'Overview',
+          icon: 'md-list-box'
         },
         {
           tab: '/blog/tab/category',
-          name: 'Category'
+          name: 'Category',
+          icon: 'ios-archive'
         },
         {
           tab: '/blog/tab/column',
-          name: 'Column'
+          name: 'Column',
+          icon: 'md-folder'
         },
         {
           tab: '/blog/tab/tag',
-          name: 'Tag'
+          name: 'Tag',
+          icon: 'md-pricetags'
         },
         {
           tab: '/blog/tab/archive',
-          name: 'Archive'
+          name: 'Archive',
+          icon: 'md-calendar'
         }
       ]
     }
@@ -331,6 +345,7 @@ export default {
 
 .markdown {
   z-index: 10;
+  background: #f9f5f9; /* f9f5f9 */
 }
 
 .div_no_data {

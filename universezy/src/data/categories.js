@@ -6,9 +6,6 @@ const categories = [
     name: 'Android'
   },
   {
-    name: 'AndroidPerformance'
-  },
-  {
     name: 'CSS'
   },
   {

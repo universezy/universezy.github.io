@@ -12,8 +12,7 @@
               <img :class="imgClass" src="../assets/logo.png">
               <transition name="slide-fade">
                 <Row class="row_nav" v-show="!isCollapsed">
-                  <h3>{{author}}</h3>
-                  <h4>{{desc}}</h4>
+                  <h3>{{desc}}</h3>
                 </Row>
               </transition>
             </div>
@@ -102,7 +101,7 @@ export default {
         {
           name: 'biography',
           icon: 'md-person',
-          desc: 'Bio'
+          desc: 'Biography'
         },
         {
           name: 'blog',
@@ -214,10 +213,8 @@ export default {
 
 <style scoped>
 .layout {
-  border: 1px solid #d7dde4;
-  background: #f5f7f9;
+  background: #f9f5f9; /* f9f5f9 */
   position: relative;
-  border-radius: 4px;
   overflow: hidden;
 }
 
@@ -294,10 +291,10 @@ export default {
 
 .span_nav {
   color: white;
+  text-align: left;
 }
 
 .content_base {
-  padding: 10px;
 }
 
 .slide-fade-leave-active {

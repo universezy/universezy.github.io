@@ -12,10 +12,12 @@
         :subfield="settingsMd.subfield"
         :defaultOpen="settingsMd.defaultOpen"
         :toolbarsFlag="settingsMd.toolbarsFlag"
-        :codeStyle="settingsMd.codeStyle" />
+        :codeStyle="settingsMd.codeStyle"
+        :boxShadow="settingsMd.boxShadow"
+        :previewBackground="settingsMd.previewBackground" />
     </div>
     <div class="div_footer">
-      <span>Copyright © 2020 ZengYu</span>
+      <span>Copyright © 2020 universezy</span>
     </div>
     <BackTop></BackTop>
   </div>
@@ -34,7 +36,9 @@ export default {
         subfield: false, // 单双栏模式
         defaultOpen: 'preview', // 默认展示
         toolbarsFlag: false, // 工具栏是否显示
-        codeStyle: 'xcode' // 配色方案
+        codeStyle: 'xcode', // 配色方案
+        boxShadow: false, // 开启边框阴影
+        previewBackground: '#f9f5f9' // 预览框背景颜色
       },
       id: 0,
       author: null,

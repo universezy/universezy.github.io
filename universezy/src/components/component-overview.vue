@@ -9,9 +9,9 @@
       :total="settings.total"
       :page-size="settings.size"
       show-total
-      show-elevator
-      @on-change="changePage"
-      simple/>
+      @on-change="changePage">
+      <span slot>Total {{settings.total}}</span>
+    </Page>
   </div>
 </template>
 

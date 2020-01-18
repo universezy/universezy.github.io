@@ -6,9 +6,10 @@
         v-model="bio"
         :subfield="settings.subfield"
         :defaultOpen="settings.defaultOpen"
-        :toolbarsFlag="settings.toolbarsFlag"
         :navigation="settings.navigation"
-        :toolbars="settings.toolbars"/>
+        :boxShadow="settings.boxShadow"
+        :previewBackground="settings.previewBackground"
+        :toolbarsFlag="settings.toolbarsFlag"/>
     </div>
   </comBase>
 </template>
@@ -28,8 +29,10 @@ export default {
       settings: {
         subfield: false, // 单双栏模式
         defaultOpen: 'preview', // 默认展示
-        toolbarsFlag: false, // 工具栏是否显示
-        navigation: false // 导航目录
+        navigation: false, // 导航目录
+        boxShadow: false, // 开启边框阴影
+        previewBackground: '#f9f5f9', // 预览框背景颜色
+        toolbarsFlag: false // 工具栏是否显示
       },
       bio: 'Loading...'
     }
@@ -74,5 +77,6 @@ export default {
 
 .markdown {
   z-index: 10;
+  background: #f9f5f9; /* f9f5f9 */
 }
 </style>
