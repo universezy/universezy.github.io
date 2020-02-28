@@ -1026,6 +1026,16 @@ const blogs = [
     ],
     abstract: '本文基于Android Q，介绍安卓原生的多用户功能适配相关内容，供开发者学习参考。',
     timestamp: 1579014873222
+  },
+  {
+    id: 'StartOfKotlin',
+    category: 'Kotlin',
+    title: '浅谈Kotlin入门',
+    tags: [
+      {tag: '入门'}
+    ],
+    abstract: '16年，Kotlin官方正式推出该语言第一版，17年，Google倡导开发者使用其作为Android开发的基本语言。',
+    timestamp: 1582860315172
   }
 ]
 

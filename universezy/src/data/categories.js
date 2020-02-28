@@ -24,6 +24,9 @@ const categories = [
     name: 'JavaScript'
   },
   {
+    name: 'Kotlin'
+  },
+  {
     name: 'Maven'
   },
   {
