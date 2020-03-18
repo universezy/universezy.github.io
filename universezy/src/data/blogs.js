@@ -1036,6 +1036,16 @@ const blogs = [
     ],
     abstract: '16年，Kotlin官方正式推出该语言第一版，17年，Google倡导开发者使用其作为Android开发的基本语言。',
     timestamp: 1582860315172
+  },
+  {
+    id: 'PrincipleAndProcessOfMultiUser',
+    category: 'Android',
+    title: '多用户原理及流程分析',
+    tags: [
+      {tag: '多用户'}
+    ],
+    abstract: '本文基于Android Q，介绍多用户基本原理和流程。',
+    timestamp: 1584518034157
   }
 ]
 
