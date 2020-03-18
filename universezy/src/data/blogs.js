@@ -1040,7 +1040,7 @@ const blogs = [
   {
     id: 'PrincipleAndProcessOfMultiUser',
     category: 'Android',
-    title: '多用户原理及流程分析',
+    title: 'Android多用户原理及流程分析',
     tags: [
       {tag: '多用户'}
     ],
