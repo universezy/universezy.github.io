@@ -1046,6 +1046,31 @@ const blogs = [
     ],
     abstract: '本文基于Android Q，介绍多用户基本原理和流程。',
     timestamp: 1584518034157
+  },
+  {
+    id: 'CompatibilityOfDynamicShortcut',
+    category: 'Android',
+    title: 'Android动态快捷方式兼容性问题',
+    tags: [
+      {tag: '动态快捷方式'},
+      {tag: 'ShortcutManager'},
+      {tag: '兼容性'}
+    ],
+    abstract: '本文基于Android Q，通过介绍笔者工作中翻过的一次车，讲述Android中的动态快捷方式兼容性处理注意事项。',
+    timestamp: 1585528505000
+  },
+  {
+    id: 'AOSPDecoupleIndependentApp',
+    category: 'Android',
+    title: 'AOSP解耦独立应用总结',
+    tags: [
+      {tag: 'AOSP'},
+      {tag: '解耦'},
+      {tag: '编译'},
+      {tag: 'Proto'}
+    ],
+    abstract: '本文基于Android Q，介绍将AOSP中的仓库解耦为独立应用时的一些疑难点。',
+    timestamp: 1585529025000
   }
 ]
 
