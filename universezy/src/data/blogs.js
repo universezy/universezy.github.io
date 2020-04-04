@@ -1071,6 +1071,17 @@ const blogs = [
     ],
     abstract: '本文基于Android Q，介绍将AOSP中的仓库解耦为独立应用时的一些疑难点。',
     timestamp: 1585529025000
+  },
+  {
+    id: 'AOSPUpgradeCodebase',
+    category: 'Android',
+    title: 'AOSP升级codebase疑难总结',
+    tags: [
+      {tag: 'AOSP'},
+      {tag: 'codebase'}
+    ],
+    abstract: '本文讲述笔者在升级codebase时遇到的一些疑难问题和解决思路。',
+    timestamp: 1585999096534
   }
 ]
 
