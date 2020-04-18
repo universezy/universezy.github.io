@@ -46,11 +46,11 @@ public boolean post(Runnable action) {
 
 先追踪mAttachInfo的赋值过程：
 
-![](https://raw.githubusercontent.com/universezy/TrilogyOfViewOnAndroid/master/image/attachInfo.png)
+![](static/blog/image/ViewMessage1.jpg)
 
 然后我们来看dispatchAttachedToWindow()的调用：
 
-![](https://raw.githubusercontent.com/universezy/TrilogyOfViewOnAndroid/master/image/dispatchAttachedToWindow.png)
+![](static/blog/image/ViewMessage2.jpg)
 
 根据上一章《[Android中View的绘制流程](https://universezy.github.io/universezy/dist/index.html#/blog/display/RenderProcessOnView)》所学内容，我们知道了ViewRootImpl中的这个View对象是一个DecorView实例，而DecorView又继承ViewGroup，因此通过ViewGroup的dispatchAttachedToWindow()，可以从ViewRootImpl到DecorView再到子View进行递归调用，将同一个AttachInfo对象传给它们。所以我们直接看ViewRootImpl中的这处调用，并且它位于上一章中分析过的performTraversals()中：
 ```java
@@ -78,7 +78,7 @@ private void performTraversals() {
 
 说完了dispatchAttachedToWindow()，我们接着追踪mAttachInfo的实例化过程：
 
-![](https://raw.githubusercontent.com/universezy/TrilogyOfViewOnAndroid/master/image/mAttachInfo.png)
+![](static/blog/image/ViewMessage3.jpg)
 
 在ViewRootImpl实例化时进行mAttachInfo的实例化，并且我们可以看到传入了一个mHandler，这也就是View.post()中使用的Handler对象，我们再来看看这个mHandler的实例化：
 ```java

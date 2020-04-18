@@ -36,7 +36,7 @@
 
 而这个scheduleTraversals，进行搜索可以发现，它在ViewRootImpl的很多事件中都有调用，这些事件包括对View变化的处理（可以看到有我们熟悉的两个刷新视图的方法invalidate和requestLayout）：
 
-![](https://raw.githubusercontent.com/universezy/TrilogyOfViewOnAndroid/master/image/scheduleTraversals.png)
+![](static/blog/image/ViewRender1.jpg)
 
 因此我们要从performTraversals下手分析。
 
@@ -248,7 +248,7 @@ draw中的绘制步骤为（跳过非必须的两步）：
 ---
 ## 四、 整体绘制流程
 
-![](https://raw.githubusercontent.com/universezy/TrilogyOfViewOnAndroid/master/image/RenderProcess.png)
+![](static/blog/image/ViewRender2.jpg)
 
 ---
 ## 五、 更新视图

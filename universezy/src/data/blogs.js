@@ -905,7 +905,7 @@ const blogs = [
     timestamp: 1547191175140
   },
   {
-    id: 'AsyncMessage',
+    id: 'AsyncMessageOnView',
     category: 'Android',
     title: 'Android中View的异步消息',
     tags: [
@@ -917,7 +917,7 @@ const blogs = [
     timestamp: 1547436896000
   },
   {
-    id: 'EventDispatch',
+    id: 'EventDispatchOnView',
     category: 'Android',
     title: 'Android中View的事件分发',
     tags: [

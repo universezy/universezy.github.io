@@ -531,7 +531,7 @@ void setWindow(PhoneWindow phoneWindow) {
 
 而这个setWindow()有两处调用：
 
-![](https://raw.githubusercontent.com/universezy/TrilogyOfViewOnAndroid/master/image/setWindow.png)
+![](static/blog/image/ViewEvent1.jpg)
 
 实际上，这两处最后都是走到同一个方法中：
 ```java
@@ -565,7 +565,7 @@ DecorView(Context context, int featureId, PhoneWindow window,
 
 继续，追踪installDecor()的调用：
 
-![](https://raw.githubusercontent.com/universezy/TrilogyOfViewOnAndroid/master/image/installDecor.png)
+![](static/blog/image/ViewEvent2.jpg)
 
 这个方法有好几处调用，我们发现了其中有熟悉的方法——setContentView()，这是我们在Activity的onCreate()中用来加载xml文件，即ViewGroup的方法，于是我们查看它在Activity中的调用：
 ```java
@@ -597,7 +597,7 @@ private void dispatchInputEvent(int seq, InputEvent event, int displayId) {
 
 由native层调用，当输入事件产生并分发到这里后，调用onInputEvent()，我们再看这个onInputEvent()：
 
-![](https://raw.githubusercontent.com/universezy/TrilogyOfViewOnAndroid/master/image/onInputEvent.png)
+![](static/blog/image/ViewEvent3.jpg)
 
 里面一处调用位于ViewRootImpl：WindowInputEventReceiver，然后到ViewRootImpl中看看：
 ```java
@@ -862,7 +862,7 @@ public final boolean dispatchPointerEvent(MotionEvent event) {
 ---
 ### 7. 事件分发整体流程
 
-![](https://raw.githubusercontent.com/universezy/TrilogyOfViewOnAndroid/master/image/EventDispatch.png)
+![](static/blog/image/ViewEvent4.jpg)
 
 ---
 ## 五、 参考文献
