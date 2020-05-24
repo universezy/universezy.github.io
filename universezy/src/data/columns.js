@@ -5,6 +5,7 @@ const columns = [
     title: '我思故我在',
     desc: '程序书写人生。',
     articles: [
+      'ComprehensionOfWork',
       'SummaryOf2019',
       'SummaryOf2018',
       'CognitionOfIndustry',

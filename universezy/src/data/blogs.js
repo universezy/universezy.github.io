@@ -1082,6 +1082,19 @@ const blogs = [
     ],
     abstract: '本文讲述笔者在升级codebase时遇到的一些疑难问题和解决思路。',
     timestamp: 1585999096534
+  },
+  {
+    id: 'ComprehensionOfWork',
+    category: 'Thinking',
+    title: '漫谈对工作的看法',
+    tags: [
+      {tag: '社招'},
+      {tag: '面试'},
+      {tag: '总结'},
+      {tag: '建议'}
+    ],
+    abstract: '天下没有不散的宴席，时隔一年，又要离开熟悉的团队熟悉的人，为自己的职业生涯奔波离去。',
+    timestamp: 1590332734491
   }
 ]
 

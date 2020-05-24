@@ -26,6 +26,10 @@ const banners = [
   {
     id: 'SummaryOf2019',
     title: '2019——充实的一年'
+  },
+  {
+    id: 'ComprehensionOfWork',
+    title: '漫谈对工作的看法'
   }
 ]
 
