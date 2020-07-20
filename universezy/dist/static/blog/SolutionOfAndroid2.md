@@ -10,7 +10,7 @@ Caused by: java.lang.RuntimeException: stop failed.
 ## 二、 分析原因
 
 start和stop间隔时间太短:
-![源码分析](https://img-blog.csdn.net/20180726191317556?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p5MTM2MDgwODk4NDk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+![源码分析](static/blog/image/MediaRecorder1.png)
 
 ---
 ## 三、 解决方案
