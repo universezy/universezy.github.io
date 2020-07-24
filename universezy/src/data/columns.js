@@ -31,6 +31,7 @@ const columns = [
     title: 'Android进阶之路',
     desc: '分享一些Android开发过程中的技术心得。',
     articles: [
+      'OpenGL_OOM',
       'AOSPUpgradeCodebase',
       'AOSPDecoupleIndependentApp',
       'CompatibilityOfDynamicShortcut',

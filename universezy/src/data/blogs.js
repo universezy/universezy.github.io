@@ -1095,6 +1095,18 @@ const blogs = [
     ],
     abstract: '天下没有不散的宴席，时隔一年，又要离开熟悉的团队熟悉的人，为自己的职业生涯奔波离去。',
     timestamp: 1590332734491
+  },
+  {
+    id: 'OpenGL_OOM',
+    category: 'Android',
+    title: 'OpenGL OOM的解决方案',
+    tags: [
+      {tag: 'OpenGL'},
+      {tag: 'OOM'},
+      {tag: 'Solution'}
+    ],
+    abstract: '本文介绍使用OpenGL后引起OOM的一些解决方案。',
+    timestamp: 1595599572311
   }
 ]
 
