@@ -87,6 +87,7 @@ const columns = [
     title: 'Git简单应用',
     desc: '介绍一些入门的git操作。。',
     articles: [
+      'CommitTemplateByGitHook',
       'GitTeachingBasedOnGerrit',
       'GitDeleteOrigin',
       'ConfigLanguageOfGit',

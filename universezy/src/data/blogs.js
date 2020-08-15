@@ -1107,6 +1107,17 @@ const blogs = [
     ],
     abstract: '本文介绍使用OpenGL后引起OOM的一些解决方案。',
     timestamp: 1595599572311
+  },
+  {
+    id: 'CommitTemplateByGitHook',
+    category: 'Git',
+    title: '使用Git Hook配置提交模板',
+    tags: [
+      {tag: 'Hook'},
+      {tag: 'Commit'}
+    ],
+    abstract: '在开发中，为了规范化提交信息，以便追溯修改和理解修改内容，通常会采用统一的提交信息模板来约束开发人员。因此可以通过配置git，来提升便利性。',
+    timestamp: 1597515957623
   }
 ]
 
