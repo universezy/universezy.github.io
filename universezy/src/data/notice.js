@@ -1,7 +1,7 @@
 const notice = {
   display: true,
-  title: '世界那么大，我想去看看',
-  desc: ''
+  title: '招聘信息',
+  desc: '鹅厂内推，欢迎邮件投递。'
 }
 
 export default {
