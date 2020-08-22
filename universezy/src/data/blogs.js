@@ -1118,6 +1118,18 @@ const blogs = [
     ],
     abstract: '在开发中，为了规范化提交信息，以便追溯修改和理解修改内容，通常会采用统一的提交信息模板来约束开发人员。因此可以通过配置git，来提升便利性。',
     timestamp: 1597515957623
+  },
+  {
+    id: 'HowToMakeGithubPages',
+    category: 'Vue.js',
+    title: 'Vue.js+Github打造个人网站GithubPages',
+    tags: [
+      {tag: 'Github'},
+      {tag: 'GithubPages'},
+      {tag: 'github.io'}
+    ],
+    abstract: '本文介绍如何使用Vue.js开发一个独一无二的GithubPages。',
+    timestamp: 1598065740871
   }
 ]
 
