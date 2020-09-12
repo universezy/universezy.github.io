@@ -1143,6 +1143,19 @@ const blogs = [
     ],
     abstract: '本文讲述程序猿通过研究相亲平台学习计算机网络的故事。',
     timestamp: 1598712467798
+  },
+  {
+    id: 'SummaryOfWorkStage1',
+    category: 'Thinking',
+    title: '回顾头三年职业生涯',
+    tags: [
+      {tag: '总结'},
+      {tag: '职业生涯'},
+      {tag: '感悟'},
+      {tag: '心得'}
+    ],
+    abstract: '回顾一下职业生涯近三年，作为生涯第一阶段的总结，分享这段励志的经历，勉励更多迷茫的朋友。。',
+    timestamp: 1599928549049
   }
 ]
 
