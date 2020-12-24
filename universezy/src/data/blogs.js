@@ -1154,8 +1154,19 @@ const blogs = [
       {tag: '感悟'},
       {tag: '心得'}
     ],
-    abstract: '回顾一下职业生涯近三年，作为生涯第一阶段的总结，分享这段励志的经历，勉励更多迷茫的朋友。。',
+    abstract: '回顾一下职业生涯近三年，作为生涯第一阶段的总结，分享这段励志的经历，勉励更多迷茫的朋友。',
     timestamp: 1599928549049
+  },
+  {
+    id: 'TextView_ActionMode',
+    category: 'Android',
+    title: 'TextView自定义长按菜单',
+    tags: [
+      {tag: 'TextView'},
+      {tag: 'ActionMode'}
+    ],
+    abstract: '介绍TextView自定义长按菜单的实现方式。',
+    timestamp: 1608781150239
   }
 ]
 
