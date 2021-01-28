@@ -1167,6 +1167,17 @@ const blogs = [
     ],
     abstract: '介绍TextView自定义长按菜单的实现方式。',
     timestamp: 1608781150239
+  },
+  {
+    id: 'AndroidGesture',
+    category: 'Android',
+    title: 'Android手势拦补点',
+    tags: [
+      {tag: '手势'},
+      {tag: '拦补点'}
+    ],
+    abstract: '介绍Android手势中的高阶操作，以解决手势冲突问题。',
+    timestamp: 1611798620574
   }
 ]
 
