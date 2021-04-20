@@ -1178,6 +1178,31 @@ const blogs = [
     ],
     abstract: '介绍Android手势中的高阶操作，以解决手势冲突问题。',
     timestamp: 1611798620574
+  },
+  {
+    id: 'ViewInitNPEBelowAndroidM',
+    category: 'Android',
+    title: 'Android M之前View实例化时报访问成员变量空指针的问题',
+    tags: [
+      {tag: 'View'},
+      {tag: 'crash'},
+      {tag: '类加载'},
+      {tag: '字节码'},
+      {tag: 'solution'}
+    ],
+    abstract: '写了四年安卓，我发现我根本不懂Java。',
+    timestamp: 1618917956645
+  },
+  {
+    id: 'AnimatorIsRunning_WrongState',
+    category: 'Android',
+    title: 'Android O之前Animator的isRunning判断错误的问题',
+    tags: [
+      {tag: 'Animator'},
+      {tag: '动画'}
+    ],
+    abstract: '又是SDK的坑。',
+    timestamp: 1618918185621
   }
 ]
 
