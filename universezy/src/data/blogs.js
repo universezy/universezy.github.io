@@ -1203,6 +1203,20 @@ const blogs = [
     ],
     abstract: '又是SDK的坑。',
     timestamp: 1618918185621
+  },
+  {
+    id: 'GLSurfaceViewNoFrame',
+    category: 'Android',
+    title: '基于GLSurfaceView的视频播放器偶现无画面的问题分析',
+    tags: [
+      {tag: 'GLSurfaceView'},
+      {tag: 'Renderer'},
+      {tag: 'player'},
+      {tag: '播放器'},
+      {tag: 'ijkplayer'}
+    ],
+    abstract: '祖传bug终于搞定了！',
+    timestamp: 1619616673259
   }
 ]
 
