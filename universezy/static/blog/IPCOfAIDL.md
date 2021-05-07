@@ -20,11 +20,11 @@ Android系统中的进程之间不能共享内存，因此，需要提供一些�
 
 以Android Studio为例，鼠标在module上点击右键 - new - AIDL - AIDL File，之后，会在该module下自动创建一个名叫aidl的和src同级的文件夹，其中包含一个和src下同包名的aidl文件，这就是我们的服务接口。
 
-![](https://github.com/universezy/AIDLDemo/blob/master/image/structure.png?raw=true)
+![](static/blog/image/AIDL_structure.png)
 
 我们编写完接口后，需要对module重新build一次，然后会自动生成和该aidl接口同名的java接口文件。关于aidl中接口的规范和约束，建议读者学习这篇文章：[你真的理解AIDL中的in，out，inout么？](https://www.jianshu.com/p/ddbb40c7a251)
 
-![](https://github.com/universezy/AIDLDemo/blob/master/image/aidl.png?raw=true)
+![](static/blog/image/AIDL_aidl.png)
 
 这个自动生成的同名java文件，请不要修改它，为了便于观察，我将其格式化，然后在注释中讲解：
 ```java

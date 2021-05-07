@@ -186,7 +186,8 @@ function switchOn() {
 
 ---
 ## 四、 效果图
-![](https://github.com/universezy/DOM-Demo/blob/master/image/screenshoot.png?raw=true)
+
+![](static/blog/image/DomLoading1.png)
 
 ---
 ## 五、 在线体验

@@ -7,7 +7,7 @@
 ## 二、 实现过程
 ### 1. 传统布局
 
-参考《[css+js实现banner图片轮播](https://universezy.github.io/universezy/dist/index.html#/blog/display/WebBanner)》，其中banner实现过程即为传统布局，按照左-中-右顺序渲染。
+参考《[css+js实现banner图片轮播](https://universezy.gitee.io/#/blog/display/WebBanner)》，其中banner实现过程即为传统布局，按照左-中-右顺序渲染。
 
 **html部分**
 
@@ -172,14 +172,14 @@
 
 Left 250px + Main + Right 300px。
 
-![](https://github.com/universezy/ThreeColumnLayout/blob/master/img/001.png?raw=true)
+![](static/blog/image/ThreeColumnLayout1.png)
 
 ---
 ### 2. 第一个临界值：700px，即 Main = Left 时：
 
 **圣杯布局** 被挤乱。
 
-![](https://github.com/universezy/ThreeColumnLayout/blob/master/img/002.png?raw=true)
+![](static/blog/image/ThreeColumnLayout2.png)
 
 ---
 ### 3. 第二个临界值：550px + Main容纳文字的最小宽度：
@@ -190,7 +190,7 @@ Left 250px + Main + Right 300px。
 
 **双飞翼布局** 中Main被压缩，整个布局保持秩序。
 
-![](https://github.com/universezy/ThreeColumnLayout/blob/master/img/003.png?raw=true)
+![](static/blog/image/ThreeColumnLayout3.png)
 
 ---
 ### 4. 第三个临界值：550px，即 Main = 0 时：
@@ -199,7 +199,7 @@ Left 250px + Main + Right 300px。
 
 **双飞翼布局** 中Main消失，Left和Right相互遮挡。
 
-![](https://github.com/universezy/ThreeColumnLayout/blob/master/img/004.png?raw=true)
+![](static/blog/image/ThreeColumnLayout4.png)
 
 ---
 ### 5. 对比：

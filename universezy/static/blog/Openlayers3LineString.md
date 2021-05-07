@@ -96,7 +96,7 @@ geometry.appendCoordinate(ol.proj.transform(newPoint, 'EPSG:4326', 'EPSG:3857'))
 ---
 ### 3. 效果图：
 
-![](https://github.com/universezy/Openlayer3-LineString/blob/master/image/linestring.png?raw=true)
+![](static/blog/image/Openlayer_linestring.png)
 
 ---
 ### 4. 在线体验:

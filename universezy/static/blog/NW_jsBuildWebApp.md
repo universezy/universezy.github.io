@@ -14,12 +14,12 @@
 ---
 ## 1. Demo - Wechat
 
-![](https://github.com/universezy/NW.js-Demo/blob/master/image/wechat.png?raw=true)
+![](static/blog/image/NWjsDemo_wechat.png)
 
 ---
 ## 2. Demo - YoudaoDict
 
-![](https://github.com/universezy/NW.js-Demo/blob/master/image/youdaodict.png?raw=true)
+![](static/blog/image/NWjsDemo_youdaodict.png)
 
 ---
 ## 3. 准备工作

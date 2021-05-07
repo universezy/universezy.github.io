@@ -173,7 +173,8 @@ function clickNext() {
 
 ---
 ## 5. 效果图
-![](https://github.com/universezy/Banner-Demo/blob/master/image/screenshoot.png?raw=true)
+
+![](static/blog/image/Banner1.png)
 
 ---
 ## 6. 在线体验
