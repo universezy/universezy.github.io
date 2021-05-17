@@ -1217,6 +1217,18 @@ const blogs = [
     ],
     abstract: '祖传bug终于搞定了！',
     timestamp: 1619616673259
+  },
+  {
+    id: 'VapKeepLastFrame',
+    category: 'Android',
+    title: '企鹅电竞VAP动画组件停留最后一帧画面',
+    tags: [
+      {tag: 'VAP'},
+      {tag: '动画'},
+      {tag: 'TextureView'}
+    ],
+    abstract: '改造VAP动画组件实现停留最后一帧画面能效果',
+    timestamp: 1621249354510
   }
 ]
 
