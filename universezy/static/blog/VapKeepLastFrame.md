@@ -60,5 +60,5 @@ VAP动画回调结束的方法是：`IAnimListener#onVideoComplete`，倒推其�
 
 1. **AnimView**增加api：`setAutoDismiss`，内部维护变量`autoDismiss`，以便在动画结束时判断是走原始逻辑销毁画面还是保留最后一帧画面。
 2. 在**AnimView**中，如果`autoDismiss`为false，则在`onVideoComplete`回调中不执行`hide`操作。
-3. 在**HaedDecoder#release**中，如果`autoDismiss`为false，则不执行GL的清屏操作`clearFrame`。
+3. 在**HardDecoder#release**中，如果`autoDismiss`为false，则不执行GL的清屏操作`clearFrame`。
 4. 主动销毁时，移除相关的**TextureView**，执行GL的清屏操作，需要注意的是，后者需要在渲染线程，要确保执行清屏时线程仍存活。这样一来纹理数据才能得到及时释放，避免内存泄漏，引发GPU OOM。
