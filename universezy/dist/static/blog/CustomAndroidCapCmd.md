@@ -54,7 +54,7 @@ adb pull $path
 > source ~/.zshrc
 
 ---
-### 三、 运行示例
+## 三、 运行示例
 
 在终端中输入`cap`：
 
