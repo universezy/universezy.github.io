@@ -1229,6 +1229,18 @@ const blogs = [
     ],
     abstract: '改造VAP动画组件实现停留最后一帧画面能效果',
     timestamp: 1621249354510
+  },
+  {
+    id: 'CustomAndroidCapCmd',
+    category: 'Android',
+    title: '自定义Android截屏命令',
+    tags: [
+      {tag: 'shell'},
+      {tag: 'adb'},
+      {tag: '截屏'}
+    ],
+    abstract: '一个命令，完成截图、拷贝两件事。',
+    timestamp: 1628153282000
   }
 ]
 
